@@ -1,4 +1,4 @@
-# Astrobrew Pro
+# GameLayer - Gamification API Platform
 
 ![demo-image](./src/demo/thumbnail.png)
 
