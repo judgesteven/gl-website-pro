@@ -40,7 +40,7 @@ const features = utils.features.map((item, index) => {
     
     return {
         ...item,
-        img: iconMap[item.title] || Cursor // fallback to Cursor if no match
+        img: iconMap[item.title as keyof typeof iconMap] || Cursor // fallback to Cursor if no match
     }
 })
 

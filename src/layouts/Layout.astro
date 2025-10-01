@@ -44,9 +44,9 @@ const { title } = Astro.props;
 				
 				// Also remove elements with inline styles that position them at the bottom
 				document.querySelectorAll('*').forEach(el => {
-					const style = el.style;
+					const style = (el as HTMLElement).style;
 					if ((style.position === 'fixed' || style.position === 'absolute') && 
-						(style.bottom !== '' || style.bottom !== 'auto')) {
+						(style.bottom !== '' && style.bottom !== 'auto')) {
 						el.remove();
 					}
 				});
