@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+---
+
+<Layout title="GameLayer API Documentation">
+	<main>
+		<Header />
+		
+		<!-- Load RapiDoc from the CDN -->
+		<script type="module" src="https://cdn.jsdelivr.net/npm/rapidoc@9.3.8/dist/rapidoc-min.js"></script>
+
+		<!-- RapiDoc component with extensive configuration options -->
+		<rapi-doc
+			spec-url="https://glapidocs.blob.core.windows.net/apidocs/gamelayer.yaml"
+			theme="light"
+			render-style="read"  
+			show-header="false" 
+			show-info="true"    
+			show-components="true" 
+			show-authentication="true" 
+			allow-spec-file-download="true" 
+			allow-server-selection="true" 
+			schema-style="table"
+			schema-expand-level="3" 
+			default-schema-tab="example"      
+			default-api-server="production" 
+			use-path-in-nav-bar="true"        
+			show-method-in-nav-bar="as-colored-block" 
+			update-route="true"    
+			layout="column"   
+			regular-font="montserrat"
+			nav-item-spacing="relaxed"
+			nav-bg-color="#f5f5f5" 
+			primary-color="#4A90E2"           
+		></rapi-doc>
+	</main>
+</Layout>
+
+<style>
+	main {
+		background-color: #fff;
+		min-height: 100vh;
+	}
+	
+	rapi-doc {
+		width: 100%;
+		height: 100vh;
+	}
+</style>

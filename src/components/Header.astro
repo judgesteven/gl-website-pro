@@ -1,0 +1,324 @@
+---
+import GameLayerLogo from '../images/gamelayer_logo.png'
+import utils from '../utils'
+---
+
+<header>
+    <nav class="navbar grid container">
+        <div class="nav-logo">
+            <a href="/">
+                <img src={GameLayerLogo.src} alt="GameLayer logo" width="150">
+            </a>
+        </div>
+        <div class="nav-links">
+            <ul class="flex-center">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#solutions">References</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+        </div>
+        <div class="nav-cta flex-center gap-2">
+            <a href={utils.config.brew} target="_blank" class="button button-primary">Free Version</a>
+            <a href="mailto:contact@gamelayer.co">Contact</a>
+        </div>
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#solutions">References</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href={utils.config.brew} target="_blank" class="button button-primary">Free Version</a></li>
+                <li><a href="mailto:contact@gamelayer.co">Contact</a></li>
+            </ul>
+        </div>
+        <div class="menu-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+              <path fill-rule="evenodd" d="M3 9a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 9Zm0 6.75a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+            </svg>                  
+        </div>
+    </nav>
+</header>
+
+
+<script>
+
+    const menu = document.querySelector('.menu-icon') as any
+
+    menu.addEventListener('click', () => {
+        document.querySelectorAll('.mobile-menu').forEach(item => {
+            item.classList.toggle('open')
+        })
+    })
+
+</script>
+
+<style lang="scss"> 
+
+
+
+.navbar{
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    padding-top: 20px;
+    min-height: 80px;
+    position: relative;
+    .nav-logo{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        img{
+            width: 150px;
+            height: auto;
+        }
+    }
+    .nav-cta{
+        justify-content: flex-end;
+        a:not(.button){
+            transform: translateY(-5px);
+        }
+    }
+    ul{
+        list-style: none;
+        margin: 0px;
+        li{
+            padding: 0 20px;
+        }
+    }
+
+    a:not(.button){
+        text-decoration: none;
+        color: inherit;
+        font-weight: 600;
+        font-size: 1.7rem;
+        &:hover{
+            opacity: .8;
+        }
+    }
+
+    // Tablet landscape (1024px and below)
+    @media (max-width: 1024px) {
+        .nav-logo img{
+            width: 130px;
+        }
+        a:not(.button){
+            font-size: 1.5rem;
+        }
+        ul li{
+            padding: 0 15px;
+        }
+    }
+
+    // Tablet portrait (768px and below)
+    @media (max-width: 768px) {
+        .nav-logo img{
+            width: 120px;
+        }
+        a:not(.button){
+            font-size: 1.3rem;
+        }
+        ul li{
+            padding: 0 12px;
+        }
+    }
+
+    // Mobile landscape (640px and below)
+    @media (max-width: 640px) {
+        grid-template-columns: 1fr auto;
+        .nav-logo img{
+            width: 110px;
+        }
+        .nav-links, .nav-cta{
+            display: none;
+        }
+        a:not(.button){
+            font-size: 1.2rem;
+        }
+        .menu-icon{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            svg{
+                width: 30px;
+            }
+        }
+        .mobile-menu{
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            min-width: 200px;
+            z-index: 1000;
+            ul{
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            li{
+                margin-bottom: 15px;
+                text-align: center;
+                &:last-child{
+                    margin-bottom: 0;
+                }
+            }
+            a{
+                display: block;
+                text-decoration: none;
+                color: var(--as-black);
+                font-weight: 600;
+                font-size: 1.7rem;
+                padding: 8px 0;
+                border-bottom: 1px solid #f0f0f0;
+                &:hover{
+                    opacity: 0.8;
+                }
+            }
+            .button{
+                background: none !important;
+                border: none !important;
+                border-radius: 0 !important;
+                height: auto !important;
+                line-height: normal !important;
+                padding: 8px 0 !important;
+                font-size: 1.7rem !important;
+                font-weight: 600 !important;
+                box-shadow: none !important;
+                &:hover{
+                    background: none !important;
+                    box-shadow: none !important;
+                    opacity: 0.8 !important;
+                }
+            }
+            &.open{
+                display: block;
+            }
+        }
+    }
+
+    // Mobile portrait (480px and below)
+    @media (max-width: 480px) {
+        grid-template-columns: 1fr auto;
+        padding-top: 15px;
+        min-height: 70px;
+        .nav-logo{
+            display: flex;
+            img{
+                width: 100px;
+            }
+        }
+        .flex-center{
+            flex-direction: column;
+        }
+        a{
+            display: block;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        .menu-icon{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            svg{
+                width: 32px;
+            }
+        }
+
+        .mobile-menu{
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            min-width: 200px;
+            z-index: 1000;
+            ul{
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            li{
+                margin-bottom: 15px;
+                text-align: center;
+                &:last-child{
+                    margin-bottom: 0;
+                }
+            }
+            a{
+                display: block;
+                text-decoration: none;
+                color: var(--as-black);
+                font-weight: 600;
+                font-size: 1.7rem;
+                padding: 8px 0;
+                border-bottom: 1px solid #f0f0f0;
+                &:hover{
+                    opacity: 0.8;
+                }
+            }
+            .button{
+                background: none !important;
+                border: none !important;
+                border-radius: 0 !important;
+                height: auto !important;
+                line-height: normal !important;
+                padding: 8px 0 !important;
+                font-size: 1.7rem !important;
+                font-weight: 600 !important;
+                box-shadow: none !important;
+                &:hover{
+                    background: none !important;
+                    box-shadow: none !important;
+                    opacity: 0.8 !important;
+                }
+            }
+            &.open{
+                display: block;
+            }
+        }
+        .nav-cta{
+            border-bottom: var(--as-white) 1px solid;
+            padding-bottom: 10px;
+        }
+    }
+
+    // Very small mobile (360px and below)
+    @media (max-width: 360px) {
+        .nav-logo img{
+            width: 90px;
+        }
+        .menu-icon{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            svg{
+                width: 28px;
+            }
+        }
+        a:not(.button){
+            font-size: 1rem;
+        }
+    }
+
+    // Hide menu icon and mobile menu on larger screens
+    @media (min-width: 641px) {
+        .menu-icon{
+            display: none;
+        }
+        .mobile-menu{
+            display: none !important;
+            &.open{
+                display: none !important;
+            }
+        }
+    }
+}
+
+
+
+</style>
+</style>

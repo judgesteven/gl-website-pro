@@ -9,32 +9,60 @@ const props = {
     },
     features: [
         { 
-            title: 'Source',
-            desc: `There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration`,
+            title: 'Open API',
+            desc: `With over 50 API endpoints, GameLayer gives you all the tools you need to craft unique gamification experiences that fit right into your existing system. Seamlessly integrate and start building amazing, engaging experiences for your users in no time!`,
         },
         { 
-            title: 'Onboarding',
-            desc: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout`,
+            title: 'Content Dashboard',
+            desc: `Once you integrate our API, manage your gamification experiences without having to touch the code! Publish timely and relevant content updates tailored to your users' preferences quickly and easily to keep the engagement going strong.`,
     
         },
         { 
-            title: 'Interview Guides',
-            desc: `If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden`,
+            title: 'Rules Manager',
+            desc: `Create the perfect gamification conditions to match your unique business goals! With our modular, scalable approach, you can create rich, meaningful engagement experiences that resonate with your users and help boost your business objectives!`,
     
         },
         { 
-            title: 'Social Content',
-            desc: `The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.  Sections by lorem`,
+            title: 'Missions',
+            desc: `Create challenges to engage users`,
     
         },
         { 
-            title: 'Text to Apply',
-            desc: `All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary , making this the.`,
+            title: 'Streaks',
+            desc: `Track and reward consistency`,
     
         },
         { 
-            title: 'Custom branding',
-            desc: `Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin `,
+            title: 'Achievements',
+            desc: `Reward users for their efforts`,
+        },
+        { 
+            title: 'Level-Ups',
+            desc: `Measure progress and advancement`,
+        },
+        { 
+            title: 'Leaderboards',
+            desc: `Motivate friendly competition`,
+        },
+        { 
+            title: 'Mystery Wins',
+            desc: `Instant wins ... and losses!`,
+        },
+        { 
+            title: 'Prizes',
+            desc: `Motivate user activity`,
+        },
+        { 
+            title: 'Raffles',
+            desc: `Create periodic prize draws`,
+        },
+        { 
+            title: 'Quizzes',
+            desc: `Build your own quizzes`,
+        },
+        { 
+            title: 'Virtual Currencies',
+            desc: `Experience points and credits`,
         }
     ],
    showcase: [

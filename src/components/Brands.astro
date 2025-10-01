@@ -1,0 +1,168 @@
+---
+import baazLogo from '../images/brands/baaz_logo.png'
+import dubbzLogo from '../images/brands/dubbz_logo.png'
+import finnairLogo from '../images/brands/finnair_logo.png'
+import keskoLogo from '../images/brands/kesko_logo.png'
+import lahtiLogo from '../images/brands/lahti_logo.png'
+import reimaLogo from '../images/brands/reima_logo.png'
+import samsungLogo from '../images/brands/samsung_logo.png'
+import sdpLogo from '../images/brands/sdp_logo.png'
+import symbalooLogo from '../images/brands/symbaloo_logo.png'
+import veikkausLogo from '../images/brands/veikkaus_logo.png'
+
+--- 
+<script>
+    import { gsap } from 'gsap';
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const clonedContainer = document.querySelector('#cloned') as any
+  
+      const clone = clonedContainer.cloneNode(true);
+      clonedContainer.appendChild(clone);
+  
+      const tl = gsap.timeline({ repeat: -1 });
+      tl.to(clonedContainer, {
+        x: -(clonedContainer.scrollWidth / 2), 
+        duration: 60,
+        ease: 'none'
+      });
+    });
+</script>
+  
+
+
+<section>
+    <div class="containe flex-center">
+        <div class="seen-on-brands">
+            <div class="brand-group flex" id="cloned">
+                <img src={baazLogo.src} alt="Baaz Logo">
+                <img src={dubbzLogo.src} alt="Dubbz Logo">
+                <img src={finnairLogo.src} alt="Finnair Logo">
+                <img src={keskoLogo.src} alt="Kesko Logo">
+                <img src={lahtiLogo.src} alt="Lahti Logo">
+                <img src={reimaLogo.src} alt="Reima Logo">
+                <img src={samsungLogo.src} alt="Samsung Logo">
+                <img src={sdpLogo.src} alt="SDP Logo">
+                <img src={symbalooLogo.src} alt="Symbaloo Logo">
+                <img src={veikkausLogo.src} alt="Veikkaus Logo">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<style lang="scss">
+
+section{
+    padding: 0px 0 70px 0;
+    .seen-on-brands{
+        overflow-x: hidden;
+        mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 40%, rgb(0, 0, 0) 60%, rgba(0, 0, 0, 0) 100%);
+    }
+    .seen-on-text{
+      width: 300px;
+      padding-top: 15px;
+      h3{
+        font-size: 2rem;
+      }
+    }
+
+    .brand-group img{
+        width: 135px;
+        filter: grayscale(100%) brightness(0.4) contrast(1.2);
+        transition: filter 0.3s ease;
+    }
+    
+    .brand-group img:hover{
+        filter: grayscale(0%) brightness(1) contrast(1);
+    }
+    
+    /* Specific styling for all logos to ensure consistent light-gray appearance */
+    .brand-group img[alt*="Logo"]{
+        filter: grayscale(100%) brightness(0.4) contrast(1.2);
+        background: transparent;
+    }
+    
+    .brand-group img[alt*="Logo"]:hover{
+        filter: grayscale(0%) brightness(1) contrast(1);
+    }
+
+    // Tablet landscape (1024px and below)
+    @media (max-width: 1024px) {
+        padding: 0px 0 60px 0;
+        .seen-on-text{
+            width: 280px;
+            h3{
+                font-size: 1.8rem;
+            }
+        }
+        .brand-group img{
+            width: 120px;
+        }
+    }
+
+    // Tablet portrait (768px and below)
+    @media (max-width: 768px) {
+        padding: 0px 0 50px 0;
+        .seen-on-text{
+            width: 250px;
+            padding-top: 10px;
+            h3{
+                font-size: 1.6rem;
+            }
+        }
+        .brand-group img{
+            width: 100px;
+        }
+    }
+
+    // Mobile landscape (640px and below)
+    @media (max-width: 640px) {
+        padding: 0px 0 40px 0;
+        .seen-on-text{
+            width: 200px;
+            h3{
+                font-size: 1.4rem;
+            }
+        }
+        .brand-group img{
+            width: 85px;
+        }
+    }
+
+    // Mobile portrait (480px and below)
+    @media (max-width: 480px) {
+        padding: 0px 0 30px 0;
+        .seen-on-text{
+            width: 180px;
+            padding-top: 8px;
+            h3{
+                font-size: 1.2rem;
+            }
+        }
+        .brand-group img{
+            width: 70px;
+        }
+    }
+
+    // Very small mobile (360px and below)
+    @media (max-width: 360px) {
+        padding: 0px 0 25px 0;
+        .seen-on-text{
+            width: 160px;
+            h3{
+                font-size: 1.1rem;
+            }
+        }
+        .brand-group img{
+            width: 60px;
+        }
+    }
+}
+
+
+
+    
+
+</style>
