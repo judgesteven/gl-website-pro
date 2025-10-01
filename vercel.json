@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd brewpro/brewpro-fresh && npm run build",
+  "outputDirectory": "brewpro/brewpro-fresh/dist",
+  "installCommand": "cd brewpro/brewpro-fresh && npm install"
+}
