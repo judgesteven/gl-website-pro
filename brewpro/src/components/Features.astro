@@ -1,0 +1,82 @@
+---
+import { Image } from 'astro:assets';
+import utils from '../utils'
+
+import Cursor from '../images/icons/cursor.svg'
+import Hearts from '../images/icons/hearts.svg'
+import Badge from '../images/icons/badge.svg'
+import Face from '../images/icons/face.svg'
+import Marketing from '../images/icons/marketing.svg'
+import Chip from '../images/icons/chip.svg'
+
+const icons = [Cursor, Hearts, Badge, Face, Marketing, Chip]
+
+const features = utils.features.map((item, index) => {
+    return {
+        ...item,
+        img: icons[index]
+    }
+})
+
+---
+
+
+
+<section id="features">
+    <div class="container">
+        <div class="max-w-md m-auto text-center">
+            <h1 class="text-lg">Propelling people forward with landing pages that just works. </h1>
+        </div>
+
+        <div class="list grid gap-3 mt-4">
+            {features.map((item) => (
+                <div class="list-item">
+                    <div class="list-item-icon">
+                        <img src={item.img.src} alt={item.title}  />
+                    </div>
+                    <div class="list-item-text">
+                        <h3 class="text-sm text-bolder mt-2">{item.title}</h3>
+                        <p class="text-xs">{item.desc}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+
+
+<style lang="scss"> 
+
+section{
+    background-color: var(--as-peach);
+    h1, h3{
+        color: var(--as-black);
+        margin: 10px 0;
+    }
+    .list{
+        grid-template-columns: repeat(3, 1fr);
+        p{
+            color: var(--as-black);
+            max-width: 80%;
+        }
+        img{
+            width: 30px;
+        }
+    }
+
+    @media (max-width: 700px) {
+        padding: 80px 0;
+        .list{
+            grid-template-columns: 1fr;
+            text-align: center;
+            .list-item{
+                margin-bottom: 30px;
+            }
+            p{
+                margin: auto;
+            }
+        }
+    }
+}
+</style>

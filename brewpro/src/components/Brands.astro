@@ -1,0 +1,78 @@
+---
+import ibm from '../images/brands/ibm.svg'
+import laravel from '../images/brands/laravel.svg'
+import tailwind from '../images/brands/tailwind.svg'
+import mclaren from '../images/brands/mclaren.svg'
+import huberman from '../images/brands/huberman.svg'
+import github from '../images/brands/github.svg'
+
+--- 
+<script>
+    import { gsap } from 'gsap';
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const clonedContainer = document.querySelector('#cloned') as any
+  
+      const clone = clonedContainer.cloneNode(true);
+      clonedContainer.appendChild(clone);
+  
+      const tl = gsap.timeline({ repeat: -1 });
+      tl.to(clonedContainer, {
+        x: -(clonedContainer.scrollWidth / 2), 
+        duration: 30,
+        ease: 'none'
+      });
+    });
+</script>
+  
+
+
+<section>
+    <div class="containe flex-center">
+        <div class="seen-on-brands">
+            <div class="brand-group flex" id="cloned">
+                <img src={ibm.src} alt="IBM">
+                <img src={huberman.src} alt="Huberman">
+                <img src={mclaren.src} alt="McLaren">
+                <img src={tailwind.src} alt="Tailwind">
+                <img src={laravel.src} alt="Laravel">
+                <img src={github.src} alt="Github">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<style lang="scss">
+
+section{
+    padding: 0px 0 70px 0;
+    .seen-on-brands{
+        overflow-x: hidden;
+        mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 40%, rgb(0, 0, 0) 60%, rgba(0, 0, 0, 0) 100%);
+    }
+    .seen-on-text{
+      width: 300px;
+      padding-top: 15px;
+    }
+    .seen-on-text h3{
+      font-size: 2rem;
+    }
+
+    .brand-group img{
+        width: 180px;
+    }
+
+    @media (max-width: 700px) {
+        .brand-group img{
+            width: 120px;
+        }
+    }
+}
+
+
+
+    
+
+</style>

@@ -1,0 +1,19 @@
+{
+  "name": "ab-pro",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "astro": "^5.5.2",
+    "gsap": "^3.12.7",
+    "sass": "^1.85.1",
+    "typescript": "^5.8.2"
+  }
+}

@@ -1,0 +1,83 @@
+---
+import One from '../images/showcase/one.svg'
+import Two from '../images/showcase/two.svg'
+import Three from '../images/showcase/three.svg'
+
+
+import utils from '../utils'
+const images = [One, Two, Three]
+
+const items  = utils.showcase.map((item, index) => {
+    return {
+        ...item,
+        img: images[index]?.src
+    }
+})
+
+---
+
+
+<section id="solutions">
+    <div class="container">
+        <div class="max-w-md m-auto text-center">
+            <h1 class="text-lg">Propelling people forward</h1>
+            <p class="text-sm">No need to create projects or setups from scratch when we have templates made for you. All you need is a few clicks.</p>
+        </div>
+        <div class="showcases">
+            {items.map(item => (
+                <div class="showcase flex">
+                  <div class="case-text">
+                    <div class="text-content max-w-sm">
+                        <h2 class="text-md text-bolder">{item.title}</h2>
+                        <p class="text-sm">{item.desc}</p>
+                        <a href={utils.config.buy_url} target="_blank" class="button flex-inline align-center gap-1">
+                           <span> Learn more</span>
+                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20">
+                            <path fill-rule="evenodd" d="M2 10a.75.75 0 0 1 .75-.75h12.59l-2.1-1.95a.75.75 0 1 1 1.02-1.1l3.5 3.25a.75.75 0 0 1 0 1.1l-3.5 3.25a.75.75 0 1 1-1.02-1.1l2.1-1.95H2.75A.75.75 0 0 1 2 10Z" clip-rule="evenodd" />
+                          </svg>
+                        </a>
+                    </div>
+                  </div>
+                  <div class="case-media">
+                    <img src={item.img} alt="showcase image" />
+                  </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+
+
+<style lang="scss"> 
+
+.showcases{
+    .showcase{
+        margin-top: 80px;
+        .case-media, .case-text{
+            flex-basis: 50%;
+        }
+        .case-media img{
+            width: 100%;
+            border-radius: 30px;
+        }
+        &:nth-child(even){
+            flex-direction: row-reverse;
+            transform: translateX(-40px);
+            .text-content{
+                margin-left: auto;
+            }
+            
+        }
+    }
+    @media (max-width: 700px) {
+        .showcase{
+            flex-direction: column;
+            &:nth-child(even){
+                flex-direction: column;
+                transform: translateX(0px);
+            }
+        }
+    }
+}
+</style>

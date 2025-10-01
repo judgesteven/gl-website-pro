@@ -1,0 +1,54 @@
+---
+import utils from '../utils'
+import HeroImage from '../images/hero.svg'
+---
+
+<section id="hero">
+    <div class="container">
+      <div class="grid-half align-center gap-2">
+        <div class="hero-text">
+            <h1 class="text-xlg">Astrobrew Pro is ready to go!</h1>
+            <p class="text-md">The words on this landing page might not make complete sense.</p>
+            <div class="flex gap-2 mt-2">
+                <a href={utils.config.buy_url} target="_blank" class="button button-primary lg">Buy now {utils.config.title}</a>
+            </div>
+        </div>
+        <div class="hero-media">
+            <img src={HeroImage.src} alt="hero image">
+        </div>
+      </div>
+
+    </div>
+</section>
+
+<style lang="scss">
+
+
+
+section{
+    padding-top: 90px;
+    .hero-text{
+        .text-md{
+            font-size: 2.2rem;
+        }
+        h1, p{
+            color: var(--as-black);
+        }
+       
+    }
+    .hero-media{
+        img{
+            width: 120%;
+        }
+    }
+
+    @media (max-width: 700px) {
+        .grid-half{
+            grid-template-columns: 1fr;
+            .hero-media{
+                display: none;
+            }
+        }
+    }
+}
+</style>

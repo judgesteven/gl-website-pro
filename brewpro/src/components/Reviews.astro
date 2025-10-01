@@ -1,0 +1,163 @@
+---
+import utils from '../utils'
+const reviews = utils.reviews
+---
+
+<script>
+    import { gsap } from 'gsap';
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const clonedContainer = document.querySelector('.reviews-wrap') as any
+  
+      // Clone the elements inside the `#cloned` div and append them
+      const clone = clonedContainer.cloneNode(true);
+      clonedContainer.appendChild(clone);
+  
+      // Create a timeline with GSAP for infinite scroll effect
+      const tl = gsap.timeline({ repeat: -1 });
+      tl.to(clonedContainer, {
+        x: -(clonedContainer.scrollWidth / 2), // Move half the total width of the container
+        duration: 30,
+        ease: 'none'
+      });
+  
+      // Add hover event for each item
+      document.querySelectorAll('.review-item').forEach(item => {
+        item.addEventListener('mouseenter', function () {
+          tl.pause(); // Pause the timeline on hover
+          gsap.to(item, 0.5, { scale: 1, duration: 0.5 });
+        })
+  
+        item.addEventListener('mouseleave', function () {
+          tl.play(); // Resume the timeline after hover
+          gsap.to(item, { scale: 1, duration: 0.5 });
+        })
+      })
+
+    });
+  </script>
+
+
+<section>
+    <div class="container flex align-center">
+        <div class="max-w-md ">
+            <h1 class="text-lg">People are ❤ loving Astrobrew Pro! </h1>
+        </div>
+        <div class="review-cta">
+            <a href={utils.config.twitter} target="_blank" class="button flex-inline align-center gap-1">
+                <span>Follow Us</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24">
+                  <path fill-rule="evenodd" d="M8.25 3.75H19.5a.75.75 0 0 1 .75.75v11.25a.75.75 0 0 1-1.5 0V6.31L5.03 20.03a.75.75 0 0 1-1.06-1.06L17.69 5.25H8.25a.75.75 0 0 1 0-1.5Z" clip-rule="evenodd" />
+                </svg>                  
+            </a>
+        </div>
+    </div>
+
+   <div class="reviews mt-4">
+    <div class="reviews-wrap flex gap-2">
+        {reviews.map((item) => (
+            <div class="review-item">
+                <div class="item-head reviewer flex-center gap-1">
+                    <div class="avatar">
+                        <img src={item.reviewer.avatar} alt={item.reviewer.avatar} />
+                    </div>
+                    <div class="info">
+                        <p class="text-sm text-bold">{item.reviewer.name}</p>
+                        <p class="text-xs text-bold">{item.reviewer.handle}</p>
+                    </div>
+                </div>
+                <div class="item-body">
+                    <p class="text-sm text-bold">{item.comment}</p>
+                </div>
+            </div>
+        ))}
+    </div>
+   </div>
+
+
+</section>
+
+
+
+<style lang="scss"> 
+
+section{
+    padding-top: 60px;
+    .reviews{
+        position: relative;
+        &:before, &:after{
+            pointer-events: none;
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 5rem;
+            background: linear-gradient(-90deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 100%);
+            z-index: 2;
+            transform: scale(-1);
+        }
+        &::before{
+            left: 0;
+        }
+        &:after{
+            right: 0;
+            transform: none;
+        }
+
+    }
+    .reviews-wrap{    
+        .review-item{
+            border-radius: 16px;
+            margin-bottom: 20px;
+            min-width: 460px;
+            border: 1px solid var(--as-black);
+            transition: all .3s ease-in-out;
+            background-color: #fff;
+            .item-head{
+                padding: 18px;
+            }
+            .item-body{
+                padding: 20px 18px 1px 18px;
+            }
+            &:hover{
+                box-shadow: 6px 6px #000;
+            }
+        }
+    }
+
+    .review-cta{
+        margin-left: auto;
+    }
+
+    .reviewer{
+        justify-content: start;
+        .avatar{
+            height: 46px;
+            width: 46px;
+        }
+        .info p{
+            margin: 0;
+        }
+    }
+
+    @media (max-width: 700px) {
+        padding-top: 0px;
+        .container{
+            flex-direction: column;
+            margin: 0 auto;
+            text-align: center;
+            .review-cta{
+                margin: 20px 0;
+            }
+        }
+        .reviews-wrap{
+            .review-item{
+                min-width: 100%;
+            }
+        }
+    }
+}
+
+
+
+</style>
