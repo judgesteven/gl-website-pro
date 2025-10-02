@@ -68,7 +68,7 @@ const props = {
    showcase: [
         {
             title: `Finnair | Airline`, 
-            desc: `GameLayer enabled an extension to the Finnair frequent flyer programme that rewards members with bonus points for completing personalised, non-transactional tasks that bring value to the airline—like giving marketing permissions or updating traveler profiles. These bonus points unlock travel perks, taking members on an aspirational journey through the programme's tiers.`
+            desc: `GameLayer extends the Finnair frequent flyer programme that rewards members with bonus points for completing personalised, non-transactional tasks that bring value to the airline—like giving marketing permissions or updating traveler profiles. These bonus points unlock travel perks, taking members on an aspirational journey through the programme's tiers.`
         },
         {
             title: `Veikkaus Points | National Lottery`,
