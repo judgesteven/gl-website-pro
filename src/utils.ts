@@ -72,7 +72,7 @@ const props = {
         },
         {
             title: `Veikkaus Points | National Lottery`,
-            desc: `No need to create projects or setups from scratch when we have this template made for you.`
+            desc: `GameLayer powers a loyalty experience that turns responsible gaming into fun challenges. Members earn 'points' by completing various challenges, which they can use to unlock small non-gambling rewards, enter bigger prize draws, or even score mystery wins. It's responsible gaming with a fun twist.`
         },
         {
             title: `Gain calmness and clarity with the powerhouse`,
