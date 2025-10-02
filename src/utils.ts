@@ -76,7 +76,7 @@ const props = {
         },
         {
             title: `Reima | Kids Clothing`,
-            desc: `Get in front of people with automation that feels personal and increases your candidate engagement.`
+            desc: `GameLayer brings the Reima app to life with a learning adventure powered by collaborative physical activity. The experience centres on a character on a journey around the world, where kids choose the next destination and learn fun facts about it. To reach the destination and unlock achievements, kids have to get active while wearing an activity tracker, helping the character travel on his journey.`
         },
     ],
     reviews: [
