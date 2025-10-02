@@ -15,7 +15,8 @@ import veikkausLogo from '../images/brands/veikkaus_logo.png'
     import { gsap } from 'gsap';
 
     document.addEventListener('DOMContentLoaded', function () {
-      const clonedContainer = document.querySelector('#cloned') as any
+      const clonedContainer = document.querySelector('#cloned');
+      if (!clonedContainer) return;
   
       const clone = clonedContainer.cloneNode(true);
       clonedContainer.appendChild(clone);
@@ -35,16 +36,16 @@ import veikkausLogo from '../images/brands/veikkaus_logo.png'
     <div class="containe flex-center">
         <div class="seen-on-brands">
             <div class="brand-group flex" id="cloned">
-                <img src={baazLogo.src} alt="Baaz Logo">
-                <img src={dubbzLogo.src} alt="Dubbz Logo">
-                <img src={finnairLogo.src} alt="Finnair Logo">
-                <img src={keskoLogo.src} alt="Kesko Logo">
-                <img src={lahtiLogo.src} alt="Lahti Logo">
-                <img src={reimaLogo.src} alt="Reima Logo">
-                <img src={samsungLogo.src} alt="Samsung Logo">
-                <img src={sdpLogo.src} alt="SDP Logo">
-                <img src={symbalooLogo.src} alt="Symbaloo Logo">
-                <img src={veikkausLogo.src} alt="Veikkaus Logo">
+                <img src={baazLogo.src} alt="Baaz Logo" loading="lazy">
+                <img src={dubbzLogo.src} alt="Dubbz Logo" loading="lazy">
+                <img src={finnairLogo.src} alt="Finnair Logo" loading="lazy">
+                <img src={keskoLogo.src} alt="Kesko Logo" loading="lazy">
+                <img src={lahtiLogo.src} alt="Lahti Logo" loading="lazy">
+                <img src={reimaLogo.src} alt="Reima Logo" loading="lazy">
+                <img src={samsungLogo.src} alt="Samsung Logo" loading="lazy">
+                <img src={sdpLogo.src} alt="SDP Logo" loading="lazy">
+                <img src={symbalooLogo.src} alt="Symbaloo Logo" loading="lazy">
+                <img src={veikkausLogo.src} alt="Veikkaus Logo" loading="lazy">
             </div>
         </div>
     </div>

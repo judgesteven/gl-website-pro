@@ -1,14 +1,9 @@
 ---
-import { Image } from 'astro:assets';
 import utils from '../utils'
 
 import Cursor from '../images/icons/cursor.svg'
 import Hearts from '../images/icons/hearts.svg'
 import Badge from '../images/icons/badge.svg'
-import Face from '../images/icons/face.svg'
-import Marketing from '../images/icons/marketing.svg'
-import Chip from '../images/icons/chip.svg'
-import Climate from '../images/icons/climate.svg'
 import Missions from '../images/icons/missions.svg'
 import Streaks from '../images/icons/streaks.svg'
 import Achievements from '../images/icons/achievements.svg'
@@ -20,29 +15,27 @@ import Raffles from '../images/icons/raffles.svg'
 import Quizzes from '../images/icons/quizzes.svg'
 import VirtualCurrencies from '../images/icons/virtual_currencies.svg'
 
-const features = utils.features.map((item, index) => {
-    // Map feature names to their corresponding icons
-    const iconMap = {
-        'Open API': Cursor,
-        'Content Dashboard': Hearts,
-        'Rules Manager': Badge,
-        'Missions': Missions,
-        'Streaks': Streaks,
-        'Achievements': Achievements,
-        'Level-Ups': LevelUps,
-        'Leaderboards': Leaderboards,
-        'Mystery Wins': MysteryWins,
-        'Prizes': Prizes,
-        'Raffles': Raffles,
-        'Quizzes': Quizzes,
-        'Virtual Currencies': VirtualCurrencies
-    };
-    
-    return {
-        ...item,
-        img: iconMap[item.title as keyof typeof iconMap] || Cursor // fallback to Cursor if no match
-    }
-})
+// Pre-compute icon mapping for better performance
+const iconMap = {
+    'Open API': Cursor,
+    'Content Dashboard': Hearts,
+    'Rules Manager': Badge,
+    'Missions': Missions,
+    'Streaks': Streaks,
+    'Achievements': Achievements,
+    'Level-Ups': LevelUps,
+    'Leaderboards': Leaderboards,
+    'Mystery Wins': MysteryWins,
+    'Prizes': Prizes,
+    'Raffles': Raffles,
+    'Quizzes': Quizzes,
+    'Virtual Currencies': VirtualCurrencies
+} as const;
+
+const features = utils.features.map((item) => ({
+    ...item,
+    img: iconMap[item.title as keyof typeof iconMap] || Cursor
+}))
 
 ---
 
@@ -59,7 +52,7 @@ const features = utils.features.map((item, index) => {
                 {features.slice(0, 3).map((item) => (
                     <div class="list-item">
                         <div class="list-item-icon">
-                            <img src={item.img.src} alt={item.title}  />
+                            <img src={item.img.src} alt={item.title} loading="lazy" />
                         </div>
                         <div class="list-item-text">
                             <h3 class="text-sm text-bolder mt-2">{item.title}</h3>
@@ -73,7 +66,7 @@ const features = utils.features.map((item, index) => {
                 {features.slice(3, 8).map((item) => (
                     <div class="list-item">
                         <div class="list-item-icon">
-                            <img src={item.img.src} alt={item.title}  />
+                            <img src={item.img.src} alt={item.title} loading="lazy" />
                         </div>
                         <div class="list-item-text">
                             <h3 class="text-sm text-bolder mt-2">{item.title}</h3>
@@ -87,7 +80,7 @@ const features = utils.features.map((item, index) => {
                 {features.slice(8).map((item) => (
                     <div class="list-item">
                         <div class="list-item-icon">
-                            <img src={item.img.src} alt={item.title}  />
+                            <img src={item.img.src} alt={item.title} loading="lazy" />
                         </div>
                         <div class="list-item-text">
                             <h3 class="text-sm text-bolder mt-2">{item.title}</h3>

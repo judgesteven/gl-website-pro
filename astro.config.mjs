@@ -11,14 +11,25 @@ export default defineConfig({
     devToolbar: {
         enabled: false
     },
+    build: {
+        inlineStylesheets: 'auto',
+        assets: '_astro'
+    },
     vite: {
         css: {
             preprocessorOptions: {
                 scss: {
-                  api: 'modern-compiler' // or "modern"
+                    api: 'modern-compiler'
                 }
-              }
+            }
         },
-      },
-    
+        build: {
+            cssCodeSplit: false,
+            rollupOptions: {
+                output: {
+                    manualChunks: undefined
+                }
+            }
+        }
+    }
 });

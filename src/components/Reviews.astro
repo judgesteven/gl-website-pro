@@ -1,22 +1,32 @@
 ---
 import utils from '../utils'
+
 const reviews = utils.reviews
 ---
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-      // Add hover event for each item
-      document.querySelectorAll('.review-item').forEach(item => {
-        item.addEventListener('mouseenter', function () {
-          gsap.to(item, 0.5, { scale: 1.05, duration: 0.3 });
-        })
-  
-        item.addEventListener('mouseleave', function () {
-          gsap.to(item, { scale: 1, duration: 0.3 });
-        })
-      })
+      // Use event delegation for better performance
+      const reviewsContainer = document.querySelector('.reviews-wrap');
+      if (!reviewsContainer) return;
+      
+      reviewsContainer.addEventListener('mouseenter', function (e) {
+        const target = e.target as HTMLElement;
+        const item = target?.closest('.review-item');
+        if (item) {
+          gsap.to(item, { scale: 1.05, duration: 0.3, ease: "power2.out" });
+        }
+      }, true);
+      
+      reviewsContainer.addEventListener('mouseleave', function (e) {
+        const target = e.target as HTMLElement;
+        const item = target?.closest('.review-item');
+        if (item) {
+          gsap.to(item, { scale: 1, duration: 0.3, ease: "power2.out" });
+        }
+      }, true);
     });
-  </script>
+</script>
 
 
 <section>
@@ -29,38 +39,23 @@ const reviews = utils.reviews
    <div class="reviews mt-4">
     <div class="reviews-wrap grid gap-1 max-w-lg m-auto">
         {reviews.map((item) => {
-            // Extract percentage and description from each stat
-            let percentage, description;
+            // Pre-compute percentage and description for better performance
+            const statsMap = {
+                '75% of users engaged weekly': { percentage: '75%', description: 'of users engaged weekly' },
+                '60% boost in brand sentiment': { percentage: '60%', description: 'boost in brand sentiment' },
+                '25% increase in session time': { percentage: '25%', description: 'increase in session time' },
+                '200% increase in task completion': { percentage: '200%', description: 'increase in task completion' },
+                '50% boost in product awareness': { percentage: '50%', description: 'boost in product awareness' },
+                '40% increase in no. of sessions': { percentage: '40%', description: 'increase in no. of sessions' }
+            };
             
-            if (item.comment.includes('75% of users engaged weekly')) {
-                percentage = '75%';
-                description = 'of users engaged weekly';
-            } else if (item.comment.includes('60% boost in brand sentiment')) {
-                percentage = '60%';
-                description = 'boost in brand sentiment';
-            } else if (item.comment.includes('25% increase in session time')) {
-                percentage = '25%';
-                description = 'increase in session time';
-            } else if (item.comment.includes('200% increase in task completion')) {
-                percentage = '200%';
-                description = 'increase in task completion';
-            } else if (item.comment.includes('50% boost in product awareness')) {
-                percentage = '50%';
-                description = 'boost in product awareness';
-            } else if (item.comment.includes('40% increase in no. of sessions')) {
-                percentage = '40%';
-                description = 'increase in no. of sessions';
-            } else {
-                // Fallback
-                percentage = item.comment;
-                description = '';
-            }
+            const stats = statsMap[item.comment as keyof typeof statsMap] || { percentage: item.comment, description: '' };
             
             return (
                 <div class="review-item">
                     <div class="item-body">
-                        <div class="stat-percentage">{percentage}</div>
-                        <div class="stat-description">{description}</div>
+                        <div class="stat-percentage">{stats.percentage}</div>
+                        <div class="stat-description">{stats.description}</div>
                     </div>
                 </div>
             );
