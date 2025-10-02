@@ -49,7 +49,7 @@ const pricingPlans = [
   },
   {
     name: "Enterprise",
-    price: "Contact us",
+    price: "On Request",
     period: "",
     users: "Above 100,000 users",
     features: [
@@ -72,7 +72,7 @@ const pricingPlans = [
             <p class="text-sm">Choose the plan that fits your needs. Based on the number of monthly active users, scale up or down as your business or projects grows.</p>
         </div>
         
-        <div class="pricing-grid mt-4">
+        <div class="pricing-grid pricing-spacing">
             {pricingPlans.map((plan) => (
                 <div class={`pricing-card ${plan.popular ? 'popular' : ''}`}>
                     {plan.popular && <div class="popular-badge">Most Popular</div>}
@@ -100,7 +100,7 @@ const pricingPlans = [
                     </div>
                     
                     <div class="pricing-cta">
-                        <a href={plan.name === "Enterprise" ? "mailto:contact@gamelayer.co" : "#"} class={`button ${plan.popular ? 'button-primary' : 'button-secondary'}`}>
+                        <a href={plan.name === "Enterprise" ? "mailto:contact@gamelayer.co" : plan.name === "Starter" ? "https://pay.gocardless.com/BRT00040JFMP578" : plan.name === "Growth" ? "https://pay.gocardless.com/BRT00040JFP66YY" : plan.name === "Scale" ? "https://pay.gocardless.com/BRT00040JFTJ18E" : "#"} target={plan.name === "Enterprise" ? "_self" : "_blank"} rel={plan.name === "Enterprise" ? "" : "noopener noreferrer"} class={`button ${plan.popular ? 'button-primary' : 'button-secondary'}`}>
                             {plan.buttonText}
                         </a>
                     </div>
@@ -119,10 +119,14 @@ const pricingPlans = [
     .pricing-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 2.5rem;
+        gap: 3.5rem;
         max-width: 1400px;
         margin: 0 auto;
         justify-items: center;
+    }
+
+    .pricing-spacing {
+        margin-top: 100px;
     }
 
     .pricing-card {
@@ -135,7 +139,7 @@ const pricingPlans = [
         display: flex;
         flex-direction: column;
         width: 100%;
-        max-width: 280px;
+        max-width: 240px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 

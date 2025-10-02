@@ -1,1 +1,0 @@
-import{g as t}from"./index.DKtf60Sy.js";document.addEventListener("DOMContentLoaded",function(){const e=document.querySelector("#cloned"),n=e.cloneNode(!0);e.appendChild(n),t.timeline({repeat:-1}).to(e,{x:-(e.scrollWidth/2),duration:60,ease:"none"})});
