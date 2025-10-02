@@ -36,15 +36,72 @@ const {
 		<meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
 		
 		<!-- Google Analytics 4 -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-63MBQ0CMFJ"></script>
 		<script is:inline>
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
 			gtag('js', new Date());
-			gtag('config', 'GA_MEASUREMENT_ID', {
+			gtag('config', 'G-63MBQ0CMFJ', {
 				'page_title': '{title}',
-				'page_location': '{canonical}'
+				'page_location': '{canonical}',
+				// Enhanced measurement enabled
+				'engagement_time_msec': true,
+				'page_title_send': true
 			});
+
+			// Track Core Web Vitals
+			function trackWebVitals() {
+				// Track Largest Contentful Paint
+				new Promise(resolve => {
+					new PerformanceObserver(list => {
+						const entries = list.getEntries();
+						const lastEntry = entries[entries.length - 1];
+						gtag('event', 'web_vitals', {
+							name: 'LCP',
+							value: Math.round(lastEntry.startTime),
+							event_category: 'Web Vitals'
+						});
+						resolve(null);
+					}).observe({entryTypes: ['largest-contentful-paint']});
+				});
+
+				// Track First Input Delay
+				new Promise(resolve => {
+					new PerformanceObserver(list => {
+						const entries = list.getEntries();
+						entries.forEach(entry => {
+							gtag('event', 'web_vitals', {
+								name: 'FID',
+								value: Math.round(entry.processingStart - entry.startTime),
+								event_category: 'Web Vitals'
+							});
+						});
+						resolve(null);
+					}).observe({entryTypes: ['first-input']});
+				});
+
+				// Track Cumulative Layout Shift
+				let clsValue = 0;
+				new PerformanceObserver(list => {
+					for (const entry of list.getEntries()) {
+						if (!entry.hadRecentInput) {
+							clsValue += entry.value;
+						}
+					}
+					gtag('event', 'web_vitals', {
+						name: 'CLS',
+						value: Math.round(clsValue * 1000),
+						event_category: 'Web Vitals'
+					});
+				}).observe({entryTypes: ['layout-shift']});
+			}
+
+			// Initialize Web Vitals tracking when DOM is ready
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', trackWebVitals);
+			} else {
+				trackWebVitals();
+			}
 		</script>
 		
 		<!-- Open Graph / Facebook -->
