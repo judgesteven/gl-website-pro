@@ -1,7 +1,11 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gamelayer.co/sitemap.xml
+Sitemap: https://gamelayer.io/sitemap.xml
+
+# Google Search Console Site Verification
+User-agent: Googlebot
+Allow: /
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1

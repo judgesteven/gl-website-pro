@@ -32,6 +32,21 @@ const {
 		<meta name="robots" content="index, follow" />
 		<link rel="canonical" href={canonical} />
 		
+		<!-- Google Search Console Verification -->
+		<meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
+		
+		<!-- Google Analytics 4 -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+		<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'GA_MEASUREMENT_ID', {
+				'page_title': '{title}',
+				'page_location': '{canonical}'
+			});
+		</script>
+		
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={canonical} />
@@ -62,7 +77,7 @@ const {
 			"@type": "SoftwareApplication",
 			"name": "GameLayer",
 			"description": "The leading gamification API platform for user engagement, retention, and customer loyalty",
-			"url": "https://gamelayer.co",
+			"url": "https://gamelayer.io",
 			"applicationCategory": "DeveloperApplication",
 			"operatingSystem": "Web",
 			"offers": {
@@ -74,8 +89,8 @@ const {
 			"provider": {
 				"@type": "Organization",
 				"name": "GameLayer",
-				"url": "https://gamelayer.co",
-				"logo": "https://gamelayer.co/gamelayer_logo.png"
+				"url": "https://gamelayer.io",
+				"logo": "https://gamelayer.io/gamelayer_logo.png"
 			},
 			"keywords": "gamification, gamification API, gamification platform, user engagement, user retention, customer loyalty"
 		}
