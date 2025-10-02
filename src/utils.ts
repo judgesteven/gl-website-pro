@@ -68,7 +68,9 @@ const props = {
    showcase: [
         {
             title: `Finnair | Airline`, 
-            desc: `Give your team a shared space to collaborate and stay on top of it all in one place with Astrobrew.`
+            desc: `Like many frequent flyer programmes, points could only be earned through transactional activity, making small amounts of points pretty useless and often left to expire. Finnair wanted to engage members with the brand even when they weren't traveling or planning a trip, and also reduce the time points showed up as a liability.
+
+GameLayer enabled an extension to the programme that rewards members with bonus points for completing personalised, non-transactional tasks that bring value to the airline—like giving marketing permissions or updating traveler profiles. These bonus points could then unlock travel perks, taking members on an exciting journey through the programme's tiers.`
         },
         {
             title: `Kickstart your next project with Astrobrew`,
