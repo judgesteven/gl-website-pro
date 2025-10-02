@@ -106,6 +106,28 @@ const features = utils.features.map((item, index) => {
 
 section{
     background-color: var(--as-peach);
+    padding: 70px 0;
+    
+    // Tablet landscape (1024px and below)
+    @media (max-width: 1024px) {
+        padding: 60px 0;
+    }
+    
+    // Tablet portrait (768px and below)
+    @media (max-width: 768px) {
+        padding: 50px 0;
+    }
+    
+    // Mobile landscape (640px and below)
+    @media (max-width: 640px) {
+        padding: 40px 0;
+    }
+    
+    // Mobile portrait (480px and below)
+    @media (max-width: 480px) {
+        padding: 30px 0;
+    }
+    
     h1, h3{
         color: var(--as-black);
         margin: 10px 0;

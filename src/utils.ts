@@ -81,50 +81,50 @@ const props = {
     ],
     reviews: [
         {
-            comment: `Ever since FlightTrack Pro died, I've searched for the ultimate flight-tracking app. Now I've found it: @Astrobrew pro. Beautiful, clear, useful info (even tracks the INBOUND plane for your flight). Often tells me about delays before the airline does`,
+            comment: `75% of users engaged weekly`,
             reviewer: {
-                "name": "Mila Hernandez",
-                "handle": "@mila_hernandez",
+                "name": "User Engagement",
+                "handle": "Weekly Active Users",
                 "avatar": "https://images.pexels.com/photos/27759912/pexels-photo-27759912/free-photo-of-elegant-glasses-enhancing-the-sophisticated-look.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             }
         },
         {
-            comment: ` @Astrobrew pro is one of the most well thought out and well executed apps I've ever seen.`,
+            comment: `60% boost in brand sentiment`,
             reviewer: {
-                "name": "Racheal David",
-                "handle": "@racheal_david",
+                "name": "Brand Sentiment",
+                "handle": "Customer Satisfaction",
                 "avatar": "https://images.pexels.com/photos/4505269/pexels-photo-4505269.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             }
         },
         {
-            comment: ` It's like the old Apple motto: It just works. It does exactly what it needs to, nothing more, and it does it all flawlessly. It's genuinely my favorite app on my phone. Literal perfection. No notes. Now, if only every other app on my phone worked as well as Astrobrew pro. `,
+            comment: `25% increase in session time`,
             reviewer: {
-                "name": "Brad pit",
-                "handle": "@bradpit",
+                "name": "Session Duration",
+                "handle": "Time on Platform",
                 "avatar": "https://images.pexels.com/photos/3760258/pexels-photo-3760258.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             }
         },
         {
-            comment: `If you fly at all, Astrobrew pro is amazing. It really does get updates on delays faster than what you'll get from the airlines. The app itself is so clearly built with care, attention to detail, and skill. All the extra info on your flight and your all time passport are great as well. `,
+            comment: `200% increase in task completion`,
             reviewer: {
-                "name": "Derek Wright",
-                "handle": "@derekwright",
+                "name": "Task Completion",
+                "handle": "User Success Rate",
                 "avatar": "https://images.pexels.com/photos/7534793/pexels-photo-7534793.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             }
         },
         {
-            comment: `I have used a lot of other flight tracking apps. Astrobrew pro takes all of them combined and make them look amateurish. Been using the app for several years. Yearly fee is less than a dinner out.`,
+            comment: `50% boost in product awareness`,
             reviewer: {
-                "name": "Amelia Evans",
-                "handle": "@ameliaevans",
+                "name": "Product Awareness",
+                "handle": "Brand Recognition",
                 "avatar": "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             }
         },
         {
-            comment: `I’m a 2+ million mile flyer, and this app is essential for navigating the complexities of travel. Airport monitors are slow to update, but Astrobrew pro keeps you ahead. Forewarned is forearmed—this app equips you with the info you need to handle inevitable travel issues. Absolutely worth the annual fee.`,
+            comment: `40% increase in no. of sessions`,
             reviewer: {
-                "name": "Juanita Chirinio",
-                "handle": "@juanitachirinio",
+                "name": "Session Frequency",
+                "handle": "User Activity",
                 "avatar": "https://images.pexels.com/photos/4626207/pexels-photo-4626207.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             }
         },
