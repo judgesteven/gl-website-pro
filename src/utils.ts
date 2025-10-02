@@ -67,7 +67,7 @@ const props = {
     ],
    showcase: [
         {
-            title: `A task manager you can trust for life long`, 
+            title: `Finnair | Airline`, 
             desc: `Give your team a shared space to collaborate and stay on top of it all in one place with Astrobrew.`
         },
         {
