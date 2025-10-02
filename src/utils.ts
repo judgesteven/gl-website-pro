@@ -71,7 +71,7 @@ const props = {
             desc: `GameLayer enabled an extension to the Finnair frequent flyer programme that rewards members with bonus points for completing personalised, non-transactional tasks that bring value to the airline—like giving marketing permissions or updating traveler profiles. These bonus points unlock travel perks, taking members on an aspirational journey through the programme's tiers.`
         },
         {
-            title: `Kickstart your next project with Astrobrew`,
+            title: `Veikkaus Points | National Lottery`,
             desc: `No need to create projects or setups from scratch when we have this template made for you.`
         },
         {
