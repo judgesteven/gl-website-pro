@@ -75,7 +75,7 @@ const props = {
             desc: `GameLayer powers a loyalty experience that turns responsible gaming into fun challenges. Members earn 'points' by completing various challenges, which they can use to unlock small non-gambling rewards, enter bigger prize draws, or even score mystery wins. It's responsible gaming with a fun twist.`
         },
         {
-            title: `Gain calmness and clarity with the powerhouse`,
+            title: `Reima | Kids Clothing`,
             desc: `Get in front of people with automation that feels personal and increases your candidate engagement.`
         },
     ],
