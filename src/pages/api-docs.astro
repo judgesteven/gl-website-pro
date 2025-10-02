@@ -3,7 +3,11 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 ---
 
-<Layout title="GameLayer API Documentation">
+<Layout 
+	title="GameLayer API Documentation - Complete Gamification API Reference"
+	description="Complete API documentation for GameLayer's gamification platform. Learn how to integrate gamification mechanics, user engagement features, and customer loyalty systems with our comprehensive API."
+	keywords="gamification API documentation, API reference, gamification integration, user engagement API, customer loyalty API, gamification mechanics API"
+>
 	<main>
 		<Header />
 		
@@ -35,6 +39,52 @@ import Header from '../components/Header.astro';
 			primary-color="#4A90E2"           
 		></rapi-doc>
 	</main>
+	
+	<!-- Structured Data for API Documentation -->
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "TechArticle",
+		"headline": "GameLayer API Documentation",
+		"description": "Complete API documentation for GameLayer's gamification platform. Learn how to integrate gamification mechanics, user engagement features, and customer loyalty systems.",
+		"author": {
+			"@type": "Organization",
+			"name": "GameLayer"
+		},
+		"publisher": {
+			"@type": "Organization",
+			"name": "GameLayer",
+			"logo": {
+				"@type": "ImageObject",
+				"url": "https://gamelayer.co/gamelayer_logo.png"
+			}
+		},
+		"datePublished": "2025-01-01",
+		"dateModified": "2025-01-01",
+		"mainEntityOfPage": {
+			"@type": "WebPage",
+			"@id": "https://gamelayer.co/api-docs/"
+		},
+		"about": [
+			{
+				"@type": "Thing",
+				"name": "Gamification API"
+			},
+			{
+				"@type": "Thing", 
+				"name": "User Engagement"
+			},
+			{
+				"@type": "Thing",
+				"name": "Customer Loyalty"
+			},
+			{
+				"@type": "Thing",
+				"name": "API Integration"
+			}
+		]
+	}
+	</script>
 </Layout>
 
 <style>

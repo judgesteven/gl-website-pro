@@ -6,28 +6,28 @@ import utils from '../utils'
 <header>
     <nav class="navbar grid container">
         <div class="nav-logo">
-            <a href="/">
-                <img src={GameLayerLogo.src} alt="GameLayer logo" width="150">
+            <a href="/" aria-label="GameLayer - Gamification API Platform">
+                <img src={GameLayerLogo.src} alt="GameLayer - Gamification API platform for user engagement and customer loyalty" width="150">
             </a>
         </div>
         <div class="nav-links">
             <ul class="flex-center">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#solutions">References</a></li>
-                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#features" aria-label="Gamification features and mechanics">Features</a></li>
+                <li><a href="#solutions" aria-label="Customer success stories and case studies">References</a></li>
+                <li><a href="#pricing" aria-label="Gamification platform pricing plans">Pricing</a></li>
             </ul>
         </div>
         <div class="nav-cta flex-center gap-2">
-            <a href={utils.config.brew} target="_blank" class="button button-primary">Free Version</a>
-            <a href="/api-docs">API Docs</a>
+            <a href={utils.config.brew} target="_blank" class="button button-primary" aria-label="Try GameLayer free version">Free Version</a>
+            <a href="/api-docs" aria-label="GameLayer API documentation">API Docs</a>
         </div>
         <div class="mobile-menu">
             <ul>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#solutions">References</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href={utils.config.brew} target="_blank" class="button button-primary">Free Version</a></li>
-                <li><a href="/api-docs">API Docs</a></li>
+                <li><a href="#features" aria-label="Gamification features and mechanics">Features</a></li>
+                <li><a href="#solutions" aria-label="Customer success stories and case studies">References</a></li>
+                <li><a href="#pricing" aria-label="Gamification platform pricing plans">Pricing</a></li>
+                <li><a href={utils.config.brew} target="_blank" class="button button-primary" aria-label="Try GameLayer free version">Free Version</a></li>
+                <li><a href="/api-docs" aria-label="GameLayer API documentation">API Docs</a></li>
             </ul>
         </div>
         <div class="menu-icon">

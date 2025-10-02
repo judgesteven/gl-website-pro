@@ -11,7 +11,11 @@ import CallToAction from '../components/CallToAction.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Astrobrew Pro - The ultimate micro-saas landing page.">
+<Layout 
+	title="GameLayer - Gamification API Platform for User Engagement & Customer Loyalty"
+	description="Build powerful gamification experiences with GameLayer's comprehensive API. Increase user engagement, retention, and customer loyalty with our gamification platform. Easy integration, proven results."
+	keywords="gamification API, gamification platform, user engagement, user retention, customer loyalty, gamification mechanics, API integration, gamification software"
+>
 	<main>
 		<Header />
 		<Hero />
@@ -23,6 +27,74 @@ import Footer from '../components/Footer.astro';
 		<CallToAction />
 		<Footer />
 	</main>
+	
+	<!-- Additional Structured Data for Homepage -->
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "Organization",
+		"name": "GameLayer",
+		"url": "https://gamelayer.co",
+		"logo": "https://gamelayer.co/gamelayer_logo.png",
+		"description": "The leading gamification API platform for user engagement, retention, and customer loyalty",
+		"foundingDate": "2012",
+		"address": {
+			"@type": "PostalAddress",
+			"addressCountry": "FI",
+			"addressLocality": "Finland"
+		},
+		"contactPoint": {
+			"@type": "ContactPoint",
+			"email": "contact@gamelayer.co",
+			"contactType": "customer service"
+		},
+		"sameAs": [
+			"https://gamelayer.co"
+		],
+		"offers": [
+			{
+				"@type": "Offer",
+				"name": "Starter Plan",
+				"price": "100",
+				"priceCurrency": "EUR",
+				"description": "Up to 1,000 active users with all gamification features"
+			},
+			{
+				"@type": "Offer", 
+				"name": "Growth Plan",
+				"price": "1000",
+				"priceCurrency": "EUR",
+				"description": "Up to 25,000 active users with all gamification mechanics"
+			},
+			{
+				"@type": "Offer",
+				"name": "Scale Plan", 
+				"price": "2500",
+				"priceCurrency": "EUR",
+				"description": "Up to 100,000 active users with advanced support"
+			}
+		]
+	}
+	</script>
+	
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "WebSite",
+		"name": "GameLayer",
+		"url": "https://gamelayer.co",
+		"description": "Gamification API platform for user engagement and customer loyalty",
+		"publisher": {
+			"@type": "Organization",
+			"name": "GameLayer"
+		},
+		"potentialAction": {
+			"@type": "SearchAction",
+			"target": "https://gamelayer.co/api-docs/?q={search_term_string}",
+			"query-input": "required name=search_term_string"
+		}
+	}
+	</script>
 </Layout>
 
 <style>

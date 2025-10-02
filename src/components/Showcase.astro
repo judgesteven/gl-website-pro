@@ -20,8 +20,8 @@ const items  = utils.showcase.map((item, index) => {
 <section id="solutions">
     <div class="container">
         <div class="max-w-lg m-auto text-center">
-            <h1 class="text-lg">Powered by GameLayer</h1>
-            <p class="text-sm">Over the last decade, we've worked across a wide range of industries and helped clients deliver successful solutions to their customers and users. Whatever the challenge, we're here to make it happen.</p>
+            <h2 class="text-lg">Powered by GameLayer</h2>
+            <p class="text-sm">Over the last decade, we've worked across a wide range of industries and helped clients deliver successful gamification solutions that drive user engagement, retention, and customer loyalty. Whatever the challenge, we're here to make it happen.</p>
         </div>
         <div class="showcases">
             {items.map(item => (
@@ -33,7 +33,7 @@ const items  = utils.showcase.map((item, index) => {
                     </div>
                   </div>
                   <div class="case-media">
-                    <img src={item.img} alt="showcase image" loading="lazy" />
+                    <img src={item.img} alt={`${item.title} gamification case study showing user engagement and customer loyalty results`} loading="lazy" />
                   </div>
                 </div>
             ))}
