@@ -1,23 +1,29 @@
 ---
+import GameLayerLogo from '../images/gamelayer_logo.png'
 import utils from '../utils'
 const links = [
-    { title: 'Pricing',  link: utils.config.buy_url },
-    { title: 'Contact us', link: `mailto:${utils.config.mailto}` },
-    { title: 'Get the free version', link: utils.config.brew },
-
+    { title: 'Privacy Policy', link: 'https://gamelayer.co/privacy-policy/' },
+    { title: 'Terms of Service', link: 'https://gamelayer.co/terms-of-service' },
 ]
 ---
 
 <footer>
     <div class="container">
-        <div class="grid-half align-center">
-            <div class="copyright">
-                <p>Pro © {new Date().getFullYear()}. &nbsp;  Made with ♥︎ by  <a href={utils.config.ig} class="use-link" target="_blank">Codetonero</a></p>
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <img src={GameLayerLogo.src} alt="GameLayer logo" width="80">
+                </div>
+                <div class="footer-info">
+                    <p>© 2012 - 2025 All rights reserved</p>
+                    <p>Company Registration 2503589-01 FINLAND</p>
+                    <p><a href="mailto:contact@gamelayer.co" class="contact-link">Contact us</a></p>
+                </div>
             </div>
-            <div class="links">
-                <ul class="flex-center gap-3">
+            <div class="footer-right">
+                <ul class="footer-links">
                     {links.map((item) => (
-                        <li><a href={item.link} target="_blank">{item.title}</a></li>
+                        <li><a href={item.link} target="_blank" rel="noopener noreferrer">{item.title}</a></li>
                     ))}
                 </ul>
             </div>
@@ -32,31 +38,80 @@ const links = [
 footer{
     background-color: #fff;
     padding: 50px 0;
-    p{
-        margin: 0px;
-        font-size: 0.9rem;
-        line-height: 1.4;
+    
+    .footer-content{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
     }
-    ul{
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        justify-content: flex-start;
-        li{
-            a{
-                font-size: 0.9rem;
-                padding: 5px 0;
+    
+    .footer-left{
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    
+    .footer-logo{
+        flex-shrink: 0;
+        img{
+            width: 60px;
+            height: auto;
+        }
+    }
+    
+    .footer-info{
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        
+        p{
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: var(--as-black);
+        }
+    }
+    
+    .footer-right{
+        .footer-links{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            gap: 1.5rem;
+            
+            li{
+                a{
+                    font-size: 0.9rem;
+                    color: var(--as-black);
+                    text-decoration: none;
+                    &:hover{
+                        opacity: 0.8;
+                        text-decoration: underline;
+                    }
+                }
             }
+        }
+    }
+    
+    .contact-link{
+        color: var(--as-black);
+        text-decoration: none;
+        &:hover{
+            opacity: 0.8;
+            text-decoration: underline;
         }
     }
 
     // Tablet landscape (1024px and below)
     @media (max-width: 1024px) {
         padding: 45px 0;
-        p{
+        .footer-info p{
             font-size: 0.85rem;
         }
-        ul li a{
+        .footer-links li a{
             font-size: 0.85rem;
         }
     }
@@ -64,10 +119,26 @@ footer{
     // Tablet portrait (768px and below)
     @media (max-width: 768px) {
         padding: 40px 0;
-        p{
+        .footer-content{
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .footer-left{
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .footer-info{
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .footer-info p{
             font-size: 0.8rem;
         }
-        ul li a{
+        .footer-links{
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .footer-links li a{
             font-size: 0.8rem;
         }
     }
@@ -75,10 +146,10 @@ footer{
     // Mobile landscape (640px and below)
     @media (max-width: 640px) {
         padding: 35px 0;
-        p{
+        .footer-info p{
             font-size: 0.75rem;
         }
-        ul li a{
+        .footer-links li a{
             font-size: 0.75rem;
         }
     }
@@ -86,47 +157,36 @@ footer{
     // Mobile portrait (480px and below)
     @media (max-width: 480px) {
         padding: 30px 0;
-        .grid-half{
-            grid-template-columns: 1fr;
+        .footer-content{
             text-align: center;
-            gap: 1rem;
         }
-        p{
+        .footer-left{
+            align-items: center;
+        }
+        .footer-info p{
             font-size: 0.7rem;
             line-height: 1.5;
         }
-        .flex-center{
-            flex-direction: column;
-            gap: 8px;
-            padding-top: 20px;
+        .footer-links{
+            align-items: center;
         }
-        ul li a{
+        .footer-links li a{
             font-size: 0.7rem;
-            display: block;
-            padding: 3px 0;
         }
     }
 
     // Very small mobile (360px and below)
     @media (max-width: 360px) {
         padding: 25px 0;
-        p{
+        .footer-info p{
             font-size: 0.65rem;
         }
-        ul li a{
+        .footer-links li a{
             font-size: 0.65rem;
         }
     }
 }
 
 
-a, .use-link{
-    color: var(--as-black);
-    text-decoration: none;
-    &:hover{
-        opacity: .8;
-        text-decoration: underline;
-    }
-}
 
 </style>
