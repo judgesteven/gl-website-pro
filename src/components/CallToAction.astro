@@ -10,7 +10,7 @@ import CtaImage from '../images/cta.svg'
             </div>
             <div class="cta">
                 <h2 class="text-xlg">What will you build with GameLayer?</h2>
-                <p class="text-sm">We are always happy to help our customers get the most out of our gamification platform and build the best possible user engagement and customer loyalty experiences. Contact us if you'd like our input on your gamification strategy.</p>
+                <p class="text-sm">We are always happy to help our customers build the best possible user engagement and customer loyalty experiences ... hit us up with a <a href="mailto:contact@gamelayer.co?subject=GameLayer%20Web%20Contact" class="button button-primary cta-contact-button">contact</a> if you would like our input :)</p>
             </div>
         </div>
         
@@ -44,6 +44,54 @@ section{
         .button{
             font-size: 1.1rem;
             padding: 12px 24px;
+        }
+        
+        .cta-contact-button{
+            display: inline-block;
+            border-radius: 20px;
+            text-transform: none;
+            font-weight: 500;
+            font-size: 1.4rem;
+            height: 28px;
+            line-height: 26px;
+            padding: 0 8px;
+            margin: 0 2px;
+            vertical-align: baseline;
+            transition: box-shadow .15s ease-out;
+            
+            &:hover{
+                opacity: 0.95;
+                box-shadow: 0 0 0 2px var(--as-plum);
+            }
+            
+            // Responsive sizing
+            @media (max-width: 1024px) {
+                font-size: 1.2rem;
+                height: 26px;
+                line-height: 24px;
+                padding: 0 6px;
+            }
+            
+            @media (max-width: 768px) {
+                font-size: 1.1rem;
+                height: 24px;
+                line-height: 22px;
+                padding: 0 5px;
+            }
+            
+            @media (max-width: 640px) {
+                font-size: 1rem;
+                height: 22px;
+                line-height: 20px;
+                padding: 0 4px;
+            }
+            
+            @media (max-width: 480px) {
+                font-size: 0.9rem;
+                height: 20px;
+                line-height: 18px;
+                padding: 0 3px;
+            }
         }
     }
 
