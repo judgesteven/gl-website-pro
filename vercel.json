@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm install && npm run build",
+  "buildCommand": "rm -rf node_modules/.astro dist .vercel && npm install && npm run build",
   "outputDirectory": "dist",
   "framework": "astro",
   "installCommand": "npm install"
