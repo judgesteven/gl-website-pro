@@ -11,6 +11,8 @@
         </div>
         
         <div class="popup-body">
+            <p class="popup-description">We provide a Free Version for testing purposes. This version has usage restrictions to prevent misuse. If you would like to unlock a developer account with us, please tell us about your project in the comments section.</p>
+            
             <form id="popupForm" class="popup-form" action="https://formspree.io/f/mgvzlonb" method="POST">
                 <div class="form-fields">
                     <div class="form-field">
@@ -24,6 +26,10 @@
                     <div class="form-field">
                         <label for="popup-email">Email Address *</label>
                         <input type="email" id="popup-email" name="email" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="popup-comments">Comments</label>
+                        <textarea id="popup-comments" name="comments" rows="4"></textarea>
                     </div>
                 </div>
 
@@ -293,6 +299,36 @@
         }
     }
 
+    .popup-description {
+        font-size: 1.2rem;
+        color: var(--as-black);
+        margin-bottom: 25px;
+        line-height: 1.5;
+        text-align: center;
+    }
+
+    .form-field textarea {
+        padding: 14px 16px;
+        border: 1px solid var(--as-accent);
+        border-radius: 20px;
+        font-size: 1.2rem;
+        font-family: inherit;
+        transition: border-color .2s ease, box-shadow .2s ease;
+        background: #fff;
+        resize: vertical;
+        min-height: 80px;
+    }
+
+    .form-field textarea:focus {
+        outline: none;
+        border-color: #6b7280;
+        box-shadow: 0 0 0 3px #6b72801a;
+    }
+
+    .form-field textarea:hover {
+        border-color: #d1d5db;
+    }
+
     .button-container {
         display: flex;
         justify-content: flex-end;
@@ -370,6 +406,10 @@
         padding: 25px 20px;
     }
 
+    .popup-description {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
 
     .popup-form {
         .form-fields {
@@ -382,14 +422,18 @@
                 font-size: 1.1rem;
             }
             
-            input, select {
+            input, select, textarea {
                 padding: 12px 14px;
                 font-size: 1.1rem;
             }
         }
 
-        input, select {
+        input, select, textarea {
             border-radius: 16px;
+        }
+        
+        textarea {
+            min-height: 70px;
         }
 
         .button-container {
