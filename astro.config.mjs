@@ -28,16 +28,7 @@ export default defineConfig({
             cssCodeSplit: false,
             rollupOptions: {
                 output: {
-                    manualChunks: undefined,
-                    assetFileNames: (assetInfo) => {
-                        if (!assetInfo.name) return `_astro/[name].[hash].[ext]`;
-                        const info = assetInfo.name.split('.');
-                        const ext = info[info.length - 1];
-                        if (/\.(css)$/.test(assetInfo.name)) {
-                            return `_astro/[name]-${Date.now()}.${ext}`;
-                        }
-                        return `_astro/[name].[hash].${ext}`;
-                    }
+                    manualChunks: undefined
                 }
             }
         }
