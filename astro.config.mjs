@@ -6,6 +6,11 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
     site: 'https://gamelayer.io',
     output: 'static',
+    // Force fresh build
+    build: {
+        inlineStylesheets: 'auto',
+        assets: '_astro'
+    },
     adapter: vercel({
         webAnalytics: { enabled: false }
     }),
