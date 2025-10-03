@@ -2,5 +2,15 @@
   "buildCommand": "rm -rf node_modules/.astro dist .vercel && npm install && npm run build",
   "outputDirectory": "dist",
   "framework": "astro",
-  "installCommand": "npm install"
+  "installCommand": "npm install",
+  "functions": {
+    "app/api/**/*.js": {
+      "maxDuration": 30
+    }
+  },
+  "build": {
+    "env": {
+      "VERCEL_BUILD_CACHE": "false"
+    }
+  }
 }
