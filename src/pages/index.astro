@@ -17,7 +17,7 @@ import Footer from '../components/Footer.astro';
 	description="Build powerful gamification experiences with GameLayer's comprehensive API. Increase user engagement, retention, and customer loyalty with our gamification platform. Easy integration, proven results."
 	keywords="gamification API, gamification platform, user engagement, user retention, customer loyalty, gamification mechanics, API integration, gamification software"
 >
-	<main>
+	<main id="main-content">
 		<Header />
 		<Hero />
 		<Brands />
@@ -30,7 +30,7 @@ import Footer from '../components/Footer.astro';
 	</main>
 	
 	<!-- Additional Structured Data for Homepage -->
-	<script type="application/ld+json">
+	<script type="application/ld+json" is:inline>
 	{
 		"@context": "https://schema.org",
 		"@type": "Organization",
@@ -78,7 +78,7 @@ import Footer from '../components/Footer.astro';
 	}
 	</script>
 	
-	<script type="application/ld+json">
+	<script type="application/ld+json" is:inline>
 	{
 		"@context": "https://schema.org",
 		"@type": "WebSite",

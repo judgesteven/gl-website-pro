@@ -1,5 +1,6 @@
 ---
 import PopupForm from '../components/PopupForm.astro';
+import SocialImage from '../images/gamelayer_social.png';
 
 interface Props {
 	title: string;
@@ -13,7 +14,7 @@ const {
 	title, 
 	description = "GameLayer - The leading gamification API platform for user engagement, retention, and customer loyalty. Build powerful gamification experiences with our comprehensive API.",
 	keywords = "gamification, gamification API, gamification platform, user engagement, user retention, customer loyalty, gamification mechanics, API integration",
-	ogImage = "https://gamelayer.io/_astro/gamelayer_logo_blue.BKvJnu9N.png",
+	ogImage = SocialImage.src,
 	canonical = Astro.url.href
 } = Astro.props;
 ---
@@ -31,14 +32,19 @@ const {
 		<meta name="description" content={description} />
 		<meta name="keywords" content={keywords} />
 		<meta name="author" content="GameLayer" />
-		<meta name="robots" content="index, follow" />
+		<meta name="robots" content="index, follow, max-image-preview:large" />
 		<link rel="canonical" href={canonical} />
+		
+		<!-- Additional SEO Meta Tags -->
+		<meta name="theme-color" content="#FF6B35" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
 		
 		<!-- Google Search Console Verification -->
 		<meta name="google-site-verification" content="B5sXnvlhRyPD-TK1buZmP9PHQ1EwqAsVvCM3OvV8EsE" />
 		
 		<!-- Google Analytics 4 -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-63MBQ0CMFJ"></script>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-63MBQ0CMFJ" is:inline></script>
 		<script is:inline>
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
@@ -112,6 +118,9 @@ const {
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:alt" content="GameLayer gamification platform - API for user engagement and customer loyalty" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
 		<meta property="og:site_name" content="GameLayer" />
 		<meta property="og:locale" content="en_US" />
 		
@@ -126,11 +135,22 @@ const {
 		<link rel="icon" type="image/png" href="/favicon.png" />
 		<link rel="apple-touch-icon" href="/favicon.png" />
 		
+		<!-- DNS Prefetch for external resources -->
+		<link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+		<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+		<link rel="dns-prefetch" href="//www.googletagmanager.com" />
+		<link rel="dns-prefetch" href="//www.google-analytics.com" />
+		
+		<!-- Preconnect for critical external resources -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		
 		<!-- Stylesheets -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" media="print" onload="this.media='all'">
+		<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"></noscript>
 		
 		<!-- Structured Data -->
-		<script type="application/ld+json">
+		<script type="application/ld+json" is:inline>
 		{
 			"@context": "https://schema.org",
 			"@type": "SoftwareApplication",
@@ -156,6 +176,9 @@ const {
 		</script>
 	</head>
 	<body>
+		<!-- Skip navigation link for accessibility -->
+		<a href="#main-content" class="skip-link">Skip to main content</a>
+		
 		<slot />
 		
 			<script>
@@ -206,6 +229,27 @@ const {
 </html>
 <style lang="scss" is:global>
 @import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');
+
+/* Skip navigation link for accessibility */
+.skip-link {
+	position: absolute;
+	top: -40px;
+	left: 6px;
+	background: var(--as-black);
+	color: var(--as-white);
+	z-index: 1000;
+	padding: 8px;
+	text-decoration: none;
+	font-size: 1.4rem;
+	border-radius: 4px;
+	transition: top 0.2s ease-out;
+	
+	&:focus {
+		top: 6px;
+		outline: 2px solid var(--as-accent);
+		outline-offset: 2px;
+	}
+}
 
 
 :root {

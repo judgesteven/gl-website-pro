@@ -8,11 +8,11 @@ import Header from '../components/Header.astro';
 	description="Complete API documentation for GameLayer's gamification platform. Learn how to integrate gamification mechanics, user engagement features, and customer loyalty systems with our comprehensive API."
 	keywords="gamification API documentation, API reference, gamification integration, user engagement API, customer loyalty API, gamification mechanics API"
 >
-	<main>
+	<main id="main-content">
 		<Header />
 		
 		<!-- Load RapiDoc from the CDN -->
-		<script type="module" src="https://cdn.jsdelivr.net/npm/rapidoc@9.3.8/dist/rapidoc-min.js"></script>
+		<script type="module" src="https://cdn.jsdelivr.net/npm/rapidoc@9.3.8/dist/rapidoc-min.js" is:inline></script>
 
 		<!-- RapiDoc component with extensive configuration options -->
 		<rapi-doc
@@ -41,7 +41,7 @@ import Header from '../components/Header.astro';
 	</main>
 	
 	<!-- Structured Data for API Documentation -->
-	<script type="application/ld+json">
+	<script type="application/ld+json" is:inline>
 	{
 		"@context": "https://schema.org",
 		"@type": "TechArticle",
