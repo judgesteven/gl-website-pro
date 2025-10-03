@@ -1,4 +1,6 @@
 ---
+import PopupForm from '../components/PopupForm.astro';
+
 interface Props {
 	title: string;
 	description?: string;
@@ -156,18 +158,18 @@ const {
 	<body>
 		<slot />
 		
-		<script>
-			// Remove any popup elements with menu, inspect, audit, settings
-			function removePopupElements() {
+			<script>
+			// Remove any unwanted elements with menu, inspect, audit, settings
+			function removeUnwantedElements() {
 				const selectors = [
-					'[class*="popup"]', '[class*="toolbar"]', '[class*="devtools"]', '[class*="debug"]',
+					'[class*="toolbar"]', '[class*="devtools"]', '[class*="debug"]',
 					'[class*="inspector"]', '[class*="audit"]', '[class*="settings"]',
-					'[id*="popup"]', '[id*="toolbar"]', '[id*="devtools"]', '[id*="debug"]',
+					'[id*="toolbar"]', '[id*="devtools"]', '[id*="debug"]',
 					'[id*="inspector"]', '[id*="audit"]', '[id*="settings"]',
 					'iframe[src*="devtools"]', 'iframe[src*="debug"]', 'iframe[src*="inspector"]',
 					// Additional selectors for bottom popup elements
-					'[class*="floating"]', '[class*="overlay"]', '[class*="widget"]', '[class*="panel"]',
-					'[id*="floating"]', '[id*="overlay"]', '[id*="widget"]', '[id*="panel"]',
+					'[class*="widget"]', '[class*="panel"]',
+					'[id*="widget"]', '[id*="panel"]',
 					'[class*="bottom"]', '[id*="bottom"]'
 				];
 				
@@ -188,13 +190,18 @@ const {
 			}
 			
 			// Run immediately and on DOM changes
-			document.addEventListener('DOMContentLoaded', removePopupElements);
-			document.addEventListener('load', removePopupElements);
+			document.addEventListener('DOMContentLoaded', removeUnwantedElements);
+			document.addEventListener('load', removeUnwantedElements);
 			
 			// Watch for dynamically added elements
-			const observer = new MutationObserver(removePopupElements);
+			const observer = new MutationObserver(removeUnwantedElements);
 			observer.observe(document.body, { childList: true, subtree: true });
 		</script>
+		
+		
+		
+		<!-- Popup Form -->
+		<PopupForm />
 	</body>
 </html>
 <style lang="scss" is:global>
@@ -220,17 +227,16 @@ body, html{
     overflow-x: hidden;
 }
 
-/* Hide any injected popup elements with menu, inspect, audit, settings */
-[class*="popup"], [class*="toolbar"], [class*="devtools"], [class*="debug"], 
+/* Hide any unwanted injected elements */
+[class*="toolbar"], [class*="devtools"], [class*="debug"], 
 [class*="inspector"], [class*="audit"], [class*="settings"], 
-[id*="popup"], [id*="toolbar"], [id*="devtools"], [id*="debug"],
+[id*="toolbar"], [id*="devtools"], [id*="debug"],
 [id*="inspector"], [id*="audit"], [id*="settings"],
 iframe[src*="devtools"], iframe[src*="debug"], iframe[src*="inspector"],
-/* Additional selectors for bottom popup elements */
-[class*="floating"], [class*="overlay"], [class*="widget"], [class*="panel"],
-[id*="floating"], [id*="overlay"], [id*="widget"], [id*="panel"],
-[style*="position: fixed"], [style*="position: absolute"][style*="bottom"],
-[style*="z-index"][style*="bottom"], [class*="bottom"], [id*="bottom"] {
+/* Additional selectors for unwanted elements */
+[class*="widget"], [class*="panel"],
+[id*="widget"], [id*="panel"],
+[class*="bottom"], [id*="bottom"] {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;

@@ -1,6 +1,5 @@
 ---
 import GameLayerLogo from '../images/gamelayer_logo_blue.png'
-import utils from '../utils'
 ---
 
 <header>
@@ -18,7 +17,7 @@ import utils from '../utils'
             </ul>
         </div>
         <div class="nav-cta flex-center gap-2">
-            <span class="button button-primary" aria-label="Free Version coming soon">Free Version</span>
+            <button class="button button-primary free-version-btn" aria-label="Sign up for Free Version">Free Version</button>
             <a href="/api-docs" aria-label="GameLayer API documentation">API Docs</a>
         </div>
         <div class="mobile-menu">
@@ -26,7 +25,7 @@ import utils from '../utils'
                 <li><a href="#features" aria-label="Gamification features and mechanics">Features</a></li>
                 <li><a href="#solutions" aria-label="Customer success stories and case studies">References</a></li>
                 <li><a href="#pricing" aria-label="Gamification platform pricing plans">Pricing</a></li>
-                <li><span class="button button-primary" aria-label="Free Version coming soon">Free Version</span></li>
+                <li><button class="button button-primary free-version-btn" aria-label="Sign up for Free Version">Free Version</button></li>
                 <li><a href="/api-docs" aria-label="GameLayer API documentation">API Docs</a></li>
             </ul>
         </div>
@@ -175,20 +174,21 @@ import utils from '../utils'
                     opacity: 0.8;
                 }
             }
-            .button{
-                background: none !important;
+            .free-version-btn {
+                background: var(--as-accent) !important;
                 border: none !important;
-                border-radius: 0 !important;
+                border-radius: 20px !important;
                 height: auto !important;
                 line-height: normal !important;
-                padding: 8px 0 !important;
-                font-size: 1.7rem !important;
+                padding: 12px 20px !important;
+                font-size: 1.4rem !important;
                 font-weight: 600 !important;
                 box-shadow: none !important;
+                color: white !important;
+                margin: 8px 0 !important;
                 &:hover{
-                    background: none !important;
-                    box-shadow: none !important;
-                    opacity: 0.8 !important;
+                    background: #d97706 !important;
+                    opacity: 1 !important;
                 }
             }
             &.open{
@@ -260,20 +260,21 @@ import utils from '../utils'
                     opacity: 0.8;
                 }
             }
-            .button{
-                background: none !important;
+            .free-version-btn {
+                background: var(--as-accent) !important;
                 border: none !important;
-                border-radius: 0 !important;
+                border-radius: 20px !important;
                 height: auto !important;
                 line-height: normal !important;
-                padding: 8px 0 !important;
-                font-size: 1.7rem !important;
+                padding: 12px 20px !important;
+                font-size: 1.4rem !important;
                 font-weight: 600 !important;
                 box-shadow: none !important;
+                color: white !important;
+                margin: 8px 0 !important;
                 &:hover{
-                    background: none !important;
-                    box-shadow: none !important;
-                    opacity: 0.8 !important;
+                    background: #d97706 !important;
+                    opacity: 1 !important;
                 }
             }
             &.open{
@@ -311,9 +312,6 @@ import utils from '../utils'
         }
         .mobile-menu{
             display: none !important;
-            &.open{
-                display: none !important;
-            }
         }
     }
 }
