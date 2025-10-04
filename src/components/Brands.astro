@@ -12,25 +12,33 @@ import veikkausLogo from '../images/brands/veikkaus_logo.png'
 
 --- 
 <script is:inline>
-    // Load GSAP from CDN instead of import
+    // Load GSAP from CDN and initialize animation
     const script = document.createElement('script');
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js';
     script.onload = function() {
-        document.addEventListener('DOMContentLoaded', function () {
-            const clonedContainer = document.querySelector('#cloned');
-            if (!clonedContainer) return;
-        
-            const clone = clonedContainer.cloneNode(true);
-            clonedContainer.appendChild(clone);
-        
-            const tl = window.gsap.timeline({ repeat: -1 });
-            tl.to(clonedContainer, {
-                x: -(clonedContainer.scrollWidth / 2), 
-                duration: 60,
-                ease: 'none'
-            });
-        });
+        // Wait for DOM to be ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initScrollingAnimation);
+        } else {
+            initScrollingAnimation();
+        }
     };
+    
+    function initScrollingAnimation() {
+        const clonedContainer = document.querySelector('#cloned');
+        if (!clonedContainer || !window.gsap) return;
+    
+        const clone = clonedContainer.cloneNode(true);
+        clonedContainer.appendChild(clone);
+    
+        const tl = window.gsap.timeline({ repeat: -1 });
+        tl.to(clonedContainer, {
+            x: -(clonedContainer.scrollWidth / 2), 
+            duration: 60,
+            ease: 'none'
+        });
+    }
+    
     document.head.appendChild(script);
 </script>
   
