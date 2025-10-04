@@ -13,7 +13,6 @@ export default defineConfig({
         enabled: false
     },
     build: {
-        inlineStylesheets: 'auto',
         assets: '_astro'
     },
     compressHTML: true,
