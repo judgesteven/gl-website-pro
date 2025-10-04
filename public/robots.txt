@@ -1,11 +1,8 @@
 User-agent: *
 Allow: /
 
+# Sitemap
 Sitemap: https://gamelayer.io/sitemap.xml
-
-# Google Search Console Site Verification
-User-agent: Googlebot
-Allow: /
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1
@@ -29,8 +26,25 @@ Allow: /
 User-agent: YandexBot
 Allow: /
 
+# Social media crawlers
 User-agent: facebookexternalhit
 Allow: /
 
 User-agent: Twitterbot
 Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+# Block unwanted bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /

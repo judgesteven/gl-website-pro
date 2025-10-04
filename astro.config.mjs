@@ -16,6 +16,11 @@ export default defineConfig({
         inlineStylesheets: 'auto',
         assets: '_astro'
     },
+    compressHTML: true,
+    prefetch: {
+        prefetchAll: true,
+        defaultStrategy: 'viewport'
+    },
     vite: {
         css: {
             preprocessorOptions: {
