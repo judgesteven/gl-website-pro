@@ -149,6 +149,10 @@ const {
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		
+		<!-- Preload critical images for LCP optimization -->
+		<link rel="preload" as="image" href="/src/images/web-image-hero2.png" fetchpriority="high" />
+		<link rel="preload" as="image" href="/references_images/finnair_customer.png" fetchpriority="high" />
+		
 		<!-- Stylesheets -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" media="print" onload="this.media='all'">
 		<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"></noscript>
