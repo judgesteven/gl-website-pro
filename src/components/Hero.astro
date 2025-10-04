@@ -13,7 +13,15 @@ import HeroImage from '../images/web-image-hero2.png'
             </div>
         </div>
         <div class="hero-media">
-            <img src={HeroImage.src} alt="GameLayer gamification API platform interface showing user engagement and customer loyalty features" loading="eager" fetchpriority="high">
+            <img 
+                src={HeroImage.src} 
+                alt="GameLayer gamification API platform interface showing user engagement and customer loyalty features" 
+                loading="eager" 
+                fetchpriority="high"
+                width="600"
+                height="400"
+                style="width: 120%; height: auto; border-radius: 30px;"
+            >
         </div>
       </div>
 
@@ -39,6 +47,8 @@ section{
         img{
             width: 120%;
             height: auto;
+            aspect-ratio: 600 / 400;
+            object-fit: cover;
         }
     }
 

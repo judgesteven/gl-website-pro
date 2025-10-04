@@ -3,7 +3,6 @@ import One from '../../references_images/finnair_customer.png'
 import Two from '../../references_images/veikkaus_customer.png'
 import Three from '../../references_images/reima_customer.png'
 
-
 import utils from '../utils'
 const images = [One, Two, Three]
 
@@ -33,7 +32,15 @@ const items  = utils.showcase.map((item, index) => {
                     </div>
                   </div>
                   <div class="case-media">
-                    <img src={item.img} alt={`${item.title} gamification case study showing user engagement and customer loyalty results`} loading={index === 0 ? "eager" : "lazy"} fetchpriority={index === 0 ? "high" : "auto"} />
+                    <img 
+                        src={item.img} 
+                        alt={`${item.title} gamification case study showing user engagement and customer loyalty results`} 
+                        loading="lazy" 
+                        fetchpriority="auto"
+                        width="756"
+                        height="419"
+                        style="width: 108%; border-radius: 30px; height: auto;"
+                    />
                   </div>
                 </div>
             ))}
@@ -78,6 +85,8 @@ section{
         .case-media img{
             width: 108%;
             border-radius: 30px;
+            aspect-ratio: 756 / 419;
+            object-fit: cover;
         }
         &:nth-child(even){
             flex-direction: row-reverse;

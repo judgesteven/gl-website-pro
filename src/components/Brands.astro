@@ -11,23 +11,27 @@ import symbalooLogo from '../images/brands/symbaloo_logo.png'
 import veikkausLogo from '../images/brands/veikkaus_logo.png'
 
 --- 
-<script>
-    import { gsap } from 'gsap';
-
-    document.addEventListener('DOMContentLoaded', function () {
-      const clonedContainer = document.querySelector('#cloned');
-      if (!clonedContainer) return;
-  
-      const clone = clonedContainer.cloneNode(true);
-      clonedContainer.appendChild(clone);
-  
-      const tl = gsap.timeline({ repeat: -1 });
-      tl.to(clonedContainer, {
-        x: -(clonedContainer.scrollWidth / 2), 
-        duration: 60,
-        ease: 'none'
-      });
-    });
+<script is:inline>
+    // Load GSAP from CDN instead of import
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js';
+    script.onload = function() {
+        document.addEventListener('DOMContentLoaded', function () {
+            const clonedContainer = document.querySelector('#cloned');
+            if (!clonedContainer) return;
+        
+            const clone = clonedContainer.cloneNode(true);
+            clonedContainer.appendChild(clone);
+        
+            const tl = gsap.timeline({ repeat: -1 });
+            tl.to(clonedContainer, {
+                x: -(clonedContainer.scrollWidth / 2), 
+                duration: 60,
+                ease: 'none'
+            });
+        });
+    };
+    document.head.appendChild(script);
 </script>
   
 

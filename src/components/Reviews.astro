@@ -13,16 +13,16 @@ const reviews = utils.reviews
       reviewsContainer.addEventListener('mouseenter', function (e) {
         const target = e.target as HTMLElement;
         const item = target?.closest('.review-item');
-        if (item) {
-          gsap.to(item, { scale: 1.05, duration: 0.3, ease: "power2.out" });
+        if (item && (window as any).gsap) {
+          (window as any).gsap.to(item, { scale: 1.05, duration: 0.3, ease: "power2.out" });
         }
       }, true);
       
       reviewsContainer.addEventListener('mouseleave', function (e) {
         const target = e.target as HTMLElement;
         const item = target?.closest('.review-item');
-        if (item) {
-          gsap.to(item, { scale: 1, duration: 0.3, ease: "power2.out" });
+        if (item && (window as any).gsap) {
+          (window as any).gsap.to(item, { scale: 1, duration: 0.3, ease: "power2.out" });
         }
       }, true);
     });
