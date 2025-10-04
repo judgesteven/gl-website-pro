@@ -33,7 +33,7 @@ const items  = utils.showcase.map((item, index) => {
                     </div>
                   </div>
                   <div class="case-media">
-                    <img src={item.img} alt={`${item.title} gamification case study showing user engagement and customer loyalty results`} loading="lazy" />
+                    <img src={item.img} alt={`${item.title} gamification case study showing user engagement and customer loyalty results`} loading={index === 0 ? "eager" : "lazy"} fetchpriority={index === 0 ? "high" : "auto"} />
                   </div>
                 </div>
             ))}
