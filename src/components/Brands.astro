@@ -23,7 +23,7 @@ import veikkausLogo from '../images/brands/veikkaus_logo.png'
             const clone = clonedContainer.cloneNode(true);
             clonedContainer.appendChild(clone);
         
-            const tl = gsap.timeline({ repeat: -1 });
+            const tl = window.gsap.timeline({ repeat: -1 });
             tl.to(clonedContainer, {
                 x: -(clonedContainer.scrollWidth / 2), 
                 duration: 60,
