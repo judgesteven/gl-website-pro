@@ -1,17 +1,21 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
     site: 'https://gamelayer.io',
     output: 'static',
+    adapter: vercel({
+        webAnalytics: { enabled: false }
+    }),
     devToolbar: {
         enabled: false
     },
     build: {
+        inlineStylesheets: 'auto',
         assets: '_astro'
     },
-    compressHTML: true,
     vite: {
         css: {
             preprocessorOptions: {
