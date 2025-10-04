@@ -9,8 +9,8 @@ import CtaImage from '../images/web-image-3.jpg'
                 <img 
                     src={CtaImage.src} 
                     alt="GameLayer gamification platform showcasing user engagement and customer loyalty experiences" 
-                    loading="eager" 
-                    fetchpriority="high"
+                    loading="lazy" 
+                    fetchpriority="auto"
                     width="420"
                     height="420"
                     style="width: 80%; transform: translate(-10px); height: auto;"
@@ -38,7 +38,7 @@ section{
         transform: translateX(-10px);
         height: auto;
         aspect-ratio: 420 / 420;
-        object-fit: cover;
+        object-fit: contain;
     }
 
     .cta{
