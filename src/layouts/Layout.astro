@@ -598,6 +598,20 @@ section{
     .gap-2{ gap: 15px; }
     .gap-3{ gap: 20px; }
     .mt-4{ margin-top: 50px; }
+
+    /* Mobile-only container padding for better edge spacing */
+    .container{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+/* Tighter phones */
+@media (max-width: 480px) {
+    .container{
+        padding-left: 24px;
+        padding-right: 24px;
+    }
 }
 
 </style>

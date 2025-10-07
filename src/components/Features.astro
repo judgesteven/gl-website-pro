@@ -199,7 +199,7 @@ section{
                 font-size: 1.0rem;
             }
             .small-desc{
-                font-size: 0.85rem;
+                font-size: 0.95rem; // Increased from 0.85rem
             }
             img{
                 width: 20px;
@@ -218,8 +218,18 @@ section{
                 gap: 1rem;
                 margin-bottom: 25px;
             }
+            /* Make first row (e.g., Open API) descriptions bigger on mobile */
+            .first-row{
+                .list-item-text p{
+                    font-size: 1.1rem;
+                }
+            }
         }
         .list{
+            /* Slightly larger icons on small screens */
+            .list-item-icon img{
+                width: 28px;
+            }
             .list-item-text h3{
                 font-size: 1.5rem;
             }
@@ -227,10 +237,7 @@ section{
                 font-size: 0.95rem;
             }
             .small-desc{
-                font-size: 0.8rem;
-            }
-            img{
-                width: 22px;
+                font-size: 1.0rem; // Increased from 0.8rem
             }
             .second-row img, .third-row img{
                 width: 14px;
@@ -247,6 +254,11 @@ section{
                 gap: 1rem;
                 margin-bottom: 20px;
             }
+            .first-row{
+                .list-item-text p{
+                    font-size: 1.05rem;
+                }
+            }
         }
         .list{
             text-align: center;
@@ -262,7 +274,7 @@ section{
                 max-width: 95%;
             }
             .small-desc{
-                font-size: 0.75rem;
+                font-size: 0.85rem; // Increased from 0.75rem
             }
             img{
                 width: 20px;
