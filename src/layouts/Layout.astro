@@ -53,7 +53,10 @@ const {
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
 			gtag('js', new Date());
-			gtag('config', 'G-63MBQ0CMFJ');
+			gtag('config', 'G-63MBQ0CMFJ', {
+			  anonymize_ip: true,
+			  send_page_view: true
+			});
 		</script>
 		
 		<!-- Open Graph / Facebook -->
@@ -136,7 +139,7 @@ const {
 		</script>
 
 		<!-- Vercel Web Analytics / Speed Insights -->
-		<script defer src="/_vercel/insights/script.js"></script>
+		<script defer src="/_vercel/insights/script.js" data-auto="true" is:inline></script>
 	</head>
 	<body>
 		<!-- Skip navigation link for accessibility -->
