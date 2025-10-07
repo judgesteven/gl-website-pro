@@ -70,7 +70,7 @@ const features = utils.features.map((item) => ({
                         </div>
                         <div class="list-item-text">
                             <h3 class="text-sm text-bolder mt-2">{item.title}</h3>
-                            <p class="text-xs" class:small-desc={['Missions', 'Streaks', 'Achievements', 'Level-Ups', 'Leaderboards', 'Mystery Wins', 'Prizes', 'Raffles', 'Quizzes', 'Virtual Currencies'].includes(item.title)}>{item.desc}</p>
+                            <p class="gamification-desc" class:small-desc={['Missions', 'Streaks', 'Achievements', 'Level-Ups', 'Leaderboards', 'Mystery Wins', 'Prizes', 'Raffles', 'Quizzes', 'Virtual Currencies'].includes(item.title)}>{item.desc}</p>
                         </div>
                     </div>
                 ))}
@@ -84,7 +84,7 @@ const features = utils.features.map((item) => ({
                         </div>
                         <div class="list-item-text">
                             <h3 class="text-sm text-bolder mt-2">{item.title}</h3>
-                            <p class="text-xs" class:small-desc={['Mystery Wins', 'Prizes', 'Raffles', 'Quizzes', 'Virtual Currencies'].includes(item.title)}>{item.desc}</p>
+                            <p class="gamification-desc" class:small-desc={['Mystery Wins', 'Prizes', 'Raffles', 'Quizzes', 'Virtual Currencies'].includes(item.title)}>{item.desc}</p>
                         </div>
                     </div>
                 ))}
@@ -198,7 +198,7 @@ section{
                 max-width: 90%;
                 font-size: 1.0rem;
             }
-            p.small-desc{
+            .gamification-desc{
                 font-size: 1.15rem !important; // Increased from 0.95rem to match first-row
             }
             img{
@@ -242,7 +242,7 @@ section{
             p{
                 font-size: 0.95rem;
             }
-            p.small-desc{
+            .gamification-desc{
                 font-size: 1.3rem !important; // Increased from 1.0rem to match first-row
             }
             .second-row img, .third-row img{
@@ -279,7 +279,7 @@ section{
                 font-size: 0.9rem;
                 max-width: 95%;
             }
-            p.small-desc{
+            .gamification-desc{
                 font-size: 1.2rem !important; // Increased from 0.85rem to match first-row
             }
             img{
