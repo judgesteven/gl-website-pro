@@ -70,7 +70,7 @@ const features = utils.features.map((item) => ({
                         </div>
                         <div class="list-item-text">
                             <h3 class="text-sm text-bolder mt-2">{item.title}</h3>
-                            <p class="text-xs" class:small-desc={['Missions', 'Streaks', 'Achievements', 'Level-Ups', 'Leaderboards'].includes(item.title)}>{item.desc}</p>
+                            <p class="text-xs" class:small-desc={['Missions', 'Streaks', 'Achievements', 'Level-Ups', 'Leaderboards', 'Mystery Wins', 'Prizes', 'Raffles', 'Quizzes', 'Virtual Currencies'].includes(item.title)}>{item.desc}</p>
                         </div>
                     </div>
                 ))}
@@ -84,7 +84,7 @@ const features = utils.features.map((item) => ({
                         </div>
                         <div class="list-item-text">
                             <h3 class="text-sm text-bolder mt-2">{item.title}</h3>
-                            <p class="text-xs">{item.desc}</p>
+                            <p class="text-xs" class:small-desc={['Mystery Wins', 'Prizes', 'Raffles', 'Quizzes', 'Virtual Currencies'].includes(item.title)}>{item.desc}</p>
                         </div>
                     </div>
                 ))}
