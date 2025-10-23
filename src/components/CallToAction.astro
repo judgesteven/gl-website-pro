@@ -65,14 +65,15 @@ section{
             padding: 0 8px; // Restored original padding
             margin: 0 2px; // Restored original margin
             vertical-align: middle; // Center vertically in text line
-            transition: box-shadow .15s ease-out;
+            transition: all 0.3s ease;
             text-align: center; // Center text horizontally
             align-items: center; // Center vertically
             justify-content: center; // Center horizontally
             
             &:hover{
                 opacity: 0.95;
-                box-shadow: 0 0 0 2px var(--as-plum);
+                transform: translateY(-2px) scale(1.05);
+                box-shadow: 0 8px 25px rgba(255, 85, 62, 0.3);
             }
             
             // Responsive sizing

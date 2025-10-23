@@ -73,6 +73,17 @@ import GameLayerLogo from '../images/gamelayer_logo_sm.png'
         justify-content: flex-end;
         a:not(.button){
             transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+        
+        // Enhanced hover effects for buttons
+        .free-version-btn {
+            transition: all 0.3s ease;
+            
+            &:hover {
+                transform: translateY(-2px) scale(1.05);
+                box-shadow: 0 8px 25px rgba(255, 85, 62, 0.3);
+            }
         }
     }
     ul{
@@ -189,9 +200,12 @@ import GameLayerLogo from '../images/gamelayer_logo_sm.png'
                 box-shadow: none !important;
                 color: white !important;
                 margin: 8px 0 !important;
+                transition: all 0.3s ease !important;
                 &:hover{
                     background: #d97706 !important;
                     opacity: 1 !important;
+                    transform: translateY(-2px) scale(1.05) !important;
+                    box-shadow: 0 8px 25px rgba(255, 85, 62, 0.3) !important;
                 }
             }
             &.open{
@@ -275,9 +289,12 @@ import GameLayerLogo from '../images/gamelayer_logo_sm.png'
                 box-shadow: none !important;
                 color: white !important;
                 margin: 8px 0 !important;
+                transition: all 0.3s ease !important;
                 &:hover{
                     background: #d97706 !important;
                     opacity: 1 !important;
+                    transform: translateY(-2px) scale(1.05) !important;
+                    box-shadow: 0 8px 25px rgba(255, 85, 62, 0.3) !important;
                 }
             }
             &.open{
