@@ -112,28 +112,58 @@ const {
 				});
 			}, 100);
 		</script>
+		<!-- JSON-LD Structured Data for SEO and AI Visibility -->
 		<script type="application/ld+json" is:inline>
 		{
 			"@context": "https://schema.org",
-			"@type": "SoftwareApplication",
+			"@type": ["SoftwareApplication", "Organization"],
 			"name": "GameLayer",
-			"description": "The leading gamification API platform for user engagement, retention, and customer loyalty",
 			"url": "https://gamelayer.io",
-			"applicationCategory": "DeveloperApplication",
-			"operatingSystem": "Web",
+			"logo": "https://gamelayer.io/logo.png",
+			"description": "GameLayer is a gamification API platform that lets developers add missions, streaks, achievements, and loyalty mechanics to their apps and websites.",
+			"applicationCategory": "Gamification Platform",
+			"operatingSystem": "Cloud",
 			"offers": {
 				"@type": "Offer",
-				"price": "100",
-				"priceCurrency": "EUR",
-				"priceValidUntil": "2025-12-31"
+				"price": "Free trial available"
 			},
-			"provider": {
-				"@type": "Organization",
-				"name": "GameLayer",
-				"url": "https://gamelayer.io",
-				"logo": "https://gamelayer.io/_astro/gamelayer_logo_blue.BKvJnu9N.png"
-			},
-			"keywords": "gamification, gamification API, gamification platform, user engagement, user retention, customer loyalty"
+			"founder": {
+				"@type": "Person",
+				"name": "Steven Judge"
+			}
+		}
+		</script>
+		
+		<script type="application/ld+json" is:inline>
+		{
+			"@context": "https://schema.org",
+			"@type": "FAQPage",
+			"mainEntity": [
+				{
+					"@type": "Question",
+					"name": "What is GameLayer?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "GameLayer is a gamification-as-a-service API that lets developers add missions, achievements, and loyalty mechanics to their apps and websites."
+					}
+				},
+				{
+					"@type": "Question",
+					"name": "Who uses GameLayer?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Product managers, developers, and marketers who want to boost engagement and retention through gamification."
+					}
+				},
+				{
+					"@type": "Question",
+					"name": "Does GameLayer integrate easily with existing apps?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Yes. GameLayer offers a REST API that can be integrated in minutes using simple JSON endpoints."
+					}
+				}
+			]
 		}
 		</script>
 
