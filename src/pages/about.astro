@@ -1,0 +1,168 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout 
+	title="About GameLayer – Gamification API Platform"
+	description="GameLayer is a Gamification API Platform that helps developers, product managers, and marketers increase engagement, loyalty, and retention through missions, achievements, streaks, and leaderboards."
+>
+	<main id="main-content">
+		<Header />
+		
+		<section class="about-page">
+			<div class="container">
+				<div class="about-content">
+					<h1>About GameLayer</h1>
+					<p>
+						<strong>GameLayer</strong> is a <em>Gamification API Platform</em> that empowers developers, product managers, and marketers to increase engagement, loyalty, and retention inside their digital products.
+					</p>
+
+					<h2>Our Mission</h2>
+					<p>
+						To make <strong>gamification simple, scalable, and data-driven</strong>. With just a few API calls, you can add missions, streaks, achievements, levels, and leaderboards—without building a custom backend.
+					</p>
+
+					<h2>Who Uses GameLayer</h2>
+					<p>
+						Teams across wellness, e-commerce, learning, and loyalty use GameLayer to turn everyday actions into meaningful progress. From daily challenges to seasonal events, GameLayer provides the mechanics that keep users coming back.
+					</p>
+
+					<h2>How It Works</h2>
+					<p>
+						Developers integrate via REST endpoints defined in our <a href="/api-docs">API documentation</a>. Product managers and marketers use our dashboard to create content, configure missions, and measure engagement—all without code changes.
+					</p>
+
+					<h2>Why It Matters</h2>
+					<p>
+						Engagement and retention are no longer optional. GameLayer provides the building blocks of modern gamified experiences—secure, scalable, and enterprise-ready.
+					</p>
+
+					<h2>Founding</h2>
+					<p>
+						GameLayer was founded by <strong>Steven Judge</strong> to give product teams the tools of the gaming world—without the complexity of building them from scratch.
+					</p>
+
+					<h2>Get Started</h2>
+					<p>
+						Visit <a href="/api-docs">our documentation</a> to start integrating, or <a href="mailto:contact@gamelayer.co?subject=GameLayer%3A%20General%20Enquiry">get in touch</a> to learn how GameLayer can power your next engagement strategy.
+					</p>
+				</div>
+			</div>
+		</section>
+		
+		<Footer />
+	</main>
+	
+	<!-- JSON-LD Structured Data for SEO and AI Visibility -->
+	<script type="application/ld+json" is:inline>
+	{
+		"@context": "https://schema.org",
+		"@type": "AboutPage",
+		"name": "About GameLayer",
+		"url": "https://gamelayer.io/about",
+		"description": "GameLayer is a Gamification API Platform enabling developers to add missions, streaks, achievements, and loyalty mechanics to any app or website.",
+		"publisher": {
+			"@type": "Organization",
+			"name": "GameLayer",
+			"url": "https://gamelayer.io",
+			"logo": "https://gamelayer.io/logo.png",
+			"founder": {
+				"@type": "Person",
+				"name": "Steven Judge"
+			},
+			"sameAs": [
+				"https://www.linkedin.com/company/gamelayer/"
+			]
+		}
+	}
+	</script>
+</Layout>
+
+<style lang="scss">
+.about-page {
+	padding: 100px 0 80px;
+	background-color: var(--as-offwhite);
+	min-height: calc(100vh - 116px - 120px); // Account for header and footer heights
+	
+	.about-content {
+		max-width: 800px;
+		margin: 0 auto;
+		
+		h1 {
+			font-size: 3rem;
+			color: var(--as-black);
+			margin-bottom: 2rem;
+			text-align: center;
+			font-weight: 700;
+		}
+		
+		h2 {
+			font-size: 2rem;
+			color: var(--as-black);
+			margin: 3rem 0 1.5rem 0;
+			font-weight: 600;
+			border-bottom: 2px solid var(--as-accent);
+			padding-bottom: 0.5rem;
+		}
+		
+		p {
+			font-size: 1.1rem;
+			line-height: 1.8;
+			color: var(--as-black);
+			margin-bottom: 1.5rem;
+			
+			strong {
+				color: var(--as-black);
+				font-weight: 600;
+			}
+			
+			em {
+				font-style: italic;
+				color: var(--as-accent);
+			}
+			
+			a {
+				color: var(--as-accent);
+				text-decoration: none;
+				font-weight: 500;
+				
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+		
+		// Responsive design
+		@media (max-width: 768px) {
+			h1 {
+				font-size: 2.2rem;
+			}
+			
+			h2 {
+				font-size: 1.7rem;
+			}
+			
+			p {
+				font-size: 1rem;
+			}
+		}
+		
+		@media (max-width: 480px) {
+			h1 {
+				font-size: 1.9rem;
+			}
+			
+			h2 {
+				font-size: 1.5rem;
+			}
+			
+			p {
+				font-size: 0.95rem;
+			}
+		}
+	}
+}
+</style>
+
