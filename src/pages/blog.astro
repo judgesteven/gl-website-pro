@@ -8,7 +8,10 @@ const blogPosts = getAllPosts();
 
 const formatDate = (dateString: string) => {
 	const date = new Date(dateString);
-	return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+	const day = date.getDate().toString().padStart(2, '0');
+	const month = (date.getMonth() + 1).toString().padStart(2, '0');
+	const year = date.getFullYear().toString().slice(-2);
+	return `${day}/${month}/${year}`;
 };
 ---
 
@@ -190,8 +193,6 @@ const formatDate = (dateString: string) => {
 				color: var(--as-black);
 				opacity: 0.6;
 				font-size: 1.2rem;
-				margin-left: auto;
-				white-space: nowrap;
 			}
 
 			.blog-card-content {
