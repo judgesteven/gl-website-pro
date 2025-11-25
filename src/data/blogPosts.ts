@@ -19,7 +19,7 @@ export const blogPosts: BlogPost[] = [
 	{
 		slug: 'gamification-increases-retention-mckinsey',
 		title: 'How Gamification Improves Customer Retention: Insights from McKinsey',
-		excerpt: 'McKinsey highlights how gamification significantly improves customer retention. Learn why the best apps use missions, challenges, and rewards—plus how to implement them with GameLayer.',
+		excerpt: 'McKinsey highlights how gamification significantly improves customer retention. Learn why the best apps use missions, challenges, and rewards.',
 		date: '2025-11-19',
 		category: 'Research',
 		readTime: '6 min read',
@@ -43,7 +43,7 @@ export const blogPosts: BlogPost[] = [
 	{
 		slug: 'gamification-boosts-engagement-gartner',
 		title: 'Why Gamification Boosts User Engagement: Key Takeaways from Gartner\'s Latest Research',
-		excerpt: 'Gartner explains how gamification boosts engagement and retention. Learn why missions, XP, and challenges matter — and how to add them with GameLayer.',
+		excerpt: 'Gartner explains how gamification boosts engagement and retention. Learn why missions, XP, and challenges matter.',
 		date: '2025-11-18',
 		category: 'Research',
 		readTime: '6 min read',
