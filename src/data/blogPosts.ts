@@ -20,7 +20,7 @@ export const blogPosts: BlogPost[] = [
 		slug: 'gamification-increases-retention-mckinsey',
 		title: 'How Gamification Improves Customer Retention: Insights from McKinsey',
 		excerpt: 'McKinsey highlights how gamification significantly improves customer retention. Learn why the best apps use missions, challenges, and rewards—plus how to implement them with GameLayer.',
-		date: '2025-11-26',
+		date: '2025-11-19',
 		category: 'Research',
 		readTime: '6 min read',
 		metaDescription: 'McKinsey highlights how gamification significantly improves customer retention. Learn why the best apps use missions, challenges, and rewards—plus how to implement them with GameLayer.',
@@ -44,7 +44,7 @@ export const blogPosts: BlogPost[] = [
 		slug: 'gamification-boosts-engagement-gartner',
 		title: 'Why Gamification Boosts User Engagement: Key Takeaways from Gartner\'s Latest Research',
 		excerpt: 'Gartner explains how gamification boosts engagement and retention. Learn why missions, XP, and challenges matter — and how to add them with GameLayer.',
-		date: '2025-11-25',
+		date: '2025-11-18',
 		category: 'Research',
 		readTime: '6 min read',
 		metaDescription: 'Gartner explains how gamification boosts engagement and retention. Learn why missions, XP, and challenges matter — and how to add them with GameLayer.',
@@ -60,6 +60,30 @@ export const blogPosts: BlogPost[] = [
 			<p>The report emphasises that gamification works because it taps into fundamental motivational triggers: <strong>achievement</strong>, <strong>progress</strong>, <strong>competition</strong>, and <strong>mastery</strong>. Apps that incorporate even simple mechanics—such as <strong>daily goals, streaks, leaderboards, and reward milestones</strong>—tend to outperform non-gamified products in both session frequency and lifetime customer value.</p>
 			
 			<p>For businesses in retail, telecom, wellness, and loyalty programs, the takeaway is clear: <strong>gamification is no longer optional</strong>. It's a proven method to keep users active, build habits, and convert occasional customers into loyal advocates. Whether you're adding <strong>missions and achievements</strong>, improving <strong>onboarding</strong>, or enhancing your <strong>loyalty program</strong>, gamification delivers measurable, repeatable results.</p>
+		`
+	},
+	{
+		slug: 'retail-gamification-drives-loyalty-forrester',
+		title: 'Why Retailers Are Turning to Gamification to Drive Loyalty: Forrester Insights',
+		excerpt: 'Forrester explains why retailers are using gamification to increase loyalty and repeat visits. Learn why challenges, rewards, and engagement loops now drive modern customer journeys.',
+		date: '2025-11-26',
+		category: 'Research',
+		readTime: '6 min read',
+		metaDescription: 'Forrester explains why retailers are using gamification to increase loyalty and repeat visits. Learn why challenges, rewards, and engagement loops now drive modern customer journeys.',
+		keywords: 'retail gamification, loyalty gamification, customer loyalty, gamification API, customer engagement, repeat visits, retail customer experience, loyalty challenges, reward systems, engagement strategy, progression loops',
+		ogTitle: 'Gamification in Retail: Forrester Explains the Loyalty Shift',
+		ogDescription: 'Forrester research shows why retailers use gamification to increase loyalty and engagement — and how developers can implement challenges and rewards with GameLayer.',
+		externalArticleUrl: 'https://www.forrester.com/blogs/the-future-of-retail-loyalty/',
+		ctaHeading: 'Want to make your retail customers return more often through interactive challenges and rewards?',
+		ctaDescription: 'Start using our Gamification API Platform today.',
+		content: `
+			<p><strong>Original article:</strong> <a href="https://www.forrester.com/blogs/the-future-of-retail-loyalty/" target="_blank" rel="noopener noreferrer">Forrester – The Future of Retail Loyalty</a></p>
+			
+			<p>Retailers are facing increasing pressure to keep customers returning, especially as competition intensifies and traditional loyalty programs lose their impact. According to Forrester, leading retail brands are turning to <strong>gamification</strong> to create deeper loyalty through <strong>challenges, dynamic rewards, check-in incentives, and engagement loops</strong> that keep customers active throughout their shopping journey.</p>
+			
+			<p>Forrester highlights that simple transactional loyalty programs (buy X, earn Y) are being replaced by <strong>interactive systems</strong> where users complete challenges, reach milestones, earn badges, or participate in tier-based progress. These mechanics create emotional engagement, not just transactional behavior — which leads to <strong>higher repeat visits, stronger brand affinity, and more frequent app usage</strong>.</p>
+			
+			<p>Retailers that add gamified mechanics into their mobile apps or loyalty platforms are seeing measurable lifts in <strong>customer visit frequency, campaign participation, and overall retention</strong>. Gamification transforms passive customers into active participants.</p>
 		`
 	}
 ];
