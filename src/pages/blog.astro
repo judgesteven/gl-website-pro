@@ -1,0 +1,358 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getAllPosts } from '../data/blogPosts';
+
+const blogPosts = getAllPosts();
+
+const formatDate = (dateString: string) => {
+	const date = new Date(dateString);
+	return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+};
+---
+
+<Layout 
+	title="GameLayer Blog - Gamification Insights, Strategies & Best Practices"
+	description="Explore the latest insights on gamification, user engagement strategies, and best practices for implementing gamification mechanics in your applications. Learn from industry experts and real-world case studies."
+	keywords="gamification blog, gamification strategies, user engagement, customer loyalty, gamification mechanics, gamification API, user retention"
+>
+	<main id="main-content">
+		<Header />
+		
+		<section class="blog-hero">
+			<div class="container">
+				<div class="blog-hero-content text-center">
+					<h1 class="text-xlg">World of Gamification</h1>
+					<p class="text-sm max-w-lg m-auto">Insights, strategies, and best practices for building engaging experiences with gamification</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="blog-posts">
+			<div class="container">
+				<div class="blog-grid">
+					{blogPosts.map((post) => (
+						<article class="blog-card">
+							<div class="blog-card-header">
+								<span class="blog-category">{post.category}</span>
+								<span class="blog-date">{formatDate(post.date)}</span>
+							</div>
+							<div class="blog-card-content">
+								<h2 class="blog-title">{post.title}</h2>
+								<p class="blog-excerpt">{post.excerpt}</p>
+								<div class="blog-card-footer">
+									<span class="blog-read-time">{post.readTime}</span>
+									<a href={`/blog/${post.slug}`} class="button button-primary blog-cta">Read Article</a>
+								</div>
+							</div>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="blog-cta-section">
+			<div class="container">
+				<div class="blog-cta-content text-center max-w-lg m-auto">
+					<h2 class="text-lg">Ready to build engaging experiences?</h2>
+					<p class="text-sm">Start implementing gamification in your apps and digital services today. Sign up for free and get started in minutes.</p>
+					<a href="https://cms.gamelayer.co/" target="_blank" rel="noopener noreferrer" class="button button-primary">Sign Up Free</a>
+				</div>
+			</div>
+		</section>
+
+		<Footer />
+	</main>
+
+	<!-- Blog Structured Data for SEO -->
+	<script type="application/ld+json" is:inline>
+	{
+		"@context": "https://schema.org",
+		"@type": "Blog",
+		"name": "World of Gamification",
+		"description": "Gamification insights, strategies, and best practices",
+		"url": "https://gamelayer.io/blog",
+		"publisher": {
+			"@type": "Organization",
+			"name": "GameLayer",
+			"url": "https://gamelayer.io",
+			"logo": {
+				"@type": "ImageObject",
+				"url": "https://gamelayer.io/logo.png"
+			}
+		},
+		"blogPost": [
+			{
+				"@type": "BlogPosting",
+				"headline": "Why Gamification Boosts User Engagement: Key Takeaways from Gartner's Latest Research",
+				"datePublished": "2025-11-25",
+				"description": "Gartner explains how gamification boosts engagement and retention. Learn why missions, XP, and challenges matter — and how to add them with GameLayer."
+			},
+			{
+				"@type": "BlogPosting",
+				"headline": "How Gamification Transforms E-Commerce Customer Engagement",
+				"datePublished": "2025-01-15",
+				"description": "Discover how leading e-commerce brands are using gamification mechanics to boost customer loyalty and increase repeat purchases."
+			},
+			{
+				"@type": "BlogPosting",
+				"headline": "5 Proven Gamification Strategies for User Retention",
+				"datePublished": "2025-01-10",
+				"description": "Learn how missions, achievements, and leaderboards can dramatically improve user retention rates."
+			},
+			{
+				"@type": "BlogPosting",
+				"headline": "A Developer's Guide to Gamification API Integration",
+				"datePublished": "2025-01-05",
+				"description": "Step-by-step guide to integrating gamification APIs into your application."
+			}
+		]
+	}
+	</script>
+</Layout>
+
+<style lang="scss">
+	main {
+		background-color: #fff;
+	}
+
+	.blog-hero {
+		background-color: var(--as-peach);
+		padding: 100px 0 80px;
+		
+		.blog-hero-content {
+			h1 {
+				color: var(--as-black);
+				margin-bottom: 20px;
+			}
+			
+			p {
+				color: var(--as-black);
+				opacity: 0.8;
+			}
+		}
+
+		// Tablet portrait (768px and below)
+		@media (max-width: 768px) {
+			padding: 80px 0 60px;
+		}
+
+		// Mobile landscape (640px and below)
+		@media (max-width: 640px) {
+			padding: 60px 0 50px;
+		}
+	}
+
+	.blog-posts {
+		padding: 80px 0;
+		background-color: #fff;
+
+		.blog-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 3rem;
+			max-width: 1400px;
+			margin: 0 auto;
+		}
+
+		.blog-card {
+			background: white;
+			border: 1px solid #e5e5e5;
+			border-radius: 12px;
+			padding: 2rem;
+			display: flex;
+			flex-direction: column;
+			transition: all 0.3s ease;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+			&:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+				border-color: var(--as-accent);
+			}
+
+			.blog-card-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 1.5rem;
+				flex-wrap: wrap;
+				gap: 0.5rem;
+			}
+
+			.blog-category {
+				background-color: var(--as-plum);
+				color: var(--as-accent);
+				padding: 0.4rem 1rem;
+				border-radius: 20px;
+				font-size: 1.2rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+			}
+
+			.blog-date {
+				color: var(--as-black);
+				opacity: 0.6;
+				font-size: 1.2rem;
+			}
+
+			.blog-card-content {
+				flex-grow: 1;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.blog-title {
+				font-size: 2.2rem;
+				font-weight: 600;
+				color: var(--as-black);
+				margin-bottom: 1.5rem;
+				line-height: 1.3;
+			}
+
+			.blog-excerpt {
+				font-size: 1.5rem;
+				line-height: 1.6;
+				color: var(--as-black);
+				opacity: 0.8;
+				margin-bottom: 2rem;
+				flex-grow: 1;
+			}
+
+			.blog-card-footer {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-top: auto;
+				padding-top: 1.5rem;
+				border-top: 1px solid #f0f0f0;
+			}
+
+			.blog-read-time {
+				font-size: 1.2rem;
+				color: var(--as-black);
+				opacity: 0.6;
+			}
+
+			.blog-cta {
+				font-size: 1.3rem;
+				padding: 0.8rem 2rem;
+				height: auto;
+				line-height: normal;
+			}
+		}
+
+		// Tablet landscape (1024px and below)
+		@media (max-width: 1024px) {
+			.blog-grid {
+				grid-template-columns: repeat(2, 1fr);
+				gap: 2.5rem;
+			}
+		}
+
+		// Tablet portrait (768px and below)
+		@media (max-width: 768px) {
+			padding: 60px 0;
+			
+			.blog-grid {
+				grid-template-columns: repeat(2, 1fr);
+				gap: 2rem;
+			}
+
+			.blog-card {
+				padding: 1.5rem;
+
+				.blog-title {
+					font-size: 2rem;
+				}
+
+				.blog-excerpt {
+					font-size: 1.4rem;
+				}
+			}
+		}
+
+		// Mobile landscape (640px and below)
+		@media (max-width: 640px) {
+			padding: 50px 0;
+			
+			.blog-grid {
+				grid-template-columns: 1fr;
+				gap: 2rem;
+			}
+
+			.blog-card {
+				.blog-card-footer {
+					flex-direction: column;
+					align-items: flex-start;
+					gap: 1rem;
+				}
+
+				.blog-cta {
+					width: 100%;
+				}
+			}
+		}
+
+		// Mobile portrait (480px and below)
+		@media (max-width: 480px) {
+			padding: 40px 0;
+			
+			.blog-card {
+				padding: 1.5rem;
+
+				.blog-title {
+					font-size: 1.8rem;
+				}
+
+				.blog-excerpt {
+					font-size: 1.3rem;
+				}
+
+				.blog-category {
+					font-size: 1.1rem;
+					padding: 0.3rem 0.8rem;
+				}
+
+				.blog-date {
+					font-size: 1.1rem;
+				}
+			}
+		}
+	}
+
+	.blog-cta-section {
+		background-color: var(--as-peach);
+		padding: 80px 0;
+
+		.blog-cta-content {
+			h2 {
+				color: var(--as-black);
+				margin-bottom: 20px;
+			}
+
+			p {
+				color: var(--as-black);
+				opacity: 0.8;
+				margin-bottom: 30px;
+			}
+
+			.button {
+				margin-top: 10px;
+			}
+		}
+
+		// Tablet portrait (768px and below)
+		@media (max-width: 768px) {
+			padding: 60px 0;
+		}
+
+		// Mobile landscape (640px and below)
+		@media (max-width: 640px) {
+			padding: 50px 0;
+		}
+	}
+</style>
+

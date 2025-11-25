@@ -1,0 +1,432 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getPostBySlug, blogPosts } from '../../data/blogPosts';
+
+export async function getStaticPaths() {
+	return blogPosts.map((post) => ({
+		params: { slug: post.slug },
+	}));
+}
+
+const { slug } = Astro.params;
+
+if (!slug) {
+	return Astro.redirect('/blog');
+}
+
+const blogPost = getPostBySlug(slug);
+
+if (!blogPost) {
+	return Astro.redirect('/blog');
+}
+
+const formatDate = (dateString: string) => {
+	const date = new Date(dateString);
+	return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+};
+
+// SEO metadata
+const pageTitle = blogPost.ogTitle || blogPost.title;
+const pageDescription = blogPost.metaDescription || blogPost.excerpt;
+const pageKeywords = blogPost.keywords || 'gamification, user engagement, customer loyalty, gamification API, gamification strategies';
+
+// JSON-LD structured data for SEO
+const postUrl = "https://gamelayer.io/blog/" + blogPost.slug;
+const blogPostSchema = {
+	"@context": "https://schema.org",
+	"@type": "BlogPosting",
+	"headline": blogPost.title,
+	"datePublished": blogPost.date,
+	"description": pageDescription,
+	"author": {
+		"@type": "Organization",
+		"name": "GameLayer"
+	},
+	"publisher": {
+		"@type": "Organization",
+		"name": "GameLayer",
+		"url": "https://gamelayer.io",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://gamelayer.io/logo.png"
+		}
+	},
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": postUrl
+	}
+};
+---
+
+<Layout 
+	title={`${blogPost.title} | GameLayer Blog`}
+	description={pageDescription}
+	keywords={pageKeywords}
+	ogTitle={blogPost.ogTitle ? `${blogPost.ogTitle} | GameLayer Blog` : undefined}
+	ogDescription={blogPost.ogDescription || pageDescription}
+>
+	<main id="main-content">
+		<Header />
+		
+		<article class="blog-post">
+			<div class="container">
+				<div class="blog-post-header text-center max-w-lg m-auto">
+					<div class="blog-post-meta">
+						<span class="blog-category">{blogPost.category}</span>
+						<span class="blog-date">{formatDate(blogPost.date)}</span>
+						<span class="blog-read-time">{blogPost.readTime}</span>
+					</div>
+					<h1 class="blog-post-title">{blogPost.title}</h1>
+					<p class="blog-post-excerpt">{blogPost.excerpt}</p>
+				</div>
+
+				<div class="blog-post-content max-w-lg m-auto">
+					<div class="blog-post-body" set:html={blogPost.content}></div>
+					
+					<div class="blog-post-cta">
+						<div class="cta-box">
+							<h2>🚀 Want to add missions, XP, challenges, and leaderboards to your app without building it from scratch?</h2>
+							<p>Start using the <strong>GameLayer Gamification API</strong> today.</p>
+							<a href="https://cms.gamelayer.co/" target="_blank" rel="noopener noreferrer" class="button button-primary">Sign up free</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="blog-post-navigation max-w-lg m-auto">
+					<a href="/blog" class="back-to-blog">
+						← Back to Blog
+					</a>
+				</div>
+			</div>
+		</article>
+
+		<Footer />
+	</main>
+
+	<!-- Blog Post Structured Data for SEO -->
+	<script type="application/ld+json" is:inline set:html={JSON.stringify(blogPostSchema)}></script>
+</Layout>
+
+<style lang="scss">
+	main {
+		background-color: #fff;
+	}
+
+	.blog-post {
+		padding: 80px 0;
+		background-color: #fff;
+
+		.blog-post-header {
+			margin-bottom: 4rem;
+
+			.blog-post-meta {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: 1.5rem;
+				margin-bottom: 2rem;
+				flex-wrap: wrap;
+			}
+
+			.blog-category {
+				background-color: var(--as-plum);
+				color: var(--as-accent);
+				padding: 0.4rem 1rem;
+				border-radius: 20px;
+				font-size: 1.2rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+			}
+
+			.blog-date,
+			.blog-read-time {
+				color: var(--as-black);
+				opacity: 0.6;
+				font-size: 1.2rem;
+			}
+
+			.blog-post-title {
+				font-size: 4rem;
+				font-weight: 600;
+				color: var(--as-black);
+				margin-bottom: 2rem;
+				line-height: 1.2;
+			}
+
+			.blog-post-excerpt {
+				font-size: 1.8rem;
+				line-height: 1.6;
+				color: var(--as-black);
+				opacity: 0.8;
+			}
+		}
+
+		.blog-post-content {
+			margin-bottom: 4rem;
+
+			.blog-post-body {
+				font-size: 1.6rem;
+				line-height: 1.8;
+				color: var(--as-black);
+
+				h2 {
+					font-size: 2.8rem;
+					font-weight: 600;
+					color: var(--as-black);
+					margin-top: 3rem;
+					margin-bottom: 1.5rem;
+					line-height: 1.3;
+				}
+
+				p {
+					margin-bottom: 1.5rem;
+					opacity: 0.9;
+				}
+
+				a {
+					color: var(--as-accent);
+					text-decoration: underline;
+					transition: opacity 0.3s ease;
+					
+					&:hover {
+						opacity: 0.8;
+					}
+				}
+
+				strong {
+					font-weight: 600;
+				}
+
+				ul, ol {
+					margin-bottom: 1.5rem;
+					padding-left: 2rem;
+
+					li {
+						margin-bottom: 0.8rem;
+						opacity: 0.9;
+					}
+				}
+			}
+
+			.blog-post-cta {
+				margin-top: 4rem;
+				padding-top: 4rem;
+				border-top: 2px solid var(--as-peach);
+
+				.cta-box {
+					background-color: var(--as-peach);
+					padding: 3rem;
+					border-radius: 12px;
+					text-align: center;
+
+					h2 {
+						font-size: 2.8rem;
+						font-weight: 600;
+						color: var(--as-black);
+						margin-bottom: 1.5rem;
+					}
+
+					p {
+						font-size: 1.6rem;
+						line-height: 1.6;
+						color: var(--as-black);
+						opacity: 0.8;
+						margin-bottom: 2rem;
+					}
+
+					.button {
+						font-size: 1.5rem;
+						padding: 1rem 3rem;
+						height: auto;
+						line-height: normal;
+					}
+				}
+			}
+		}
+
+		.blog-post-navigation {
+			padding-top: 3rem;
+			border-top: 1px solid #e5e5e5;
+
+			.back-to-blog {
+				display: inline-flex;
+				align-items: center;
+				color: var(--as-accent);
+				font-size: 1.6rem;
+				font-weight: 600;
+				text-decoration: none;
+				transition: all 0.3s ease;
+
+				&:hover {
+					opacity: 0.8;
+					transform: translateX(-5px);
+				}
+			}
+		}
+
+		// Tablet landscape (1024px and below)
+		@media (max-width: 1024px) {
+			.blog-post-header {
+				.blog-post-title {
+					font-size: 3.5rem;
+				}
+			}
+
+			.blog-post-content {
+				.blog-post-body h2 {
+					font-size: 2.5rem;
+				}
+			}
+		}
+
+		// Tablet portrait (768px and below)
+		@media (max-width: 768px) {
+			padding: 60px 0;
+
+			.blog-post-header {
+				margin-bottom: 3rem;
+
+				.blog-post-title {
+					font-size: 3rem;
+				}
+
+				.blog-post-excerpt {
+					font-size: 1.6rem;
+				}
+			}
+
+			.blog-post-content {
+				margin-bottom: 3rem;
+
+				.blog-post-body {
+					font-size: 1.5rem;
+
+					h2 {
+						font-size: 2.2rem;
+						margin-top: 2.5rem;
+					}
+				}
+
+				.blog-post-cta {
+					margin-top: 3rem;
+					padding-top: 3rem;
+
+					.cta-box {
+						padding: 2.5rem;
+
+						h2 {
+							font-size: 2.4rem;
+						}
+
+						p {
+							font-size: 1.5rem;
+						}
+					}
+				}
+			}
+		}
+
+		// Mobile landscape (640px and below)
+		@media (max-width: 640px) {
+			padding: 50px 0;
+
+			.blog-post-header {
+				.blog-post-meta {
+					flex-direction: column;
+					gap: 1rem;
+				}
+
+				.blog-post-title {
+					font-size: 2.5rem;
+				}
+
+				.blog-post-excerpt {
+					font-size: 1.5rem;
+				}
+			}
+
+			.blog-post-content {
+				.blog-post-body {
+					font-size: 1.4rem;
+
+					h2 {
+						font-size: 2rem;
+					}
+				}
+
+				.blog-post-cta {
+					.cta-box {
+						padding: 2rem;
+
+						h2 {
+							font-size: 2rem;
+						}
+
+						p {
+							font-size: 1.4rem;
+						}
+					}
+				}
+			}
+		}
+
+		// Mobile portrait (480px and below)
+		@media (max-width: 480px) {
+			padding: 40px 0;
+
+			.blog-post-header {
+				.blog-post-title {
+					font-size: 2.2rem;
+				}
+
+				.blog-post-excerpt {
+					font-size: 1.4rem;
+				}
+
+				.blog-category {
+					font-size: 1.1rem;
+					padding: 0.3rem 0.8rem;
+				}
+
+				.blog-date,
+				.blog-read-time {
+					font-size: 1.1rem;
+				}
+			}
+
+			.blog-post-content {
+				.blog-post-body {
+					font-size: 1.3rem;
+
+					h2 {
+						font-size: 1.8rem;
+					}
+				}
+
+				.blog-post-cta {
+					.cta-box {
+						padding: 1.5rem;
+
+						h2 {
+							font-size: 1.8rem;
+						}
+
+						p {
+							font-size: 1.3rem;
+						}
+
+						.button {
+							font-size: 1.3rem;
+							padding: 0.8rem 2rem;
+							width: 100%;
+						}
+					}
+				}
+			}
+		}
+	}
+</style>
+

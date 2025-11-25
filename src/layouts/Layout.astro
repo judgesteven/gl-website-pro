@@ -6,6 +6,8 @@ interface Props {
 	description?: string;
 	keywords?: string;
 	ogImage?: string;
+	ogTitle?: string;
+	ogDescription?: string;
 	canonical?: string;
 }
 
@@ -14,8 +16,13 @@ const {
 	description = "GameLayer - The leading gamification API platform for user engagement, retention, and customer loyalty. Build powerful gamification experiences with our comprehensive API.",
 	keywords = "gamification, gamification API, gamification platform, user engagement, user retention, customer loyalty, gamification mechanics, API integration",
 	ogImage = SocialImage.src,
+	ogTitle,
+	ogDescription,
 	canonical = Astro.url.href
 } = Astro.props;
+
+const ogTitleFinal = ogTitle || title;
+const ogDescriptionFinal = ogDescription || description;
 ---
 
 <!doctype html>
@@ -61,8 +68,8 @@ const {
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={canonical} />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
+		<meta property="og:title" content={ogTitleFinal} />
+		<meta property="og:description" content={ogDescriptionFinal} />
 		<meta property="og:image" content={ogImage} />
 		<meta property="og:image:alt" content="GameLayer gamification platform - API for user engagement and customer loyalty" />
 		<meta property="og:image:width" content="1200" />
@@ -73,8 +80,8 @@ const {
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content={canonical} />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content={description} />
+		<meta property="twitter:title" content={ogTitleFinal} />
+		<meta property="twitter:description" content={ogDescriptionFinal} />
 		<meta property="twitter:image" content={ogImage} />
 		
 		<!-- Favicon -->
