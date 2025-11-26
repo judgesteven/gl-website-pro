@@ -141,7 +141,7 @@ export const blogPosts: BlogPost[] = [
 		slug: 'what-makes-gamification-work-core-principles',
 		title: 'What Makes Gamification Work? Understanding the Core Principles',
 		excerpt: 'Learn the core principles that make gamification effective, including challenge, feedback, and motivation. Industry insights show why these mechanics increase engagement and user satisfaction.',
-		date: '2025-11-27',
+		date: '2025-11-26',
 		category: 'Gamification Basics',
 		readTime: calculateReadTime(`
 			<h1>What Makes Gamification Work? Understanding the Core Principles</h1>
