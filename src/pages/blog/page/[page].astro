@@ -1,13 +1,36 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { getAllPosts } from '../data/blogPosts';
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { getAllPosts } from '../../../data/blogPosts';
+
+export async function getStaticPaths() {
+	const POSTS_PER_PAGE = 6;
+	const allPosts = getAllPosts();
+	const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+	
+	return Array.from({ length: totalPages }, (_, i) => i + 1)
+		.filter(page => page > 1) // Page 1 is handled by blog.astro
+		.map((page) => ({
+			params: { page: page.toString() },
+		}));
+}
 
 const POSTS_PER_PAGE = 6;
+const { page } = Astro.params;
+const currentPage = page ? parseInt(page, 10) : 1;
+
+if (isNaN(currentPage) || currentPage < 2) {
+	return Astro.redirect('/blog');
+}
+
 const allPosts = getAllPosts();
-const currentPage: number = 1;
 const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+
+if (currentPage > totalPages) {
+	return Astro.redirect('/blog');
+}
+
 const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
 const endIndex = startIndex + POSTS_PER_PAGE;
 const blogPosts = allPosts.slice(startIndex, endIndex);
@@ -22,7 +45,7 @@ const formatDate = (dateString: string) => {
 ---
 
 <Layout 
-	title="GameLayer Blog - Gamification Insights, Strategies & Best Practices"
+	title={`GameLayer Blog - Page ${currentPage} | Gamification Insights, Strategies & Best Practices`}
 	description="Explore the latest insights on gamification, user engagement strategies, and best practices for implementing gamification mechanics in your applications. Learn from industry experts and real-world case studies."
 	keywords="gamification blog, gamification strategies, user engagement, customer loyalty, gamification mechanics, gamification API, user retention"
 >
@@ -59,31 +82,29 @@ const formatDate = (dateString: string) => {
 					))}
 				</div>
 				
-				{totalPages > 1 && (
-					<div class="blog-pagination">
-						{currentPage > 1 && (
-							<a href={currentPage === 2 ? '/blog' : `/blog/page/${currentPage - 1}`} class="pagination-link pagination-prev">
-								← Previous
+				<div class="blog-pagination">
+					{currentPage > 1 && (
+						<a href={currentPage === 2 ? '/blog' : `/blog/page/${currentPage - 1}`} class="pagination-link pagination-prev">
+							← Previous
+						</a>
+					)}
+					<div class="pagination-pages">
+						{Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+							<a 
+								href={pageNum === 1 ? '/blog' : `/blog/page/${pageNum}`}
+								class={`pagination-link pagination-page ${pageNum === currentPage ? 'active' : ''}`}
+								aria-label={`Go to page ${pageNum}`}
+							>
+								{pageNum}
 							</a>
-						)}
-						<div class="pagination-pages">
-							{Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-								<a 
-									href={page === 1 ? '/blog' : `/blog/page/${page}`}
-									class={`pagination-link pagination-page ${page === currentPage ? 'active' : ''}`}
-									aria-label={`Go to page ${page}`}
-								>
-									{page}
-								</a>
-							))}
-						</div>
-						{currentPage < totalPages && (
-							<a href={`/blog/page/${currentPage + 1}`} class="pagination-link pagination-next">
-								Next →
-							</a>
-						)}
+						))}
 					</div>
-				)}
+					{currentPage < totalPages && (
+						<a href={`/blog/page/${currentPage + 1}`} class="pagination-link pagination-next">
+							Next →
+						</a>
+					)}
+				</div>
 			</div>
 		</section>
 
@@ -99,46 +120,6 @@ const formatDate = (dateString: string) => {
 
 		<Footer />
 	</main>
-
-	<!-- Blog Structured Data for SEO -->
-	<script type="application/ld+json" is:inline>
-	{
-		"@context": "https://schema.org",
-		"@type": "Blog",
-		"name": "World of Gamification",
-		"description": "Gamification insights, strategies, and best practices",
-		"url": "https://gamelayer.io/blog",
-		"publisher": {
-			"@type": "Organization",
-			"name": "GameLayer",
-			"url": "https://gamelayer.io",
-			"logo": {
-				"@type": "ImageObject",
-				"url": "https://gamelayer.io/logo.png"
-			}
-		},
-		"blogPost": [
-			{
-				"@type": "BlogPosting",
-				"headline": "Why Retailers Are Turning to Gamification to Drive Loyalty: Forrester Insights",
-				"datePublished": "2025-11-26",
-				"description": "Forrester explains why retailers are using gamification to increase loyalty and repeat visits. Learn why challenges, rewards, and engagement loops now drive modern customer journeys."
-			},
-			{
-				"@type": "BlogPosting",
-				"headline": "How Gamification Improves Customer Retention: Insights from McKinsey",
-				"datePublished": "2025-11-19",
-				"description": "McKinsey highlights how gamification significantly improves customer retention. Learn why the best apps use missions, challenges, and rewards—plus how to implement them with GameLayer."
-			},
-			{
-				"@type": "BlogPosting",
-				"headline": "How Gamification Drives Customer Engagement: Insights from Industry Research",
-				"datePublished": "2025-11-18",
-				"description": "Industry research shows how gamification techniques like challenges, XP, and rewards significantly increase customer engagement. Learn how these mechanics motivate users and drive long-term activity."
-			}
-		]
-	}
-	</script>
 </Layout>
 
 <style lang="scss">
