@@ -14,6 +14,8 @@ const pricingPlans = [
       "Basic analytics"
     ],
     buttonText: "Choose Plan",
+    stripeLink: "https://buy.stripe.com/9B6fZig0l9So1iF7S5fw400",
+    gocardlessLink: "https://pay.gocardless.com/BRT00043YPKPHZR",
     popular: false
   },
   {
@@ -29,6 +31,8 @@ const pricingPlans = [
       "Basic Analytics"
     ],
     buttonText: "Choose Plan",
+    stripeLink: "https://buy.stripe.com/cNi00k7tP5C81iF8W9fw401",
+    gocardlessLink: "https://pay.gocardless.com/BRT00043YPNWZ8J",
     popular: false
   },
   {
@@ -44,6 +48,8 @@ const pricingPlans = [
       "Advanced reporting"
     ],
     buttonText: "Choose Plan",
+    stripeLink: "https://buy.stripe.com/28EaEY29v3u0gdz1tHfw403",
+    gocardlessLink: "https://pay.gocardless.com/BRT00043YPQ0HSS",
     popular: true
   },
   {
@@ -59,6 +65,8 @@ const pricingPlans = [
       "Advanced reporting"
     ],
     buttonText: "Contact Sales",
+    stripeLink: null,
+    gocardlessLink: null,
     popular: false
   }
 ];
@@ -99,9 +107,29 @@ const pricingPlans = [
                     </div>
                     
                     <div class="pricing-cta">
-                        <a href={plan.name === "Enterprise" ? "mailto:sales@gamelayer.co?subject=GameLayer%3A%20Enterprise%20Enquiry" : plan.name === "Starter" ? "https://pay.gocardless.com/BRT00043YPKPHZR" : plan.name === "Growth" ? "https://pay.gocardless.com/BRT00043YPNWZ8J" : plan.name === "Scale" ? "https://pay.gocardless.com/BRT00043YPQ0HSS" : "#"} target={plan.name === "Enterprise" ? "_self" : "_blank"} rel={plan.name === "Enterprise" ? "" : "noopener noreferrer"} class={`button ${plan.popular ? 'button-primary' : 'button-secondary'}`}>
-                            {plan.buttonText}
-                        </a>
+                        {plan.name === "Enterprise" ? (
+                            <a href="mailto:sales@gamelayer.co?subject=GameLayer%3A%20Enterprise%20Enquiry" target="_self" class={`button ${plan.popular ? 'button-primary' : 'button-secondary'}`}>
+                                {plan.buttonText}
+                            </a>
+                        ) : (
+                            <>
+                                <a href={plan.stripeLink} target="_blank" rel="noopener noreferrer" class={`button ${plan.popular ? 'button-primary' : 'button-secondary'}`}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                                        <line x1="1" y1="10" x2="23" y2="10"/>
+                                    </svg>
+                                    Card
+                                </a>
+                                <a href={plan.gocardlessLink} target="_blank" rel="noopener noreferrer" class="button button-bank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                                        <rect x="2" y="6" width="20" height="12" rx="2"/>
+                                        <circle cx="12" cy="12" r="2"/>
+                                        <path d="M6 12h.01M18 12h.01"/>
+                                    </svg>
+                                    Bank
+                                </a>
+                            </>
+                        )}
                     </div>
                 </div>
             ))}
@@ -227,11 +255,78 @@ const pricingPlans = [
 
     .pricing-cta {
         margin-top: auto;
+        display: flex;
+        flex-direction: row;
+        gap: 0.625rem;
     }
 
     .pricing-cta .button {
-        width: 100%;
+        flex: 1;
         justify-content: center;
+        padding: 0.75rem 1rem;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        border-radius: 6px;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: none;
+        height: auto;
+        line-height: 1.2;
+        letter-spacing: 0.01em;
+    }
+
+    /* Primary button - Credit Card */
+    .pricing-cta .button-primary,
+    .pricing-cta .button-secondary {
+        background: var(--as-accent);
+        color: white;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+    }
+
+    .pricing-cta .button-primary:hover,
+    .pricing-cta .button-secondary:hover {
+        background: var(--as-accent);
+        color: white;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    .pricing-cta .button-primary:active,
+    .pricing-cta .button-secondary:active {
+        transform: translateY(0);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Secondary button - Bank Account */
+    .button-bank {
+        background: rgba(0, 0, 0, 0.03);
+        color: var(--color-text);
+        border: none;
+        box-shadow: none;
+    }
+
+    .button-bank:hover {
+        background: rgba(0, 0, 0, 0.07);
+        color: var(--color-text);
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .button-bank:active {
+        transform: translateY(0);
+        background: rgba(0, 0, 0, 0.05);
+    }
+
+    .pricing-cta .button svg {
+        flex-shrink: 0;
+        opacity: 0.9;
+    }
+
+    .pricing-cta .button:hover svg {
+        opacity: 1;
     }
 
     @media (max-width: 1200px) {
@@ -260,6 +355,15 @@ const pricingPlans = [
 
         .price {
             font-size: 2rem;
+        }
+
+        .pricing-cta {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .pricing-cta .button {
+            width: 100%;
         }
     }
 
