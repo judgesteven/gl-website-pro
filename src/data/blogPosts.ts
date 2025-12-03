@@ -327,6 +327,46 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>For teams building educational products, mobile apps, or loyalty programs, Duolingo is proof that carefully designed gamification can improve both motivation and retention, as long as it supports real user value rather than distracting from it.</p>
 		`
+	},
+	{
+		slug: 'nike-run-club-gamification-motivation',
+		title: 'How Nike Run Club Uses Gamification to Motivate Millions of Runners',
+		excerpt: 'Learn how Nike Run Club uses challenges, streaks, achievements, and coaching loops to motivate runners and build long-term engagement.',
+		date: '2025-12-03',
+		category: 'Engagement & Retention',
+		readTime: calculateReadTime(`
+			<h1>How Nike Run Club Uses Gamification to Motivate Millions of Runners</h1>
+			
+			<p><strong>Original article:</strong> <a href="https://goodux.appcues.com/blog/nike-run-club-gamification" target="_blank" rel="noopener noreferrer">GoodUX / Appcues – Nike Run Club Gamification</a></p>
+			
+			<p>Nike Run Club (NRC) is one of the clearest examples of how to use gamification to motivate users in a meaningful, long-term way. The GoodUX case study highlights how NRC combines <strong>progress tracking, challenges, streaks, achievements, and guided coaching</strong> to create an experience that keeps runners coming back.</p>
+			
+			<p>One of NRC's strongest mechanisms is its set of <strong>goal-oriented challenges</strong>—monthly distance goals, speed challenges, and themed community runs. These offer clear targets and a sense of shared momentum. Streaks reinforce consistency by rewarding runners who show up on consecutive days or weeks, creating a positive loop around habit formation. And achievement badges celebrate milestones like fastest mile, longest run, or cumulative distances, giving users visible markers of progress.</p>
+			
+			<p>NRC also uses <strong>coaching and audio-guided runs</strong> as engagement drivers. By combining expert guidance, motivational cues, and personalized pacing, the app turns every run into an experience users want to repeat. The social layer adds additional motivation, allowing runners to compare progress, join challenges with friends, and participate in global running events.</p>
+			
+			<p>All of these mechanics work together to create a powerful engagement system. NRC doesn't just track workouts—it builds a sense of identity, progress, and community around running. For product teams, it's a strong reminder that gamification succeeds when it supports a user's real goals, making progress feel visible and achievable every step of the way.</p>
+		`),
+		metaDescription: 'Learn how Nike Run Club uses challenges, streaks, achievements, and coaching loops to motivate runners and build long-term engagement.',
+		keywords: 'nike run club gamification, fitness gamification, habit formation, app engagement, gamification API, running challenges, activity streaks, progress tracking, social motivation, achievement badges',
+		ogTitle: 'How Nike Run Club Uses Gamification to Motivate Millions',
+		ogDescription: 'A breakdown of how Nike Run Club blends challenges, streaks, coaching, and rewards to motivate runners and build powerful long-term engagement.',
+		externalArticleUrl: 'https://goodux.appcues.com/blog/nike-run-club-gamification',
+		ctaHeading: 'Want to build Nike-style challenges, achievements, and habit loops into your product?',
+		ctaDescription: 'Start using our Gamification API Platform today.',
+		content: `
+			<h1>How Nike Run Club Uses Gamification to Motivate Millions of Runners</h1>
+			
+			<p><strong>Original article:</strong> <a href="https://goodux.appcues.com/blog/nike-run-club-gamification" target="_blank" rel="noopener noreferrer">GoodUX / Appcues – Nike Run Club Gamification</a></p>
+			
+			<p>Nike Run Club (NRC) is one of the clearest examples of how to use gamification to motivate users in a meaningful, long-term way. The GoodUX case study highlights how NRC combines <strong>progress tracking, challenges, streaks, achievements, and guided coaching</strong> to create an experience that keeps runners coming back.</p>
+			
+			<p>One of NRC's strongest mechanisms is its set of <strong>goal-oriented challenges</strong>—monthly distance goals, speed challenges, and themed community runs. These offer clear targets and a sense of shared momentum. Streaks reinforce consistency by rewarding runners who show up on consecutive days or weeks, creating a positive loop around habit formation. And achievement badges celebrate milestones like fastest mile, longest run, or cumulative distances, giving users visible markers of progress.</p>
+			
+			<p>NRC also uses <strong>coaching and audio-guided runs</strong> as engagement drivers. By combining expert guidance, motivational cues, and personalized pacing, the app turns every run into an experience users want to repeat. The social layer adds additional motivation, allowing runners to compare progress, join challenges with friends, and participate in global running events.</p>
+			
+			<p>All of these mechanics work together to create a powerful engagement system. NRC doesn't just track workouts—it builds a sense of identity, progress, and community around running. For product teams, it's a strong reminder that gamification succeeds when it supports a user's real goals, making progress feel visible and achievable every step of the way.</p>
+		`
 	}
 ];
 
