@@ -416,7 +416,7 @@ export const blogPosts: BlogPost[] = [
 		slug: 'headspace-gamification-mindfulness-habits',
 		title: "The Mindful Gamification Patterns Powering Headspace's Long-Term Engagement",
 		excerpt: 'A narrative look at how Headspace uses streaks, progress cues, and gentle behavioural nudges to help users form consistent meditation habits.',
-		date: '2025-12-10',
+		date: '2025-12-09',
 		category: 'Engagement & Retention',
 		readTime: calculateReadTime(`
 			<h1>The Mindful Gamification Patterns Powering Headspace's Long-Term Engagement</h1>
