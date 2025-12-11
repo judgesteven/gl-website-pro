@@ -33,7 +33,7 @@ export const blogPosts: BlogPost[] = [
 		slug: 'gamification-techniques-engagement-loyalty',
 		title: 'How Gamification Techniques Improve Customer Engagement and Loyalty',
 		excerpt: 'Learn how gamification techniques like challenges, XP, and rewards can increase customer engagement and loyalty, and why brands are building long-term retention around these mechanics.',
-		date: '2025-12-11',
+		date: '2025-11-19',
 		category: 'Loyalty & Rewards',
 		readTime: calculateReadTime(`
 			<h1>How Gamification Techniques Improve Customer Engagement and Loyalty</h1>
@@ -69,7 +69,7 @@ export const blogPosts: BlogPost[] = [
 		slug: 'gamification-drives-customer-engagement',
 		title: 'How Gamification Drives Customer Engagement: Insights from Industry Research',
 		excerpt: 'Industry research shows how gamification techniques like challenges, XP, and rewards significantly increase customer engagement. Learn how these mechanics motivate users and drive long-term activity.',
-		date: '2025-12-11',
+		date: '2025-11-18',
 		category: 'Engagement & Retention',
 		readTime: calculateReadTime(`
 			<h1>How Gamification Drives Customer Engagement: Insights from Industry Research</h1>
@@ -105,7 +105,7 @@ export const blogPosts: BlogPost[] = [
 		slug: 'modern-retail-loyalty-interactive-gamification',
 		title: 'Why Modern Retail Loyalty Programs Are Becoming More Interactive',
 		excerpt: 'Forrester research shows how modern retail loyalty programs are shifting toward more interactive, engagement-driven experiences. Learn why challenges, rewards, and progression loops are becoming essential.',
-		date: '2025-12-11',
+		date: '2025-11-25',
 		category: 'Retail & Commerce',
 		readTime: calculateReadTime(`
 			<h1>Why Modern Retail Loyalty Programs Are Becoming More Interactive</h1>
@@ -141,7 +141,7 @@ export const blogPosts: BlogPost[] = [
 		slug: 'what-makes-gamification-work-core-principles',
 		title: 'What Makes Gamification Work? Understanding the Core Principles',
 		excerpt: 'Learn the core principles that make gamification effective, including challenge, feedback, and motivation. Industry insights show why these mechanics increase engagement and user satisfaction.',
-		date: '2025-12-11',
+		date: '2025-11-26',
 		category: 'Gamification Basics',
 		readTime: calculateReadTime(`
 			<h1>What Makes Gamification Work? Understanding the Core Principles</h1>
@@ -216,7 +216,7 @@ export const blogPosts: BlogPost[] = [
 		slug: 'psychology-of-gamification-motivation-engagement',
 		title: 'The Psychology of Gamification: How Motivation Drives Engagement',
 		excerpt: 'Explore the psychology of gamification and learn how motivation, reward loops, and progression systems combine to drive powerful, repeatable user engagement.',
-		date: '2025-12-11',
+		date: '2025-11-27',
 		category: 'Gamification Basics',
 		readTime: calculateReadTime(`
 			<h1>The Psychology of Gamification: How Motivation Drives Engagement</h1>
@@ -252,7 +252,7 @@ export const blogPosts: BlogPost[] = [
 		slug: 'strava-gamification-app-engagement',
 		title: 'How Strava Uses Gamification to Drive App Engagement and Community',
 		excerpt: 'See how Strava uses gamification features like leaderboards, challenges, badges, and progress bars to turn fitness tracking into a highly engaging social experience.',
-		date: '2025-12-11',
+		date: '2025-11-29',
 		category: 'Engagement & Retention',
 		readTime: calculateReadTime(`
 			<h1>How Strava Uses Gamification to Drive App Engagement and Community</h1>
@@ -292,7 +292,7 @@ export const blogPosts: BlogPost[] = [
 		slug: 'duolingo-gamification-user-retention',
 		title: 'How Duolingo Uses Gamification to Boost User Retention',
 		excerpt: 'Discover how Duolingo uses streaks, badges, leaderboards, smart onboarding, and subtle nudges to improve user retention and build daily learning habits.',
-		date: '2025-12-11',
+		date: '2025-11-30',
 		category: 'Engagement & Retention',
 		readTime: calculateReadTime(`
 			<h1>How Duolingo Uses Gamification to Boost User Retention</h1>
@@ -332,7 +332,7 @@ export const blogPosts: BlogPost[] = [
 		slug: 'nike-run-club-gamification-motivation',
 		title: 'How Nike Run Club Uses Gamification to Motivate Millions of Runners',
 		excerpt: 'Learn how Nike Run Club uses challenges, streaks, achievements, and coaching loops to motivate runners and build long-term engagement.',
-		date: '2025-12-11',
+		date: '2025-12-03',
 		category: 'Engagement & Retention',
 		readTime: calculateReadTime(`
 			<h1>How Nike Run Club Uses Gamification to Motivate Millions of Runners</h1>
@@ -372,7 +372,7 @@ export const blogPosts: BlogPost[] = [
 		slug: 'fitbit-gamification-encouraging-daily-activity',
 		title: 'How Fitbit Uses Gamification to Encourage Daily Activity',
 		excerpt: 'A concise look at how Fitbit uses badges, challenges, and simple progress feedback to make daily activity more motivating and rewarding for users.',
-		date: '2025-12-11',
+		date: '2025-12-08',
 		category: 'Engagement & Retention',
 		readTime: calculateReadTime(`
 			<h1>How Fitbit Uses Gamification to Encourage Daily Activity</h1>
@@ -416,7 +416,7 @@ export const blogPosts: BlogPost[] = [
 		slug: 'headspace-gamification-mindfulness-habits',
 		title: "The Mindful Gamification Patterns Powering Headspace's Long-Term Engagement",
 		excerpt: 'A narrative look at how Headspace uses streaks, progress cues, and gentle behavioural nudges to help users form consistent meditation habits.',
-		date: '2025-12-11',
+		date: '2025-12-09',
 		category: 'Engagement & Retention',
 		readTime: calculateReadTime(`
 			<h1>The Mindful Gamification Patterns Powering Headspace's Long-Term Engagement</h1>
