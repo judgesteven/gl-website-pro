@@ -455,6 +455,50 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>Together, these design choices create an environment that encourages routine without overwhelming the user. Headspace demonstrates that when gamification is implemented with care, it can enhance well-being by making healthy behaviours feel more intuitive and rewarding.</p>
 		`
+	},
+	{
+		slug: 'youtube-latest-gamification-features',
+		title: "Why YouTube's Latest Gamification Features Are Redefining Engagement",
+		excerpt: 'Explore YouTube\'s recent gamification push — including badges and Hype points — and why these mechanics are deepening engagement and empowering creators to grow their communities.',
+		date: '2025-12-09',
+		category: 'Engagement & Retention',
+		readTime: calculateReadTime(`
+			<h1>Why YouTube's Latest Gamification Features Are Redefining Engagement</h1>
+			
+			<p><strong>Original article:</strong> <a href="https://medium.com/design-bootcamp/youtubes-new-gamification-push-38073d6e87c3" target="_blank" rel="noopener noreferrer">Medium – YouTube's New Gamification Push</a></p>
+			
+			<p>YouTube has begun introducing new gamification mechanics not simply to keep us watching longer, but to deepen engagement, support creator growth, and build stronger community motivation loops. In a recent Medium case study by a product designer, two standout features—<strong>badges and Hype points</strong>—are highlighted as key pillars of this strategy.</p>
+			
+			<p>Badges, long a staple of gamified systems, are now part of YouTube's approach to signalling loyalty and community status. Rather than functioning solely as passive achievements, these badges are tied to fans who subscribe and support creators financially, giving viewers a sense of recognition while simultaneously reinforcing community ties. This approach turns passive viewership into active participation, strengthening the bond between creators and their most dedicated supporters.</p>
+			
+			<p>The <strong>Hype feature</strong> takes this even further by enabling fans to influence visibility for emerging creators. Viewers can award Hype points to channels they love, helping them climb a public leaderboard and gain traction even without viral view counts. This mechanic serves a dual purpose: it rewards fan engagement while giving lesser-known creators a pathway to discovery and growth. In effect, fans feel like stakeholders in a creator's success, and creators receive meaningful feedback that encourages consistent content production.</p>
+			
+			<p>What's particularly interesting about YouTube's gamification push is how it blends <strong>engagement with monetization</strong>. These features aren't merely cosmetic; they're integrated into the platform's long-term business model, providing benefits to creators while creating new ways for fans to participate. This combination of fun and function aligns user satisfaction with economic incentives, reinforcing behaviors that benefit both the community and the platform.</p>
+			
+			<p>The Medium article also notes that YouTube's approach tries to balance engagement with responsibility. Rather than pushing addictive usage, the gamification here emphasizes <strong>supporting creators and nurturing communities</strong>, a pattern that many product teams can learn from when building engagement systems beyond simple loops or trophies.</p>
+		`),
+		metaDescription: "Explore YouTube's recent gamification push — including badges and Hype points — and why these mechanics are deepening engagement and empowering creators to grow their communities.",
+		keywords: 'YouTube gamification, creator engagement, badges and hype, community gamification, user retention, gamification API, creator monetization, engagement mechanics, leaderboard systems, fan interaction, product gamification',
+		ogTitle: "Why YouTube's Latest Gamification Features Are Redefining Engagement",
+		ogDescription: "A narrative summary of YouTube's new gamification push — how badges and Hype mechanics are designed to boost engagement, reward users, and expand creator communities.",
+		externalArticleUrl: 'https://medium.com/design-bootcamp/youtubes-new-gamification-push-38073d6e87c3',
+		ctaHeading: 'Want to build similar engagement loops, visibility incentives, and community-focused rewards into your own product?',
+		ctaDescription: 'Start using our Gamification API Platform today.',
+		content: `
+			<h1>Why YouTube's Latest Gamification Features Are Redefining Engagement</h1>
+			
+			<p><strong>Original article:</strong> <a href="https://medium.com/design-bootcamp/youtubes-new-gamification-push-38073d6e87c3" target="_blank" rel="noopener noreferrer">Medium – YouTube's New Gamification Push</a></p>
+			
+			<p>YouTube has begun introducing new gamification mechanics not simply to keep us watching longer, but to deepen engagement, support creator growth, and build stronger community motivation loops. In a recent Medium case study by a product designer, two standout features—<strong>badges and Hype points</strong>—are highlighted as key pillars of this strategy.</p>
+			
+			<p>Badges, long a staple of gamified systems, are now part of YouTube's approach to signalling loyalty and community status. Rather than functioning solely as passive achievements, these badges are tied to fans who subscribe and support creators financially, giving viewers a sense of recognition while simultaneously reinforcing community ties. This approach turns passive viewership into active participation, strengthening the bond between creators and their most dedicated supporters.</p>
+			
+			<p>The <strong>Hype feature</strong> takes this even further by enabling fans to influence visibility for emerging creators. Viewers can award Hype points to channels they love, helping them climb a public leaderboard and gain traction even without viral view counts. This mechanic serves a dual purpose: it rewards fan engagement while giving lesser-known creators a pathway to discovery and growth. In effect, fans feel like stakeholders in a creator's success, and creators receive meaningful feedback that encourages consistent content production.</p>
+			
+			<p>What's particularly interesting about YouTube's gamification push is how it blends <strong>engagement with monetization</strong>. These features aren't merely cosmetic; they're integrated into the platform's long-term business model, providing benefits to creators while creating new ways for fans to participate. This combination of fun and function aligns user satisfaction with economic incentives, reinforcing behaviors that benefit both the community and the platform.</p>
+			
+			<p>The Medium article also notes that YouTube's approach tries to balance engagement with responsibility. Rather than pushing addictive usage, the gamification here emphasizes <strong>supporting creators and nurturing communities</strong>, a pattern that many product teams can learn from when building engagement systems beyond simple loops or trophies.</p>
+		`
 	}
 ];
 
