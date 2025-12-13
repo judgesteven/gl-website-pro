@@ -508,7 +508,6 @@ export const blogPosts: BlogPost[] = [
 		category: 'Product Development',
 		readTime: (() => {
 			const content = `
-			<h1>How I Built a Native iOS App in a Weekend</h1>
 			<p><em>Written by Steven Judge, Founder of GameLayer</em></p>
 			
 			<p>The idea had been bouncing around in my head for a while. I wanted a simple way to motivate small micro-communities — families, friends, work teams — to stay active together. Nothing resembling a massive social network. Just daily nudges, light competition, and a shared sense of progress.</p>
@@ -552,7 +551,6 @@ export const blogPosts: BlogPost[] = [
 		ctaHeading: 'Curious how far you could get by combining AI tools with a dedicated gamification API?',
 		ctaDescription: 'Start using our Gamification API Platform today.',
 		content: `
-			<h1>How I Built a Native iOS App in a Weekend</h1>
 			<p><em>Written by Steven Judge, Founder of GameLayer</em></p>
 			
 			<p>The idea had been bouncing around in my head for a while. I wanted a simple way to motivate small micro-communities — families, friends, work teams — to stay active together. Nothing resembling a massive social network. Just daily nudges, light competition, and a shared sense of progress.</p>
