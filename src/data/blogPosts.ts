@@ -504,9 +504,10 @@ export const blogPosts: BlogPost[] = [
 		slug: 'how-i-built-a-native-ios-app-in-a-weekend',
 		title: 'How I Built a Native iOS App in a Weekend',
 		excerpt: 'What building a real app with AI taught me about momentum, APIs, and rapid iteration',
-		date: '2025-12-11',
+		date: '2025-12-13',
 		category: 'Product Development',
-		readTime: calculateReadTime(`
+		readTime: (() => {
+			const content = `
 			<h1>How I Built a Native iOS App in a Weekend</h1>
 			<p><em>Written by Steven Judge, Founder of GameLayer</em></p>
 			
@@ -537,13 +538,13 @@ export const blogPosts: BlogPost[] = [
 			<p>For me, this reinforced where AI-accelerated development really shines — not as a replacement for systems or architecture, but as a force multiplier when it's paired with a dedicated API that already encodes business logic. When the heavy lifting is abstracted away, rapid build-and-test cycles stop being aspirational and start becoming practical.</p>
 			
 			<p>That's a shift worth paying attention to.</p>
-			
-			<hr>
-			
-			<p>🚀 <strong>Curious how far you could get by combining AI tools with a dedicated gamification API?</strong><br>
-			<strong>Start using our Gamification API Platform today.</strong><br>
-			👉 <strong>Sign up free:</strong> <a href="https://cms.gamelayer.co/" target="_blank" rel="noopener noreferrer">https://cms.gamelayer.co/</a></p>
-		`),
+		`;
+			const textContent = content.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+			const wordCount = textContent.split(/\s+/).filter(word => word.length > 0).length;
+			const calculatedMinutes = Math.ceil(wordCount / 200);
+			const minutes = calculatedMinutes + 2 + 2; // Base +2 from function +2 more as requested
+			return `${minutes} min read`;
+		})(),
 		metaDescription: "A founder's reflection on building a real native iOS app in a weekend using AI tools and a dedicated gamification API — and what that experience revealed about modern product development.",
 		keywords: 'founder story, product development, AI, iOS, gamification, gamification API, rapid development, AI tools, native app development, product iteration',
 		ogTitle: 'How I Built a Native iOS App in a Weekend',
@@ -581,12 +582,6 @@ export const blogPosts: BlogPost[] = [
 			<p>For me, this reinforced where AI-accelerated development really shines — not as a replacement for systems or architecture, but as a force multiplier when it's paired with a dedicated API that already encodes business logic. When the heavy lifting is abstracted away, rapid build-and-test cycles stop being aspirational and start becoming practical.</p>
 			
 			<p>That's a shift worth paying attention to.</p>
-			
-			<hr>
-			
-			<p>🚀 <strong>Curious how far you could get by combining AI tools with a dedicated gamification API?</strong><br>
-			<strong>Start using our Gamification API Platform today.</strong><br>
-			👉 <strong>Sign up free:</strong> <a href="https://cms.gamelayer.co/" target="_blank" rel="noopener noreferrer">https://cms.gamelayer.co/</a></p>
 		`
 	}
 ];
