@@ -140,9 +140,13 @@ const blogPostSchema = {
 					}
 				});
 				
-				// Debug: log if we found any (remove this after testing)
+				// Debug: log if we found any
 				if (found > 0) {
 					console.log('Found', found, 'section headings');
+					// Force style application
+					blogBody.querySelectorAll('p.section-heading strong').forEach(strong => {
+						strong.style.color = '#FF553E';
+					});
 				}
 			}
 			
@@ -244,34 +248,20 @@ const blogPostSchema = {
 				}
 				
 				// Style section headings - paragraphs that contain only a strong tag
-				// Target the class added by JavaScript (primary method)
-				.blog-post-body p.section-heading {
-					margin-top: 3rem;
-					margin-bottom: 1.5rem;
-					
-					strong {
-						color: #FF553E !important;
-						color: var(--as-accent) !important;
-						font-weight: 600;
-					}
+				// Multiple selectors to ensure we catch them
+				.blog-post-body p.section-heading strong,
+				.blog-post-body p:has(> strong:only-child) strong,
+				.blog-post-body p > strong:only-child,
+				// Direct targeting for maximum specificity
+				article.blog-post .blog-post-content .blog-post-body p:has(> strong:only-child) strong {
+					color: #FF553E !important;
+					font-weight: 600;
 				}
 				
-				// Fallback for browsers that support :has()
+				.blog-post-body p.section-heading,
 				.blog-post-body p:has(> strong:only-child) {
 					margin-top: 3rem;
 					margin-bottom: 1.5rem;
-					
-					strong {
-						color: #FF553E !important;
-						color: var(--as-accent) !important;
-						font-weight: 600;
-					}
-				}
-				
-				// Additional fallback - direct child selector
-				.blog-post-body p > strong:only-child {
-					color: #FF553E !important;
-					color: var(--as-accent) !important;
 				}
 
 				a {
