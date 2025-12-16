@@ -101,8 +101,7 @@ const formatDate = (dateString: string) => {
 	</main>
 
 	<!-- Blog Structured Data for SEO -->
-	<script type="application/ld+json" is:inline>
-	{
+	<script type="application/ld+json" is:inline set:html={JSON.stringify({
 		"@context": "https://schema.org",
 		"@type": "Blog",
 		"name": "World of Gamification",
@@ -117,28 +116,14 @@ const formatDate = (dateString: string) => {
 				"url": "https://gamelayer.io/logo.png"
 			}
 		},
-		"blogPost": [
-			{
-				"@type": "BlogPosting",
-				"headline": "Why Retailers Are Turning to Gamification to Drive Loyalty: Forrester Insights",
-				"datePublished": "2025-11-26",
-				"description": "Forrester explains why retailers are using gamification to increase loyalty and repeat visits. Learn why challenges, rewards, and engagement loops now drive modern customer journeys."
-			},
-			{
-				"@type": "BlogPosting",
-				"headline": "How Gamification Improves Customer Retention: Insights from McKinsey",
-				"datePublished": "2025-11-19",
-				"description": "McKinsey highlights how gamification significantly improves customer retention. Learn why the best apps use missions, challenges, and rewards—plus how to implement them with GameLayer."
-			},
-			{
-				"@type": "BlogPosting",
-				"headline": "How Gamification Drives Customer Engagement: Insights from Industry Research",
-				"datePublished": "2025-11-18",
-				"description": "Industry research shows how gamification techniques like challenges, XP, and rewards significantly increase customer engagement. Learn how these mechanics motivate users and drive long-term activity."
-			}
-		]
-	}
-	</script>
+		"blogPost": allPosts.slice(0, 10).map(post => ({
+			"@type": "BlogPosting",
+			"headline": post.title,
+			"datePublished": post.date,
+			"description": post.metaDescription || post.excerpt,
+			"url": `https://gamelayer.io/blog/${post.slug}/`
+		}))
+	})}></script>
 </Layout>
 
 <style lang="scss">
