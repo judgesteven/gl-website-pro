@@ -4,6 +4,10 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
 
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
 <Layout title="Terms of Service - GameLayer">
 	<main id="main-content">
 		<Header />
@@ -12,185 +16,143 @@ import Footer from '../components/Footer.astro';
 			<div class="container">
 				<div class="terms-content">
 					<h1>GameLayer Terms of Service</h1>
-					<p class="effective-date"><strong>Effective Date: 01.07.2024</strong></p>
+					<p class="last-updated">Last updated: 01.12.25</p>
 					
-					<h2>1. General Information</h2>
+					<p class="intro">These Terms of Service ("Terms") govern access to and use of the GameLayer software platform, APIs, dashboards, documentation, and related services (collectively, the "Services") provided by GameLayer Oy ("GameLayer", "we", "us", or "our").</p>
 					
-					<h3>1.1</h3>
-					<p>This Service Agreement sets out the general Terms of Service that apply to the Customer's use of the GameLayer Platform (as defined herein below). Access to the Platform will be granted by username and password initiated by GameLayer via the integrated Auth0 (www.auth0.com) authentication and authorization platform. The username is specific to GameLayer and an existing Auth0 username will not grant access nor will a social log-in.</p>
+					<p class="intro">By creating an account, accessing, or using the Services (including via API), you agree to be bound by these Terms. If you do not agree, you must not use the Services.</p>
 					
-					<h3>1.2</h3>
-					<p>These Terms of Service shall apply if no other similar provisions have been agreed upon between the Parties.</p>
+					<hr class="section-divider">
 					
-					<h3>1.3</h3>
-					<p>By accessing, using, or otherwise making use of the Platform, the Customer agrees to be bound by the Service Agreement and any Annexes, including these Terms of Service. If the Customer does not accept this, the Customer is prohibited from accessing, using, or otherwise making use of the Platform.</p>
-					
-					<h3>1.4</h3>
-					<p>All Service Fees are based on integration of the Platform to the Customer's own service offering, unless otherwise agreed separately. An introduction to the Platform may be provided by GameLayer (in a manner determined by GameLayer from time-to-time) and support, as further specified herein, will be included within the Service Fee.</p>
-					
-					<h2>2. Definitions</h2>
-					
-					<h3>2.1</h3>
-					<p>Unless otherwise specified in the Service Agreement, the following words or phrases shall, when capitalized in the Service Agreement or these Terms of Service, have the following meanings:</p>
-					
-					<h4>Key Definitions:</h4>
+					<h2>1. Definitions</h2>
 					<ul>
-						<li><strong>Account</strong> - means the named account that the User(s) has access to the GameLayer Platform.</li>
-						<li><strong>Company</strong> - means GameLayer Oy.</li>
-						<li><strong>Customer</strong> or <strong>Licensee</strong> - means the Party identified as the company or organization for whom the User is employed by or authorized to represent towards the Company, and whom shall be responsible for making payments for using the service in premium accounts.</li>
-						<li><strong>Data</strong> - means any content added to the Platform or created by the Customer through using the Platform.</li>
-						<li><strong>Downtime</strong> - means interruptions in the Service provided by the Company in accordance with the Uptime commitments.</li>
-						<li><strong>Effective Date</strong> - means the date when the Service Agreement becomes valid through the Customer signing-up for an account with the Company or other such indication of intent to use the Platform for the purposes set forth in these Terms of Service.</li>
-						<li><strong>Force Majeure</strong> - means events outside of the Company's reasonable control and which prevent or have a substantial negative effect on the Company's ability to perform its obligations under the Service Agreement.</li>
-						<li><strong>GameLayer</strong> or <strong>Licensor</strong> - means GameLayer Oy, a private limited company incorporated in Finland, with the registered company number 2503589-1.</li>
-						<li><strong>License</strong> - means a non-exclusive, non-transferable, limited, and revocable right to access and use the Platform under these Terms of Service.</li>
-						<li><strong>Platform</strong> - means the software platform developed and provided by the Company pursuant to this Service Agreement.</li>
-						<li><strong>SaaS</strong> - means "software-as-a-service", a non-downloadable, remote connection accessible software application.</li>
-						<li><strong>Support</strong> - means remote troubleshooting and basic usability assistance as described in the Service Level Agreement.</li>
-						<li><strong>User</strong> - means an individual employee or agent of the Customer who is granted access to the Platform through a unique username and password.</li>
-						<li><strong>End-User</strong> - means an individual end-user who participates in a digital experience created by the Customer and enabled by the Platform.</li>
+						<li><strong>"Customer"</strong> means the legal entity or individual that registers for or uses the Services.</li>
+						<li><strong>"End Users"</strong> means individuals who interact with Customer applications powered by the Services.</li>
+						<li><strong>"Customer Data"</strong> means data submitted to the Services by or on behalf of Customer.</li>
+						<li><strong>"Usage Data"</strong> means aggregated, anonymised data relating to use of the Services.</li>
 					</ul>
 					
-					<h2>3. GameLayer's Services</h2>
+					<hr class="section-divider">
 					
-					<h3>3.1</h3>
-					<p>Under this Service Agreement, the Customer may access GameLayer for the purpose of implementing and integrating gamification experiences enabled by the Platform.</p>
+					<h2>2. Scope of Services</h2>
+					<p>GameLayer provides a gamification software platform, including APIs and tools to create and manage missions, achievements, leaderboards, rewards, and related functionality.</p>
+					<p>We may update, modify, or discontinue parts of the Services at any time. We do not guarantee that any specific feature will be available indefinitely.</p>
 					
-					<h3>3.2</h3>
-					<p>GameLayer's services are offered on a SaaS model basis, i.e., the Customer always has access to the software. The Platform is continuously developed and updated to improve its performance. GameLayer makes no representations or warranties about specific functions, functionalities, features, or other qualities of the Platform.</p>
+					<hr class="section-divider">
 					
-					<h3>3.3</h3>
-					<p>Hosting, upgrading, and maintenance of the Platform shall be provided by the Company and is included within the Service Fee.</p>
-					
-					<h3>3.4</h3>
-					<p>The Company provides operational support, via email, between 8:00 – 18:00 (CET) during weekdays The Company provides operational support, via email, between 8:00 – 18:00 (CET) during weekdays. All support inquiries shall be sent to support@gamelayer.co. Support outside of these operating hours will be agreed upon on a Customer-specific basis.</p>
-					<p>The Company provides operational support, via email, between 8:00 – 18:00 (CET) during weekdays. All support inquiries shall be sent to <a href="mailto:support@gamelayer.co">support@gamelayer.co</a>. Support outside of these operating hours will be agreed upon on a Customer-specific basis.</p>
-					
-					<h2>4. Managed Services</h2>
-					
-					<h3>4.1</h3>
-					<p>Managed services at the Customer's request may be agreed upon and invoiced separately.</p>
-					
-					<h2>5. Payment of Service Fee</h2>
-					
-					<h3>5.1</h3>
-					<p>The Service Fee is agreement-specific and is regulated in this Service Agreement specification. Fees are based on monthly active users and include specific pricing tiers which are detailed in the pricing section of the website.</p>
-					
-					<h3>5.2</h3>
-					<p>The Service Fee will be invoiced and billed automatically to the users account that was provided during the account set-up. Unless otherwise agreed, invoices will be issued at month start and the account will be debited at the same time.</p>
-					
-					<h3>5.3</h3>
-					<p>The Company will issue invoices for the Service Fee, typically on the 1st day of the month based on Platform data from the previous month's usage. Such data will be made available to the Customer at the time of invoicing.</p>
-					
-					<h3>5.4</h3>
-					<p>In case of late or missed payment, interest will be calculated from the invoice date in accordance with the Finnish Interest Act. Unpaid amounts are subject to a finance charge of 1.5% per month on any outstanding balance, or the maximum permitted by law, whichever is lower, plus all expenses of collection and may result in the immediate termination of the Service.</p>
-					
-					<h3>5.5</h3>
-					<p>The Company reserves the right to change the Fees or applicable charges and to institute new charges and Fees upon ninety (90) days prior notice to the Customer (which will be sent by email).</p>
-					
-					<h3>5.6</h3>
-					<p>If the Customer believes that the Company has billed the Customer incorrectly, the Customer must contact the Company no later than 30 days after the closing date on the first billing statement in which the error or problem appeared, to receive an adjustment or credit.</p>
-					
-					<h2>6. Rights to Data and the GameLayer Platform</h2>
-					
-					<h3>6.1</h3>
-					<p>The Company hereby grants to the Customer a limited, non-transferable, non-exclusive right to use the Platform for the purpose of accessing and using the Platform and its functionality as specified in the Service Agreement for the purposes described in the Service Agreement.</p>
-					
-					<h3>6.2</h3>
-					<p>Any Data regarding the Customer's Users, Customer's End-Users and the content used in connection with the Customer's services always belong to the Customer, and the Company shall only use such Data solely for the provision of performing or enabling services on the Platform.</p>
-					
-					<h3>6.3</h3>
-					<p>The Company has the right to collect and analyse Data and other information relating to the provision, use and performance of various aspects of the Services and related systems, and technologies (including, without limitation, information concerning customer data and data derived therefrom), and the Company will be free (during or after the term thereof) to use such information and data to improve and enhance the Services and for other development, diagnostic, and corrective purposes in connection with the Services and other Company offerings.</p>
-					
-					<h2>13. Changes to Terms of Service</h2>
-					
-					<h3>13.1</h3>
-					<p>The Company reserves the right to modify or update the terms of this Service Agreement at any time. In the event of a material change, the Company will notify the Customer by:</p>
+					<h2>3. Account Registration and Use</h2>
 					<ul>
-						<li>Sending an email to the Customer's registered email address, and/or</li>
-						<li>Posting a notice on the Company's website or within the Service.</li>
+						<li>Customer is responsible for maintaining accurate account information.</li>
+						<li>API keys and credentials must be kept confidential and may not be shared.</li>
+						<li>Customer is responsible for all activity occurring under its account.</li>
 					</ul>
 					
-					<h3>13.2</h3>
-					<p>The Customer is responsible for regularly reviewing the terms of this Service Agreement. Continued use of the Service after any changes to the terms constitutes the User's acceptance of the new terms.</p>
+					<hr class="section-divider">
 					
-					<h2>14. Service Limitations</h2>
-					
-					<h3>14.1</h3>
-					<p>Under the 'free' pricing model, the account is restricted to:</p>
+					<h2>4. Acceptable Use</h2>
+					<p>Customer shall not:</p>
 					<ul>
-						<li>One thousand (1000) registered Players</li>
-						<li>Ten (10) Missions</li>
-						<h3>15. Implementation Services</h3>
-						<li>Ten (10) Achievements</li>
-						<li>One (1) Leaderboard</li>
-						<li>Ten (10) Prizes</li>
-						<li>Zero (0) Mystery Boxes</li>
-						<li>Zero (0) Raffles</li>
-						<li>One (1) Quizzes</li>
-						<li>One (1) Surveys</li>
-						<li>Zero (0) Streaks</li>
-						<li>Zero (0) Teams</li>
-						<li>Twenty-five (25) Events only</li>
-					</ul>
-					<p>To remove these restrictions, the Customer shall need to 'upgrade' to a premium account from within the Company dashboard. Upgrading requires the Customer to provide a payment method using the GoCardless service.</p>
-					
-					<h3>14.2</h3>
-					<p>An active user is defined as an End-User for whom there has been activity within their GameLayer account during the then-current calendar month. Activity means any data that is sent to or requested from the account. Examples of activity include, but are not limited to, event completions and data requests.</p>
-					
-					
-					<h3>Implementation Support Details:</h3>
-					<ul>
-						<li><strong>Duration</strong>: Implementation support will be available for a period of 30 days from the Effective Date.</li>
-						<li><strong>Scope</strong>: Support will include guidance on setting up and configuring the Service, answering questions related to the Service's features, and troubleshooting any initial issues.</li>
-						<li><strong>Access</strong>: Customers can access implementation support through the Company's customer support channels, including email and scheduled support calls.</li>
-						<li><strong>Limitations</strong>: The Company's implementation support is intended to assist with the initial setup and does not cover custom development, extensive training, or ongoing operational support.</li>
+						<li>Reverse engineer, decompile, or attempt to extract source code from the Services;</li>
+						<li>Use the Services to build or support a competing product;</li>
+						<li>Circumvent usage limits or security controls;</li>
+						<li>Scrape, harvest, or extract data except as permitted via documented APIs;</li>
+						<li>Use the Services in violation of applicable laws or regulations.</li>
 					</ul>
 					
-					<h2>16. Warranty and Disclaimer</h2>
+					<hr class="section-divider">
 					
-					<p><strong>16.1</strong> The Company warrants that the Service will perform substantially in accordance with the documentation provided by the Company during the term of this Agreement. In the event of a breach of this warranty, the Customer's sole and exclusive remedy, and the Company's entire liability, shall be the provision of service credits as described in the Service Credits for Downtime clause.</p>
+					<h2>5. Fees and Payment</h2>
+					<p>Some Services are offered on a paid basis. Fees, billing cycles, and usage limits are described at the time of purchase.</p>
+					<ul>
+						<li>Fees are exclusive of taxes.</li>
+						<li>Invoices are due within seven (7) days unless otherwise stated.</li>
+						<li>Late payments may accrue interest at 1.5% per month or the maximum allowed by law.</li>
+						<li>Fees are non-refundable except as required by law.</li>
+					</ul>
+					<p>GameLayer may suspend Services for non-payment.</p>
 					
-					<h3>16.2</h3>
-					<p>Except as expressly set forth in this Agreement, the Service is provided on an "as is" and "as available" basis, and the Company makes no other warranties, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, non-infringement, or arising from a course of dealing, usage, or trade practice.</p>
+					<hr class="section-divider">
 					
-					<h2>17. Limitation of Liability</h2>
+					<h2>6. Intellectual Property</h2>
+					<p>GameLayer retains all rights, title, and interest in the Services, including all intellectual property.</p>
+					<p>Customer is granted a limited, non-exclusive, non-transferable right to use the Services during the term.</p>
+					<p>Customer retains ownership of Customer Data.</p>
 					
-					<p>To the maximum extent permitted by law, the Company's liability for any claim arising under this Agreement, whether in contract, tort, or otherwise, shall be limited to the amount paid by the Customer to the Company for the Service in the three (3) months preceding the event giving rise to the claim.</p>
+					<hr class="section-divider">
 					
-					<h2>18. Choice of Law – Jurisdiction – Severability</h2>
+					<h2>7. Data and Analytics</h2>
+					<p>Customer grants GameLayer the right to process Customer Data solely to provide the Services.</p>
+					<p>GameLayer may collect and use Usage Data for analytics, benchmarking, service improvement, and business purposes, provided such data is aggregated and anonymised.</p>
 					
-					<h3>18.1</h3>
-					<p>This Service Agreement and License granted under it shall be governed by the laws of Finland.</p>
+					<hr class="section-divider">
 					
-					<h3>18.2</h3>
-					<p>Any dispute between the Parties arising out of or in connection with this Service Agreement, including all Annexes thereto, shall be subject to the exclusive jurisdiction of the courts of Finland, with the District Court of Helsinki as the court of first instance, and in English.</p>
+					<h2>8. Privacy and Data Protection</h2>
+					<p>GameLayer processes personal data in accordance with applicable data protection laws, including GDPR.</p>
+					<p>Details of data processing are described in the GameLayer Privacy Policy, which forms part of these Terms.</p>
 					
-					<h2>19. Miscellaneous</h2>
+					<hr class="section-divider">
 					
-					<p><strong>19.1.</strong> If any provision of this Service Agreement is found to be unenforceable or invalid, that provision will be limited or eliminated to the minimum extent necessary so that this Agreement will otherwise remain in full force and effect and enforceable.</p>
+					<h2>9. Service Levels</h2>
+					<p>For paid plans, GameLayer targets 99.5% monthly uptime, excluding scheduled maintenance and force majeure events.</p>
+					<p>Service credits, if any, are the sole and exclusive remedy for failure to meet service levels.</p>
 					
-					<p><strong>19.2.</strong> This Service Agreement is not assignable, transferable, or sublicensable by the Customer except with the Company's prior written consent. The Company may transfer and assign any of its rights and obligations under this Service Agreement without consent.</p>
+					<hr class="section-divider">
 					
-					<p><strong>19.3.</strong> This Service Agreement is the complete and exclusive statement of the mutual understanding of the Parties and supersedes and cancels all previous written and oral agreements, communications, and other understandings relating to the subject matter of this Service Agreement.</p>
+					<h2>10. Term and Termination</h2>
+					<p>These Terms apply from first use until terminated.</p>
+					<p>Either party may terminate for material breach with thirty (30) days' written notice if not cured.</p>
+					<p>Upon termination:</p>
+					<ul>
+						<li>Customer access will cease;</li>
+						<li>Customer may request export of Customer Data within thirty (30) days;</li>
+						<li>GameLayer may delete Customer Data thereafter, unless legally required to retain it.</li>
+					</ul>
 					
-					<h2>20. Service Level Agreement</h2>
+					<hr class="section-divider">
 					
-					<p>The Company is committed to providing a reliable and high-quality Service. The following Service Level Agreement (SLA) outlines our commitment to Service availability and the remedies available to the User in the event of downtime.</p>
+					<h2>11. Warranties and Disclaimers</h2>
+					<p>The Services are provided "as is" and "as available".</p>
+					<p>To the maximum extent permitted by law, GameLayer disclaims all warranties, including implied warranties of merchantability, fitness for a particular purpose, and non-infringement.</p>
 					
-					<h3>20.1</h3>
-					<p>The Services shall be available for a minimum 99.5% of the time, measured annually, excluding scheduled maintenance. Any downtime resulting from outages of third-party connections or utilities or other reasons beyond the Company's control will be excluded from any such calculation.</p>
+					<hr class="section-divider">
 					
-					<h3>20.2</h3>
-					<p>The Customer's sole and exclusive remedy, and the Company's entire liability, in connection with Service availability shall be that for each period of downtime lasting longer than one consecutive hour, the Company will credit the Customer 5% of Service fees for each period of ninety (90) or more consecutive minutes of downtime, provided that no more than one such credit will accrue per day.</p>
+					<h2>12. Limitation of Liability</h2>
+					<p>To the maximum extent permitted by law:</p>
+					<ul>
+						<li>GameLayer shall not be liable for indirect, incidental, or consequential damages;</li>
+						<li>GameLayer's total liability shall not exceed the fees paid by Customer in the three (3) months preceding the claim.</li>
+					</ul>
 					
-					<h3>20.3</h3>
-					<p>To receive downtime credit, the Customer must notify the Company in writing within 24 hours from the time of downtime, and failure to provide such notice will forfeit the right to receive downtime credit. Such credits may not be redeemed for cash and shall not be cumulative beyond a total of credits for one (1) week of Service fees in anyone (1) calendar month in any event.</p>
+					<hr class="section-divider">
 					
-					<div class="consent-section">
-						<h3>Consent</h3>
-						<p>By creating an account and using the Company Platform, you acknowledge that you have read, understood, and agree to be bound by this Service Agreement and these Terms of Service.</p>
-					</div>
+					<h2>13. Indemnification</h2>
+					<p>Customer shall indemnify and hold harmless GameLayer from claims arising from Customer's use of the Services, Customer Data, or applications built using the Services.</p>
+					
+					<hr class="section-divider">
+					
+					<h2>14. Force Majeure</h2>
+					<p>Neither party shall be liable for failure to perform due to events beyond reasonable control.</p>
+					
+					<hr class="section-divider">
+					
+					<h2>15. Governing Law and Jurisdiction</h2>
+					<p>These Terms are governed by the laws of Finland, excluding conflict of law principles.</p>
+					<p>Any disputes shall be subject to the exclusive jurisdiction of the District Court of Helsinki, Finland.</p>
+					
+					<hr class="section-divider">
+					
+					<h2>16. Changes to Terms</h2>
+					<p>GameLayer may update these Terms from time to time. Continued use of the Services after changes constitutes acceptance.</p>
+					
+					<hr class="section-divider">
+					
+					<h2>17. Contact Information</h2>
+					<p>
+						GameLayer Oy<br>
+						Company ID 2503589-1<br>
+						Finland<br>
+						Email: <a href="mailto:legal@gamelayer.co">legal@gamelayer.co</a>
+					</p>
 				</div>
 			</div>
 		</section>
@@ -201,152 +163,117 @@ import Footer from '../components/Footer.astro';
 
 <style lang="scss">
 .terms-of-service {
-	padding: 100px 0 80px;
-	background-color: var(--as-background);
-	min-height: calc(100vh - 116px - 120px); // Account for header and footer heights
+	padding: 80px 0;
+	background-color: #fff;
+	min-height: calc(100vh - 116px - 120px);
+	font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 	
 	.terms-content {
-		max-width: 800px;
+		max-width: 900px;
 		margin: 0 auto;
+		padding: 0 20px;
 		
 		h1 {
 			font-size: 3rem;
-			color: var(--as-black);
-			margin-bottom: 1rem;
-			text-align: center;
+			color: #000;
+			margin-bottom: 0.5rem;
+			text-align: left;
 			font-weight: 700;
+			line-height: 1.2;
 		}
 		
-		.effective-date {
-			font-size: 1.1rem;
-			color: var(--as-black);
-			text-align: center;
-			margin-bottom: 3rem;
-			font-weight: 600;
+		.last-updated {
+			font-size: 1.5rem;
+			color: #666;
+			margin-bottom: 2rem;
+			font-weight: 400;
+		}
+		
+		.intro {
+			font-size: 1.5rem;
+			line-height: 1.8;
+			color: #333;
+			margin-bottom: 1.5rem;
+		}
+		
+		.section-divider {
+			border: none;
+			border-top: 1px solid #e0e0e0;
+			margin: 2.5rem 0;
 		}
 		
 		h2 {
-			font-size: 2rem;
-			color: var(--as-black);
-			margin: 3rem 0 1.5rem 0;
-			font-weight: 600;
-			border-bottom: 2px solid var(--as-accent);
-			padding-bottom: 0.5rem;
-		}
-		
-		h3 {
-			font-size: 1.4rem;
-			color: var(--as-black);
+			font-size: 1.875rem;
+			color: #000;
 			margin: 2rem 0 1rem 0;
 			font-weight: 600;
-		}
-		
-		h4 {
-			font-size: 1.2rem;
-			color: var(--as-black);
-			margin: 1.5rem 0 0.8rem 0;
-			font-weight: 600;
+			line-height: 1.3;
 		}
 		
 		p {
-			font-size: 1rem;
-			line-height: 1.7;
-			color: var(--as-text);
-			margin-bottom: 1.5rem;
-			text-align: justify;
+			font-size: 1.5rem;
+			line-height: 1.8;
+			color: #333;
+			margin-bottom: 1.25rem;
 		}
 		
 		ul {
-			margin: 1rem 0 1.5rem 2rem;
+			margin: 1rem 0 1.5rem 1.5rem;
+			padding-left: 0;
 			
 			li {
-				font-size: 1rem;
-				line-height: 1.6;
-				color: var(--as-text);
-				margin-bottom: 0.5rem;
-				
-				ul {
-					margin: 0.5rem 0 1rem 1.5rem;
-				}
+				font-size: 1.5rem;
+				line-height: 1.8;
+				color: #333;
+				margin-bottom: 0.75rem;
+				list-style-type: disc;
 			}
 		}
 		
 		strong {
 			font-weight: 600;
-			color: var(--as-black);
+			color: #000;
 		}
 		
 		a {
-			color: var(--as-accent);
+			color: #0066cc;
 			text-decoration: none;
-			font-weight: 500;
 			
 			&:hover {
 				text-decoration: underline;
 			}
 		}
 		
-		.consent-section {
-			background-color: var(--as-peach);
-			padding: 2rem;
-			border-radius: 12px;
-			margin: 3rem 0;
-			border-left: 4px solid var(--as-accent);
-			
-			h3 {
-				margin-top: 0;
-				color: var(--as-black);
-			}
-			
-			p {
-				margin-bottom: 0;
-				color: var(--as-black);
-				font-weight: 500;
-			}
-		}
-		
 		// Responsive design
 		@media (max-width: 768px) {
 			h1 {
-				font-size: 2.2rem;
+				font-size: 2.5rem;
 			}
 			
 			h2 {
-				font-size: 1.7rem;
+				font-size: 1.625rem;
 			}
 			
-			h3 {
-				font-size: 1.3rem;
-			}
-			
-			h4 {
-				font-size: 1.1rem;
-			}
-			
-			.consent-section {
-				padding: 1.5rem;
+			p, ul li, .intro, .last-updated {
+				font-size: 1.35rem;
 			}
 		}
 		
 		@media (max-width: 480px) {
 			h1 {
-				font-size: 1.9rem;
+				font-size: 2.25rem;
 			}
 			
 			h2 {
 				font-size: 1.5rem;
 			}
 			
-			h3 {
-				font-size: 1.2rem;
+			p, ul li, .intro, .last-updated {
+				font-size: 1.25rem;
 			}
 			
-			.consent-section {
-				padding: 1.2rem;
-			}
-			
-			ul {
-				margin-left: 1.5rem;
+			.terms-content {
+				padding: 0 15px;
 			}
 		}
 	}
