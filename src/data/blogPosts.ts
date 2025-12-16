@@ -134,7 +134,7 @@ export const blogPosts: BlogPost[] = [
 			const textContent = content.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
 			const wordCount = textContent.split(/\s+/).filter(word => word.length > 0).length;
 			const calculatedMinutes = Math.ceil(wordCount / 200);
-			const minutes = calculatedMinutes + 2;
+			const minutes = calculatedMinutes + 4;
 			return `${minutes} min read`;
 		})(),
 		metaDescription: "A founder's perspective on why most gamification efforts fail, the common mistakes teams make, and what it actually takes to design engagement systems that last.",
