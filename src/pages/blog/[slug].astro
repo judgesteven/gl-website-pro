@@ -107,6 +107,58 @@ const blogPostSchema = {
 
 	<!-- Blog Post Structured Data for SEO -->
 	<script type="application/ld+json" is:inline set:html={JSON.stringify(blogPostSchema)}></script>
+	
+	<!-- Add class to section heading paragraphs for styling -->
+	<script is:inline>
+		(function() {
+			function addSectionHeadingClasses() {
+				const blogBody = document.querySelector('.blog-post-body');
+				if (!blogBody) {
+					setTimeout(addSectionHeadingClasses, 100);
+					return;
+				}
+				
+				const paragraphs = blogBody.querySelectorAll('p');
+				let found = 0;
+				
+				paragraphs.forEach(p => {
+					// Get all child nodes
+					const children = Array.from(p.childNodes);
+					
+					// Check if paragraph has only one element child and it's a STRONG
+					const elementChildren = children.filter(node => node.nodeType === 1);
+					const textChildren = children.filter(node => 
+						node.nodeType === 3 && node.textContent.trim().length > 0
+					);
+					
+					// If there's exactly one element child (STRONG) and no significant text nodes
+					if (elementChildren.length === 1 && 
+						elementChildren[0].nodeName === 'STRONG' && 
+						textChildren.length === 0) {
+						p.classList.add('section-heading');
+						found++;
+					}
+				});
+				
+				// Debug: log if we found any (remove this after testing)
+				if (found > 0) {
+					console.log('Found', found, 'section headings');
+				}
+			}
+			
+			// Run immediately if DOM is ready, otherwise wait
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', addSectionHeadingClasses);
+			} else {
+				addSectionHeadingClasses();
+			}
+			
+			// Also try after delays in case content loads asynchronously
+			setTimeout(addSectionHeadingClasses, 100);
+			setTimeout(addSectionHeadingClasses, 500);
+			setTimeout(addSectionHeadingClasses, 1000);
+		})();
+	</script>
 </Layout>
 
 <style lang="scss">
@@ -186,6 +238,42 @@ const blogPostSchema = {
 					opacity: 0.9;
 				}
 
+				// General strong styling
+				strong {
+					font-weight: 600;
+				}
+				
+				// Style section headings - paragraphs that contain only a strong tag
+				// Target the class added by JavaScript (primary method)
+				.blog-post-body p.section-heading {
+					margin-top: 3rem;
+					margin-bottom: 1.5rem;
+					
+					strong {
+						color: #FF553E !important;
+						color: var(--as-accent) !important;
+						font-weight: 600;
+					}
+				}
+				
+				// Fallback for browsers that support :has()
+				.blog-post-body p:has(> strong:only-child) {
+					margin-top: 3rem;
+					margin-bottom: 1.5rem;
+					
+					strong {
+						color: #FF553E !important;
+						color: var(--as-accent) !important;
+						font-weight: 600;
+					}
+				}
+				
+				// Additional fallback - direct child selector
+				.blog-post-body p > strong:only-child {
+					color: #FF553E !important;
+					color: var(--as-accent) !important;
+				}
+
 				a {
 					color: var(--as-accent);
 					text-decoration: underline;
@@ -194,10 +282,6 @@ const blogPostSchema = {
 					&:hover {
 						opacity: 0.8;
 					}
-				}
-
-				strong {
-					font-weight: 600;
 				}
 
 				ul, ol {
