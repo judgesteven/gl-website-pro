@@ -145,14 +145,14 @@ const blogPostSchema = {
 					console.log('Found', found, 'section headings');
 					// Force style application
 					blogBody.querySelectorAll('p.section-heading strong').forEach(strong => {
-						strong.style.color = '#FF553E';
+						strong.style.color = '#2563EB';
 					});
 				}
 				
 				// Apply color to opening statement
 				const openingStatement = blogBody.querySelector('p.opening-statement');
 				if (openingStatement) {
-					openingStatement.style.color = '#FF553E';
+					openingStatement.style.color = '#2563EB';
 				}
 			}
 			
@@ -255,7 +255,6 @@ const blogPostSchema = {
 				
 				// Style opening statement
 				.blog-post-body p.opening-statement {
-					color: #FF553E !important;
 					color: var(--as-accent) !important;
 					font-weight: 600;
 					font-size: 1.8rem;
@@ -269,7 +268,7 @@ const blogPostSchema = {
 				.blog-post-body p > strong:only-child,
 				// Direct targeting for maximum specificity
 				article.blog-post .blog-post-content .blog-post-body p:has(> strong:only-child) strong {
-					color: #FF553E !important;
+					color: var(--as-accent) !important;
 					font-weight: 600;
 				}
 				
