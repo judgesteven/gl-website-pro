@@ -37,6 +37,11 @@ const features = utils.features.map((item) => ({
     img: iconMap[item.title as keyof typeof iconMap] || Api
 }))
 
+const mechanics = utils.mechanics.map((item) => ({
+    ...item,
+    img: iconMap[item.title as keyof typeof iconMap] || Api
+}))
+
 ---
 
 
@@ -49,7 +54,7 @@ const features = utils.features.map((item) => ({
 
         <div class="features-container mt-4">
             <div class="list grid gap-3 first-row">
-                {features.slice(0, 3).map((item) => (
+                {features.map((item) => (
                     <div class="list-item">
                         <div class="list-item-icon">
                             <img src={item.img.src} alt={item.title} loading="lazy" />
@@ -61,30 +66,22 @@ const features = utils.features.map((item) => ({
                     </div>
                 ))}
             </div>
-            
-            <div class="list grid gap-3 second-row">
-                {features.slice(3, 8).map((item) => (
-                    <div class="list-item">
-                        <div class="list-item-icon">
+        </div>
+    </div>
+</section>
+
+<section id="mechanics">
+    <div class="container">
+        <div class="mechanics-container">
+            <div class="mechanics-grid">
+                {mechanics.map((item) => (
+                    <div class="mechanic-card">
+                        <div class="mechanic-icon">
                             <img src={item.img.src} alt={item.title} loading="lazy" />
                         </div>
-                        <div class="list-item-text">
+                        <div class="mechanic-content">
                             <h3 class="text-sm text-bolder mt-2">{item.title}</h3>
-                            <p class="gamification-desc" class:small-desc={['Missions', 'Streaks', 'Achievements', 'Level-Ups', 'Leaderboards', 'Mystery Wins', 'Prizes', 'Raffles', 'Quizzes', 'Virtual Currencies'].includes(item.title)}>{item.desc}</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
-            
-            <div class="list grid gap-3 third-row">
-                {features.slice(8).map((item) => (
-                    <div class="list-item">
-                        <div class="list-item-icon">
-                            <img src={item.img.src} alt={item.title} loading="lazy" />
-                        </div>
-                        <div class="list-item-text">
-                            <h3 class="text-sm text-bolder mt-2">{item.title}</h3>
-                            <p class="gamification-desc" class:small-desc={['Mystery Wins', 'Prizes', 'Raffles', 'Quizzes', 'Virtual Currencies'].includes(item.title)}>{item.desc}</p>
+                            <p class="text-xs">{item.desc}</p>
                         </div>
                     </div>
                 ))}
@@ -97,28 +94,28 @@ const features = utils.features.map((item) => ({
 
 <style lang="scss"> 
 
-section{
+#features{
     background-color: var(--as-peach);
-    padding: 70px 0;
+    padding: 70px 0 0 0;
     
     // Tablet landscape (1024px and below)
     @media (max-width: 1024px) {
-        padding: 60px 0;
+        padding: 60px 0 0 0;
     }
     
     // Tablet portrait (768px and below)
     @media (max-width: 768px) {
-        padding: 50px 0;
+        padding: 50px 0 0 0;
     }
     
     // Mobile landscape (640px and below)
     @media (max-width: 640px) {
-        padding: 40px 0;
+        padding: 40px 0 0 0;
     }
     
     // Mobile portrait (480px and below)
     @media (max-width: 480px) {
-        padding: 30px 0;
+        padding: 30px 0 0 0;
     }
     
     h1, h3{
@@ -130,13 +127,6 @@ section{
             grid-template-columns: repeat(3, 1fr);
             margin-bottom: 40px;
         }
-        .second-row{
-            grid-template-columns: repeat(5, 1fr);
-            margin-bottom: 40px;
-        }
-        .third-row{
-            grid-template-columns: repeat(5, 1fr);
-        }
     }
     
     .list{
@@ -144,15 +134,8 @@ section{
             color: var(--as-black);
             max-width: 80%;
         }
-        .small-desc{
-            font-size: 0.6rem;
-        }
         img{
             width: 24px;
-        }
-        // Smaller icons for gamification features
-        .second-row img, .third-row img{
-            width: 16px;
         }
     }
 
@@ -163,16 +146,9 @@ section{
                 grid-template-columns: repeat(2, 1fr);
                 gap: 2rem;
             }
-            .second-row, .third-row{
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1.5rem;
-            }
         }
         .list img{
             width: 22px;
-        }
-        .list .second-row img, .list .third-row img{
-            width: 14px;
         }
     }
 
@@ -184,11 +160,6 @@ section{
                 gap: 1.5rem;
                 margin-bottom: 30px;
             }
-            .second-row, .third-row{
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-                margin-bottom: 30px;
-            }
         }
         .list{
             .list-item-text h3{
@@ -198,20 +169,13 @@ section{
                 max-width: 90%;
                 font-size: 1.0rem;
             }
-            .gamification-desc{
-                font-size: 1.15rem !important; // Increased from 0.95rem to match first-row
-            }
             img{
                 width: 20px;
             }
-            .second-row img, .third-row img{
-                width: 14px;
-            }
         }
-        /* Make first row descriptions bigger on tablet */
         .first-row{
             .list-item-text p{
-                font-size: 1.15rem; // Increased from default 1.0rem
+                font-size: 1.15rem;
             }
         }
     }
@@ -219,20 +183,18 @@ section{
     // Mobile landscape (640px and below)
     @media (max-width: 640px) {
         .features-container{
-            .first-row, .second-row, .third-row{
+            .first-row{
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1rem;
                 margin-bottom: 25px;
             }
-            /* Make first row (e.g., Open API) descriptions bigger on mobile */
             .first-row{
                 .list-item-text p{
-                    font-size: 1.3rem; // Increased from 1.1rem
+                    font-size: 1.3rem;
                 }
             }
         }
         .list{
-            /* Slightly larger icons on small screens */
             .list-item-icon img{
                 width: 28px;
             }
@@ -242,12 +204,6 @@ section{
             p{
                 font-size: 0.95rem;
             }
-            .gamification-desc{
-                font-size: 1.3rem !important; // Increased from 1.0rem to match first-row
-            }
-            .second-row img, .third-row img{
-                width: 14px;
-            }
         }
     }
 
@@ -255,14 +211,14 @@ section{
     @media (max-width: 480px) {
         padding: 60px 0;
         .features-container{
-            .first-row, .second-row, .third-row{
+            .first-row{
                 grid-template-columns: 1fr;
                 gap: 1rem;
                 margin-bottom: 20px;
             }
             .first-row{
                 .list-item-text p{
-                    font-size: 1.2rem; // Increased from 1.05rem
+                    font-size: 1.2rem;
                 }
             }
         }
@@ -279,14 +235,179 @@ section{
                 font-size: 0.9rem;
                 max-width: 95%;
             }
-            .gamification-desc{
-                font-size: 1.2rem !important; // Increased from 0.85rem to match first-row
-            }
             img{
                 width: 20px;
             }
-            .second-row img, .third-row img{
-                width: 12px;
+        }
+    }
+}
+
+#mechanics{
+    background-color: var(--as-peach);
+    padding: 0 0 70px 0;
+    
+    // Tablet landscape (1024px and below)
+    @media (max-width: 1024px) {
+        padding: 0 0 60px 0;
+    }
+    
+    // Tablet portrait (768px and below)
+    @media (max-width: 768px) {
+        padding: 0 0 50px 0;
+    }
+    
+    // Mobile landscape (640px and below)
+    @media (max-width: 640px) {
+        padding: 0 0 40px 0;
+    }
+    
+    // Mobile portrait (480px and below)
+    @media (max-width: 480px) {
+        padding: 0 0 30px 0;
+    }
+    
+    h1, h2, h3{
+        color: var(--as-black);
+        margin: 10px 0;
+    }
+    
+    .mechanics-container{
+        .mechanics-grid{
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            
+            .mechanic-card{
+                background-color: #fff;
+                border-radius: 8px;
+                padding: 1.5rem;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+                
+                &:hover{
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+                }
+                
+                .mechanic-icon{
+                    margin-bottom: 1rem;
+                    
+                    img{
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+                
+                .mechanic-content{
+                    h3{
+                        color: var(--as-black);
+                        margin: 0 0 0.5rem 0;
+                        font-size: 1.75rem;
+                    }
+                    
+                    p{
+                        color: var(--as-black);
+                        margin: 0;
+                        font-size: 1.5rem;
+                        line-height: 1.4;
+                    }
+                }
+            }
+        }
+    }
+    
+    // Tablet landscape (1024px and below)
+    @media (max-width: 1024px) {
+        .mechanics-container{
+            .mechanics-grid{
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+        }
+    }
+    
+    // Tablet portrait (768px and below)
+    @media (max-width: 768px) {
+        .mechanics-container{
+            .mechanics-grid{
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                
+                .mechanic-card{
+                    padding: 1.25rem;
+                    
+                    .mechanic-content{
+                        h3{
+                            font-size: 1.7rem;
+                        }
+                        p{
+                            font-size: 1.6rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    // Mobile landscape (640px and below)
+    @media (max-width: 640px) {
+        .mechanics-container{
+            .mechanics-grid{
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                
+                .mechanic-card{
+                    padding: 1rem;
+                    
+                    .mechanic-icon img{
+                        width: 20px;
+                        height: 20px;
+                    }
+                    
+                    .mechanic-content{
+                        h3{
+                            font-size: 1.6rem;
+                        }
+                        p{
+                            font-size: 1.5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    // Mobile portrait (480px and below)
+    @media (max-width: 480px) {
+        .mechanics-container{
+            .mechanics-grid{
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                
+                .mechanic-card{
+                    padding: 1.25rem;
+                    text-align: center;
+                    
+                    .mechanic-icon{
+                        display: flex;
+                        justify-content: center;
+                        margin-bottom: 1rem;
+                        
+                        img{
+                            width: 24px;
+                            height: 24px;
+                        }
+                    }
+                    
+                    .mechanic-content{
+                        h3{
+                            font-size: 1.6rem;
+                        }
+                        p{
+                            font-size: 1.5rem;
+                        }
+                    }
+                }
             }
         }
     }

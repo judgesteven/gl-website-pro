@@ -21,16 +21,16 @@ const props = {
             title: 'Rules Manager',
             desc: `Create the perfect gamification conditions to match your unique business goals! With our modular, scalable approach, you can create rich, meaningful engagement experiences that resonate with your users and help boost your business objectives!`,
     
-        },
+        }
+    ],
+    mechanics: [
         { 
             title: 'Missions',
             desc: `Create challenges to engage users`,
-    
         },
         { 
             title: 'Streaks',
             desc: `Track and reward consistency`,
-    
         },
         { 
             title: 'Achievements',
