@@ -12,9 +12,9 @@ import veikkausLogo from '../images/brands/veikkaus_logo.png'
 
 --- 
 <script is:inline>
-    // Load GSAP from CDN and initialize animation
+    // Load GSAP from self-hosted file and initialize animation
     const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js';
+    script.src = '/gsap.min.js';
     script.onload = function() {
         // Wait for DOM to be ready
         if (document.readyState === 'loading') {
