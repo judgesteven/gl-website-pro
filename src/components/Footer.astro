@@ -13,11 +13,11 @@ const links = [
         <div class="footer-content">
             <div class="footer-left">
                 <div class="footer-logo">
-                    <img src={GameLayerLogo.src} alt="GameLayer - Gamification API platform for user engagement and customer loyalty" width="80" loading="lazy">
+                    <img src={GameLayerLogo.src} alt="GameLayer - Gamification API platform for user engagement and customer loyalty" width="120" loading="lazy">
                 </div>
+                <p class="company-registration">Company Registration 2503589-01 FINLAND</p>
                 <div class="footer-info">
                     <p>© 2012 - 2025 All rights reserved</p>
-                    <p>Company Registration 2503589-01 FINLAND</p>
                     <p><a href="mailto:contact@gamelayer.co?subject=GameLayer%3A%20General%20Enquiry" class="contact-link">Contact Us</a></p>
                 </div>
             </div>
@@ -49,16 +49,24 @@ footer{
     
     .footer-left{
         display: flex;
-        align-items: center;
-        gap: 1.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
     }
     
     .footer-logo{
         flex-shrink: 0;
         img{
-            width: 80px;
+            width: 120px;
             height: auto;
         }
+    }
+    
+    .company-registration{
+        margin: 0;
+        font-size: 1.5rem;
+        line-height: 1.4;
+        color: var(--as-black);
     }
     
     .footer-info{
@@ -68,7 +76,7 @@ footer{
         
         p{
             margin: 0;
-            font-size: 1.0rem;
+            font-size: 1.5rem;
             line-height: 1.4;
             color: var(--as-black);
         }
@@ -85,7 +93,7 @@ footer{
             
             li{
                 a{
-                    font-size: 1.0rem;
+                    font-size: 1.5rem;
                     color: var(--as-black);
                     text-decoration: none;
                     &:hover{
@@ -100,6 +108,7 @@ footer{
     .contact-link{
         color: var(--as-black);
         text-decoration: none;
+        font-size: 1.5rem;
         &:hover{
             opacity: 0.8;
             text-decoration: underline;
@@ -109,11 +118,20 @@ footer{
     // Tablet landscape (1024px and below)
     @media (max-width: 1024px) {
         padding: 45px 0;
+        .footer-logo img{
+            width: 100px;
+        }
+        .company-registration{
+            font-size: 1.4rem;
+        }
         .footer-info p{
-            font-size: 0.95rem;
+            font-size: 1.4rem;
         }
         .footer-links li a{
-            font-size: 0.95rem;
+            font-size: 1.4rem;
+        }
+        .contact-link{
+            font-size: 1.4rem;
         }
     }
 
@@ -125,33 +143,52 @@ footer{
             gap: 1.5rem;
         }
         .footer-left{
-            flex-direction: column;
+            align-items: center;
             gap: 1rem;
+        }
+        .footer-logo img{
+            width: 100px;
+        }
+        .company-registration{
+            font-size: 1.1rem;
+            text-align: center;
         }
         .footer-info{
             flex-direction: column;
             gap: 0.5rem;
         }
         .footer-info p{
-            font-size: 0.9rem;
+            font-size: 1.35rem;
         }
         .footer-links{
             flex-direction: column;
             gap: 0.5rem;
         }
         .footer-links li a{
-            font-size: 0.9rem;
+            font-size: 1.35rem;
+        }
+        .contact-link{
+            font-size: 1.35rem;
         }
     }
 
     // Mobile landscape (640px and below)
     @media (max-width: 640px) {
         padding: 35px 0;
+        .footer-logo img{
+            width: 90px;
+        }
+        .company-registration{
+            font-size: 1.3rem;
+        }
         .footer-info p{
-            font-size: 0.85rem;
+            font-size: 1.3rem;
         }
         .footer-links li a{
-            font-size: 0.85rem;
+            font-size: 1.3rem;
+        }
+        .contact-link{
+            font-size: 1.3rem;
         }
     }
 
@@ -164,15 +201,24 @@ footer{
         .footer-left{
             align-items: center;
         }
+        .footer-logo img{
+            width: 90px;
+        }
+        .company-registration{
+            font-size: 1.25rem;
+        }
         .footer-info p{
-            font-size: 0.8rem;
+            font-size: 1.25rem;
             line-height: 1.5;
         }
         .footer-links{
             align-items: center;
         }
         .footer-links li a{
-            font-size: 0.8rem;
+            font-size: 1.25rem;
+        }
+        .contact-link{
+            font-size: 1.25rem;
         }
     }
 
@@ -180,11 +226,20 @@ footer{
     // Very small mobile (360px and below)
     @media (max-width: 360px) {
         padding: 25px 0;
+        .footer-logo img{
+            width: 80px;
+        }
+        .company-registration{
+            font-size: 1.2rem;
+        }
         .footer-info p{
-            font-size: 0.75rem;
+            font-size: 1.2rem;
         }
         .footer-links li a{
-            font-size: 0.75rem;
+            font-size: 1.2rem;
+        }
+        .contact-link{
+            font-size: 1.2rem;
         }
     }
 }

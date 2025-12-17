@@ -148,6 +148,12 @@ const blogPostSchema = {
 						strong.style.color = '#FF553E';
 					});
 				}
+				
+				// Apply color to opening statement
+				const openingStatement = blogBody.querySelector('p.opening-statement');
+				if (openingStatement) {
+					openingStatement.style.color = '#FF553E';
+				}
 			}
 			
 			// Run immediately if DOM is ready, otherwise wait
