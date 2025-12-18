@@ -801,7 +801,7 @@ export const blogPosts: BlogPost[] = [
 		readTime: calculateReadTime(`
 			<p><em>Written by Steven Judge, Founder of GameLayer</em></p>
 			
-			<h2>Introduction</h2>
+			<h2>What is Gamification</h2>
 			
 			<p>Gamification is everywhere. Product teams discuss it in strategy meetings. Designers sketch points and badges. Developers debate whether it's worth the engineering effort. Yet despite all this attention, most implementations fall short of expectations.</p>
 			
@@ -831,7 +831,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>From an engineering perspective, hardcoded logic also creates tight coupling. Reward calculations, progression rules, and achievement checks are scattered across controllers, services, and database queries. Understanding the full engagement flow requires tracing code across multiple files and layers.</p>
 			
-			<p>A gamification API centralizes this logic. Rules become configuration, not code. Changes happen through API calls or a management interface, not deployments. This separation makes engagement systems easier to understand, modify, and maintain.</p>
+			<p>A gamification API centralises this logic. Rules become configuration, not code. Changes happen through API calls or a management interface, not deployments. This separation makes engagement systems easier to understand, modify, and maintain.</p>
 			
 			<h3>Inconsistent Mechanics Across Platforms</h3>
 			
@@ -853,7 +853,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>As user bases grow, engagement systems face scaling challenges. Leaderboard calculations become expensive. Reward distribution needs to handle spikes. Progression tracking must support millions of users without degrading performance.</p>
 			
-			<p>Building scalable engagement infrastructure requires expertise in distributed systems, caching strategies, and database optimization. Most product teams don't have this expertise, and building it takes time away from core product work.</p>
+			<p>Building scalable engagement infrastructure requires expertise in distributed systems, caching strategies, and database optimisation. Most product teams don't have this expertise, and building it takes time away from core product work.</p>
 			
 			<p>A gamification API handles scaling concerns. It's designed to handle high volumes of events, efficient leaderboard calculations, and reliable reward distribution. Teams can focus on product features while the API manages the infrastructure complexity.</p>
 			
@@ -897,7 +897,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>Loyalty platforms work well when the primary goal is incentivizing purchases or transactions. They're less suitable when engagement needs extend beyond commerce—when you want to reward learning, social interaction, content creation, or other non-transactional behaviors.</p>
 			
-			<p>They also tend to be opinionated about structure. Points systems, tier structures, and reward catalogs follow predefined patterns. Customization is possible but often constrained. If your engagement strategy requires unique mechanics or unconventional progression, loyalty platforms may feel limiting.</p>
+			<p>They also tend to be opinionated about structure. Points systems, tier structures, and reward catalogs follow predefined patterns. Customisation is possible but often constrained. If your engagement strategy requires unique mechanics or unconventional progression, loyalty platforms may feel limiting.</p>
 			
 			<h3>Building In-House</h3>
 			
@@ -905,7 +905,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>However, building in-house is expensive. It requires engineering time for initial development, ongoing maintenance, scaling infrastructure, and handling edge cases. It also requires product and design expertise to create effective engagement systems. Many teams underestimate this complexity and end up with systems that are difficult to evolve or scale.</p>
 			
-			<p>The decision to build in-house should be based on whether engagement infrastructure is a core competency you want to develop, or whether it's a means to an end that could be handled by specialized tools.</p>
+			<p>The decision to build in-house should be based on whether engagement infrastructure is a core competency you want to develop, or whether it's a means to an end that could be handled by specialised tools.</p>
 			
 			<h3>Gamification APIs as a Middle Ground</h3>
 			
@@ -993,7 +993,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<h3>Can a gamification API scale?</h3>
 			
-			<p>Yes. Gamification APIs are designed to handle high volumes of events, efficient state management, and reliable reward distribution. They use distributed architectures, caching strategies, and database optimization techniques that most product teams would need to build themselves. Scalability is a core requirement, not an afterthought.</p>
+			<p>Yes. Gamification APIs are designed to handle high volumes of events, efficient state management, and reliable reward distribution. They use distributed architectures, caching strategies, and database optimisation techniques that most product teams would need to build themselves. Scalability is a core requirement, not an afterthought.</p>
 			
 			<h3>Is gamification manipulative?</h3>
 			
@@ -1007,7 +1007,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>Not necessarily. Many teams migrate gradually, starting with new features or mechanics while keeping existing systems running. The API can coexist with hardcoded logic during a transition period. Some teams use the API for new engagement strategies while maintaining legacy systems for specific use cases.</p>
 			
-			<h3>Can I customize the mechanics and rules?</h3>
+			<h3>Can I customise the mechanics and rules?</h3>
 			
 			<p>Yes. Gamification APIs provide flexibility to design custom mechanics, define your own rules, and structure progression however you want. The API handles the infrastructure—event processing, rule evaluation, state management—while you control the engagement strategy and user experience.</p>
 			
@@ -1015,7 +1015,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>This depends on the provider and how you've structured your integration. Some APIs use standard data formats and event patterns that make migration feasible. Others create more lock-in through proprietary structures. When evaluating providers, consider not just current needs but also future flexibility, including data portability and migration paths.</p>
 			
-			<h2>Closing Section</h2>
+			<h2>Wrapping Up</h2>
 			
 			<p>Gamification isn't a feature you add to a product. It's a system you design and maintain.</p>
 			
@@ -1038,7 +1038,7 @@ export const blogPosts: BlogPost[] = [
 		content: `
 			<p><em>Written by Steven Judge, Founder of GameLayer</em></p>
 			
-			<h2>Introduction</h2>
+			<h2>What is Gamification</h2>
 			
 			<p>Gamification is everywhere. Product teams discuss it in strategy meetings. Designers sketch points and badges. Developers debate whether it's worth the engineering effort. Yet despite all this attention, most implementations fall short of expectations.</p>
 			
@@ -1068,7 +1068,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>From an engineering perspective, hardcoded logic also creates tight coupling. Reward calculations, progression rules, and achievement checks are scattered across controllers, services, and database queries. Understanding the full engagement flow requires tracing code across multiple files and layers.</p>
 			
-			<p>A gamification API centralizes this logic. Rules become configuration, not code. Changes happen through API calls or a management interface, not deployments. This separation makes engagement systems easier to understand, modify, and maintain.</p>
+			<p>A gamification API centralises this logic. Rules become configuration, not code. Changes happen through API calls or a management interface, not deployments. This separation makes engagement systems easier to understand, modify, and maintain.</p>
 			
 			<h3>Inconsistent Mechanics Across Platforms</h3>
 			
@@ -1090,7 +1090,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>As user bases grow, engagement systems face scaling challenges. Leaderboard calculations become expensive. Reward distribution needs to handle spikes. Progression tracking must support millions of users without degrading performance.</p>
 			
-			<p>Building scalable engagement infrastructure requires expertise in distributed systems, caching strategies, and database optimization. Most product teams don't have this expertise, and building it takes time away from core product work.</p>
+			<p>Building scalable engagement infrastructure requires expertise in distributed systems, caching strategies, and database optimisation. Most product teams don't have this expertise, and building it takes time away from core product work.</p>
 			
 			<p>A gamification API handles scaling concerns. It's designed to handle high volumes of events, efficient leaderboard calculations, and reliable reward distribution. Teams can focus on product features while the API manages the infrastructure complexity.</p>
 			
@@ -1134,7 +1134,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>Loyalty platforms work well when the primary goal is incentivizing purchases or transactions. They're less suitable when engagement needs extend beyond commerce—when you want to reward learning, social interaction, content creation, or other non-transactional behaviors.</p>
 			
-			<p>They also tend to be opinionated about structure. Points systems, tier structures, and reward catalogs follow predefined patterns. Customization is possible but often constrained. If your engagement strategy requires unique mechanics or unconventional progression, loyalty platforms may feel limiting.</p>
+			<p>They also tend to be opinionated about structure. Points systems, tier structures, and reward catalogs follow predefined patterns. Customisation is possible but often constrained. If your engagement strategy requires unique mechanics or unconventional progression, loyalty platforms may feel limiting.</p>
 			
 			<h3>Building In-House</h3>
 			
@@ -1142,7 +1142,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>However, building in-house is expensive. It requires engineering time for initial development, ongoing maintenance, scaling infrastructure, and handling edge cases. It also requires product and design expertise to create effective engagement systems. Many teams underestimate this complexity and end up with systems that are difficult to evolve or scale.</p>
 			
-			<p>The decision to build in-house should be based on whether engagement infrastructure is a core competency you want to develop, or whether it's a means to an end that could be handled by specialized tools.</p>
+			<p>The decision to build in-house should be based on whether engagement infrastructure is a core competency you want to develop, or whether it's a means to an end that could be handled by specialised tools.</p>
 			
 			<h3>Gamification APIs as a Middle Ground</h3>
 			
@@ -1230,7 +1230,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<h3>Can a gamification API scale?</h3>
 			
-			<p>Yes. Gamification APIs are designed to handle high volumes of events, efficient state management, and reliable reward distribution. They use distributed architectures, caching strategies, and database optimization techniques that most product teams would need to build themselves. Scalability is a core requirement, not an afterthought.</p>
+			<p>Yes. Gamification APIs are designed to handle high volumes of events, efficient state management, and reliable reward distribution. They use distributed architectures, caching strategies, and database optimisation techniques that most product teams would need to build themselves. Scalability is a core requirement, not an afterthought.</p>
 			
 			<h3>Is gamification manipulative?</h3>
 			
@@ -1244,7 +1244,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>Not necessarily. Many teams migrate gradually, starting with new features or mechanics while keeping existing systems running. The API can coexist with hardcoded logic during a transition period. Some teams use the API for new engagement strategies while maintaining legacy systems for specific use cases.</p>
 			
-			<h3>Can I customize the mechanics and rules?</h3>
+			<h3>Can I customise the mechanics and rules?</h3>
 			
 			<p>Yes. Gamification APIs provide flexibility to design custom mechanics, define your own rules, and structure progression however you want. The API handles the infrastructure—event processing, rule evaluation, state management—while you control the engagement strategy and user experience.</p>
 			
@@ -1252,7 +1252,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>This depends on the provider and how you've structured your integration. Some APIs use standard data formats and event patterns that make migration feasible. Others create more lock-in through proprietary structures. When evaluating providers, consider not just current needs but also future flexibility, including data portability and migration paths.</p>
 			
-			<h2>Closing Section</h2>
+			<h2>Wrapping Up</h2>
 			
 			<p>Gamification isn't a feature you add to a product. It's a system you design and maintain.</p>
 			
