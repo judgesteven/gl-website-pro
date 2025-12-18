@@ -796,7 +796,7 @@ export const blogPosts: BlogPost[] = [
 		slug: 'what-is-a-gamification-api',
 		title: 'What Is a Gamification API? (And When You Actually Need One)',
 		excerpt: 'A clear explanation of what gamification APIs are, the problems they solve, and when they make sense for product teams evaluating engagement solutions.',
-		date: '2025-12-01',
+		date: '2025-12-18',
 		category: 'Product Strategy',
 		readTime: calculateReadTime(`
 			<p><em>Written by Steven Judge, Founder of GameLayer</em></p>
