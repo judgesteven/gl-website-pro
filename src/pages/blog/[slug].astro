@@ -173,14 +173,14 @@ const blogPostSchema = {
 
 <style lang="scss">
 	// Maximum specificity selectors for blog post headings - must come first
-	article.blog-post .container .blog-post-content .blog-post-body h2,
-	article.blog-post .blog-post-content .blog-post-body h2,
-	.blog-post .container .blog-post-content .blog-post-body h2,
-	.blog-post .blog-post-content .blog-post-body h2,
-	.container .blog-post-content .blog-post-body h2,
-	.blog-post-content .blog-post-body h2,
-	.blog-post-body h2,
-	div.blog-post-body h2 {
+	:global(article.blog-post .container .blog-post-content .blog-post-body h2),
+	:global(article.blog-post .blog-post-content .blog-post-body h2),
+	:global(.blog-post .container .blog-post-content .blog-post-body h2),
+	:global(.blog-post .blog-post-content .blog-post-body h2),
+	:global(.container .blog-post-content .blog-post-body h2),
+	:global(.blog-post-content .blog-post-body h2),
+	:global(.blog-post-body h2),
+	:global(div.blog-post-body h2) {
 		font-size: 1.6rem !important;
 		font-weight: 600 !important;
 		color: var(--as-accent) !important;
@@ -189,14 +189,14 @@ const blogPostSchema = {
 		line-height: 1.8 !important;
 	}
 
-	article.blog-post .container .blog-post-content .blog-post-body h3,
-	article.blog-post .blog-post-content .blog-post-body h3,
-	.blog-post .container .blog-post-content .blog-post-body h3,
-	.blog-post .blog-post-content .blog-post-body h3,
-	.container .blog-post-content .blog-post-body h3,
-	.blog-post-content .blog-post-body h3,
-	.blog-post-body h3,
-	div.blog-post-body h3 {
+	:global(article.blog-post .container .blog-post-content .blog-post-body h3),
+	:global(article.blog-post .blog-post-content .blog-post-body h3),
+	:global(.blog-post .container .blog-post-content .blog-post-body h3),
+	:global(.blog-post .blog-post-content .blog-post-body h3),
+	:global(.container .blog-post-content .blog-post-body h3),
+	:global(.blog-post-content .blog-post-body h3),
+	:global(.blog-post-body h3),
+	:global(div.blog-post-body h3) {
 		font-size: 1.6rem !important;
 		font-weight: 600 !important;
 		color: var(--as-accent) !important;
@@ -541,15 +541,15 @@ const blogPostSchema = {
 					font-size: 1.3rem;
 
 					h2 {
-						font-size: 1.3rem;
+						font-size: 1.3rem !important;
 						color: var(--as-accent) !important;
-						line-height: 1.8;
+						line-height: 1.8 !important;
 					}
 
 					h3 {
-						font-size: 1.3rem;
+						font-size: 1.3rem !important;
 						color: var(--as-accent) !important;
-						line-height: 1.8;
+						line-height: 1.8 !important;
 					}
 				}
 			}
