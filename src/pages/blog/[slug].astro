@@ -173,10 +173,14 @@ const blogPostSchema = {
 
 <style lang="scss">
 	// Maximum specificity selectors for blog post headings - must come first
+	article.blog-post .container .blog-post-content .blog-post-body h2,
 	article.blog-post .blog-post-content .blog-post-body h2,
+	.blog-post .container .blog-post-content .blog-post-body h2,
 	.blog-post .blog-post-content .blog-post-body h2,
+	.container .blog-post-content .blog-post-body h2,
 	.blog-post-content .blog-post-body h2,
-	.blog-post-body h2 {
+	.blog-post-body h2,
+	div.blog-post-body h2 {
 		font-size: 1.6rem !important;
 		font-weight: 600 !important;
 		color: var(--as-accent) !important;
@@ -185,10 +189,14 @@ const blogPostSchema = {
 		line-height: 1.8 !important;
 	}
 
+	article.blog-post .container .blog-post-content .blog-post-body h3,
 	article.blog-post .blog-post-content .blog-post-body h3,
+	.blog-post .container .blog-post-content .blog-post-body h3,
 	.blog-post .blog-post-content .blog-post-body h3,
+	.container .blog-post-content .blog-post-body h3,
 	.blog-post-content .blog-post-body h3,
-	.blog-post-body h3 {
+	.blog-post-body h3,
+	div.blog-post-body h3 {
 		font-size: 1.6rem !important;
 		font-weight: 600 !important;
 		color: var(--as-accent) !important;
