@@ -39,7 +39,7 @@ export const blogPosts: BlogPost[] = [
 			const content = `
 			<p><em>Written by Steven Judge, Founder of GameLayer</em></p>
 			
-			<p>Gamification has a branding problem.</p>
+			<h2>Gamification has a branding problem.</h2>
 			
 			<p>For years, it's been reduced to points, badges, and leaderboards — often bolted onto products late in the lifecycle, expected to magically "fix engagement." When that doesn't happen, teams conclude that gamification doesn't work.</p>
 			
@@ -146,7 +146,7 @@ export const blogPosts: BlogPost[] = [
 		content: `
 			<p><em>Written by Steven Judge, Founder of GameLayer</em></p>
 			
-			<p class="opening-statement">Gamification has a branding problem.</p>
+			<h2>Gamification has a branding problem.</h2>
 			
 			<p>For years, it's been reduced to points, badges, and leaderboards — often bolted onto products late in the lifecycle, expected to magically "fix engagement." When that doesn't happen, teams conclude that gamification doesn't work.</p>
 			
