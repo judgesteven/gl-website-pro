@@ -39,7 +39,7 @@ export const blogPosts: BlogPost[] = [
 			const content = `
 			<p><em>Written by Steven Judge, Founder of GameLayer</em></p>
 			
-			<h2>Gamification has a branding problem.</h2>
+			<h2>Gamification has a branding problem</h2>
 			
 			<p>For years, it's been reduced to points, badges, and leaderboards — often bolted onto products late in the lifecycle, expected to magically "fix engagement." When that doesn't happen, teams conclude that gamification doesn't work.</p>
 			
@@ -47,7 +47,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>I've spent years building products where engagement actually matters — health, fitness, loyalty, aviation, consumer platforms — and building GameLayer itself. The pattern is consistent: when gamification is treated as decoration, it disappoints. When it's treated as a system, it works remarkably well.</p>
 			
-			<h2>Gamification Is Not a Feature</h2>
+			<h2>Gamification is not a feature</h2>
 			
 			<p>One of the most common mistakes teams make is treating gamification like a UI enhancement.</p>
 			
@@ -63,7 +63,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>That's why users ignore it — or worse, feel manipulated by it.</p>
 			
-			<h2>The "Motivation Layer" Myth</h2>
+			<h2>The "motivation layer" myth</h2>
 			
 			<p>Another failure pattern is the idea that motivation can be layered on after the fact.</p>
 			
@@ -79,7 +79,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>Gamification amplifies what's already there. It doesn't replace missing fundamentals.</p>
 			
-			<h2>When Gamification Actually Works</h2>
+			<h2>When gamification actually works</h2>
 			
 			<p>The most effective gamified products share a few characteristics:</p>
 			
@@ -92,7 +92,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>This requires thinking about engagement as a <strong>longitudinal system</strong>, not a one-off feature.</p>
 			
-			<h2>Why Hardcoding Engagement Is a Dead End</h2>
+			<h2>Why hard-coding engagement is a dead end</h2>
 			
 			<p>One lesson that comes up repeatedly — and one that directly influenced how I approached GameLayer — is that engagement logic changes constantly.</p>
 			
@@ -107,7 +107,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>Engagement systems need to be configurable, measurable, and adaptable. Otherwise, they decay.</p>
 			
-			<h2>Engagement Is a Product Responsibility</h2>
+			<h2>Engagement is a product responsibility</h2>
 			
 			<p>Perhaps the biggest misconception is that gamification is a growth or marketing concern.</p>
 			
@@ -117,7 +117,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>The most successful products I've worked on treated engagement as part of product architecture — something designed intentionally, revisited often, and owned long-term.</p>
 			
-			<h2>Why It Doesn't Have To Fail</h2>
+			<h2>Why it doesn't have to fail</h2>
 			
 			<p>Gamification doesn't fail because users are "over it."<br>
 			It fails because it's often misunderstood.</p>
@@ -146,7 +146,7 @@ export const blogPosts: BlogPost[] = [
 		content: `
 			<p><em>Written by Steven Judge, Founder of GameLayer</em></p>
 			
-			<h2>Gamification has a branding problem.</h2>
+			<h2>Gamification has a branding problem</h2>
 			
 			<p>For years, it's been reduced to points, badges, and leaderboards — often bolted onto products late in the lifecycle, expected to magically "fix engagement." When that doesn't happen, teams conclude that gamification doesn't work.</p>
 			
@@ -154,7 +154,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>I've spent years building products where engagement actually matters — health, fitness, loyalty, aviation, consumer platforms — and building GameLayer itself. The pattern is consistent: when gamification is treated as decoration, it disappoints. When it's treated as a system, it works remarkably well.</p>
 			
-			<h2>Gamification Is Not a Feature</h2>
+			<h2>Gamification is not a feature</h2>
 			
 			<p>One of the most common mistakes teams make is treating gamification like a UI enhancement.</p>
 			
@@ -170,7 +170,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>That's why users ignore it — or worse, feel manipulated by it.</p>
 			
-			<h2>The "Motivation Layer" Myth</h2>
+			<h2>The "motivation layer" myth</h2>
 			
 			<p>Another failure pattern is the idea that motivation can be layered on after the fact.</p>
 			
@@ -186,7 +186,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>Gamification amplifies what's already there. It doesn't replace missing fundamentals.</p>
 			
-			<h2>When Gamification Actually Works</h2>
+			<h2>When gamification actually works</h2>
 			
 			<p>The most effective gamified products share a few characteristics:</p>
 			
@@ -199,7 +199,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>This requires thinking about engagement as a <strong>longitudinal system</strong>, not a one-off feature.</p>
 			
-			<h2>Why Hardcoding Engagement Is a Dead End</h2>
+			<h2>Why hard-coding engagement is a dead end</h2>
 			
 			<p>One lesson that comes up repeatedly — and one that directly influenced how I approached GameLayer — is that engagement logic changes constantly.</p>
 			
@@ -214,7 +214,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>Engagement systems need to be configurable, measurable, and adaptable. Otherwise, they decay.</p>
 			
-			<h2>Engagement Is a Product Responsibility</h2>
+			<h2>Engagement is a product responsibility</h2>
 			
 			<p>Perhaps the biggest misconception is that gamification is a growth or marketing concern.</p>
 			
@@ -224,7 +224,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>The most successful products I've worked on treated engagement as part of product architecture — something designed intentionally, revisited often, and owned long-term.</p>
 			
-			<h2>Why It Doesn't Have To Fail</h2>
+			<h2>Why it doesn't have to fail</h2>
 			
 			<p>Gamification doesn't fail because users are "over it."<br>
 			It fails because it's often misunderstood.</p>
@@ -360,25 +360,25 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>At its heart, effective gamification relies on three essential elements: <strong>challenge, feedback, and motivation</strong>. These principles work together to create experiences that feel meaningful, rewarding, and worth returning to.</p>
 			
-			<h2>Challenge: The Right Level of Difficulty</h2>
+			<h2>Challenge: the right level of difficulty</h2>
 			
 			<p>One of the most critical principles is finding the right balance of challenge. Tasks that are too easy become boring, while those that are too difficult lead to frustration. Effective gamification creates a <strong>flow state</strong> where users feel challenged but capable—maintaining engagement through progressive difficulty that matches their growing skills.</p>
 			
 			<p>This is why progression systems work so well. As users complete challenges and gain experience, they unlock new levels or more complex tasks. This creates a sense of growth and achievement that keeps them coming back.</p>
 			
-			<h2>Feedback: Clear and Immediate</h2>
+			<h2>Feedback: clear and immediate</h2>
 			
 			<p>Feedback loops are essential for effective gamification. Users need to understand how their actions contribute to progress, whether through visual indicators like progress bars, immediate point notifications, or achievement unlocks. <strong>Clear, immediate feedback</strong> helps users understand cause and effect, making their actions feel meaningful.</p>
 			
 			<p>This principle explains why features like XP gains, level-up animations, and streak counters are so effective. They provide instant gratification and reinforce positive behaviors, creating a connection between user actions and rewards.</p>
 			
-			<h2>Motivation: Intrinsic and Extrinsic</h2>
+			<h2>Motivation: intrinsic and extrinsic</h2>
 			
 			<p>Effective gamification taps into both intrinsic and extrinsic motivation. Extrinsic motivators—like points, badges, and rewards—provide external incentives. But the most successful gamification systems also activate <strong>intrinsic motivation</strong> by making activities feel inherently enjoyable or meaningful.</p>
 			
 			<p>This happens when gamification mechanics align with users' personal goals, values, or sense of mastery. When users feel they're improving, achieving something meaningful, or contributing to a larger purpose, engagement becomes self-sustaining.</p>
 			
-			<h2>Putting It All Together</h2>
+			<h2>Putting it all together</h2>
 			
 			<p>These core principles—challenge, feedback, and motivation—work together to create engaging experiences. When implemented thoughtfully, they transform routine interactions into meaningful journeys that users want to continue. The key is understanding your users' needs and designing mechanics that support their goals while providing clear feedback and appropriate challenges.</p>
 			
@@ -397,25 +397,25 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>At its heart, effective gamification relies on three essential elements: <strong>challenge, feedback, and motivation</strong>. These principles work together to create experiences that feel meaningful, rewarding, and worth returning to.</p>
 			
-			<h2>Challenge: The Right Level of Difficulty</h2>
+			<h2>Challenge: the right level of difficulty</h2>
 			
 			<p>One of the most critical principles is finding the right balance of challenge. Tasks that are too easy become boring, while those that are too difficult lead to frustration. Effective gamification creates a <strong>flow state</strong> where users feel challenged but capable—maintaining engagement through progressive difficulty that matches their growing skills.</p>
 			
 			<p>This is why progression systems work so well. As users complete challenges and gain experience, they unlock new levels or more complex tasks. This creates a sense of growth and achievement that keeps them coming back.</p>
 			
-			<h2>Feedback: Clear and Immediate</h2>
+			<h2>Feedback: clear and immediate</h2>
 			
 			<p>Feedback loops are essential for effective gamification. Users need to understand how their actions contribute to progress, whether through visual indicators like progress bars, immediate point notifications, or achievement unlocks. <strong>Clear, immediate feedback</strong> helps users understand cause and effect, making their actions feel meaningful.</p>
 			
 			<p>This principle explains why features like XP gains, level-up animations, and streak counters are so effective. They provide instant gratification and reinforce positive behaviors, creating a connection between user actions and rewards.</p>
 			
-			<h2>Motivation: Intrinsic and Extrinsic</h2>
+			<h2>Motivation: intrinsic and extrinsic</h2>
 			
 			<p>Effective gamification taps into both intrinsic and extrinsic motivation. Extrinsic motivators—like points, badges, and rewards—provide external incentives. But the most successful gamification systems also activate <strong>intrinsic motivation</strong> by making activities feel inherently enjoyable or meaningful.</p>
 			
 			<p>This happens when gamification mechanics align with users' personal goals, values, or sense of mastery. When users feel they're improving, achieving something meaningful, or contributing to a larger purpose, engagement becomes self-sustaining.</p>
 			
-			<h2>Putting It All Together</h2>
+			<h2>Putting it all together</h2>
 			
 			<p>These core principles—challenge, feedback, and motivation—work together to create engaging experiences. When implemented thoughtfully, they transform routine interactions into meaningful journeys that users want to continue. The key is understanding your users' needs and designing mechanics that support their goals while providing clear feedback and appropriate challenges.</p>
 			
@@ -801,7 +801,7 @@ export const blogPosts: BlogPost[] = [
 		readTime: calculateReadTime(`
 			<p><em>Written by Steven Judge, Founder of GameLayer</em></p>
 			
-			<h2>What is Gamification</h2>
+			<h2>What is gamification</h2>
 			
 			<p>Gamification is everywhere. Product teams discuss it in strategy meetings. Designers sketch points and badges. Developers debate whether it's worth the engineering effort. Yet despite all this attention, most implementations fall short of expectations.</p>
 			
@@ -815,17 +815,17 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>This article explains what a gamification API actually is, when it makes sense to use one, and how it differs from other approaches to building engagement systems.</p>
 			
-			<h2>Clear Definition</h2>
+			<h2>Clear definition</h2>
 			
 			<p>A gamification API is a programmable interface that handles the core logic of engagement systems—tracking user actions, evaluating rules, managing progression, and distributing rewards—without requiring teams to build this infrastructure from scratch. It treats gamification as a service layer rather than embedded application code, allowing product teams to configure engagement mechanics, adjust rules, and iterate on strategies without modifying their core application.</p>
 			
 			<p>This separation enables teams to evolve engagement strategies over time, maintain consistency across platforms, and scale engagement systems as user bases grow, while keeping the complexity of reward logic, progression calculations, and rule evaluation abstracted away from the main application.</p>
 			
-			<h2>What Problems a Gamification API Solves</h2>
+			<h2>What problems a gamification API solves</h2>
 			
 			<p>Most products start with simple engagement mechanics. A points system here. A badge unlock there. Maybe a basic leaderboard. These mechanics are often hardcoded directly into application logic, which creates several problems as products mature.</p>
 			
-			<h3>Hard-Coded Reward Logic</h3>
+			<h3>Hard-coded reward logic</h3>
 			
 			<p>When reward logic lives in application code, every change requires a deployment. Want to adjust how many points a user earns for completing a task? That's a code change, a review, a deployment, and potentially a rollback if something breaks. This friction means teams stop iterating. Engagement systems stagnate.</p>
 			
@@ -833,7 +833,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>A gamification API centralises this logic. Rules become configuration, not code. Changes happen through API calls or a management interface, not deployments. This separation makes engagement systems easier to understand, modify, and maintain.</p>
 			
-			<h3>Inconsistent Mechanics Across Platforms</h3>
+			<h3>Inconsistent mechanics across platforms</h3>
 			
 			<p>Many products exist across multiple platforms—web, iOS, Android, maybe even embedded devices. When engagement logic is embedded in each platform's codebase, inconsistencies emerge. The web app might award 10 points for an action, while the mobile app awards 15. Leaderboards show different rankings. Progression feels disconnected.</p>
 			
@@ -841,7 +841,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>A gamification API provides a single source of truth. All platforms call the same endpoints, receive the same responses, and enforce the same rules. Consistency becomes automatic.</p>
 			
-			<h3>Difficulty Evolving Engagement Strategies</h3>
+			<h3>Difficulty evolving engagement strategies</h3>
 			
 			<p>Engagement strategies need to evolve. What works for new users might not work for power users. Seasonal campaigns require temporary mechanics. A/B tests need different rule sets. User behavior shifts, and engagement systems should adapt.</p>
 			
@@ -849,7 +849,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>A gamification API makes evolution practical. New mechanics can be configured and tested without touching application code. Rules can be adjusted based on user segments, time periods, or experimental conditions. Engagement becomes a product concern, not just an engineering one.</p>
 			
-			<h3>Scaling Challenges</h3>
+			<h3>Scaling challenges</h3>
 			
 			<p>As user bases grow, engagement systems face scaling challenges. Leaderboard calculations become expensive. Reward distribution needs to handle spikes. Progression tracking must support millions of users without degrading performance.</p>
 			
@@ -857,7 +857,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>A gamification API handles scaling concerns. It's designed to handle high volumes of events, efficient leaderboard calculations, and reliable reward distribution. Teams can focus on product features while the API manages the infrastructure complexity.</p>
 			
-			<h2>How a Gamification API Works (Conceptual Overview)</h2>
+			<h2>How a gamification API works (conceptual overview)</h2>
 			
 			<p>At its core, a gamification API operates on a simple pattern: events trigger rules, rules evaluate conditions, and successful evaluations result in progression or rewards.</p>
 			
@@ -887,11 +887,11 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>The flow is continuous: events arrive, rules evaluate, progression updates, rewards distribute. This creates engagement loops that respond to user behavior and maintain momentum over time.</p>
 			
-			<h2>Gamification API vs Loyalty Platforms vs Building In-House</h2>
+			<h2>Gamification API vs loyalty platforms vs building in-house</h2>
 			
 			<p>Teams evaluating engagement solutions typically consider three approaches: dedicated gamification APIs, loyalty platforms, or building systems in-house. Each has distinct strengths and trade-offs.</p>
 			
-			<h3>Loyalty Platforms</h3>
+			<h3>Loyalty platforms</h3>
 			
 			<p>Loyalty platforms focus on reward programs—points, discounts, tiered benefits, and redemption systems. They excel at managing transactions, tracking spend, and handling complex redemption logic. Many include basic gamification elements like badges or challenges, but these are secondary to the core loyalty mechanics.</p>
 			
@@ -899,7 +899,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>They also tend to be opinionated about structure. Points systems, tier structures, and reward catalogs follow predefined patterns. Customisation is possible but often constrained. If your engagement strategy requires unique mechanics or unconventional progression, loyalty platforms may feel limiting.</p>
 			
-			<h3>Building In-House</h3>
+			<h3>Building in-house</h3>
 			
 			<p>Building engagement systems in-house provides complete control. You can design exactly the mechanics you want, integrate them tightly with your product, and own every aspect of the experience. This approach makes sense when engagement is core to your product's value proposition and you have the engineering resources to build and maintain the infrastructure.</p>
 			
@@ -907,7 +907,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>The decision to build in-house should be based on whether engagement infrastructure is a core competency you want to develop, or whether it's a means to an end that could be handled by specialised tools.</p>
 			
-			<h3>Gamification APIs as a Middle Ground</h3>
+			<h3>Gamification APIs as a middle ground</h3>
 			
 			<p>Gamification APIs sit between loyalty platforms and in-house development. They provide the infrastructure for engagement systems—events, rules, progression, rewards—without prescribing specific mechanics or business models. This flexibility allows teams to design engagement strategies that fit their product and users.</p>
 			
@@ -917,17 +917,17 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>The right choice depends on your goals, resources, and constraints. If engagement is transactional and reward-focused, a loyalty platform might fit. If engagement is core to your product and you have significant engineering resources, building in-house could make sense. If you need flexibility without the full cost of in-house development, a gamification API provides a practical middle path.</p>
 			
-			<h2>When You Should Consider Using a Gamification API</h2>
+			<h2>When you should consider using a gamification API</h2>
 			
 			<p>A gamification API isn't necessary for every product. Some products don't need engagement systems. Others can start with simple, hardcoded mechanics. But there are clear scenarios where a gamification API becomes valuable.</p>
 			
-			<h3>Multi-Platform Products</h3>
+			<h3>Multi-platform products</h3>
 			
 			<p>If your product exists on multiple platforms—web, mobile apps, or embedded devices—a gamification API ensures consistent engagement experiences. All platforms call the same endpoints, enforce the same rules, and display the same progression. This consistency reduces user confusion and support overhead.</p>
 			
 			<p>It also simplifies development. Instead of implementing engagement logic in multiple codebases, each platform integrates with a single API. Changes and new mechanics propagate automatically across all platforms.</p>
 			
-			<h3>Products That Need to Evolve Engagement Over Time</h3>
+			<h3>Products that need to evolve engagement over time</h3>
 			
 			<p>Engagement strategies should evolve. New user onboarding might need different mechanics than long-term retention. Seasonal campaigns require temporary rules. A/B tests need variant rule sets. User behavior shifts, and engagement systems should adapt.</p>
 			
@@ -935,7 +935,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>A gamification API makes evolution practical. Rules can be adjusted through configuration, not code. New mechanics can be tested without deployments. Engagement becomes something you can iterate on quickly, like any other product feature.</p>
 			
-			<h3>Teams That Want Flexibility Without Rebuilding Systems</h3>
+			<h3>Teams that want flexibility without rebuilding systems</h3>
 			
 			<p>Some teams need engagement systems but don't want the constraints of loyalty platforms or the cost of building everything in-house. They want the flexibility to design custom mechanics while leveraging infrastructure that handles scaling, reliability, and complexity.</p>
 			
@@ -943,7 +943,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>This approach is particularly valuable for teams that have tried simple, hardcoded mechanics and found them limiting, but aren't ready to invest in full in-house development.</p>
 			
-			<h3>Products Where Engagement Is Important But Not Core</h3>
+			<h3>Products where engagement is important but not core</h3>
 			
 			<p>For some products, engagement systems are important for retention and growth, but they're not the core value proposition. A fitness app's core value is tracking workouts, but engagement mechanics help users build habits. A learning platform's core value is education, but progression systems motivate completion.</p>
 			
@@ -951,37 +951,37 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>The key question is whether engagement infrastructure is a core competency you want to develop, or a capability you want to leverage. If it's the latter, a gamification API provides a practical path.</p>
 			
-			<h2>Real-World Use Cases (High Level)</h2>
+			<h2>Real-world use cases (high level)</h2>
 			
 			<p>Gamification APIs support a wide range of engagement strategies across industries and use cases. Here are some common patterns:</p>
 			
-			<h3>Improving Onboarding</h3>
+			<h3>Improving onboarding</h3>
 			
 			<p>New users often struggle to understand product value. Onboarding challenges guide users through key features, rewarding completion with progress indicators, early achievements, or unlockable content. This makes initial product exploration feel structured and rewarding, increasing the likelihood that users reach their first "aha" moment.</p>
 			
-			<h3>Driving Feature Adoption</h3>
+			<h3>Driving feature adoption</h3>
 			
 			<p>Products with many features face adoption challenges. Users stick to familiar workflows and ignore powerful capabilities. Feature-focused challenges and achievements encourage exploration. Users who complete a challenge using a specific feature are more likely to incorporate it into their regular workflow.</p>
 			
-			<h3>Increasing Repeat Usage</h3>
+			<h3>Increasing repeat usage</h3>
 			
 			<p>Many products need users to return regularly—fitness apps, learning platforms, habit trackers, news readers. Streak mechanics, daily challenges, and progress tracking create reasons to return. The API tracks these patterns, awards consistency, and maintains momentum even when intrinsic motivation wanes.</p>
 			
-			<h3>Motivating Long-Term Behavior</h3>
+			<h3>Motivating long-term behaviour</h3>
 			
 			<p>Some goals require sustained effort over weeks or months. Language learning, skill development, health improvements, and financial goals all benefit from long-term progression systems. The API tracks cumulative progress, celebrates milestones, and provides structure that makes long-term goals feel achievable.</p>
 			
-			<h3>Encouraging Social Interaction</h3>
+			<h3>Encouraging social interaction</h3>
 			
 			<p>Products with social features can use engagement mechanics to encourage interaction. Users might earn rewards for helping others, participating in discussions, or collaborating on shared goals. These mechanics strengthen community bonds while driving platform engagement.</p>
 			
-			<h3>Balancing Challenge and Achievement</h3>
+			<h3>Balancing challenge and achievement</h3>
 			
 			<p>Effective engagement balances challenge with achievement. Tasks that are too easy become boring. Tasks that are too difficult lead to frustration. The API can adjust difficulty based on user performance, ensuring challenges remain engaging as users improve.</p>
 			
 			<p>These use cases illustrate how gamification APIs support diverse engagement strategies. The common thread is treating engagement as a system that responds to user behavior, maintains momentum, and evolves over time.</p>
 			
-			<h2>Frequently Asked Questions</h2>
+			<h2>Frequently asked questions</h2>
 			
 			<h3>Is a gamification API only for games?</h3>
 			
@@ -1015,7 +1015,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>This depends on the provider and how you've structured your integration. Some APIs use standard data formats and event patterns that make migration feasible. Others create more lock-in through proprietary structures. When evaluating providers, consider not just current needs but also future flexibility, including data portability and migration paths.</p>
 			
-			<h2>Wrapping Up</h2>
+			<h2>Wrapping up</h2>
 			
 			<p>Gamification isn't a feature you add to a product. It's a system you design and maintain.</p>
 			
@@ -1038,7 +1038,7 @@ export const blogPosts: BlogPost[] = [
 		content: `
 			<p><em>Written by Steven Judge, Founder of GameLayer</em></p>
 			
-			<h2>What is Gamification</h2>
+			<h2>What is gamification</h2>
 			
 			<p>Gamification is everywhere. Product teams discuss it in strategy meetings. Designers sketch points and badges. Developers debate whether it's worth the engineering effort. Yet despite all this attention, most implementations fall short of expectations.</p>
 			
@@ -1052,17 +1052,17 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>This article explains what a gamification API actually is, when it makes sense to use one, and how it differs from other approaches to building engagement systems.</p>
 			
-			<h2>Clear Definition</h2>
+			<h2>Clear definition</h2>
 			
 			<p>A gamification API is a programmable interface that handles the core logic of engagement systems—tracking user actions, evaluating rules, managing progression, and distributing rewards—without requiring teams to build this infrastructure from scratch. It treats gamification as a service layer rather than embedded application code, allowing product teams to configure engagement mechanics, adjust rules, and iterate on strategies without modifying their core application.</p>
 			
 			<p>This separation enables teams to evolve engagement strategies over time, maintain consistency across platforms, and scale engagement systems as user bases grow, while keeping the complexity of reward logic, progression calculations, and rule evaluation abstracted away from the main application.</p>
 			
-			<h2>What Problems a Gamification API Solves</h2>
+			<h2>What problems a gamification API solves</h2>
 			
 			<p>Most products start with simple engagement mechanics. A points system here. A badge unlock there. Maybe a basic leaderboard. These mechanics are often hardcoded directly into application logic, which creates several problems as products mature.</p>
 			
-			<h3>Hard-Coded Reward Logic</h3>
+			<h3>Hard-coded reward logic</h3>
 			
 			<p>When reward logic lives in application code, every change requires a deployment. Want to adjust how many points a user earns for completing a task? That's a code change, a review, a deployment, and potentially a rollback if something breaks. This friction means teams stop iterating. Engagement systems stagnate.</p>
 			
@@ -1070,7 +1070,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>A gamification API centralises this logic. Rules become configuration, not code. Changes happen through API calls or a management interface, not deployments. This separation makes engagement systems easier to understand, modify, and maintain.</p>
 			
-			<h3>Inconsistent Mechanics Across Platforms</h3>
+			<h3>Inconsistent mechanics across platforms</h3>
 			
 			<p>Many products exist across multiple platforms—web, iOS, Android, maybe even embedded devices. When engagement logic is embedded in each platform's codebase, inconsistencies emerge. The web app might award 10 points for an action, while the mobile app awards 15. Leaderboards show different rankings. Progression feels disconnected.</p>
 			
@@ -1078,7 +1078,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>A gamification API provides a single source of truth. All platforms call the same endpoints, receive the same responses, and enforce the same rules. Consistency becomes automatic.</p>
 			
-			<h3>Difficulty Evolving Engagement Strategies</h3>
+			<h3>Difficulty evolving engagement strategies</h3>
 			
 			<p>Engagement strategies need to evolve. What works for new users might not work for power users. Seasonal campaigns require temporary mechanics. A/B tests need different rule sets. User behavior shifts, and engagement systems should adapt.</p>
 			
@@ -1086,7 +1086,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>A gamification API makes evolution practical. New mechanics can be configured and tested without touching application code. Rules can be adjusted based on user segments, time periods, or experimental conditions. Engagement becomes a product concern, not just an engineering one.</p>
 			
-			<h3>Scaling Challenges</h3>
+			<h3>Scaling challenges</h3>
 			
 			<p>As user bases grow, engagement systems face scaling challenges. Leaderboard calculations become expensive. Reward distribution needs to handle spikes. Progression tracking must support millions of users without degrading performance.</p>
 			
@@ -1094,7 +1094,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>A gamification API handles scaling concerns. It's designed to handle high volumes of events, efficient leaderboard calculations, and reliable reward distribution. Teams can focus on product features while the API manages the infrastructure complexity.</p>
 			
-			<h2>How a Gamification API Works (Conceptual Overview)</h2>
+			<h2>How a gamification API works (conceptual overview)</h2>
 			
 			<p>At its core, a gamification API operates on a simple pattern: events trigger rules, rules evaluate conditions, and successful evaluations result in progression or rewards.</p>
 			
@@ -1124,11 +1124,11 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>The flow is continuous: events arrive, rules evaluate, progression updates, rewards distribute. This creates engagement loops that respond to user behavior and maintain momentum over time.</p>
 			
-			<h2>Gamification API vs Loyalty Platforms vs Building In-House</h2>
+			<h2>Gamification API vs loyalty platforms vs building in-house</h2>
 			
 			<p>Teams evaluating engagement solutions typically consider three approaches: dedicated gamification APIs, loyalty platforms, or building systems in-house. Each has distinct strengths and trade-offs.</p>
 			
-			<h3>Loyalty Platforms</h3>
+			<h3>Loyalty platforms</h3>
 			
 			<p>Loyalty platforms focus on reward programs—points, discounts, tiered benefits, and redemption systems. They excel at managing transactions, tracking spend, and handling complex redemption logic. Many include basic gamification elements like badges or challenges, but these are secondary to the core loyalty mechanics.</p>
 			
@@ -1136,7 +1136,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>They also tend to be opinionated about structure. Points systems, tier structures, and reward catalogs follow predefined patterns. Customisation is possible but often constrained. If your engagement strategy requires unique mechanics or unconventional progression, loyalty platforms may feel limiting.</p>
 			
-			<h3>Building In-House</h3>
+			<h3>Building in-house</h3>
 			
 			<p>Building engagement systems in-house provides complete control. You can design exactly the mechanics you want, integrate them tightly with your product, and own every aspect of the experience. This approach makes sense when engagement is core to your product's value proposition and you have the engineering resources to build and maintain the infrastructure.</p>
 			
@@ -1144,7 +1144,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>The decision to build in-house should be based on whether engagement infrastructure is a core competency you want to develop, or whether it's a means to an end that could be handled by specialised tools.</p>
 			
-			<h3>Gamification APIs as a Middle Ground</h3>
+			<h3>Gamification APIs as a middle ground</h3>
 			
 			<p>Gamification APIs sit between loyalty platforms and in-house development. They provide the infrastructure for engagement systems—events, rules, progression, rewards—without prescribing specific mechanics or business models. This flexibility allows teams to design engagement strategies that fit their product and users.</p>
 			
@@ -1154,17 +1154,17 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>The right choice depends on your goals, resources, and constraints. If engagement is transactional and reward-focused, a loyalty platform might fit. If engagement is core to your product and you have significant engineering resources, building in-house could make sense. If you need flexibility without the full cost of in-house development, a gamification API provides a practical middle path.</p>
 			
-			<h2>When You Should Consider Using a Gamification API</h2>
+			<h2>When you should consider using a gamification API</h2>
 			
 			<p>A gamification API isn't necessary for every product. Some products don't need engagement systems. Others can start with simple, hardcoded mechanics. But there are clear scenarios where a gamification API becomes valuable.</p>
 			
-			<h3>Multi-Platform Products</h3>
+			<h3>Multi-platform products</h3>
 			
 			<p>If your product exists on multiple platforms—web, mobile apps, or embedded devices—a gamification API ensures consistent engagement experiences. All platforms call the same endpoints, enforce the same rules, and display the same progression. This consistency reduces user confusion and support overhead.</p>
 			
 			<p>It also simplifies development. Instead of implementing engagement logic in multiple codebases, each platform integrates with a single API. Changes and new mechanics propagate automatically across all platforms.</p>
 			
-			<h3>Products That Need to Evolve Engagement Over Time</h3>
+			<h3>Products that need to evolve engagement over time</h3>
 			
 			<p>Engagement strategies should evolve. New user onboarding might need different mechanics than long-term retention. Seasonal campaigns require temporary rules. A/B tests need variant rule sets. User behavior shifts, and engagement systems should adapt.</p>
 			
@@ -1172,7 +1172,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>A gamification API makes evolution practical. Rules can be adjusted through configuration, not code. New mechanics can be tested without deployments. Engagement becomes something you can iterate on quickly, like any other product feature.</p>
 			
-			<h3>Teams That Want Flexibility Without Rebuilding Systems</h3>
+			<h3>Teams that want flexibility without rebuilding systems</h3>
 			
 			<p>Some teams need engagement systems but don't want the constraints of loyalty platforms or the cost of building everything in-house. They want the flexibility to design custom mechanics while leveraging infrastructure that handles scaling, reliability, and complexity.</p>
 			
@@ -1180,7 +1180,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>This approach is particularly valuable for teams that have tried simple, hardcoded mechanics and found them limiting, but aren't ready to invest in full in-house development.</p>
 			
-			<h3>Products Where Engagement Is Important But Not Core</h3>
+			<h3>Products where engagement is important but not core</h3>
 			
 			<p>For some products, engagement systems are important for retention and growth, but they're not the core value proposition. A fitness app's core value is tracking workouts, but engagement mechanics help users build habits. A learning platform's core value is education, but progression systems motivate completion.</p>
 			
@@ -1188,37 +1188,37 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>The key question is whether engagement infrastructure is a core competency you want to develop, or a capability you want to leverage. If it's the latter, a gamification API provides a practical path.</p>
 			
-			<h2>Real-World Use Cases (High Level)</h2>
+			<h2>Real-world use cases (high level)</h2>
 			
 			<p>Gamification APIs support a wide range of engagement strategies across industries and use cases. Here are some common patterns:</p>
 			
-			<h3>Improving Onboarding</h3>
+			<h3>Improving onboarding</h3>
 			
 			<p>New users often struggle to understand product value. Onboarding challenges guide users through key features, rewarding completion with progress indicators, early achievements, or unlockable content. This makes initial product exploration feel structured and rewarding, increasing the likelihood that users reach their first "aha" moment.</p>
 			
-			<h3>Driving Feature Adoption</h3>
+			<h3>Driving feature adoption</h3>
 			
 			<p>Products with many features face adoption challenges. Users stick to familiar workflows and ignore powerful capabilities. Feature-focused challenges and achievements encourage exploration. Users who complete a challenge using a specific feature are more likely to incorporate it into their regular workflow.</p>
 			
-			<h3>Increasing Repeat Usage</h3>
+			<h3>Increasing repeat usage</h3>
 			
 			<p>Many products need users to return regularly—fitness apps, learning platforms, habit trackers, news readers. Streak mechanics, daily challenges, and progress tracking create reasons to return. The API tracks these patterns, awards consistency, and maintains momentum even when intrinsic motivation wanes.</p>
 			
-			<h3>Motivating Long-Term Behavior</h3>
+			<h3>Motivating long-term behaviour</h3>
 			
 			<p>Some goals require sustained effort over weeks or months. Language learning, skill development, health improvements, and financial goals all benefit from long-term progression systems. The API tracks cumulative progress, celebrates milestones, and provides structure that makes long-term goals feel achievable.</p>
 			
-			<h3>Encouraging Social Interaction</h3>
+			<h3>Encouraging social interaction</h3>
 			
 			<p>Products with social features can use engagement mechanics to encourage interaction. Users might earn rewards for helping others, participating in discussions, or collaborating on shared goals. These mechanics strengthen community bonds while driving platform engagement.</p>
 			
-			<h3>Balancing Challenge and Achievement</h3>
+			<h3>Balancing challenge and achievement</h3>
 			
 			<p>Effective engagement balances challenge with achievement. Tasks that are too easy become boring. Tasks that are too difficult lead to frustration. The API can adjust difficulty based on user performance, ensuring challenges remain engaging as users improve.</p>
 			
 			<p>These use cases illustrate how gamification APIs support diverse engagement strategies. The common thread is treating engagement as a system that responds to user behavior, maintains momentum, and evolves over time.</p>
 			
-			<h2>Frequently Asked Questions</h2>
+			<h2>Frequently asked questions</h2>
 			
 			<h3>Is a gamification API only for games?</h3>
 			
@@ -1252,7 +1252,7 @@ export const blogPosts: BlogPost[] = [
 			
 			<p>This depends on the provider and how you've structured your integration. Some APIs use standard data formats and event patterns that make migration feasible. Others create more lock-in through proprietary structures. When evaluating providers, consider not just current needs but also future flexibility, including data portability and migration paths.</p>
 			
-			<h2>Wrapping Up</h2>
+			<h2>Wrapping up</h2>
 			
 			<p>Gamification isn't a feature you add to a product. It's a system you design and maintain.</p>
 			
