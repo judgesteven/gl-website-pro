@@ -6,7 +6,7 @@ import GameLayerLogo from '../images/gamelayer_logo_sm.png'
     <nav class="navbar grid container">
         <div class="nav-logo">
             <a href="/" aria-label="GameLayer - Gamification API Platform">
-                <img src={GameLayerLogo.src} alt="GameLayer - Gamification API platform for user engagement and customer loyalty" width="180">
+                <img src={GameLayerLogo.src} alt="GameLayer - Gamification API platform for user engagement and customer loyalty" width="150">
             </a>
         </div>
         <div class="nav-links">
@@ -15,6 +15,7 @@ import GameLayerLogo from '../images/gamelayer_logo_sm.png'
                 <li><a href="#" onclick="window.location.href='https://gamelayer.io/#solutions'; return false;" aria-label="Customer success stories and case studies">References</a></li>
                 <li><a href="#" onclick="window.location.href='https://gamelayer.io/#pricing'; return false;" aria-label="Gamification platform pricing plans">Pricing</a></li>
                 <li><a href="/blog" aria-label="Gamification insights and strategies">Insights</a></li>
+                <li><a href="https://gl-assets.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="GameLayer demo">Demo</a></li>
                 <li><a href="/api-docs" aria-label="GameLayer API documentation">API</a></li>
             </ul>
         </div>
@@ -27,6 +28,7 @@ import GameLayerLogo from '../images/gamelayer_logo_sm.png'
                 <li><a href="#" onclick="window.location.href='https://gamelayer.io/#solutions'; return false;" aria-label="Customer success stories and case studies">References</a></li>
                 <li><a href="#" onclick="window.location.href='https://gamelayer.io/#pricing'; return false;" aria-label="Gamification platform pricing plans">Pricing</a></li>
                 <li><a href="/blog" aria-label="Gamification insights and strategies">Insights</a></li>
+                <li><a href="https://gl-assets.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="GameLayer demo">Demo</a></li>
                 <li><a href="/api-docs" aria-label="GameLayer API documentation">API</a></li>
                 <li><a href="https://cms.gamelayer.co" target="_blank" rel="noopener noreferrer" class="button button-primary free-version-btn" aria-label="Sign up for GameLayer Free">Sign Up Free</a></li>
             </ul>
@@ -61,26 +63,53 @@ header{
 .navbar{
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
-    padding-top: 20px;
+    padding: 20px 0;
     min-height: 80px;
     position: relative;
-    .nav-logo{
+    
+    // Unified vertical alignment for all sections
+    > div {
         display: flex;
         align-items: center;
+        height: 100%;
+    }
+    
+    .nav-logo{
         justify-content: flex-start;
+        a{
+            display: flex;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            transform: translateY(-6px);
+        }
         img{
-            width: 180px;
+            width: 162px;
             height: auto;
+            object-fit: contain;
+            object-position: left center;
+            display: block;
+            margin: 0;
+            padding: 0;
         }
     }
+    
+    .nav-links{
+        justify-content: center;
+        ul{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            height: 100%;
+        }
+    }
+    
     .nav-cta{
         justify-content: flex-end;
-        a:not(.button){
-            transform: translateY(-5px);
-            transition: all 0.3s ease;
-        }
         
-        // Enhanced hover effects for buttons
         .free-version-btn {
             transition: all 0.3s ease;
             
@@ -90,19 +119,30 @@ header{
             }
         }
     }
+    
     ul{
         list-style: none;
-        margin: 0px;
+        margin: 0;
+        padding: 0;
         li{
             padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
         }
     }
 
     a:not(.button){
         text-decoration: none;
         color: inherit;
-        font-weight: 600;
+        font-weight: normal;
         font-size: 1.7rem;
+        line-height: 1.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
         &:hover{
             opacity: .8;
         }
@@ -111,10 +151,11 @@ header{
     // Tablet landscape (1024px and below)
     @media (max-width: 1024px) {
         .nav-logo img{
-            width: 156px;
+            width: 144px;
         }
         a:not(.button){
             font-size: 1.5rem;
+            line-height: 1.5rem;
         }
         ul li{
             padding: 0 15px;
@@ -124,10 +165,11 @@ header{
     // Tablet portrait (768px and below)
     @media (max-width: 768px) {
         .nav-logo img{
-            width: 144px;
+            width: 126px;
         }
         a:not(.button){
             font-size: 1.3rem;
+            line-height: 1.3rem;
         }
         ul li{
             padding: 0 12px;
@@ -138,13 +180,14 @@ header{
     @media (max-width: 640px) {
         grid-template-columns: 1fr auto;
         .nav-logo img{
-            width: 132px;
+            width: 108px;
         }
         .nav-links, .nav-cta{
             display: none;
         }
         a:not(.button){
             font-size: 1.2rem;
+            line-height: 1.2rem;
         }
         .menu-icon{
             display: flex;
@@ -184,7 +227,7 @@ header{
                 display: block;
                 text-decoration: none;
                 color: var(--as-black);
-                font-weight: 600;
+                font-weight: normal;
                 font-size: 1.7rem;
                 padding: 8px 0;
                 border-bottom: 1px solid #f0f0f0;
@@ -223,11 +266,8 @@ header{
         grid-template-columns: 1fr auto;
         padding-top: 15px;
         min-height: 70px;
-        .nav-logo{
-            display: flex;
-            img{
-                width: 120px;
-            }
+        .nav-logo img{
+            width: 99px;
         }
         .flex-center{
             flex-direction: column;
@@ -273,7 +313,7 @@ header{
                 display: block;
                 text-decoration: none;
                 color: var(--as-black);
-                font-weight: 600;
+                font-weight: normal;
                 font-size: 1.7rem;
                 padding: 8px 0;
                 border-bottom: 1px solid #f0f0f0;
@@ -314,7 +354,7 @@ header{
     // Very small mobile (360px and below)
     @media (max-width: 360px) {
         .nav-logo img{
-            width: 108px;
+            width: 90px;
         }
         .menu-icon{
             display: flex;
@@ -340,7 +380,4 @@ header{
     }
 }
 
-
-
-</style>
 </style>
