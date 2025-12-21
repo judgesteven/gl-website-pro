@@ -1,5 +1,6 @@
 ---
 import GameLayerLogo from '../images/gamelayer_logo_sm.png'
+import { EXTERNAL_URLS } from '../lib/external'
 ---
 
 <header>
@@ -20,7 +21,7 @@ import GameLayerLogo from '../images/gamelayer_logo_sm.png'
             </ul>
         </div>
         <div class="nav-cta flex-center gap-2">
-            <a href="https://cms.gamelayer.co" target="_blank" rel="noopener noreferrer" class="button button-primary free-version-btn" aria-label="Sign up for GameLayer Free">Sign Up Free</a>
+            <a href={EXTERNAL_URLS.CMS_DASHBOARD} target="_blank" rel="noopener noreferrer external" class="button button-primary free-version-btn" aria-label="Open GameLayer dashboard (external)">Sign Up Free</a>
         </div>
         <div class="mobile-menu">
             <ul>
@@ -30,7 +31,7 @@ import GameLayerLogo from '../images/gamelayer_logo_sm.png'
                 <li><a href="/blog" aria-label="Gamification insights and strategies">Insights</a></li>
                 <li><a href="https://gl-assets.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="GameLayer demo">Demo</a></li>
                 <li><a href="/api-docs" aria-label="GameLayer API documentation">API</a></li>
-                <li><a href="https://cms.gamelayer.co" target="_blank" rel="noopener noreferrer" class="button button-primary free-version-btn" aria-label="Sign up for GameLayer Free">Sign Up Free</a></li>
+                <li><a href={EXTERNAL_URLS.CMS_DASHBOARD} target="_blank" rel="noopener noreferrer external" class="button button-primary free-version-btn" aria-label="Open GameLayer dashboard (external)">Sign Up Free</a></li>
             </ul>
         </div>
         <div class="menu-icon">

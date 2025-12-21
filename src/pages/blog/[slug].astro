@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { getPostBySlug, blogPosts } from '../../data/blogPosts';
+import { EXTERNAL_URLS } from '../../lib/external';
 
 export async function getStaticPaths() {
 	return blogPosts.map((post) => ({
@@ -89,7 +90,7 @@ const blogPostSchema = {
 						<div class="cta-box">
 							<h2>{blogPost.ctaHeading || 'Want to add XP, challenges, and leaderboards to your app without building it from scratch?'}</h2>
 							<p set:html={blogPost.ctaDescription ? blogPost.ctaDescription.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') : 'Start using the <strong>GameLayer Gamification API</strong> today.'}></p>
-							<a href="https://cms.gamelayer.co/" target="_blank" rel="noopener noreferrer" class="button button-primary">Sign up free</a>
+							<a href={EXTERNAL_URLS.CMS_DASHBOARD} target="_blank" rel="noopener noreferrer external" class="button button-primary" aria-label="Open GameLayer dashboard (external)">Sign up free</a>
 						</div>
 					</div>
 				</div>

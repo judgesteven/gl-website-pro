@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { EXTERNAL_EMAILS } from '../lib/external';
 ---
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,7 +20,7 @@ import Footer from '../components/Footer.astro';
 					<p class="last-updated">Last updated: 01.12.25</p>
 					<p class="contact-info">Company: GameLayer Oy (Company ID 2503589-1)</p>
 					<p class="contact-info">Country: Finland</p>
-					<p class="contact-info">Email: <a href="mailto:legal@gamelayer.co">legal@gamelayer.co</a></p>
+					<p class="contact-info">Email: <a href={`mailto:${EXTERNAL_EMAILS.LEGAL}`}>{EXTERNAL_EMAILS.LEGAL}</a></p>
 					
 					<hr class="section-divider">
 					
@@ -115,7 +116,7 @@ import Footer from '../components/Footer.astro';
 						<li>Object to or restrict processing</li>
 						<li>Request data portability</li>
 					</ul>
-					<p>Requests should be directed to the relevant Customer or to <a href="mailto:legal@gamelayer.co">legal@gamelayer.co</a> where appropriate.</p>
+					<p>Requests should be directed to the relevant Customer or to <a href={`mailto:${EXTERNAL_EMAILS.LEGAL}`}>{EXTERNAL_EMAILS.LEGAL}</a> where appropriate.</p>
 					
 					<hr class="section-divider">
 					
@@ -129,7 +130,7 @@ import Footer from '../components/Footer.astro';
 						GameLayer Oy<br>
 						Company ID: 2503589-1<br>
 						Finland<br>
-						Email: <a href="mailto:legal@gamelayer.co">legal@gamelayer.co</a>
+						Email: <a href={`mailto:${EXTERNAL_EMAILS.LEGAL}`}>{EXTERNAL_EMAILS.LEGAL}</a>
 					</p>
 				</div>
 			</div>

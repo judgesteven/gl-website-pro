@@ -1,5 +1,6 @@
 ---
 import CtaImage from '../images/web-image-cta-new.png'
+import { EXTERNAL_URLS } from '../lib/external'
 ---
 
 <section>
@@ -19,7 +20,7 @@ import CtaImage from '../images/web-image-cta-new.png'
             <div class="cta">
                 <h2 class="text-xlg">Start building engagement that delivers. Today.</h2>
                 <p class="text-sm">Need help designing engagement or loyalty for your product or service? We're available if you need guidance to get the most out of GameLayer.</p>
-                <a href="https://cms.gamelayer.co" target="_blank" rel="noopener noreferrer" class="button button-primary" aria-label="Sign up for GameLayer Free">Sign Up Free</a>
+                <a href={EXTERNAL_URLS.CMS_DASHBOARD} target="_blank" rel="noopener noreferrer external" class="button button-primary" aria-label="Open GameLayer dashboard (external)">Sign Up Free</a>
             </div>
         </div>
         

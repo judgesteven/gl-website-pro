@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { EXTERNAL_EMAILS, EXTERNAL_SOCIAL } from '../lib/external';
 ---
 
 <Layout 
@@ -46,7 +47,7 @@ import Footer from '../components/Footer.astro';
 
 					<h2>Get Started</h2>
 					<p>
-						Visit <a href="/api-docs">our documentation</a> to start integrating, or <a href="mailto:contact@gamelayer.co?subject=GameLayer%3A%20General%20Enquiry">get in touch</a> to learn how GameLayer can power your next engagement strategy.
+						Visit <a href="/api-docs">our documentation</a> to start integrating, or <a href={`mailto:${EXTERNAL_EMAILS.CONTACT}?subject=GameLayer%3A%20General%20Enquiry`}>get in touch</a> to learn how GameLayer can power your next engagement strategy.
 					</p>
 				</div>
 			</div>
@@ -73,7 +74,7 @@ import Footer from '../components/Footer.astro';
 				"name": "Steven Judge"
 			},
 			"sameAs": [
-				"https://www.linkedin.com/company/gamelayer/"
+				EXTERNAL_SOCIAL.LINKEDIN
 			]
 		}
 	}

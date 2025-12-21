@@ -40,7 +40,7 @@ export const GET: APIRoute = () => {
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>${baseUrl}/_astro/gamelayer_logo_blue.BKvJnu9N.png</image:loc>
+      <image:loc>${baseUrl}/logo.png</image:loc>
       <image:title>GameLayer Logo</image:title>
       <image:caption>GameLayer - Gamification API Platform</image:caption>
     </image:image>

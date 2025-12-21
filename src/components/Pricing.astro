@@ -1,4 +1,5 @@
 ---
+import { EXTERNAL_EMAILS } from '../lib/external';
 
 const pricingPlans = [
   {
@@ -108,7 +109,7 @@ const pricingPlans = [
                     
                     <div class="pricing-cta">
                         {plan.name === "Enterprise" ? (
-                            <a href="mailto:sales@gamelayer.co?subject=GameLayer%3A%20Enterprise%20Enquiry" target="_self" class={`button button-enterprise ${plan.popular ? 'button-primary' : 'button-secondary'}`}>
+                            <a href={`mailto:${EXTERNAL_EMAILS.SALES}?subject=GameLayer%3A%20Enterprise%20Enquiry`} target="_self" class={`button button-enterprise ${plan.popular ? 'button-primary' : 'button-secondary'}`}>
                                 {plan.buttonText}
                             </a>
                         ) : (

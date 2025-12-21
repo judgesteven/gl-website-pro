@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { getAllPosts } from '../data/blogPosts';
+import { EXTERNAL_URLS } from '../lib/external';
 
 const POSTS_PER_PAGE = 6;
 const allPosts = getAllPosts();
@@ -92,7 +93,7 @@ const formatDate = (dateString: string) => {
 				<div class="blog-cta-content text-center max-w-lg m-auto">
 					<h2 class="text-lg">Ready to take user engagement to the next level?</h2>
 					<p class="text-sm">Start implementing gamification in your apps and digital services today. Sign up for free and get started in minutes.</p>
-					<a href="https://cms.gamelayer.co/" target="_blank" rel="noopener noreferrer" class="button button-primary">Sign Up Free</a>
+					<a href={EXTERNAL_URLS.CMS_DASHBOARD} target="_blank" rel="noopener noreferrer external" class="button button-primary" aria-label="Open GameLayer dashboard (external)">Sign Up Free</a>
 				</div>
 			</div>
 		</section>

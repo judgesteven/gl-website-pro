@@ -9,6 +9,7 @@ import Reviews from '../components/Reviews.astro';
 import Pricing from '../components/Pricing.astro';
 import CallToAction from '../components/CallToAction.astro';
 import Footer from '../components/Footer.astro';
+import { EXTERNAL_EMAILS, EXTERNAL_SOCIAL } from '../lib/external';
 ---
 
 <Layout 
@@ -35,7 +36,7 @@ import Footer from '../components/Footer.astro';
 		"@type": "Organization",
 		"name": "GameLayer",
 		"url": "https://gamelayer.io",
-		"logo": "https://gamelayer.io/_astro/gamelayer_logo_blue.BKvJnu9N.png",
+		"logo": "https://gamelayer.io/logo.png",
 		"description": "The leading gamification API platform for user engagement, retention, and customer loyalty",
 		"foundingDate": "2012",
 		"address": {
@@ -45,11 +46,13 @@ import Footer from '../components/Footer.astro';
 		},
 		"contactPoint": {
 			"@type": "ContactPoint",
-			"email": "contact@gamelayer.co",
+			"email": EXTERNAL_EMAILS.CONTACT,
 			"contactType": "customer service"
 		},
 		"sameAs": [
-			"https://gamelayer.io"
+			EXTERNAL_SOCIAL.LINKEDIN,
+			EXTERNAL_SOCIAL.TWITTER,
+			EXTERNAL_SOCIAL.INSTAGRAM
 		],
 		"offers": [
 			{
