@@ -12,12 +12,10 @@ import { EXTERNAL_URLS } from '../lib/external'
         </div>
         <div class="nav-links">
             <ul class="flex-center">
-                <li><a href="#" onclick="window.location.href='https://gamelayer.io/#features'; return false;" aria-label="Gamification features and mechanics">Features</a></li>
-                <li><a href="#" onclick="window.location.href='https://gamelayer.io/#solutions'; return false;" aria-label="Customer success stories and case studies">References</a></li>
                 <li><a href="#" onclick="window.location.href='https://gamelayer.io/#pricing'; return false;" aria-label="Gamification platform pricing plans">Pricing</a></li>
-                <li><a href="/blog" aria-label="Gamification insights and strategies">Insights</a></li>
-                <li><a href="https://gl-assets.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="GameLayer demo">Demo</a></li>
                 <li><a href="/api-docs" aria-label="GameLayer API documentation">API</a></li>
+                <li><a href="https://gl-assets.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="GameLayer demo">Demo</a></li>
+                <li><a href="/blog" aria-label="Gamification insights and strategies">Blog</a></li>
             </ul>
         </div>
         <div class="nav-cta flex-center gap-2">
@@ -25,12 +23,10 @@ import { EXTERNAL_URLS } from '../lib/external'
         </div>
         <div class="mobile-menu">
             <ul>
-                <li><a href="#" onclick="window.location.href='https://gamelayer.io/#features'; return false;" aria-label="Gamification features and mechanics">Features</a></li>
-                <li><a href="#" onclick="window.location.href='https://gamelayer.io/#solutions'; return false;" aria-label="Customer success stories and case studies">References</a></li>
                 <li><a href="#" onclick="window.location.href='https://gamelayer.io/#pricing'; return false;" aria-label="Gamification platform pricing plans">Pricing</a></li>
-                <li><a href="/blog" aria-label="Gamification insights and strategies">Insights</a></li>
-                <li><a href="https://gl-assets.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="GameLayer demo">Demo</a></li>
                 <li><a href="/api-docs" aria-label="GameLayer API documentation">API</a></li>
+                <li><a href="https://gl-assets.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="GameLayer demo">Demo</a></li>
+                <li><a href="/blog" aria-label="Gamification insights and strategies">Blog</a></li>
                 <li><a href={EXTERNAL_URLS.CMS_DASHBOARD} target="_blank" rel="noopener noreferrer external" class="button button-primary free-version-btn" aria-label="Open GameLayer dashboard (external)">Sign Up Free</a></li>
             </ul>
         </div>
@@ -62,10 +58,10 @@ header{
 }
 
 .navbar{
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr auto auto;
     align-items: center;
-    padding: 20px 0;
-    min-height: 80px;
+    padding: 12px 0;
+    min-height: 60px;
     position: relative;
     
     // Unified vertical alignment for all sections
@@ -85,7 +81,7 @@ header{
             transform: translateY(-6px);
         }
         img{
-            width: 162px;
+            width: 200px;
             height: auto;
             object-fit: contain;
             object-position: left center;
@@ -96,11 +92,11 @@ header{
     }
     
     .nav-links{
-        justify-content: center;
+        justify-content: flex-end;
         ul{
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-end;
             margin: 0;
             padding: 0;
             list-style: none;
@@ -110,6 +106,7 @@ header{
     
     .nav-cta{
         justify-content: flex-end;
+        margin-left: 2rem;
         
         .free-version-btn {
             transition: all 0.3s ease;
@@ -126,7 +123,7 @@ header{
         margin: 0;
         padding: 0;
         li{
-            padding: 0 20px;
+            padding: 0 12px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -137,7 +134,7 @@ header{
     a:not(.button){
         text-decoration: none;
         color: inherit;
-        font-weight: normal;
+        font-weight: 600;
         font-size: 1.7rem;
         line-height: 1.7rem;
         display: flex;
@@ -152,28 +149,28 @@ header{
     // Tablet landscape (1024px and below)
     @media (max-width: 1024px) {
         .nav-logo img{
-            width: 144px;
+            width: 180px;
         }
         a:not(.button){
             font-size: 1.5rem;
             line-height: 1.5rem;
         }
         ul li{
-            padding: 0 15px;
+            padding: 0 10px;
         }
     }
 
     // Tablet portrait (768px and below)
     @media (max-width: 768px) {
         .nav-logo img{
-            width: 126px;
+            width: 160px;
         }
         a:not(.button){
             font-size: 1.3rem;
             line-height: 1.3rem;
         }
         ul li{
-            padding: 0 12px;
+            padding: 0 8px;
         }
     }
 
@@ -181,7 +178,7 @@ header{
     @media (max-width: 640px) {
         grid-template-columns: 1fr auto;
         .nav-logo img{
-            width: 108px;
+            width: 140px;
         }
         .nav-links, .nav-cta{
             display: none;
@@ -228,7 +225,7 @@ header{
                 display: block;
                 text-decoration: none;
                 color: var(--as-black);
-                font-weight: normal;
+                font-weight: 600;
                 font-size: 1.7rem;
                 padding: 8px 0;
                 border-bottom: 1px solid #f0f0f0;
@@ -268,7 +265,7 @@ header{
         padding-top: 15px;
         min-height: 70px;
         .nav-logo img{
-            width: 99px;
+            width: 130px;
         }
         .flex-center{
             flex-direction: column;
@@ -314,7 +311,7 @@ header{
                 display: block;
                 text-decoration: none;
                 color: var(--as-black);
-                font-weight: normal;
+                font-weight: 600;
                 font-size: 1.7rem;
                 padding: 8px 0;
                 border-bottom: 1px solid #f0f0f0;
@@ -355,7 +352,7 @@ header{
     // Very small mobile (360px and below)
     @media (max-width: 360px) {
         .nav-logo img{
-            width: 90px;
+            width: 120px;
         }
         .menu-icon{
             display: flex;
