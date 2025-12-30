@@ -313,11 +313,17 @@ const mechanics = utils.mechanics.map((item) => ({
                 border-radius: 8px;
                 padding: 1.5rem;
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-                transition: transform 0.2s ease, box-shadow 0.2s ease;
+                transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
+                border: 2px solid transparent;
+                position: relative;
                 
                 &:hover{
-                    transform: translateY(-2px);
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+                    transform: translateY(-2px) rotate(-1deg);
+                    box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4),
+                                0 0 0 2px rgba(255, 107, 53, 0.2);
+                    border: 2px solid transparent;
+                    background: linear-gradient(#fff, #fff) padding-box,
+                                linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #FFD23F 100%) border-box;
                 }
                 
                 .mechanic-icon{
