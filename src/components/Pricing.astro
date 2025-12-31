@@ -169,26 +169,16 @@ const pricingPlans = [
         width: 100%;
         max-width: 240px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        border: 2px solid transparent;
     }
 
     .pricing-card:hover {
-        transform: translateY(-4px) rotate(-1deg);
-        box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4),
-                    0 0 0 2px rgba(59, 130, 246, 0.2);
-        border: 2px solid transparent;
-        background: linear-gradient(white, white) padding-box,
-                    linear-gradient(135deg, #3B82F6 0%, #2563EB 50%, #1D4ED8 100%) border-box;
+        transform: translateY(-4px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     }
 
     .pricing-card.popular {
-        border: 2px solid var(--as-accent);
-    }
-    
-    .pricing-card.popular:hover {
-        border: 2px solid transparent;
-        background: linear-gradient(white, white) padding-box,
-                    linear-gradient(135deg, #3B82F6 0%, #2563EB 50%, #1D4ED8 100%) border-box;
+        border-color: var(--as-accent);
+        box-shadow: 0 0 0 1px var(--as-accent);
     }
 
     .popular-badge {
