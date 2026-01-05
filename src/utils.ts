@@ -80,9 +80,7 @@ const props = {
         },
         {
             title: `Step-Up | Wellbeing`,
-            desc: `GameLayer powers Step-Up, a movement-based engagement experience that encourages everyday physical activity across communities and public health programmes.
-
-Participants complete daily and weekly challenges, track progress, and receive recognition through achievements and rewards — supporting healthier habits through consistency rather than intensity.`
+            desc: `GameLayer powers Step-Up, a movement-based engagement experience that encourages everyday physical activity across communities and public health programmes. Participants complete daily and weekly challenges, track progress, and receive recognition through achievements and rewards — supporting healthier habits through consistency rather than intensity.`
         },
     ],
     reviews: [
