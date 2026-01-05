@@ -78,6 +78,12 @@ const props = {
             title: `Reima | Kids Clothing`,
             desc: `GameLayer brings the Reima app to life with a learning adventure powered by collaborative physical activity. The experience centres on a character on a journey around the world, where kids choose the next destination and learn fun facts about it. To reach the destination and unlock achievements, kids have to get active while wearing an activity tracker, helping the character travel on his journey.`
         },
+        {
+            title: `Step-Up | Wellbeing`,
+            desc: `GameLayer powers Step-Up, a movement-based engagement experience that encourages everyday physical activity across communities and public health programmes.
+
+Participants complete daily and weekly challenges, track progress, and receive recognition through achievements and rewards — supporting healthier habits through consistency rather than intensity.`
+        },
     ],
     reviews: [
         {
