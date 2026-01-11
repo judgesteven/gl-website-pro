@@ -1,0 +1,592 @@
+---
+// Agent Test Page - Internal testing only
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameLayer Sales Agent — Test Console</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .header {
+      background: #1a1a1a;
+      color: white;
+      padding: 20px;
+    }
+
+    .header h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .header .warning {
+      font-size: 12px;
+      color: #ffd700;
+      margin-top: 8px;
+    }
+
+    .status {
+      padding: 16px 20px;
+      background: #f9f9f9;
+      border-bottom: 1px solid #e0e0e0;
+      font-size: 14px;
+    }
+
+    .status-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .status-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .status-label {
+      font-weight: 600;
+      color: #666;
+      min-width: 120px;
+    }
+
+    .status-value {
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-size: 12px;
+      color: #333;
+      word-break: break-all;
+    }
+
+    .status-value.none {
+      color: #999;
+      font-style: italic;
+    }
+
+    .button {
+      background: #0070f3;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .button:hover:not(:disabled) {
+      background: #0051cc;
+    }
+
+    .button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .button.secondary {
+      background: #666;
+    }
+
+    .button.secondary:hover:not(:disabled) {
+      background: #444;
+    }
+
+    .transcript {
+      padding: 20px;
+      min-height: 300px;
+      max-height: 500px;
+      overflow-y: auto;
+      background: #fafafa;
+    }
+
+    .message {
+      margin-bottom: 16px;
+      padding: 12px;
+      border-radius: 6px;
+    }
+
+    .message.user {
+      background: #e3f2fd;
+      margin-left: 40px;
+    }
+
+    .message.agent {
+      background: #f1f8e9;
+      margin-right: 40px;
+    }
+
+    .message-role {
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 4px;
+    }
+
+    .message-content {
+      color: #333;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .message.error {
+      background: #ffebee;
+      border-left: 3px solid #f44336;
+    }
+
+    .input-area {
+      padding: 20px;
+      border-top: 1px solid #e0e0e0;
+      background: white;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .input-box {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      font-family: inherit;
+    }
+
+    .input-box:focus {
+      outline: none;
+      border-color: #0070f3;
+    }
+
+    .send-button {
+      padding: 12px 24px;
+      background: #0070f3;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .send-button:hover:not(:disabled) {
+      background: #0051cc;
+    }
+
+    .send-button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .empty-state {
+      text-align: center;
+      color: #999;
+      padding: 40px;
+      font-style: italic;
+    }
+
+    #loadStatusRow {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>GameLayer Sales Agent — Test Console</h1>
+      <div class="warning">⚠️ For internal testing. Do not link publicly.</div>
+    </div>
+
+    <div class="status">
+      <div class="status-row">
+        <span class="status-label">Conversation ID:</span>
+        <span class="status-value" id="conversationId">none</span>
+        <button class="button secondary" id="copyConversationId">Copy</button>
+      </div>
+      <div class="status-row">
+        <span class="status-label">Last Request ID:</span>
+        <span class="status-value" id="requestId">none</span>
+      </div>
+      <div class="status-row">
+        <button class="button" id="resetButton">Reset conversation</button>
+        <button class="button secondary" id="loadFromSupabaseButton" disabled>Load from Supabase</button>
+        <button class="button secondary" id="clearTranscriptButton">Clear transcript</button>
+      </div>
+      <div class="status-row" id="loadStatusRow" style="display: none;">
+        <span class="status-value" id="loadStatus" style="font-size: 12px; color: #666;"></span>
+      </div>
+    </div>
+
+    <div class="transcript" id="transcript">
+      <div class="empty-state">No messages yet. Start a conversation below.</div>
+    </div>
+
+    <div class="input-area">
+      <div class="input-row">
+        <input
+          type="text"
+          class="input-box"
+          id="messageInput"
+          placeholder="Type your message..."
+          autocomplete="off"
+        />
+        <button class="send-button" id="sendButton">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // localStorage keys
+    const STORAGE_CONVERSATION_ID = 'gl_agent_conversationId';
+
+    // DOM elements
+    const conversationIdEl = document.getElementById('conversationId');
+    const requestIdEl = document.getElementById('requestId');
+    const transcriptEl = document.getElementById('transcript');
+    const messageInputEl = document.getElementById('messageInput');
+    const sendButtonEl = document.getElementById('sendButton');
+    const resetButtonEl = document.getElementById('resetButton');
+    const copyConversationIdEl = document.getElementById('copyConversationId');
+    const loadFromSupabaseButtonEl = document.getElementById('loadFromSupabaseButton');
+    const clearTranscriptButtonEl = document.getElementById('clearTranscriptButton');
+    const loadStatusRowEl = document.getElementById('loadStatusRow');
+    const loadStatusEl = document.getElementById('loadStatus');
+
+    // State
+    let conversationId = null;
+    let transcript = []; // Ephemeral - not persisted to localStorage
+
+    // Update load button state
+    function updateLoadButtonState() {
+      if (loadFromSupabaseButtonEl) {
+        loadFromSupabaseButtonEl.disabled = !conversationId;
+      }
+    }
+
+    // Load from localStorage (only conversationId, not transcript)
+    function loadFromStorage() {
+      // Check for conversationId in URL query params first
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlConversationId = urlParams.get('conversationId');
+      
+      if (urlConversationId) {
+        // Use conversationId from URL and save to localStorage
+        conversationId = urlConversationId;
+        localStorage.setItem(STORAGE_CONVERSATION_ID, conversationId);
+        conversationIdEl.textContent = conversationId;
+        conversationIdEl.classList.remove('none');
+      } else {
+        // Fall back to localStorage
+        const storedId = localStorage.getItem(STORAGE_CONVERSATION_ID);
+        
+        if (storedId) {
+          conversationId = storedId;
+          conversationIdEl.textContent = conversationId;
+          conversationIdEl.classList.remove('none');
+        } else {
+          conversationIdEl.textContent = 'none';
+          conversationIdEl.classList.add('none');
+        }
+      }
+
+      updateLoadButtonState();
+
+      // Transcript is always empty on page load (ephemeral)
+      transcript = [];
+      renderTranscript();
+    }
+
+    // Save to localStorage (only conversationId, not transcript)
+    function saveToStorage() {
+      if (conversationId) {
+        localStorage.setItem(STORAGE_CONVERSATION_ID, conversationId);
+      } else {
+        localStorage.removeItem(STORAGE_CONVERSATION_ID);
+      }
+      // Transcript is NOT persisted - it's ephemeral
+    }
+
+    // Render transcript
+    function renderTranscript() {
+      if (transcript.length === 0) {
+        transcriptEl.innerHTML = '<div class="empty-state">No messages yet. Start a conversation below.</div>';
+        return;
+      }
+
+      transcriptEl.innerHTML = transcript.map(msg => {
+        if (msg.role === 'error') {
+          return `
+            <div class="message error">
+              <div class="message-role">Error</div>
+              <div class="message-content">${escapeHtml(msg.content)}</div>
+            </div>
+          `;
+        }
+        const roleClass = msg.role === 'user' ? 'user' : 'agent';
+        const roleLabel = msg.role === 'user' ? 'You' : 'Agent';
+        return `
+          <div class="message ${roleClass}">
+            <div class="message-role">${escapeHtml(roleLabel)}</div>
+            <div class="message-content">${escapeHtml(msg.content)}</div>
+          </div>
+        `;
+      }).join('');
+      
+      // Scroll to bottom
+      transcriptEl.scrollTop = transcriptEl.scrollHeight;
+    }
+
+    // Escape HTML
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Add message to transcript
+    function addMessage(role, content) {
+      transcript.push({ role, content });
+      // Don't save transcript to storage - it's ephemeral
+      renderTranscript();
+    }
+
+    // Send message
+    async function sendMessage() {
+      const message = messageInputEl.value.trim();
+      if (!message) return;
+
+      // Disable input
+      messageInputEl.disabled = true;
+      sendButtonEl.disabled = true;
+
+      // Add user message to transcript
+      addMessage('user', message);
+
+      // Clear input
+      messageInputEl.value = '';
+
+      try {
+        // Prepare request body
+        const requestBody = { message };
+        if (conversationId) {
+          requestBody.conversationId = conversationId;
+        }
+
+        // Send request
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(requestBody),
+        });
+
+        const data = await response.json();
+
+        // Update requestId
+        if (data.requestId) {
+          requestIdEl.textContent = data.requestId;
+        }
+
+        if (!response.ok) {
+          // Error response
+          const errorMsg = data.error || `HTTP ${response.status}: ${response.statusText}`;
+          addMessage('error', errorMsg);
+        } else {
+          // Success response
+          if (data.conversationId && data.conversationId !== conversationId) {
+            conversationId = data.conversationId;
+            conversationIdEl.textContent = conversationId;
+            conversationIdEl.classList.remove('none');
+            updateLoadButtonState();
+            saveToStorage(); // Save conversationId only
+          }
+
+          if (data.reply) {
+            addMessage('assistant', data.reply);
+          } else {
+            addMessage('error', 'No reply in response');
+          }
+        }
+      } catch (error) {
+        // Network or other error
+        const errorMsg = error instanceof Error ? error.message : 'Unknown error';
+        addMessage('error', `Request failed: ${errorMsg}`);
+      } finally {
+        // Re-enable input
+        messageInputEl.disabled = false;
+        sendButtonEl.disabled = false;
+        messageInputEl.focus();
+      }
+    }
+
+    // Load from Supabase
+    async function loadFromSupabase() {
+      if (!conversationId) return;
+
+      // Disable button while loading
+      if (loadFromSupabaseButtonEl) {
+        loadFromSupabaseButtonEl.disabled = true;
+        loadFromSupabaseButtonEl.textContent = 'Loading...';
+      }
+
+      try {
+        const response = await fetch(`/api/conversation?conversationId=${encodeURIComponent(conversationId)}`);
+        const data = await response.json();
+
+        if (!response.ok) {
+          // Error response
+          const errorMsg = data.error || `HTTP ${response.status}: ${response.statusText}`;
+          if (data.details) {
+            addMessage('error', `${errorMsg}: ${data.details}`);
+          } else {
+            addMessage('error', errorMsg);
+          }
+        } else {
+          // Success - replace transcript with messages from Supabase
+          if (Array.isArray(data.messages) && data.messages.length > 0) {
+            const newTranscript = data.messages.map((msg: any) => ({
+              role: msg.role,
+              content: msg.content
+            }));
+            
+            // Check if transcript is identical to current
+            const isIdentical = transcript.length === newTranscript.length &&
+              transcript.every((msg, idx) => 
+                msg.role === newTranscript[idx].role && 
+                msg.content === newTranscript[idx].content
+              );
+            
+            transcript = newTranscript;
+            renderTranscript();
+            
+            // Show status message
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-US', { hour12: false });
+            const messageCount = data.messages.length;
+            
+            if (loadStatusRowEl && loadStatusEl) {
+              if (isIdentical) {
+                loadStatusEl.textContent = `Loaded ${messageCount} messages (no changes) at ${timeStr}`;
+              } else {
+                loadStatusEl.textContent = `Loaded ${messageCount} messages from Supabase at ${timeStr}`;
+              }
+              loadStatusRowEl.style.display = 'flex';
+            }
+          } else {
+            addMessage('error', 'No messages found in Supabase for this conversation');
+            // Hide status if shown
+            if (loadStatusRowEl) {
+              loadStatusRowEl.style.display = 'none';
+            }
+          }
+        }
+      } catch (error) {
+        // Network or other error
+        const errorMsg = error instanceof Error ? error.message : 'Unknown error';
+        addMessage('error', `Failed to load from Supabase: ${errorMsg}`);
+        // Hide status if shown
+        if (loadStatusRowEl) {
+          loadStatusRowEl.style.display = 'none';
+        }
+      } finally {
+        // Re-enable button
+        if (loadFromSupabaseButtonEl) {
+          loadFromSupabaseButtonEl.disabled = false;
+          loadFromSupabaseButtonEl.textContent = 'Load from Supabase';
+        }
+      }
+    }
+
+    // Clear transcript (UI only, does not reset conversationId)
+    function clearTranscript() {
+      transcript = [];
+      renderTranscript();
+      // Hide load status if shown
+      if (loadStatusRowEl) {
+        loadStatusRowEl.style.display = 'none';
+      }
+    }
+
+    // Reset conversation
+    function resetConversation() {
+      if (confirm('Reset conversation? This will clear the conversation ID and transcript.')) {
+        conversationId = null;
+        transcript = [];
+        conversationIdEl.textContent = 'none';
+        conversationIdEl.classList.add('none');
+        requestIdEl.textContent = 'none';
+        updateLoadButtonState();
+        localStorage.removeItem(STORAGE_CONVERSATION_ID);
+        renderTranscript();
+        // Hide load status if shown
+        if (loadStatusRowEl) {
+          loadStatusRowEl.style.display = 'none';
+        }
+      }
+    }
+
+    // Copy conversation ID
+    function copyConversationId() {
+      if (conversationId) {
+        navigator.clipboard.writeText(conversationId).then(() => {
+          const originalText = copyConversationIdEl.textContent;
+          copyConversationIdEl.textContent = 'Copied!';
+          setTimeout(() => {
+            copyConversationIdEl.textContent = originalText;
+          }, 2000);
+        }).catch(err => {
+          console.error('Failed to copy:', err);
+        });
+      }
+    }
+
+    // Event listeners
+    sendButtonEl.addEventListener('click', sendMessage);
+    resetButtonEl.addEventListener('click', resetConversation);
+    copyConversationIdEl.addEventListener('click', copyConversationId);
+    if (loadFromSupabaseButtonEl) {
+      loadFromSupabaseButtonEl.addEventListener('click', loadFromSupabase);
+    }
+    if (clearTranscriptButtonEl) {
+      clearTranscriptButtonEl.addEventListener('click', clearTranscript);
+    }
+    messageInputEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    // Initialize
+    loadFromStorage();
+    messageInputEl.focus();
+  </script>
+</body>
+</html>
+

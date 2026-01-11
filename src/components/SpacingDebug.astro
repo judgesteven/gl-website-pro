@@ -1,0 +1,95 @@
+---
+---
+
+<div id="__spacing_debug__" style="position:fixed !important;left:12px !important;top:60px !important;z-index:2147483647 !important;background:#000 !important;color:#fff !important;padding:12px 14px !important;border-radius:12px !important;font:12px/1.35 ui-monospace, SFMono-Regular, Menlo, monospace !important;box-shadow:0 12px 30px rgba(0,0,0,.25) !important;max-width:420px !important;display:block !important;visibility:visible !important;opacity:1 !important;">
+  <div style="font-weight:900;margin-bottom:8px;">SPACING DEBUG</div>
+  <pre id="__spacing_debug_pre__" style="margin:0;white-space:pre-wrap;color:#7CFF7C;">Loading…</pre>
+</div>
+
+<script is:inline>
+  console.log('SpacingDebug script loaded');
+  
+  function run() {
+    console.log('SpacingDebug run() executing');
+    const pre = document.getElementById('__spacing_debug_pre__');
+    const box = document.getElementById('__spacing_debug__');
+    if (!pre) {
+      console.error('__spacing_debug_pre__ not found');
+      return;
+    }
+    if (!box) {
+      console.error('__spacing_debug__ box not found');
+      return;
+    }
+    
+    try {
+      const root = getComputedStyle(document.documentElement);
+      const token = (root.getPropertyValue('--gl-section-padding-standard') || '').trim();
+      
+      const powered = document.querySelector('#powered-by');
+      const pricing = document.querySelector('.pricing-section');
+      const poweredHeader = document.querySelector('#powered-by .powered-by-header');
+      const pricingHeader = document.querySelector('.pricing-section .pricing-header');
+      
+      function cs(el) {
+        return el ? getComputedStyle(el) : null;
+      }
+      
+      const poweredPT = powered ? cs(powered).paddingTop : 'MISSING';
+      const poweredPB = powered ? cs(powered).paddingBottom : 'MISSING';
+      const pricingPT = pricing ? cs(pricing).paddingTop : 'MISSING';
+      const pricingPB = pricing ? cs(pricing).paddingBottom : 'MISSING';
+      
+      const pHdrMT = poweredHeader ? cs(poweredHeader).marginTop : 'MISSING';
+      const pHdrMB = poweredHeader ? cs(poweredHeader).marginBottom : 'MISSING';
+      const rHdrMT = pricingHeader ? cs(pricingHeader).marginTop : 'MISSING';
+      const rHdrMB = pricingHeader ? cs(pricingHeader).marginBottom : 'MISSING';
+      
+      function gap(sectionEl, headerEl) {
+        if (!sectionEl || !headerEl) return 'MISSING';
+        try {
+          const s = sectionEl.getBoundingClientRect();
+          const h = headerEl.getBoundingClientRect();
+          return Math.max(0, Math.round(h.top - s.top)) + 'px';
+        } catch(e) {
+          return 'ERROR';
+        }
+      }
+      
+      const poweredGap = gap(powered, poweredHeader);
+      const pricingGap = gap(pricing, pricingHeader);
+      
+      let out = '';
+      out += 'token: ' + (token || '(missing)') + '\n';
+      out += '\n';
+      out += 'POWERED padTop/Bot: ' + poweredPT + ' / ' + poweredPB + '\n';
+      out += 'PRICING padTop/Bot: ' + pricingPT + ' / ' + pricingPB + '\n';
+      out += '\n';
+      out += 'POWERED hdr mTop/Bot: ' + pHdrMT + ' / ' + pHdrMB + '\n';
+      out += 'PRICING hdr mTop/Bot: ' + rHdrMT + ' / ' + rHdrMB + '\n';
+      out += '\n';
+      out += 'POWERED gap: ' + poweredGap + '\n';
+      out += 'PRICING gap: ' + pricingGap + '\n';
+      
+      pre.textContent = out;
+      console.log('SpacingDebug updated:', out);
+    } catch(e) {
+      pre.textContent = 'ERROR: ' + e.message;
+      console.error('SpacingDebug error:', e);
+    }
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+  window.addEventListener('load', run);
+  setTimeout(run, 100);
+  setTimeout(run, 300);
+  setTimeout(run, 600);
+  setTimeout(run, 1000);
+  setTimeout(run, 2000);
+</script>
+
+

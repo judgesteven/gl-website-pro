@@ -1,380 +1,378 @@
 ---
+
 import GameLayerLogo from '../images/gamelayer_logo_sm.png'
 import { EXTERNAL_URLS } from '../lib/external'
 ---
 
-<header>
-    <nav class="navbar grid container">
-        <div class="nav-logo">
-            <a href="/" aria-label="GameLayer - Gamification API Platform">
-                <img src={GameLayerLogo.src} alt="GameLayer - Gamification API platform for user engagement and customer loyalty" width="150">
+<header class="gl-header" data-gl="header">
+    <div class="gl-container">
+        <div class="header-inner">
+            <a class="gl-header__brand" href="/" aria-label="GameLayer - Gamification API Platform" data-gl="brand">
+                <img class="gl-header__logo" src={GameLayerLogo.src} alt="GameLayer - Gamification API platform for user engagement and customer loyalty" width="150" height="40" loading="eager" fetchpriority="high" decoding="async">
             </a>
+
+            <nav class="gl-header__nav nav-desktop" aria-label="Primary" data-gl="nav">
+                <a href="#pricing" aria-label="Gamification platform pricing plans">Pricing</a>
+                <a href="/api-docs" aria-label="GameLayer API documentation">API</a>
+                <a href="https://gl-assets.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="GameLayer demo">Demo</a>
+                <a href="/blog" aria-label="Gamification insights and strategies">Blog</a>
+            </nav>
+
+            <div class="gl-header__cta" data-gl="cta">
+                <button class="nav-toggle" type="button" aria-label="Open menu">
+                    <span class="hamburger" aria-hidden="true"><span></span></span>
+                </button>
+                
+                <a class="button button-primary cta-desktop" href={EXTERNAL_URLS.CMS_DASHBOARD} target="_blank" rel="noopener noreferrer external" aria-label="Open GameLayer dashboard (external)">Sign Up Free</a>
+            </div>
         </div>
-        <div class="nav-links">
-            <ul class="flex-center">
-                <li><a href="#" onclick="window.location.href='https://gamelayer.io/#pricing'; return false;" aria-label="Gamification platform pricing plans">Pricing</a></li>
-                <li><a href="/api-docs" aria-label="GameLayer API documentation">API</a></li>
-                <li><a href="https://gl-assets.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="GameLayer demo">Demo</a></li>
-                <li><a href="/blog" aria-label="Gamification insights and strategies">Blog</a></li>
-            </ul>
+    </div>
+
+    <div id="mobile-nav" class="nav-mobile" hidden>
+        <div class="nav-mobile-inner container">
+            <a href="#pricing" aria-label="Gamification platform pricing plans">Pricing</a>
+            <a href="/api-docs" aria-label="GameLayer API documentation">API</a>
+            <a href="https://gl-assets.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="GameLayer demo">Demo</a>
+            <a href="/blog" aria-label="Gamification insights and strategies">Blog</a>
+            <a class="button button-primary" href={EXTERNAL_URLS.CMS_DASHBOARD} target="_blank" rel="noopener noreferrer external" aria-label="Open GameLayer dashboard (external)">Sign Up Free</a>
         </div>
-        <div class="nav-cta flex-center gap-2">
-            <a href={EXTERNAL_URLS.CMS_DASHBOARD} target="_blank" rel="noopener noreferrer external" class="button button-primary free-version-btn" aria-label="Open GameLayer dashboard (external)">Sign Up Free</a>
-        </div>
-        <div class="mobile-menu">
-            <ul>
-                <li><a href="#" onclick="window.location.href='https://gamelayer.io/#pricing'; return false;" aria-label="Gamification platform pricing plans">Pricing</a></li>
-                <li><a href="/api-docs" aria-label="GameLayer API documentation">API</a></li>
-                <li><a href="https://gl-assets.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="GameLayer demo">Demo</a></li>
-                <li><a href="/blog" aria-label="Gamification insights and strategies">Blog</a></li>
-                <li><a href={EXTERNAL_URLS.CMS_DASHBOARD} target="_blank" rel="noopener noreferrer external" class="button button-primary free-version-btn" aria-label="Open GameLayer dashboard (external)">Sign Up Free</a></li>
-            </ul>
-        </div>
-        <div class="menu-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-              <path fill-rule="evenodd" d="M3 9a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 9Zm0 6.75a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
-            </svg>                  
-        </div>
-    </nav>
+    </div>
 </header>
 
-
-<script>
-
-    const menu = document.querySelector('.menu-icon') as any
-
-    menu.addEventListener('click', () => {
-        document.querySelectorAll('.mobile-menu').forEach(item => {
-            item.classList.toggle('open')
-        })
-    })
-
+<script defer>
+    (function() {
+        const toggle = document.querySelector('.nav-toggle') as HTMLButtonElement | null;
+        const mobileNav = document.getElementById('mobile-nav') as HTMLElement | null;
+        const header = document.querySelector('.gl-header') as HTMLElement | null;
+        
+        if (!toggle || !mobileNav) return;
+        
+        function closeMenu() {
+            if (!mobileNav || !toggle) return;
+            mobileNav.hidden = true;
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-label', 'Open menu');
+            if (header) {
+                header.classList.remove('menu-open');
+            }
+        }
+        
+        function openMenu() {
+            if (!mobileNav || !toggle) return;
+            mobileNav.hidden = false;
+            toggle.setAttribute('aria-expanded', 'true');
+            toggle.setAttribute('aria-label', 'Close menu');
+            if (header) {
+                header.classList.add('menu-open');
+            }
+        }
+        
+        toggle.addEventListener('click', function() {
+            if (mobileNav && mobileNav.hidden) {
+                openMenu();
+            } else {
+                closeMenu();
+            }
+        });
+        
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileNav && !mobileNav.hidden && toggle) {
+                closeMenu();
+                toggle.focus();
+            }
+        });
+        
+        // Close when clicking a link
+        const mobileLinks = mobileNav.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+        
+        // Close when clicking outside (optional)
+        document.addEventListener('click', function(e) {
+            if (mobileNav && toggle && !mobileNav.hidden && e.target) {
+                const target = e.target as Node;
+                if (!mobileNav.contains(target) && !toggle.contains(target)) {
+                    closeMenu();
+                }
+            }
+        });
+    })();
 </script>
 
 <style lang="scss"> 
 
-header{
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+.gl-header {
+    display: block !important;     /* prevents global header{display:flex} from taking over */
+    height: auto !important;
+    background: var(--surface, #ffffff);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 
-.navbar{
-    grid-template-columns: 1fr auto auto;
+/* Header container: no vertical padding (inherits horizontal padding from .gl-container) */
+.gl-header .gl-container {
+    padding-block: 0 !important;
+}
+
+.header-inner {
+    min-height: 64px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    padding: 12px 0;
-    min-height: 60px;
+    column-gap: 24px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.gl-header__brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+.gl-header__logo {
+    height: 40px;
+    width: auto;
+    max-height: none;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.gl-header__nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    justify-content: center;
+}
+
+.gl-header__nav a {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    color: #111;
+    letter-spacing: -0.01em;
+    padding: 6px 12px;
+    border-radius: 999px;
+    transition: color 150ms ease-out;
     position: relative;
-    
-    // Unified vertical alignment for all sections
-    > div {
-        display: flex;
-        align-items: center;
-        height: 100%;
+}
+
+.gl-header__nav a:hover,
+.gl-header__nav a:focus {
+    color: var(--as-accent, #2563EB);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.gl-header__nav a.active,
+.gl-header__nav a[aria-current="page"] {
+    color: var(--as-accent, #2563EB);
+}
+
+.gl-header__cta {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0;
+    margin-left: 28px; /* Match nav gap (28px) for visual anchoring */
+}
+
+/* force CTA to center visually */
+.gl-header__cta .cta-desktop {
+    height: 40px;
+    padding: 0 20px;
+    line-height: 1 !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    border-radius: 999px;
+    font-size: 14px;
+}
+
+/* ensure hover effect matches global button-primary hover */
+.gl-header__cta .cta-desktop:hover {
+    opacity: 0.95;
+    box-shadow: 0 0 0 5px var(--as-plum);
+}
+
+/* remove any accidental margins affecting vertical alignment */
+.gl-header__cta .cta-desktop,
+.gl-header__brand img {
+    margin: 0;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.nav-toggle {
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.hamburger {
+    width: 22px;
+    height: 14px;
+    position: relative;
+    display: inline-block;
+}
+
+.hamburger::before,
+.hamburger::after,
+.hamburger > span {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #000;
+    border-radius: 2px;
+}
+
+.hamburger::before {
+    top: 0;
+}
+
+.hamburger > span {
+    top: 6px;
+}
+
+.hamburger::after {
+    bottom: 0;
+}
+
+/* Animate to X when menu is open */
+.menu-open .hamburger::before {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.menu-open .hamburger::after {
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+.menu-open .hamburger > span {
+    opacity: 0;
+}
+
+.nav-mobile {
+    display: none;
+    background: var(--surface);
+    border-top: 1px solid var(--stroke);
+    width: 100%;
+}
+
+.nav-mobile[hidden] {
+    display: none !important;
+}
+
+.nav-mobile-inner {
+    padding-top: 12px;
+    padding-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-end;
+}
+
+.nav-mobile-inner a {
+    display: block;
+    padding: 12px 0;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+    text-decoration: none;
+    color: #111;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    text-align: right;
+    letter-spacing: -0.01em;
+    transition: color 150ms ease-out;
+}
+
+.nav-mobile-inner a:hover,
+.nav-mobile-inner a:focus {
+    color: var(--as-accent, #2563EB);
+}
+
+.nav-mobile-inner a.active,
+.nav-mobile-inner a[aria-current="page"] {
+    color: var(--as-accent, #2563EB);
+}
+
+.nav-mobile-inner a:last-child:not(.button) {
+    margin-top: 8px;
+    border-bottom: none;
+    padding: 12px 0;
+}
+
+.nav-mobile-inner .button {
+    width: auto;
+    justify-content: center;
+    padding: 0 24px !important;
+    height: 56px;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.nav-mobile-inner .button.button-primary {
+    color: #fff !important;
+}
+
+.nav-mobile-inner .button.button-primary:hover {
+    opacity: 0.95;
+    box-shadow: 0 0 0 5px var(--as-plum);
+}
+
+@media (max-width: 768px) {
+    .nav-desktop {
+        display: none;
     }
     
-    .nav-logo{
-        justify-content: flex-start;
-        a{
-            display: flex;
-            align-items: center;
-            margin: 0;
-            padding: 0;
-            transform: translateY(-6px);
-        }
-        img{
-            width: 200px;
-            height: auto;
-            object-fit: contain;
-            object-position: left center;
-            display: block;
-            margin: 0;
-            padding: 0;
-        }
+    .cta-desktop {
+        display: none !important;
     }
     
-    .nav-links{
+    .nav-toggle {
+        display: inline-flex;
+    }
+    
+    .nav-mobile {
+        display: block;
+    }
+    
+    .gl-header__cta {
+        gap: 0;
         justify-content: flex-end;
-        ul{
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            height: 100%;
-        }
     }
-    
-    .nav-cta{
-        justify-content: flex-end;
-        margin-left: 2rem;
-        
-        .free-version-btn {
-            transition: all 0.3s ease;
-            
-            &:hover {
-                transform: translateY(-2px) scale(1.05);
-                box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
-            }
-        }
-    }
-    
-    ul{
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        li{
-            padding: 0 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-        }
-    }
+}
 
-    a:not(.button){
-        text-decoration: none;
-        color: inherit;
-        font-weight: 600;
-        font-size: 1.7rem;
-        line-height: 1.7rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        white-space: nowrap;
-        &:hover{
-            opacity: .8;
-        }
-    }
-
-    // Tablet landscape (1024px and below)
-    @media (max-width: 1024px) {
-        .nav-logo img{
-            width: 180px;
-        }
-        a:not(.button){
-            font-size: 1.5rem;
-            line-height: 1.5rem;
-        }
-        ul li{
-            padding: 0 10px;
-        }
-    }
-
-    // Tablet portrait (768px and below)
-    @media (max-width: 768px) {
-        .nav-logo img{
-            width: 160px;
-        }
-        a:not(.button){
-            font-size: 1.3rem;
-            line-height: 1.3rem;
-        }
-        ul li{
-            padding: 0 8px;
-        }
-    }
-
-    // Mobile landscape (640px and below)
-    @media (max-width: 640px) {
-        grid-template-columns: 1fr auto;
-        .nav-logo img{
-            width: 140px;
-        }
-        .nav-links, .nav-cta{
-            display: none;
-        }
-        a:not(.button){
-            font-size: 1.2rem;
-            line-height: 1.2rem;
-        }
-        .menu-icon{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            svg{
-                width: 32px;
-            }
-            /* Larger tap target */
-            padding: 8px;
-            border-radius: 8px;
-        }
-        .mobile-menu{
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            padding: 20px;
-            min-width: 200px;
-            z-index: 1000;
-            ul{
-                list-style: none;
-                padding: 0;
-                margin: 0;
-            }
-            li{
-                margin-bottom: 15px;
-                text-align: center;
-                &:last-child{
-                    margin-bottom: 0;
-                }
-            }
-            a{
-                display: block;
-                text-decoration: none;
-                color: var(--as-black);
-                font-weight: 600;
-                font-size: 1.7rem;
-                padding: 8px 0;
-                border-bottom: 1px solid #f0f0f0;
-                &:hover{
-                    opacity: 0.8;
-                }
-            }
-            .free-version-btn {
-                background: var(--as-accent) !important;
-                border: none !important;
-                border-radius: 20px !important;
-                height: auto !important;
-                line-height: normal !important;
-                padding: 12px 20px !important;
-                font-size: 1.4rem !important;
-                font-weight: 600 !important;
-                box-shadow: none !important;
-                color: white !important;
-                margin: 8px 0 !important;
-                transition: all 0.3s ease !important;
-                &:hover{
-                    background: #1D4ED8 !important;
-                    opacity: 1 !important;
-                    transform: translateY(-2px) scale(1.05) !important;
-                    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3) !important;
-                }
-            }
-            &.open{
-                display: block;
-            }
-        }
-    }
-
-    // Mobile portrait (480px and below)
-    @media (max-width: 480px) {
-        grid-template-columns: 1fr auto;
-        padding-top: 15px;
-        min-height: 70px;
-        .nav-logo img{
-            width: 130px;
-        }
-        .flex-center{
-            flex-direction: column;
-        }
-        a{
-            display: block;
-            text-align: center;
-            font-size: 1.1rem;
-        }
-        .menu-icon{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            svg{
-                width: 32px;
-            }
-        }
-
-        .mobile-menu{
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            padding: 20px;
-            min-width: 200px;
-            z-index: 1000;
-            ul{
-                list-style: none;
-                padding: 0;
-                margin: 0;
-            }
-            li{
-                margin-bottom: 15px;
-                text-align: center;
-                &:last-child{
-                    margin-bottom: 0;
-                }
-            }
-            a{
-                display: block;
-                text-decoration: none;
-                color: var(--as-black);
-                font-weight: 600;
-                font-size: 1.7rem;
-                padding: 8px 0;
-                border-bottom: 1px solid #f0f0f0;
-                &:hover{
-                    opacity: 0.8;
-                }
-            }
-            .free-version-btn {
-                background: var(--as-accent) !important;
-                border: none !important;
-                border-radius: 20px !important;
-                height: auto !important;
-                line-height: normal !important;
-                padding: 12px 20px !important;
-                font-size: 1.4rem !important;
-                font-weight: 600 !important;
-                box-shadow: none !important;
-                color: white !important;
-                margin: 8px 0 !important;
-                transition: all 0.3s ease !important;
-                &:hover{
-                    background: #1D4ED8 !important;
-                    opacity: 1 !important;
-                    transform: translateY(-2px) scale(1.05) !important;
-                    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3) !important;
-                }
-            }
-            &.open{
-                display: block;
-            }
-        }
-        .nav-cta{
-            border-bottom: var(--as-white) 1px solid;
-            padding-bottom: 10px;
-        }
-    }
-
-    // Very small mobile (360px and below)
-    @media (max-width: 360px) {
-        .nav-logo img{
-            width: 120px;
-        }
-        .menu-icon{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            svg{
-                width: 28px;
-            }
-        }
-        a:not(.button){
-            font-size: 1rem;
-        }
-    }
-
-    // Hide menu icon and mobile menu on larger screens
-    @media (min-width: 641px) {
-        .menu-icon{
-            display: none;
-        }
-        .mobile-menu{
-            display: none !important;
-        }
+@media (min-width: 769px) {
+    .nav-toggle {
+        display: none;
     }
 }
 

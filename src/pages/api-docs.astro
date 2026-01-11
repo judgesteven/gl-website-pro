@@ -1,12 +1,56 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
+import { buildSeo } from '../lib/seo';
+
+const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://gamelayer.io';
+const seo = buildSeo({
+	title: "GameLayer API Documentation - Complete Gamification API Reference",
+	description: "Complete API documentation for GameLayer's Gamification API platform. Learn how to integrate gamification mechanics, user engagement features, and customer loyalty systems with our comprehensive API.",
+	pathname: '/api-docs'
+});
+
+const schemas = [
+	{
+		"@context": "https://schema.org",
+		"@type": "WebPage",
+		"@id": `${siteUrl}/api-docs/#webpage`,
+		"url": `${siteUrl}/api-docs`,
+		"name": seo.title,
+		"description": seo.description,
+		"isPartOf": {
+			"@type": "WebSite",
+			"name": "GameLayer",
+			"url": siteUrl
+		}
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "BreadcrumbList",
+		"itemListElement": [
+			{
+				"@type": "ListItem",
+				"position": 1,
+				"name": "Home",
+				"item": siteUrl
+			},
+			{
+				"@type": "ListItem",
+				"position": 2,
+				"name": "API Docs",
+				"item": `${siteUrl}/api-docs`
+			}
+		]
+	}
+];
 ---
 
 <Layout 
-	title="GameLayer API Documentation - Complete Gamification API Reference"
-	description="Complete API documentation for GameLayer's gamification platform. Learn how to integrate gamification mechanics, user engagement features, and customer loyalty systems with our comprehensive API."
+	title={seo.title}
+	description={seo.description}
 	keywords="gamification API documentation, API reference, gamification integration, user engagement API, customer loyalty API, gamification mechanics API"
+	canonical={seo.canonical}
+	schema={schemas}
 >
 	<main id="main-content">
 		<Header />
@@ -39,52 +83,6 @@ import Header from '../components/Header.astro';
 			primary-color="#4A90E2"           
 		></rapi-doc>
 	</main>
-	
-	<!-- Structured Data for API Documentation -->
-	<script type="application/ld+json" is:inline>
-	{
-		"@context": "https://schema.org",
-		"@type": "TechArticle",
-		"headline": "GameLayer API Documentation",
-		"description": "Complete API documentation for GameLayer's gamification platform. Learn how to integrate gamification mechanics, user engagement features, and customer loyalty systems.",
-		"author": {
-			"@type": "Organization",
-			"name": "GameLayer"
-		},
-		"publisher": {
-			"@type": "Organization",
-			"name": "GameLayer",
-			"logo": {
-				"@type": "ImageObject",
-				"url": "https://gamelayer.io/logo.png"
-			}
-		},
-		"datePublished": "2025-01-01",
-		"dateModified": "2025-01-01",
-		"mainEntityOfPage": {
-			"@type": "WebPage",
-			"@id": "https://gamelayer.io/api-docs/"
-		},
-		"about": [
-			{
-				"@type": "Thing",
-				"name": "Gamification API"
-			},
-			{
-				"@type": "Thing", 
-				"name": "User Engagement"
-			},
-			{
-				"@type": "Thing",
-				"name": "Customer Loyalty"
-			},
-			{
-				"@type": "Thing",
-				"name": "API Integration"
-			}
-		]
-	}
-	</script>
 </Layout>
 
 <style>

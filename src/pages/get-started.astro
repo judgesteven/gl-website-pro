@@ -1,0 +1,305 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { pricingPlans } from '../lib/pricingPlans';
+import { EXTERNAL_EMAILS } from '../lib/external';
+
+const selectedPlan = Astro.url.searchParams.get('plan')?.toLowerCase() || null;
+---
+
+<Layout 
+	title="Get Started - GameLayer Pricing"
+	description="Choose your GameLayer plan and get started. Pay by card or bank transfer. All plans include full access to our gamification API."
+>
+	<main id="main-content" class="page">
+		<Header />
+		
+		<div class="section get-started-section">
+			<div class="container">
+				<div class="sticky-surface">
+					<header class="get-started-header">
+						<h1>Choose your plan</h1>
+						<p class="get-started-subtitle">
+							Select a payment method below. All plans include full access to GameLayer's engagement mechanics.
+						</p>
+					</header>
+
+					<div class="pricing-grid get-started-grid">
+						{pricingPlans.map((plan) => {
+							const isSelected = selectedPlan === plan.slug;
+							return (
+								<div class={`pricing-card ${isSelected ? 'selected' : ''}`}>
+									<div class="pricing-header">
+										<h3 class="text-md text-bolder">{plan.name}</h3>
+										<div class="pricing-price">
+											<span class="price">{plan.price}</span>
+										</div>
+										{plan.period && <div class="period">{plan.period}</div>}
+									</div>
+									
+									<div class="pricing-features">
+										<ul>
+											{plan.features.map((feature) => (
+												<li class="feature-item">
+													<svg class="check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16">
+														<path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />
+													</svg>
+													{feature}
+												</li>
+											))}
+										</ul>
+									</div>
+									
+									<div class="pricing-cta">
+										{plan.name === "Enterprise" ? (
+											<a href={`mailto:${EXTERNAL_EMAILS.SALES}?subject=GameLayer%3A%20Enterprise%20Enquiry`} target="_self" class="button button-enterprise button-secondary">
+												{plan.buttonText}
+											</a>
+										) : (
+											<>
+												<a href={plan.stripeLink!} target="_blank" rel="noopener noreferrer" class="button button-secondary">
+													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+														<rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+														<line x1="1" y1="10" x2="23" y2="10"/>
+													</svg>
+													Pay by card
+												</a>
+												<a href={plan.gocardlessLink!} target="_blank" rel="noopener noreferrer" class="button button-bank">
+													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+														<rect x="2" y="6" width="20" height="12" rx="2"/>
+														<circle cx="12" cy="12" r="2"/>
+														<path d="M6 12h.01M18 12h.01"/>
+													</svg>
+													Pay by bank
+												</a>
+											</>
+										)}
+									</div>
+								</div>
+							);
+						})}
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<Footer />
+	</main>
+</Layout>
+
+<style>
+	.get-started-section {
+		padding: clamp(72px, 8vw, 120px) 0;
+		background: var(--page-bg);
+	}
+
+	.get-started-header {
+		text-align: center;
+		margin-bottom: clamp(40px, 5vw, 64px);
+	}
+
+	.get-started-header h1 {
+		font-size: clamp(36px, 4vw, 56px);
+		line-height: 1.2;
+		margin: 0 0 16px;
+		color: var(--as-black);
+		font-weight: 600;
+	}
+
+	.get-started-subtitle {
+		font-size: 18px;
+		line-height: 1.7;
+		color: var(--as-black);
+		margin: 0 auto;
+		max-width: 80ch;
+		opacity: 0.85;
+	}
+
+	.get-started-grid {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: clamp(16px, 2vw, 22px);
+		align-items: stretch;
+	}
+
+	.pricing-card {
+		background: #fff;
+		border: 1px solid rgba(15, 23, 42, 0.10);
+		border-radius: 24px;
+		box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+		padding: 24px;
+		display: flex;
+		flex-direction: column;
+		min-height: 100%;
+		transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+	}
+
+	.pricing-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 16px 44px rgba(15, 23, 42, 0.10);
+		border-color: rgba(15, 23, 42, 0.14);
+	}
+
+	.pricing-card.selected {
+		border-color: rgba(37, 99, 235, 0.3);
+		box-shadow: 0 10px 30px rgba(37, 99, 235, 0.12);
+		background: rgba(239, 246, 255, 0.3);
+	}
+
+	.pricing-header {
+		text-align: center;
+		margin-bottom: 1.5rem;
+	}
+
+	.pricing-header h3 {
+		margin: 0 0 10px;
+		font-size: 28px;
+		line-height: 1.1;
+		color: var(--color-text);
+	}
+
+	.pricing-price {
+		margin: 0 0 4px;
+		text-align: center;
+	}
+
+	.price {
+		font-size: 34px;
+		font-weight: 800;
+		color: var(--color-text);
+	}
+
+	.period {
+		font-size: 13px;
+		opacity: 0.7;
+		color: var(--color-text);
+		text-align: center;
+		margin: 0;
+	}
+
+	.pricing-features {
+		flex-grow: 1;
+		margin: 16px 0 0;
+	}
+
+	.pricing-features ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: grid;
+		gap: 10px;
+		color: rgba(15, 23, 42, 0.86);
+	}
+
+	.feature-item {
+		display: flex;
+		align-items: flex-start;
+		gap: 10px;
+		line-height: 1.45;
+		color: rgba(15, 23, 42, 0.86);
+	}
+
+	.check-icon {
+		margin-top: 2px;
+		opacity: 0.7;
+		flex-shrink: 0;
+		color: rgba(15, 23, 42, 0.86);
+	}
+
+	.pricing-cta {
+		margin-top: auto;
+		padding-top: 18px;
+		display: flex;
+		flex-direction: row;
+		gap: 0.625rem;
+	}
+
+	.pricing-cta .button {
+		flex: 1;
+		justify-content: center;
+		padding: 0.75rem 1rem;
+		font-size: 1.125rem;
+		font-weight: 600;
+		border-radius: 20px;
+		transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		border: none;
+		height: auto;
+		line-height: 1.2;
+		letter-spacing: 0.01em;
+	}
+
+	.pricing-cta .button-secondary {
+		background: var(--as-accent);
+		color: white;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+	}
+
+	.pricing-cta .button-secondary:hover {
+		background: var(--as-accent);
+		color: white;
+		transform: translateY(-1px);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+	}
+
+	.pricing-cta .button-secondary:active {
+		transform: translateY(0);
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+	}
+
+	.button-bank {
+		background: rgba(0, 0, 0, 0.03);
+		color: var(--color-text);
+		border: none;
+		box-shadow: none;
+	}
+
+	.button-bank:hover {
+		background: rgba(0, 0, 0, 0.07);
+		color: var(--color-text);
+		transform: translateY(-1px);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	}
+
+	.button-bank:active {
+		transform: translateY(0);
+		background: rgba(0, 0, 0, 0.05);
+	}
+
+	.pricing-cta .button svg {
+		flex-shrink: 0;
+		opacity: 0.9;
+	}
+
+	.pricing-cta .button:hover svg {
+		opacity: 1;
+	}
+
+	@media (max-width: 1100px) {
+		.get-started-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 640px) {
+		.get-started-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.pricing-cta {
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+
+		.pricing-cta .button {
+			width: 100%;
+		}
+	}
+</style>
+
+
+

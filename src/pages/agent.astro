@@ -1,0 +1,824 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout 
+	title="Talk to GameLayer - AI Sales Agent"
+	description="Describe what you're building and we'll suggest the best engagement mechanics to start with."
+>
+	<main id="main-content">
+		<Header />
+		
+		<section class="agent-hero">
+			<div class="container">
+				<div class="agent-hero-content text-center max-w-lg m-auto">
+					<h1 class="text-xlg">Talk to GameLayer</h1>
+					<p class="text-sm mt-2">
+						Describe what you're building, who your users are, and what you're trying to achieve. GameLayer will help you translate product goals into concrete mechanics—missions, progression, rewards, and feedback loops—that can be integrated directly into your existing tech stack.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="agent-chat-section">
+			<div class="container">
+				<div class="agent-chat-wrapper">
+					<div class="agent-chat-main">
+						<!-- Status strip -->
+						<div class="agent-status">
+							<div class="agent-status-content">
+								<div class="agent-status-row">
+									<span class="agent-status-label">Conversation ID: <span class="agent-status-value" id="conversationId">—</span></span>
+								</div>
+								<div class="agent-status-row">
+									<span class="agent-status-label">Request ID: <span class="agent-status-value" id="requestId">—</span></span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Chat transcript -->
+						<div class="agent-transcript" id="transcript">
+							<div class="agent-empty-state">
+								<p>Start a conversation below or try one of the example prompts.</p>
+							</div>
+						</div>
+
+						<!-- Composer -->
+						<div class="agent-composer">
+							<textarea
+								class="agent-input"
+								id="messageInput"
+								placeholder="Type your message and press Enter..."
+								rows="1"
+								autocomplete="off"
+							></textarea>
+							<div class="agent-composer-actions">
+								<button class="agent-status-button" id="newConversationButton">New conversation</button>
+								<button class="agent-status-button" id="loadFromSupabaseButton" disabled>Load from supabase</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Sidebar with example prompts -->
+					<aside class="agent-sidebar">
+						<div class="agent-examples">
+							<div class="agent-example-item" data-prompt="We're a retail loyalty app (200k MAU). Suggest a retention loop using missions, rewards, and progression.">
+								<div class="agent-example-text">We're a retail loyalty app (200k MAU). Suggest a retention loop using missions, rewards, and progression.</div>
+							</div>
+							<div class="agent-example-item" data-prompt="We want to increase activation in week 1. What mechanics would you start with and why?">
+								<div class="agent-example-text">We want to increase activation in week 1. What mechanics would you start with and why?</div>
+							</div>
+							<div class="agent-example-item" data-prompt="Which mechanics fit a subscription product to reduce churn?">
+								<div class="agent-example-text">Which mechanics fit a subscription product to reduce churn?</div>
+							</div>
+							<div class="agent-example-item" data-prompt="We have a mobile app + web. How should we structure missions and rewards across platforms?">
+								<div class="agent-example-text">We have a mobile app + web. How should we structure missions and rewards across platforms?</div>
+							</div>
+							<div class="agent-example-item" data-prompt="Build vs buy: what's the simplest way to add gamification without building everything from scratch?">
+								<div class="agent-example-text">Build vs buy: what's the simplest way to add gamification without building everything from scratch?</div>
+							</div>
+							<div class="agent-example-item" data-prompt="We want a demo this quarter. What info do you need to tailor it?">
+								<div class="agent-example-text">We want a demo this quarter. What info do you need to tailor it?</div>
+							</div>
+						</div>
+					</aside>
+				</div>
+			</div>
+		</section>
+
+		<Footer />
+	</main>
+</Layout>
+
+<style>
+	.agent-hero {
+		padding: 80px 0 60px;
+		background-color: white;
+	}
+
+	.agent-hero-content h1 {
+		margin-bottom: 20px;
+	}
+
+	.agent-chat-section {
+		padding: 40px 0 130px;
+		background-color: #E5E7EB;
+		border-bottom: 1px solid #e0e0e0;
+	}
+
+	.agent-chat-wrapper {
+		display: grid;
+		grid-template-columns: 60% 40%;
+		gap: 30px;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.agent-chat-main {
+		display: flex;
+		flex-direction: column;
+		background: var(--as-white);
+		border: 1px solid #e0e0e0;
+		border-radius: 12px;
+		overflow: hidden;
+		min-height: 600px;
+	}
+
+	.agent-status {
+		padding: 16px 20px;
+		background: var(--as-peach);
+		border-bottom: 1px solid #e0e0e0;
+	}
+
+	.agent-status-content {
+		display: flex;
+		flex-direction: column;
+		gap: 1px;
+		font-size: 1.2rem;
+	}
+
+	.agent-status-row {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.agent-status-label {
+		color: #666;
+		font-weight: 500;
+		flex: 1;
+	}
+
+	.agent-status-value {
+		font-family: 'Monaco', 'Menlo', monospace;
+		font-size: 1.1rem;
+		color: var(--as-black);
+		word-break: break-all;
+	}
+
+	.agent-status-actions {
+		display: flex;
+		gap: 8px;
+		margin-left: auto;
+	}
+
+	.agent-status-button {
+		padding: 4px 12px;
+		background: white;
+		border: 2px solid transparent;
+		border-radius: 16px;
+		font-size: 1.6rem;
+		cursor: pointer;
+		transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
+		font-weight: 300;
+		height: auto;
+		line-height: 1.4;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+		position: relative;
+		text-transform: none;
+	}
+
+	.agent-status-button:hover:not(:disabled) {
+		transform: translateY(-2px) rotate(-1deg);
+		box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4),
+					0 0 0 2px rgba(255, 107, 53, 0.2);
+		border: 2px solid transparent;
+		background: linear-gradient(#fff, #fff) padding-box,
+					linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #FFD23F 100%) border-box;
+	}
+
+	.agent-status-button:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+
+	.agent-transcript {
+		flex: 1;
+		overflow-y: auto;
+		padding: 24px;
+		background: white;
+		min-height: 400px;
+	}
+
+	.agent-empty-state {
+		text-align: center;
+		color: #999;
+		padding: 60px 20px;
+		font-style: italic;
+		font-size: 1.6rem;
+		line-height: 1.4;
+		font-weight: 300;
+	}
+
+	.agent-message {
+		margin-bottom: 24px;
+		padding: 16px;
+		border-radius: 8px;
+	}
+
+	.agent-message.user {
+		background: var(--as-peach);
+		margin-left: 40px;
+	}
+
+	.agent-message.assistant {
+		background: var(--as-plum);
+		margin-right: 40px;
+	}
+
+	.agent-message.error {
+		background: #ffebee;
+		border-left: 3px solid #f44336;
+	}
+
+	.agent-message-role {
+		font-weight: 600;
+		font-size: 1.2rem;
+		text-transform: uppercase;
+		color: #666;
+		margin-bottom: 8px;
+		letter-spacing: 0.5px;
+	}
+
+	.agent-message-content {
+		color: var(--as-black);
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		line-height: 1.6;
+	}
+
+	.agent-composer {
+		padding: 20px;
+		background: var(--as-peach);
+		border-top: 1px solid #e0e0e0;
+	}
+
+	.agent-input {
+		width: 100%;
+		padding: 12px 16px;
+		border: 1px solid #ddd;
+		border-radius: 12px;
+		font-size: 1.6rem;
+		font-family: inherit;
+		resize: none;
+		min-height: 50px;
+		line-height: 1.4;
+		font-weight: 300;
+		box-sizing: border-box;
+		overflow: hidden;
+		margin-bottom: 12px;
+	}
+
+	.agent-input:focus {
+		outline: none;
+		border-color: var(--as-accent);
+		box-shadow: 0 0 0 3px var(--as-plum);
+	}
+
+	.agent-composer-actions {
+		display: flex;
+		gap: 8px;
+	}
+
+	.agent-sidebar {
+		background: transparent;
+		border: none;
+		border-radius: 12px;
+		padding: 28px;
+		height: fit-content;
+		box-shadow: none;
+	}
+
+	.agent-examples {
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+	}
+
+	.agent-example-item {
+		display: flex;
+		align-items: flex-start;
+		gap: 12px;
+		padding: 16px 18px;
+		background: white;
+		border: 2px solid transparent;
+		border-radius: 16px;
+		transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+		position: relative;
+		cursor: pointer;
+	}
+
+	.agent-example-item:hover {
+		transform: translateY(-2px) rotate(-1deg);
+		box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4),
+					0 0 0 2px rgba(255, 107, 53, 0.2);
+		border: 2px solid transparent;
+		background: linear-gradient(#fff, #fff) padding-box,
+					linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #FFD23F 100%) border-box;
+	}
+
+	.agent-example-text {
+		flex: 1;
+		font-size: 1.6rem;
+		line-height: 1.4;
+		color: var(--as-black);
+		font-weight: 300;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+		white-space: normal;
+		min-width: 0;
+		padding: 0;
+		margin: 0;
+		text-transform: none;
+	}
+
+	/* Mobile responsive */
+	@media (max-width: 1024px) {
+		.agent-chat-wrapper {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.agent-chat-main {
+			order: 1;
+		}
+
+		.agent-sidebar {
+			order: 2;
+		}
+
+		.agent-example-text {
+			font-size: 1.4rem;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.agent-hero {
+			padding: 60px 0 40px;
+		}
+
+		.agent-chat-section {
+			padding: 30px 0 80px;
+		}
+
+		.agent-chat-wrapper {
+			gap: 20px;
+		}
+
+		.agent-chat-main {
+			min-height: 500px;
+		}
+
+		.agent-status {
+			padding: 12px 16px;
+		}
+
+		.agent-status-content {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 10px;
+		}
+
+		.agent-status-row {
+			width: 100%;
+			justify-content: space-between;
+		}
+
+		.agent-status-value {
+			flex: 1;
+		}
+
+		.agent-status-actions {
+			margin-left: 0;
+			width: 100%;
+			flex-wrap: wrap;
+		}
+
+		.agent-status-button {
+			flex: 1;
+			min-width: 120px;
+			font-size: 1.4rem;
+			padding: 6px 10px;
+		}
+
+		.agent-transcript {
+			padding: 20px;
+			min-height: 300px;
+		}
+
+		.agent-message {
+			margin-bottom: 20px;
+			padding: 14px;
+		}
+
+		.agent-message.user {
+			margin-left: 0;
+		}
+
+		.agent-message.assistant {
+			margin-right: 0;
+		}
+
+		.agent-composer {
+			padding: 16px;
+			flex-direction: column;
+		}
+
+		.agent-input {
+			font-size: 1.3rem;
+		}
+
+		.agent-empty-state {
+			font-size: 1.3rem;
+		}
+
+		.agent-status-button {
+			font-size: 1.3rem;
+		}
+
+		.agent-sidebar {
+			padding: 20px;
+		}
+
+		.agent-example-text {
+			font-size: 1.3rem;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.agent-example-text {
+			font-size: 1.3rem;
+		}
+
+		.agent-empty-state {
+			font-size: 1.3rem;
+		}
+
+		.agent-input {
+			font-size: 1.3rem;
+		}
+
+		.agent-status-button {
+			font-size: 1.3rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.agent-chat-section {
+			padding: 20px 0 60px;
+		}
+
+		.agent-status-content {
+			font-size: 1.1rem;
+		}
+
+		.agent-status-value {
+			font-size: 1rem;
+		}
+
+		.agent-status-button {
+			font-size: 1.2rem;
+			padding: 5px 8px;
+		}
+
+		.agent-transcript {
+			padding: 16px;
+		}
+
+		.agent-message-role {
+			font-size: 1.1rem;
+		}
+
+		.agent-message-content {
+			font-size: 1.3rem;
+		}
+
+		.agent-composer {
+			padding: 12px;
+		}
+
+		.agent-input {
+			font-size: 1.2rem;
+			padding: 10px 14px;
+		}
+
+		.agent-empty-state {
+			font-size: 1.2rem;
+		}
+
+		.agent-sidebar {
+			padding: 20px;
+		}
+
+		.agent-examples {
+			gap: 12px;
+		}
+
+		.agent-example-text {
+			font-size: 1.2rem;
+		}
+	}
+</style>
+
+<script>
+	// localStorage keys
+	const STORAGE_CONVERSATION_ID = 'gl_agent_conversationId';
+
+	// DOM elements
+	const conversationIdEl = document.getElementById('conversationId');
+	const requestIdEl = document.getElementById('requestId');
+	const transcriptEl = document.getElementById('transcript');
+	const messageInputEl = document.getElementById('messageInput');
+	const newConversationButtonEl = document.getElementById('newConversationButton');
+	const loadFromSupabaseButtonEl = document.getElementById('loadFromSupabaseButton');
+	const exampleItems = document.querySelectorAll('.agent-example-item');
+
+	// State
+	let conversationId: string | null = null;
+	let transcript: Array<{ role: string; content: string }> = [];
+
+	// Update load button state
+	function updateLoadButtonState() {
+		if (loadFromSupabaseButtonEl) {
+			loadFromSupabaseButtonEl.disabled = !conversationId;
+		}
+	}
+
+	// Load from localStorage (only conversationId, not transcript)
+	function loadFromStorage() {
+		// Check for conversationId in URL query params first
+		const urlParams = new URLSearchParams(window.location.search);
+		const urlConversationId = urlParams.get('conversationId');
+		
+		if (urlConversationId) {
+			conversationId = urlConversationId;
+			localStorage.setItem(STORAGE_CONVERSATION_ID, conversationId);
+			if (conversationIdEl) {
+				conversationIdEl.textContent = conversationId;
+				conversationIdEl.title = conversationId;
+			}
+		} else {
+			const storedId = localStorage.getItem(STORAGE_CONVERSATION_ID);
+			if (storedId) {
+				conversationId = storedId;
+				if (conversationIdEl) {
+					conversationIdEl.textContent = conversationId;
+					conversationIdEl.title = conversationId;
+				}
+			} else {
+				if (conversationIdEl) {
+					conversationIdEl.textContent = '—';
+				}
+			}
+		}
+
+		updateLoadButtonState();
+		transcript = [];
+		renderTranscript();
+	}
+
+	// Save to localStorage (only conversationId, not transcript)
+	function saveToStorage() {
+		if (conversationId) {
+			localStorage.setItem(STORAGE_CONVERSATION_ID, conversationId);
+		} else {
+			localStorage.removeItem(STORAGE_CONVERSATION_ID);
+		}
+	}
+
+	// Welcome message (UI-only, not stored)
+	const WELCOME_MESSAGE = "GameLayer approaches gamification as a system, not a feature.\n\nIn this conversation, I'll help you think through which mechanics fit your product and goals, how they work together, and what a practical first implementation could look like using an API-first approach.";
+
+	// Render transcript
+	function renderTranscript() {
+		if (!transcriptEl) return;
+
+		if (transcript.length === 0) {
+			// Show welcome message when transcript is empty
+			transcriptEl.innerHTML = `
+				<div class="agent-message assistant">
+					<div class="agent-message-role">GameLayer</div>
+					<div class="agent-message-content">${escapeHtml(WELCOME_MESSAGE)}</div>
+				</div>
+			`;
+			// Auto-scroll to bottom
+			transcriptEl.scrollTop = transcriptEl.scrollHeight;
+			return;
+		}
+
+		transcriptEl.innerHTML = transcript.map(msg => {
+			if (msg.role === 'error') {
+				return `
+					<div class="agent-message error">
+						<div class="agent-message-role">Error</div>
+						<div class="agent-message-content">${escapeHtml(msg.content)}</div>
+					</div>
+				`;
+			}
+			const roleClass = msg.role === 'user' ? 'user' : 'assistant';
+			const roleLabel = msg.role === 'user' ? 'You' : 'GameLayer';
+			return `
+				<div class="agent-message ${roleClass}">
+					<div class="agent-message-role">${escapeHtml(roleLabel)}</div>
+					<div class="agent-message-content">${escapeHtml(msg.content)}</div>
+				</div>
+			`;
+		}).join('');
+		
+		// Auto-scroll to bottom
+		transcriptEl.scrollTop = transcriptEl.scrollHeight;
+	}
+
+	// Escape HTML
+	function escapeHtml(text: string): string {
+		const div = document.createElement('div');
+		div.textContent = text;
+		return div.innerHTML;
+	}
+
+	// Add message to transcript
+	function addMessage(role: string, content: string) {
+		transcript.push({ role, content });
+		renderTranscript();
+	}
+
+	// Auto-resize textarea
+	function autoResizeTextarea() {
+		if (messageInputEl) {
+			messageInputEl.style.height = 'auto';
+			messageInputEl.style.height = messageInputEl.scrollHeight + 'px';
+		}
+	}
+
+	// Send message
+	async function sendMessage() {
+		if (!messageInputEl) return;
+
+		const message = messageInputEl.value.trim();
+		if (!message) return;
+
+		// Disable input
+		messageInputEl.disabled = true;
+
+		// Add user message to transcript
+		addMessage('user', message);
+
+		// Clear and reset input
+		messageInputEl.value = '';
+		autoResizeTextarea();
+
+		try {
+			// Prepare request body
+			const requestBody: { message: string; conversationId?: string } = { message };
+			if (conversationId) {
+				requestBody.conversationId = conversationId;
+			}
+
+			// Send request
+			const response = await fetch('/api/chat', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(requestBody),
+			});
+
+			const data = await response.json();
+
+			// Update requestId
+			if (data.requestId && requestIdEl) {
+				requestIdEl.textContent = data.requestId;
+				requestIdEl.title = data.requestId;
+			}
+
+			if (!response.ok) {
+				const errorMsg = data.error || `HTTP ${response.status}: ${response.statusText}`;
+				addMessage('error', errorMsg);
+			} else {
+				if (data.conversationId && data.conversationId !== conversationId) {
+					conversationId = data.conversationId;
+					if (conversationIdEl) {
+						conversationIdEl.textContent = conversationId;
+						conversationIdEl.title = conversationId;
+					}
+					updateLoadButtonState();
+					saveToStorage();
+				}
+
+				if (data.reply) {
+					addMessage('assistant', data.reply);
+				} else {
+					addMessage('error', 'No reply in response');
+				}
+			}
+		} catch (error) {
+			const errorMsg = error instanceof Error ? error.message : 'Unknown error';
+			addMessage('error', `Request failed: ${errorMsg}`);
+		} finally {
+			// Re-enable input
+			if (messageInputEl) {
+				messageInputEl.disabled = false;
+				messageInputEl.focus();
+			}
+		}
+	}
+
+	// Load from Supabase
+	async function loadFromSupabase() {
+		if (!conversationId || !loadFromSupabaseButtonEl) return;
+
+		loadFromSupabaseButtonEl.disabled = true;
+		loadFromSupabaseButtonEl.textContent = 'Loading...';
+
+		try {
+			const response = await fetch(`/api/conversation?conversationId=${encodeURIComponent(conversationId)}`);
+			const data = await response.json();
+
+			if (!response.ok) {
+				const errorMsg = data.error || `HTTP ${response.status}: ${response.statusText}`;
+				if (data.details) {
+					addMessage('error', `${errorMsg}: ${data.details}`);
+				} else {
+					addMessage('error', errorMsg);
+				}
+			} else {
+				if (Array.isArray(data.messages) && data.messages.length > 0) {
+					transcript = data.messages.map((msg: any) => ({
+						role: msg.role,
+						content: msg.content
+					}));
+					renderTranscript();
+				} else {
+					addMessage('error', 'No messages found in Supabase for this conversation');
+				}
+			}
+		} catch (error) {
+			const errorMsg = error instanceof Error ? error.message : 'Unknown error';
+			addMessage('error', `Failed to load from Supabase: ${errorMsg}`);
+		} finally {
+			if (loadFromSupabaseButtonEl) {
+				loadFromSupabaseButtonEl.disabled = false;
+				loadFromSupabaseButtonEl.textContent = 'Load from supabase';
+			}
+		}
+	}
+
+	// New conversation
+	function newConversation() {
+		if (confirm('Start a new conversation? This will clear the current conversation ID.')) {
+			conversationId = null;
+			transcript = [];
+			if (conversationIdEl) {
+				conversationIdEl.textContent = '—';
+			}
+			if (requestIdEl) {
+				requestIdEl.textContent = '—';
+			}
+			updateLoadButtonState();
+			localStorage.removeItem(STORAGE_CONVERSATION_ID);
+			renderTranscript();
+		}
+	}
+
+	// Event listeners
+	if (newConversationButtonEl) {
+		newConversationButtonEl.addEventListener('click', newConversation);
+	}
+
+	if (loadFromSupabaseButtonEl) {
+		loadFromSupabaseButtonEl.addEventListener('click', loadFromSupabase);
+	}
+
+	if (messageInputEl) {
+		messageInputEl.addEventListener('keydown', (e) => {
+			if (e.key === 'Enter' && !e.shiftKey) {
+				e.preventDefault();
+				sendMessage();
+			}
+		});
+
+		messageInputEl.addEventListener('input', autoResizeTextarea);
+	}
+
+	// Example prompt cards
+	exampleItems.forEach(item => {
+		item.addEventListener('click', () => {
+			const prompt = item.getAttribute('data-prompt');
+			if (prompt && messageInputEl) {
+				messageInputEl.value = prompt;
+				messageInputEl.focus();
+				autoResizeTextarea();
+			}
+		});
+	});
+
+	// Initialize
+	loadFromStorage();
+	if (messageInputEl) {
+		messageInputEl.focus();
+	}
+</script>
+

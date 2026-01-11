@@ -1,128 +1,679 @@
 ---
-import HeroImage from '../images/web-image-hero2.png'
+import HeroImage from '../images/hero_image.png'
+import { getImage } from 'astro:assets'
+import { EXTERNAL_URLS } from '../lib/external'
+
+// Generate optimized hero images in multiple formats and sizes
+// Higher quality settings for premium hero image
+const heroImages = {
+    // AVIF format (best compression) - increased quality for hero
+    avif: {
+        small: await getImage({ src: HeroImage, format: 'avif', width: 600, quality: 90 }),
+        medium: await getImage({ src: HeroImage, format: 'avif', width: 900, quality: 92 }),
+        large: await getImage({ src: HeroImage, format: 'avif', width: 1200, quality: 95 })
+    },
+    // WebP format (fallback) - increased quality for hero
+    webp: {
+        small: await getImage({ src: HeroImage, format: 'webp', width: 600, quality: 90 }),
+        medium: await getImage({ src: HeroImage, format: 'webp', width: 900, quality: 92 }),
+        large: await getImage({ src: HeroImage, format: 'webp', width: 1200, quality: 95 })
+    },
+    // Original PNG as fallback
+    original: HeroImage
+}
 ---
 
-<section id="hero">
+<section id="hero" aria-label="GameLayer hero">
     <div class="container">
-      <div class="grid-half align-center gap-2">
-        <div class="hero-text">
-            <h1 class="text-xlg">Gamification API Platform</h1>
-            <p class="text-md">Build user engagement and customer loyalty experiences with a simple API integration.</p>
-            <div class="flex gap-2 mt-2">
-                <a href="/api-docs" class="button button-primary" aria-label="View GameLayer API Documentation">API Specification</a>
+        <div class="hero-stage">
+          <div class="gl-container">
+            <div class="hero-grid">
+            <div class="hero-text">
+                <h1 class="hero-headline">The Gamification API for modern products</h1>
+                <p class="hero-subheadline">Launch missions, streaks, leaderboards and rewards in days — not months. Manage everything via API and dashboard as your product and programmes scale.</p>
+                
+                <div class="hero-media hero-media--mobile">
+                    <div class="hero-visual-shell">
+                        <a 
+                            href={EXTERNAL_URLS.CMS_DASHBOARD} 
+                            target="_blank" 
+                            rel="noopener noreferrer external"
+                            class="hero-image-link"
+                            aria-label="Open GameLayer admin dashboard (external)"
+                        >
+                            <div class="hero-image-wrapper">
+                                <picture>
+                                <source 
+                                    type="image/avif" 
+                                    srcset={`${heroImages.avif.small.src} 600w, ${heroImages.avif.medium.src} 900w, ${heroImages.avif.large.src} 1200w`}
+                                    sizes="(max-width: 768px) 100vw, 572px"
+                                />
+                                <source 
+                                    type="image/webp" 
+                                    srcset={`${heroImages.webp.small.src} 600w, ${heroImages.webp.medium.src} 900w, ${heroImages.webp.large.src} 1200w`}
+                                    sizes="(max-width: 768px) 100vw, 572px"
+                                />
+                                <img 
+                                    src={heroImages.original.src} 
+                                    alt="GameLayer gamification API platform interface showing user engagement and customer loyalty features" 
+                                    loading="eager"
+                                    fetchpriority="high"
+                                    decoding="async"
+                                    width="1000"
+                                    height="670"
+                                    id="hero-image-mobile"
+                                >
+                            </picture>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-ctas">
+                    <a href="/api-docs" class="button button-primary" aria-label="View GameLayer API Documentation">View API Docs</a>
+                    <a href="#powered-by" class="button" aria-label="See examples of GameLayer gamification">See Examples</a>
+                </div>
+                <p class="trust-line">As used across multiple industries, including aviation, lottery and retail</p>
+                <p class="sr-only">GameLayer is a gamification API platform for adding missions, rewards, and leaderboards to apps and websites.</p>
             </div>
+            <div class="hero-media hero-media--desktop">
+                <div class="hero-visual-shell">
+                    <a 
+                        href={EXTERNAL_URLS.CMS_DASHBOARD} 
+                        target="_blank" 
+                        rel="noopener noreferrer external"
+                        class="hero-image-link"
+                        aria-label="Open GameLayer admin dashboard (external)"
+                    >
+                        <div class="hero-image-wrapper">
+                            <picture>
+                            <source 
+                                type="image/avif" 
+                                srcset={`${heroImages.avif.small.src} 600w, ${heroImages.avif.medium.src} 900w, ${heroImages.avif.large.src} 1200w`}
+                                sizes="(max-width: 1024px) 90vw, 572px"
+                            />
+                            <source 
+                                type="image/webp" 
+                                srcset={`${heroImages.webp.small.src} 600w, ${heroImages.webp.medium.src} 900w, ${heroImages.webp.large.src} 1200w`}
+                                sizes="(max-width: 1024px) 90vw, 572px"
+                            />
+                            <img 
+                                src={heroImages.original.src} 
+                                alt="GameLayer gamification API platform interface showing user engagement and customer loyalty features" 
+                                loading="eager" 
+                                fetchpriority="high"
+                                decoding="async"
+                                width="1000"
+                                height="670"
+                                id="hero-image-desktop"
+                            >
+                        </picture>
+                        </div>
+                    </a>
+                </div>
+            </div>
+          </div>
+          </div>
         </div>
-        <div class="hero-media">
-            <img 
-                src={HeroImage.src} 
-                alt="GameLayer gamification API platform interface showing user engagement and customer loyalty features" 
-                loading="eager" 
-                fetchpriority="high"
-                width="600"
-                height="400"
-                style="width: 120%; height: auto; border-radius: 30px;"
-            >
-        </div>
-      </div>
-
     </div>
 </section>
 
 <style lang="scss">
 
+// Screen reader only utility
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
 
+#hero {
+    position: relative;
+    /* Changed to visible to allow glow effect - contained by parent */
+    overflow: visible;
+    background: var(--surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: clamp(560px, 72vh, 720px);
+    padding: 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#hero::before,
+#hero::after {
+    content: none !important;
+    background: none !important;
+}
 
 section{
-    padding: 90px 0;
+    #hero .container {
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        /* Allow overflow for glow effects */
+        overflow: visible;
+    }
+    
+    .hero-stage {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        padding-top: clamp(48px, 6vw, 84px);
+        padding-bottom: clamp(48px, 6vw, 84px);
+        padding-left: 0;
+        padding-right: 0;
+        margin: 0;
+        box-sizing: border-box;
+        background: transparent;
+        border: none;
+        border-bottom: none;
+        box-shadow: none;
+        /* Allow overflow for glow effects */
+        overflow: visible;
+    }
+    
+    .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+        gap: 48px;
+        width: 100%;
+    }
+    
     .hero-text{
-        .text-md{
-            font-size: 2.2rem;
-            line-height: 1.3;
+        position: relative; // For sr-only positioning
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        max-width: 560px;
+        align-items: flex-start;
+        
+        .hero-headline,
+        .hero-subheadline,
+        .trust-line {
+            margin: 0;
         }
+        
+        .hero-headline {
+            font-size: var(--gl-h1-size);
+            font-weight: var(--gl-h1-weight);
+            line-height: var(--gl-h1-line-height);
+            letter-spacing: -0.02em;
+            color: var(--as-black);
+            max-width: 26ch;
+            margin-bottom: var(--gl-h1-margin-bottom);
+            hyphens: none !important;
+            overflow-wrap: normal !important;
+            word-break: normal !important;
+            word-wrap: normal !important;
+        }
+        
+        .hero-subheadline {
+            font-size: var(--gl-lede-size);
+            font-weight: var(--gl-lede-weight);
+            line-height: var(--gl-lede-line-height);
+            color: var(--gl-lede-color);
+            max-width: var(--gl-lede-max-width);
+            margin: var(--gl-heading-lede-gap-top) 0 var(--gl-heading-lede-gap-bottom);
+            hyphens: none !important;
+            overflow-wrap: normal !important;
+            word-break: normal !important;
+            word-wrap: normal !important;
+        }
+        
         h1, p{
             color: var(--as-black);
         }
         
-        // Enhanced hover effect for API Specification button
-        .button {
-            transition: all 0.3s ease;
+        .hero-ctas {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 6px;
             
-            &:hover {
-                transform: translateY(-2px) scale(1.05);
-                box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+            .button {
+                min-height: 44px; // WCAG AA tap target minimum
+                
+                // Focus states for accessibility
+                &:focus-visible {
+                    outline: 3px solid var(--as-accent);
+                    outline-offset: 2px;
+                }
+            }
+            
+            // Lighten border for secondary button
+            .button:not(.button-primary) {
+                border-color: rgba(0, 0, 0, 0.4);
+            }
+            
+            // Mobile: stack vertically, full-width
+            @media (max-width: 768px) {
+                flex-direction: column;
+                align-items: stretch;
+                
+                .button {
+                    width: 100%;
+                    min-height: 48px;
+                    justify-content: center;
+                }
             }
         }
+        
+        .trust-line {
+            font-size: 15px;
+            font-style: italic;
+            color: rgba(0,0,0,0.6);
+            margin: 0;
+            margin-top: 6px;
+            line-height: 1.5;
+        }
     }
+    
     .hero-media{
-        img{
-            width: 120%;
-            height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        transform: translateY(6px);
+        /* Allow overflow for glow effect */
+        overflow: visible;
+    }
+    
+    /* ============================================
+       PREMIUM VISUAL SHELL - Product Surface Treatment
+       ============================================
+       Wraps the hero screenshot to create an elevated,
+       intentional product presentation. Uses layered
+       shadows, subtle borders, and brand-tinted glow
+       to create depth without overwhelming the content.
+    */
+    .hero-visual-shell {
+        width: 100%;
+        max-width: 572px;
+        margin: 0 auto;
+        position: relative;
+        /* Enable hardware acceleration for crisp rendering */
+        transform: translateZ(0);
+        /* Prevent overflow from glow effect */
+        overflow: visible;
+    }
+    
+    /* Hero image link - makes the screenshot clickable */
+    .hero-image-link {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+        
+        &:hover {
+            opacity: 0.95;
+            transform: translateY(-2px);
+        }
+        
+        &:focus-visible {
+            outline: 3px solid var(--as-accent);
+            outline-offset: 4px;
+            border-radius: 40px;
+        }
+    }
+    
+    /* Brand-tinted ambient glow - positioned behind image
+       Creates subtle depth and brand presence without
+       competing with the screenshot content */
+    .hero-visual-shell::before {
+        content: '';
+        position: absolute;
+        /* Extend beyond image edges for soft glow effect */
+        inset: -32px;
+        /* Radial gradient: brand blue at 8% opacity, fading to transparent
+           Positioned at center, elliptical shape for natural falloff */
+        background: radial-gradient(
+            ellipse at center,
+            rgba(37, 99, 235, 0.08) 0%,
+            rgba(37, 99, 235, 0.05) 35%,
+            rgba(37, 99, 235, 0.02) 60%,
+            transparent 75%
+        );
+        border-radius: 48px;
+        z-index: -1;
+        pointer-events: none;
+        /* Ensure glow doesn't cause layout shifts */
+        will-change: opacity;
+    }
+    
+    /* Product surface container - the actual screenshot wrapper
+       Creates a floating card effect with premium materials feel */
+    .hero-image-wrapper {
+        width: 100%;
+        aspect-ratio: 3 / 2;
+        position: relative;
+        /* Larger radius for more premium, modern feel */
+        border-radius: 36px;
+        overflow: hidden;
+        /* Multi-layer soft shadow system:
+           - Close shadow: subtle definition
+           - Mid shadow: depth and separation
+           - Far shadow: ambient depth
+           All very subtle to avoid modal/heavy appearance */
+        box-shadow: 
+            0 4px 12px rgba(0, 0, 0, 0.06),
+            0 12px 32px rgba(0, 0, 0, 0.08),
+            0 24px 64px rgba(0, 0, 0, 0.06);
+        /* Very low contrast border for subtle edge definition */
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        /* Clean white background ensures no bleed-through */
+        background: #fff;
+        /* Maintain aspect ratio and prevent layout shift */
+        display: block;
+    }
+    
+    .hero-image-wrapper img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    
+    // Desktop: use object-fit for aspect ratio
+    @media (min-width: 769px) {
+        .hero-image-wrapper img {
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    
+    .hero-media--mobile {
+        display: none;
+    }
+    
+    .hero-media--desktop {
+        display: block;
+    }
+
+    // Desktop: lower the visual cluster for better balance
+    @media (min-width: 1024px) {
+        .hero-media {
+            transform: translateY(12px);
         }
     }
 
     // Tablet landscape (1024px and below)
     @media (max-width: 1024px) {
-        padding: 80px 0;
         .hero-text{
-            .text-md{
-                font-size: 2rem;
+            .hero-subheadline {
+                font-size: clamp(18px, 2.2vw, 22px);
+            }
+            .trust-line {
+                font-size: 1.3rem;
             }
         }
-        .hero-media img{
-            width: 110%;
+        .hero-media .hero-image-wrapper{
+            width: 100%;
         }
     }
 
     // Tablet portrait (768px and below)
     @media (max-width: 768px) {
-        padding: 70px 0;
-        .hero-text{
-            .text-md{
-                font-size: 1.8rem;
+        #hero {
+            min-height: clamp(520px, 70vh, 640px);
+        }
+        
+        .hero-grid {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            width: 100% !important;
+            gap: 22px;
+        }
+        
+        /* Ensure children don't stay stuck at 50% */
+        .hero-text,
+        .hero-media,
+        .hero-media--mobile {
+            width: 100% !important;
+            max-width: none !important;
+            min-width: 0 !important;
+            grid-column: 1 / -1 !important;
+            justify-self: stretch !important;
+        }
+        
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            width: 100% !important;
+            max-width: none !important;
+            align-items: center;
+            text-align: center;
+            margin: 0 auto;
+            
+            .hero-headline {
+                order: 1;
+                max-width: none !important;
+            }
+            .hero-subheadline {
+                order: 2;
+                font-size: clamp(16px, 2vw, 18px);
+                line-height: 1.5;
+                max-width: none !important;
+            }
+            .hero-media--mobile {
+                order: 3;
+            }
+            .hero-ctas {
+                order: 4;
+            }
+            .trust-line {
+                order: 5;
+                font-size: 1.2rem;
+                margin-top: 14px;
+                max-width: none !important;
             }
         }
-        .hero-media img{
-            width: 100%;
+        
+        .hero-media--desktop {
+            display: none;
+        }
+        
+        .hero-media,
+        .hero-media--mobile {
+            display: block;
+            width: 100% !important;
+            margin-top: 20px;
+            margin-bottom: 24px;
+            transform: none;
+            justify-content: center;
+            
+            .hero-visual-shell {
+                width: 100% !important;
+                max-width: 572px;
+                margin: 0 auto;
+                
+                /* Reduce glow intensity on mobile for performance and subtlety */
+                &::before {
+                    inset: -16px;
+                    background: radial-gradient(
+                        ellipse at center,
+                        rgba(37, 99, 235, 0.04) 0%,
+                        rgba(37, 99, 235, 0.02) 40%,
+                        transparent 60%
+                    );
+                }
+            }
+            
+            .hero-image-wrapper {
+                /* Slightly smaller radius on mobile for better fit */
+                border-radius: 28px;
+                /* Lighter shadow stack on mobile */
+                box-shadow: 
+                    0 2px 6px rgba(0, 0, 0, 0.03),
+                    0 6px 16px rgba(0, 0, 0, 0.04);
+            }
+            
+            .hero-image-wrapper,
+            .hero-image-wrapper img {
+                width: 100% !important;
+            }
+        }
+        
+        .hero-ctas {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 18px;
+            align-items: stretch;
+            
+            .button {
+                width: 100%;
+                justify-content: center;
+            }
         }
     }
 
     // Mobile landscape (640px and below)
     @media (max-width: 640px) {
-        padding: 60px 0;
-        .hero-text{
-            .text-md{
-                font-size: 1.6rem;
+        .hero-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+        .hero-text {
+            order: 1;
+            align-items: center;
+            text-align: center;
+            
+            .hero-headline {
+                font-size: clamp(28px, 6vw, 40px);
+                line-height: 1.1;
+                max-width: 100%;
             }
+            .hero-subheadline {
+                font-size: clamp(16px, 3vw, 18px);
+                line-height: 1.5;
+                max-width: 100%;
+            }
+            .hero-ctas {
+                gap: 12px;
+                .button {
+                    min-height: 48px;
+                    width: 100%;
+                    justify-content: center;
+                }
+            }
+            .trust-line {
+                font-size: 1.1rem;
+            }
+        }
+        .hero-media {
+            order: 2;
+            justify-content: center;
         }
     }
 
     // Mobile portrait (480px and below)
     @media (max-width: 480px) {
-        padding: 50px 0;
-        .grid-half{
-            grid-template-columns: 1fr;
+        .hero-text {
+            order: 1;
+            align-items: center;
             text-align: center;
-            gap: 1rem;
-        }
-        .hero-text{
-            .text-md{
-                font-size: 1.6rem;
-                line-height: 1.4;
+            
+            .hero-headline {
+                font-size: clamp(26px, 7vw, 36px);
+                line-height: 1.1;
+            }
+            .hero-subheadline {
+                font-size: clamp(15px, 4vw, 17px);
+                line-height: 1.5;
+            }
+            .hero-ctas {
+                gap: 12px;
+                .button {
+                    min-height: 48px;
+                    width: 100%;
+                    justify-content: center;
+                }
+            }
+            .trust-line {
+                font-size: 1rem;
             }
         }
-        .hero-media{
-            display: none;
+        .hero-media--mobile {
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+        
+        /* Minimize glow on very small screens for performance */
+        .hero-visual-shell::before {
+            inset: -12px;
+            background: radial-gradient(
+                ellipse at center,
+                rgba(37, 99, 235, 0.03) 0%,
+                transparent 50%
+            );
         }
     }
 
     // Very small mobile (360px and below)
     @media (max-width: 360px) {
-        padding: 40px 0;
         .hero-text{
-            .text-md{
-                font-size: 1.3rem;
+            .hero-headline {
+                font-size: clamp(24px, 8vw, 32px);
+                line-height: 1.1;
+            }
+            .hero-subheadline {
+                font-size: clamp(14px, 4.5vw, 16px);
+                line-height: 1.5;
+            }
+            .trust-line {
+                font-size: 0.95rem;
             }
         }
     }
 }
 </style>
+
+<!-- Temporary LCP logging - dev mode only -->
+{import.meta.env.DEV && (
+    <script is:inline>
+        if (typeof window !== 'undefined') {
+            // Wait for fonts to load
+            document.fonts.ready.then(() => {
+                console.log('🔍 LCP Debug Info:');
+                console.log('Fonts status:', document.fonts.status);
+                
+                // Find largest image in hero area
+                const heroImages = document.querySelectorAll('#hero img');
+                let largestImg = null;
+                let largestSize = 0;
+                
+                heroImages.forEach(img => {
+                    const rect = img.getBoundingClientRect();
+                    const size = rect.width * rect.height;
+                    if (size > largestSize) {
+                        largestSize = size;
+                        largestImg = img;
+                    }
+                });
+                
+                if (largestImg) {
+                    console.log('Largest hero image:', {
+                        url: largestImg.src,
+                        width: largestImg.naturalWidth || largestImg.width,
+                        height: largestImg.naturalHeight || largestImg.height,
+                        displayWidth: largestImg.getBoundingClientRect().width,
+                        displayHeight: largestImg.getBoundingClientRect().height,
+                        id: largestImg.id
+                    });
+                }
+            });
+        }
+    </script>
+)}

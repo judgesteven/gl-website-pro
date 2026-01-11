@@ -3,7 +3,7 @@ import CtaImage from '../images/web-image-cta-new.png'
 import { EXTERNAL_URLS } from '../lib/external'
 ---
 
-<section>
+<section aria-label="Get started with GameLayer">
     <div class="container">
         <div class="grid-half align-center">
             <div class="image-container">
@@ -11,16 +11,20 @@ import { EXTERNAL_URLS } from '../lib/external'
                     src={CtaImage.src} 
                     alt="GameLayer gamification platform - digital engagement and loyalty points system" 
                     loading="lazy" 
-                    fetchpriority="auto"
+                    decoding="async"
                     width="420"
                     height="420"
                     style="width: 80%; transform: translate(-10px); height: auto;"
                 >
             </div>
             <div class="cta">
-                <h2 class="text-xlg">Start building engagement that delivers. Today.</h2>
-                <p class="text-sm">Need help designing engagement or loyalty for your product or service? We're available if you need guidance to get the most out of GameLayer.</p>
-                <a href={EXTERNAL_URLS.CMS_DASHBOARD} target="_blank" rel="noopener noreferrer external" class="button button-primary free-version-btn" aria-label="Open GameLayer dashboard (external)">Sign Up Free</a>
+                <h2 class="text-xlg">Start building engagement that lasts</h2>
+                <p class="text-sm">Whether you're experimenting or scaling in production, GameLayer gives you the tools to design engagement mechanics that fit your product - quickly and safely.</p>
+                <div class="cta-buttons">
+                    <a href={EXTERNAL_URLS.CMS_DASHBOARD} target="_blank" rel="noopener noreferrer external" class="button button-primary" aria-label="Get API key for GameLayer (external)">Get API Key</a>
+                    <a href="/api-docs" class="button" aria-label="View GameLayer API documentation">View API Docs</a>
+                </div>
+                <p class="micro-support">No credit card required to get started</p>
             </div>
         </div>
         
@@ -45,25 +49,58 @@ section{
         h2{
             color: var(--as-black);
             margin-bottom: 20px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         p{
             color: var(--as-black);
             margin-bottom: 30px;
             line-height: 1.5;
-        }
-        .button{
-            display: block;
-            margin: 0 auto;
-            width: fit-content;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
-        .free-version-btn {
-            transition: all 0.3s ease;
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 1rem;
             
-            &:hover {
-                transform: translateY(-2px) scale(1.05);
-                box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+            .button {
+                min-height: 44px; // WCAG AA tap target minimum
+                transition: all 0.3s ease;
+                
+                // Focus states for accessibility
+                &:focus-visible {
+                    outline: 3px solid var(--as-accent);
+                    outline-offset: 2px;
+                }
+                
+                &:hover {
+                    transform: translateY(-2px) scale(1.05);
+                    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+                }
             }
+            
+            // Lighten border for secondary button
+            .button:not(.button-primary) {
+                border-color: rgba(0, 0, 0, 0.4);
+                
+                &:hover {
+                    border-color: rgba(0, 0, 0, 0.5);
+                }
+            }
+        }
+        
+        .micro-support {
+            font-size: 15px;
+            font-style: italic;
+            color: var(--as-black);
+            opacity: 0.65;
+            text-align: center;
+            margin-top: 1rem;
+            line-height: 1.5;
         }
         
         .cta-contact-button{
@@ -134,11 +171,15 @@ section{
                 font-size: 2.2rem;
             }
             p{
-                font-size: 1.15rem; // Increased from 1rem to match gamification features
+                font-size: 1.15rem;
             }
-            .button{
-                font-size: 1rem;
-                padding: 10px 20px;
+            .cta-buttons {
+                .button {
+                    min-height: 44px;
+                }
+            }
+            .micro-support {
+                font-size: 1.3rem;
             }
         }
     }
@@ -157,9 +198,18 @@ section{
             p{
                 font-size: 1.1rem;
             }
-            .button{
-                font-size: 0.95rem;
-                padding: 10px 18px;
+            .cta-buttons {
+                flex-direction: column;
+                gap: 0.75rem;
+                
+                .button {
+                    width: 100%;
+                    text-align: center;
+                    min-height: 48px;
+                }
+            }
+            .micro-support {
+                font-size: 1.3rem;
             }
         }
     }
@@ -175,11 +225,20 @@ section{
                 font-size: 1.8rem;
             }
             p{
-                font-size: 1.3rem; // Increased from 1.05rem to match gamification features
+                font-size: 1.3rem;
             }
-            .button{
-                font-size: 0.9rem;
-                padding: 8px 16px;
+            .cta-buttons {
+                flex-direction: column;
+                gap: 0.75rem;
+                
+                .button {
+                    width: 100%;
+                    text-align: center;
+                    min-height: 48px;
+                }
+            }
+            .micro-support {
+                font-size: 1.2rem;
             }
         }
     }
@@ -204,13 +263,20 @@ section{
                 font-size: 1.6rem;
             }
             p{
-                font-size: 1.2rem; // Increased from 1rem to match gamification features
+                font-size: 1.2rem;
             }
-            .button{
-                font-size: 0.85rem;
-                padding: 8px 14px;
-                width: 100%;
-                max-width: 280px;
+            .cta-buttons {
+                flex-direction: column;
+                gap: 0.75rem;
+                
+                .button {
+                    width: 100%;
+                    text-align: center;
+                    min-height: 48px;
+                }
+            }
+            .micro-support {
+                font-size: 1.1rem;
             }
         }
     }
@@ -226,18 +292,20 @@ section{
                 font-size: 1.4rem;
             }
             p{
-                font-size: 1.2rem; // Increased from 0.95rem to match gamification features
+                font-size: 1.2rem;
             }
-            .button{
-                font-size: 0.8rem;
-                padding: 6px 12px;
+            .cta-buttons {
+                flex-direction: column;
+                gap: 0.75rem;
+                
+                .button {
+                    width: 100%;
+                    text-align: center;
+                    min-height: 48px;
+                }
             }
-            .cta-contact-button{
-                font-size: 1.2rem; // Increased from 1.0rem
-                height: 22px;
-                line-height: 22px; // Match height for centering
-                padding: 0 2px; // Restored original padding
-                margin: 0 2px; // Restored original margin
+            .micro-support {
+                font-size: 1rem;
             }
         }
     }

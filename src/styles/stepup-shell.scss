@@ -1,0 +1,124 @@
+:root {
+  --page-bg: #f0f4f8;
+  --surface: #fafbfc;
+  --stroke: rgba(0,0,0,0.12);
+  --radius: 24px;
+
+  /* Keep GameLayer slightly wider than Step-Up */
+  --shell-max: 1323px;
+}
+
+/* Global reset - force page background everywhere */
+html, body {
+  background: var(--page-bg);
+  margin: 0;
+  padding: 0;
+}
+
+/* Canvas */
+.canvas {
+  min-height: 100vh;
+  background: var(--page-bg);
+  padding: 0 16px;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .canvas {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+/* Shell */
+.shell {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  max-width: var(--shell-max);
+  margin: 32px 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .shell {
+    margin: 48px 0;
+  }
+}
+
+/* Container = full frame (aligns header + hero to shell) */
+.container {
+  width: 100%;
+  max-width: var(--shell-max);
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+/* Optional narrow container for later */
+.container-narrow {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header baseline - scoped to shell wrapper only */
+.shell header {
+  width: 100%;
+  height: 84px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--stroke);
+  display: flex;
+  align-items: center;
+}
+
+/* Header reset - prevent skeleton.css interference */
+.site-header a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.site-header nav {
+  margin: 0;
+  padding: 0;
+}
+
+.site-header ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header reset - prevent skeleton.css interference */
+.site-header a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.site-header nav {
+  margin: 0;
+  padding: 0;
+}
+
+.site-header ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+

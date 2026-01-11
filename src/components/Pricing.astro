@@ -1,304 +1,237 @@
 ---
 import { EXTERNAL_EMAILS } from '../lib/external';
+import { pricingPlans } from '../lib/pricingPlans';
 
-const pricingPlans = [
-  {
-    name: "Starter",
-    price: "€100",
-    period: "per month",
-    users: "Up to 1,000 users",
-    features: [
-      "Up to 1,000 active users",
-      "All gamification features",
-      "Unlimited elements",
-      "Email support",
-      "Basic analytics"
-    ],
-    buttonText: "Choose Plan",
-    stripeLink: "https://buy.stripe.com/9B6fZig0l9So1iF7S5fw400",
-    gocardlessLink: "https://pay.gocardless.com/BRT00043YPKPHZR",
-    popular: false
-  },
-  {
-    name: "Growth",
-    price: "€1,000",
-    period: "per month",
-    users: "Up to 25,000 users",
-    features: [
-      "Up to 25,000 active users",
-      "All gamification mechanics",
-      "Unlimited elements",
-      "Priority support",
-      "Basic Analytics"
-    ],
-    buttonText: "Choose Plan",
-    stripeLink: "https://buy.stripe.com/cNi00k7tP5C81iF8W9fw401",
-    gocardlessLink: "https://pay.gocardless.com/BRT00043YPNWZ8J",
-    popular: false
-  },
-  {
-    name: "Scale",
-    price: "€2,000",
-    period: "per month",
-    users: "Up to 100,000 users",
-    features: [
-      "Up to 100,000 active users",
-      "All gamification mechanics",
-      "Unlimited elements",
-      "Advanced support",
-      "Advanced reporting"
-    ],
-    buttonText: "Choose Plan",
-    stripeLink: "https://buy.stripe.com/28EaEY29v3u0gdz1tHfw403",
-    gocardlessLink: "https://pay.gocardless.com/BRT00043YPQ0HSS",
-    popular: true
-  },
-  {
-    name: "Enterprise",
-    price: "On Request",
-    period: "",
-    users: "Above 100,000 users",
-    features: [
-      "Unlimited active users",
-      "All gamification mechanics",
-      "Unlimited elements",
-      "Custom SLA and support",
-      "Advanced reporting"
-    ],
-    buttonText: "Contact Sales",
-    stripeLink: null,
-    gocardlessLink: null,
-    popular: false
-  }
-];
+const { hideHeader = false } = Astro.props;
+
+// Payment logos
+const StripeLogo = '/Stripe_Logo.svg';
+const GoCardlessLogo = '/GoCardless_Logo.svg';
 ---
 
-<section id="pricing" class="pricing-section">
-    <div class="container">
-        <div class="max-w-lg m-auto text-center">
-            <h2 class="text-lg">Simple, transparent pricing</h2>
-            <p class="text-sm">Choose the plan that fits your needs. Based on the number of monthly active users, scale up or down as your business or projects grows. <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" style="color: var(--as-accent); text-decoration: none; font-weight: bold;">Use the link up top to sign up and get started for free</a>.</p>
+<div class="pricing-content">
+    {!hideHeader && (
+        <div class="pricing-header">
+            <h2>Simple, transparent pricing</h2>
+            <p>Choose a plan based on scale - not features. Every plan includes full and unlimited access to GameLayer's engagement mechanics — pricing simply reflects usage as your product grows.</p>
         </div>
-        
-        <div class="pricing-grid pricing-spacing">
-            {pricingPlans.map((plan) => (
-                <div class={`pricing-card ${plan.popular ? 'popular' : ''}`}>
-                    {plan.popular && <div class="popular-badge">Most Popular</div>}
-                    
-                    <div class="pricing-header">
-                        <h3 class="text-md text-bolder">{plan.name}</h3>
-                        <div class="pricing-price">
-                            <span class="price">{plan.price}</span>
-                            {plan.period && <span class="period">{plan.period}</span>}
-                        </div>
-                        <p class="users">{plan.users}</p>
-                    </div>
-                    
-                    <div class="pricing-features">
-                        <ul>
-                            {plan.features.map((feature) => (
-                                <li class="feature-item">
-                                    <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16">
-                                        <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />
-                                    </svg>
-                                    {feature}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    
-                    <div class="pricing-cta">
-                        {plan.name === "Enterprise" ? (
-                            <a href={`mailto:${EXTERNAL_EMAILS.SALES}?subject=GameLayer%3A%20Enterprise%20Enquiry`} target="_self" class={`button button-enterprise ${plan.popular ? 'button-primary' : 'button-secondary'}`}>
-                                {plan.buttonText}
-                            </a>
-                        ) : (
-                            <>
-                                <a href={plan.stripeLink} target="_blank" rel="noopener noreferrer" class={`button ${plan.popular ? 'button-primary' : 'button-secondary'}`}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
-                                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
-                                        <line x1="1" y1="10" x2="23" y2="10"/>
-                                    </svg>
-                                    Card
-                                </a>
-                                <a href={plan.gocardlessLink} target="_blank" rel="noopener noreferrer" class="button button-bank">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
-                                        <rect x="2" y="6" width="20" height="12" rx="2"/>
-                                        <circle cx="12" cy="12" r="2"/>
-                                        <path d="M6 12h.01M18 12h.01"/>
-                                    </svg>
-                                    Bank
-                                </a>
-                            </>
-                        )}
+    )}
+    
+    <div class="pricing-grid">
+        {pricingPlans.map((plan) => (
+            <div class="pricing-card">
+                <div class="pricing-card-header">
+                    <h3 class="pricing-title">{plan.name}</h3>
+                    <div class="pricing-price">
+                        <span class="price">{plan.price}</span>
+                        {plan.period && <span class="period">{plan.period}</span>}
                     </div>
                 </div>
-            ))}
+                
+                <div class="pricing-features">
+                    <ul>
+                        {plan.features.map((feature) => (
+                            <li class="feature-item">
+                                <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16">
+                                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />
+                                </svg>
+                                {feature}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                
+                <div class="pricing-cta">
+                    <a 
+                        href={`mailto:${EXTERNAL_EMAILS.SALES}?subject=GameLayer%3A%20${plan.name}%20Plan%20Enquiry`} 
+                        target="_self" 
+                        class="button button-primary"
+                    >
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        ))}
+    </div>
+
+    <div class="pricing-payments" aria-label="Payments">
+        <div class="pricing-payments__content">
+            <p class="pricing-payments__text">
+                Card payments via <img src={StripeLogo} alt="Stripe" class="pay-brand-logo" loading="lazy" decoding="async" /> and bank payments via <img src={GoCardlessLogo} alt="GoCardless" class="pay-brand-logo" loading="lazy" decoding="async" /><br />
+                Contact us and we'll send a secure payment link to activate your plan
+            </p>
         </div>
     </div>
-</section>
+</div>
+
 
 <style>
-    .pricing-section {
-        background-color: var(--as-peach);
-        padding: 80px 0;
+    .pricing-content {
+        width: 100%;
+    }
+
+    .pricing-header {
+        max-width: 720px;
+        margin: 0 auto 26px;
+        text-align: center;
+    }
+
+    .pricing-header h2 {
+        font-size: var(--gl-h2-size);
+        font-weight: var(--gl-h2-weight);
+        line-height: var(--gl-h2-line-height);
+        letter-spacing: -0.02em;
+        margin: 0 auto var(--gl-h2-margin-bottom);
+        color: var(--as-black);
+        text-align: center;
+    }
+
+    .pricing-header p {
+        font-size: var(--gl-lede-size);
+        font-weight: var(--gl-lede-weight);
+        line-height: var(--gl-lede-line-height);
+        color: var(--gl-lede-color);
+        margin: var(--gl-heading-lede-gap-top) auto 0;
+        max-width: var(--gl-lede-max-width);
+        text-align: center;
     }
 
     .pricing-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 3.5rem;
-        max-width: 1400px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+        align-items: stretch;
+        width: 100%;
+        max-width: 1200px;
         margin: 0 auto;
-        justify-items: center;
-    }
-
-    .pricing-spacing {
-        margin-top: 100px;
+        box-sizing: border-box;
     }
 
     .pricing-card {
-        background: white;
-        border: 1px solid var(--color-border);
-        border-radius: 12px;
-        padding: 1.5rem;
-        position: relative;
-        transition: all 0.3s ease;
+        background: #fff;
+        border: 1px solid rgba(15, 23, 42, 0.10);
+        border-radius: 22px;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+        padding: 32px;
         display: flex;
         flex-direction: column;
+        height: 100%;
+        transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+        box-sizing: border-box;
         width: 100%;
-        max-width: 240px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        max-width: 100%;
     }
 
     .pricing-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+        box-shadow: 0 14px 40px rgba(15, 23, 42, 0.08);
+        border-color: rgba(15, 23, 42, 0.12);
     }
 
-    .pricing-card.popular {
-        border-color: var(--as-accent);
-        box-shadow: 0 0 0 1px var(--as-accent);
-    }
-
-    .popular-badge {
-        position: absolute;
-        top: -12px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: var(--as-accent);
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        z-index: 10;
-    }
-
-    .pricing-header {
+    .pricing-card-header {
         text-align: center;
-        margin-bottom: 1.5rem;
+        margin-bottom: var(--gl-card-content-gap);
     }
 
-    .pricing-header h3 {
-        margin: 10px 0;
+    .pricing-title {
+        margin: 0 0 var(--gl-h3-margin-bottom);
+        font-size: var(--gl-h3-size);
+        font-weight: var(--gl-h3-weight);
+        line-height: var(--gl-h3-line-height);
+        line-height: 1.1;
         color: var(--color-text);
     }
 
     .pricing-price {
-        margin-bottom: 0.5rem;
+        margin: 0;
+        text-align: center;
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        gap: 6px;
     }
 
     .price {
-        font-size: 2.5rem;
-        font-weight: 700;
+        font-size: 48px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
         color: var(--color-text);
+        line-height: 1;
+    }
+
+    /* Reduce font size for "Ask Us" text in Enterprise card (last card) */
+    .pricing-card:last-child .price {
+        font-size: 36px;
     }
 
     .period {
-        font-size: 1rem;
-        color: var(--color-text-muted);
-        margin-left: 0.25rem;
+        font-size: 13px;
+        opacity: 0.7;
+        color: var(--color-text);
+    }
+
+    .pricing-limit {
+        margin: 0 0 18px;
+        font-size: 14px;
+        opacity: 0.8;
+        color: rgba(15, 23, 42, 0.85);
+        text-align: center;
     }
 
     .users {
         color: var(--color-text-muted);
-        font-size: 1.375rem;
+        font-size: 14px;
+        opacity: 0.75;
+        margin: 0 0 18px;
     }
 
     .pricing-features {
         flex-grow: 1;
-        margin-bottom: 1.5rem;
+        margin: 0;
+        margin-top: 24px;
     }
 
     .pricing-features ul {
         list-style: none;
         padding: 0;
         margin: 0;
+        display: grid;
+        gap: var(--gl-list-item-gap);
+        color: rgba(15, 23, 42, 0.86);
     }
 
     .feature-item {
         display: flex;
         align-items: flex-start;
-        gap: 0.5rem;
-        margin-bottom: 0.75rem;
-        font-size: 1.375rem;
-        color: var(--color-text);
+        gap: var(--gl-card-content-gap);
+        line-height: var(--gl-body-line-height);
+        color: var(--gl-body-color);
+        font-size: var(--gl-body-size);
+        font-weight: var(--gl-body-weight);
     }
 
     .check-icon {
-        color: var(--as-accent);
+        margin-top: 2px;
+        opacity: 0.7;
         flex-shrink: 0;
-        margin-top: 0.125rem;
+        color: rgba(15, 23, 42, 0.86);
     }
 
     .pricing-cta {
         margin-top: auto;
+        padding-top: 20px;
+    }
+
+    .pricing-cta {
+        margin-top: auto;
+        padding-top: 20px;
         display: flex;
-        flex-direction: row;
-        gap: 0.625rem;
+        justify-content: center;
     }
 
     .pricing-cta .button {
-        flex: 1;
-        justify-content: center;
-        padding: 0.75rem 1rem;
-        font-size: 1.125rem;
-        font-weight: 600;
-        border-radius: 20px;
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        border: none;
-        height: auto;
-        line-height: 1.2;
-        letter-spacing: 0.01em;
-    }
-
-    /* Primary button - Credit Card */
-    .pricing-cta .button-primary,
-    .pricing-cta .button-secondary {
-        background: var(--as-accent);
-        color: white;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
-    }
-
-    .pricing-cta .button-primary:hover,
-    .pricing-cta .button-secondary:hover {
-        background: var(--as-accent);
-        color: white;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
-    }
-
-    .pricing-cta .button-primary:active,
-    .pricing-cta .button-secondary:active {
-        transform: translateY(0);
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        width: auto;
+        min-width: 140px;
     }
 
     /* Secondary button - Bank Account */
@@ -330,41 +263,29 @@ const pricingPlans = [
         opacity: 1;
     }
 
-    @media (max-width: 1200px) {
+    @media (max-width: 1024px) {
         .pricing-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
         }
     }
 
-    @media (max-width: 900px) {
-        .pricing-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-    }
-
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
         .pricing-grid {
             grid-template-columns: 1fr;
-            gap: 1.5rem;
+            gap: 16px;
         }
 
         .pricing-card {
-            padding: 1.5rem;
+            padding: 22px;
+            min-width: 0;
+        }
+
+        .pricing-title {
+            font-size: 26px;
         }
 
         .price {
-            font-size: 2rem;
-        }
-
-        .pricing-cta {
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .pricing-cta .button {
-            width: 100%;
+            font-size: 44px;
         }
     }
 
@@ -372,5 +293,65 @@ const pricingPlans = [
         .pricing-section {
             padding: 60px 0;
         }
+        
+        .value-framing {
+            font-size: 1.4rem;
+            margin-top: 1rem;
+            padding: 0 1rem;
+        }
+    }
+
+    /* Payments Trust Row */
+    .pricing-payments {
+        margin-top: 18px;
+        width: 100%;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .pricing-payments__content {
+        background: rgba(15, 23, 42, 0.03);
+        border: 1px solid rgba(15, 23, 42, 0.06);
+        border-radius: 16px;
+        padding: 14px 16px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .pricing-payments__text {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.5;
+        opacity: 0.85;
+        color: rgba(15, 23, 42, 0.85);
+        text-align: center;
+    }
+
+    .pay-brand-logo {
+        height: 18px;
+        vertical-align: middle;
+        margin: 0 4px;
+        display: inline-block;
+        object-fit: contain;
+    }
+
+    @media (max-width: 640px) {
+        .pricing-card {
+            padding: 22px;
+        }
+
+        .pricing-payments__content {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+        }
     }
 </style>
+
+
+

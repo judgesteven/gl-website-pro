@@ -1,0 +1,220 @@
+---
+const metrics = [
+  { value: "75%", label: "of users engaged weekly" },
+  { value: "60%", label: "boost in brand sentiment" },
+  { value: "25%", label: "increase in session time" },
+  { value: "200%", label: "increase in task completion" },
+  { value: "50%", label: "boost in product awareness" },
+  { value: "40%", label: "increase in no. of sessions" },
+];
+---
+
+<section id="why" class="wc" aria-label="Why companies love GameLayer">
+  <div class="container">
+    <!-- IMPORTANT: reuse the same card class as STICKY for identical width/position -->
+    <div class="sticky-surface">
+      <div class="wc-header">
+        <h2 class="wc-title">Why companies choose GameLayer</h2>
+        <p class="wc-lede">
+          GameLayer is chosen by teams that need engagement mechanics to work reliably at scale — across products, users, and real-world programmes.
+        </p>
+      </div>
+
+      <div class="wc-steps-panels" aria-label="Why companies love GameLayer">
+        <div class="wc-step-panel wc-step-panel--1">
+          <div class="wc-step-panel__num">1</div>
+          <div class="wc-step-panel__title">Sustainable engagement by design</div>
+          <div class="wc-step-panel__text">
+            Design programmes for repeat participation — not one-off campaigns. Use missions, streaks, and rewards to create long-term engagement loops that keep users coming back without relying on constant promotions or manual effort.
+          </div>
+        </div>
+
+        <div class="wc-step-panel wc-step-panel--2">
+          <div class="wc-step-panel__num">2</div>
+          <div class="wc-step-panel__title">Progress users can clearly feel</div>
+          <div class="wc-step-panel__text">
+            Make improvement visible and motivating. Show progress through XP, levels, and achievements so users always know what they're working towards — building momentum and sustained motivation over time.
+          </div>
+        </div>
+
+        <div class="wc-step-panel wc-step-panel--3">
+          <div class="wc-step-panel__num">3</div>
+          <div class="wc-step-panel__title">Social motivation that scales</div>
+          <div class="wc-step-panel__text">
+            Turn individual actions into shared experiences - at scale. Use teams, leaderboards, and friendly competition to encourage participation through collaboration and social proof — not pressure or gimmicks.
+          </div>
+        </div>
+
+        <div class="wc-step-panel wc-step-panel--4">
+          <div class="wc-step-panel__num">4</div>
+          <div class="wc-step-panel__title">Built for real-world programmes</div>
+          <div class="wc-step-panel__text">
+            Run production-ready engagement with confidence. Control rules, eligibility, budgets, and rewards in one system. Launch safely, evolve programmes over time, and scale without re-engineering your product.
+          </div>
+        </div>
+      </div>
+
+      <div class="wc__metrics" aria-label="Aggregated metrics">
+        {metrics.map((m) => (
+          <div class="wc__metric">
+            <div class="wc__metricValue">{m.value}</div>
+            <div class="wc__metricLabel">{m.label}</div>
+          </div>
+        ))}
+      </div>
+
+      <div class="wc__footnote">Metrics are indicative and vary by implementation and use case</div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Step-Up color variables - scoped to .wc */
+  .wc {
+    --su-blue:   #E3F2FD;
+    --su-green:  #E8F5E9;
+    --su-yellow: #FFF9C4;
+    --su-purple: #EDE7F6;
+    padding: 0;
+  }
+
+  .wc-header {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 980px;
+    padding-top: 0;
+    margin-top: 0 !important;
+    margin-bottom: 0;
+  }
+
+  .wc-title {
+    margin: 0 auto;
+    font-size: var(--gl-h2-size);
+    font-weight: var(--gl-h2-weight);
+    line-height: var(--gl-h2-line-height);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--gl-h2-margin-bottom);
+  }
+
+  .wc-lede {
+    margin: var(--gl-heading-lede-gap-top) auto var(--gl-lede-content-gap);
+    max-width: var(--gl-lede-max-width);
+    font-size: var(--gl-lede-size);
+    font-weight: var(--gl-lede-weight);
+    line-height: var(--gl-lede-line-height);
+    color: var(--gl-lede-color);
+  }
+
+  /* Steps panels - Step-Up style */
+  .wc .wc-steps-panels {
+    margin: 50px auto 0;
+    width: 100%;
+    max-width: 1100px;
+    border-radius: 28px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  /* === STEP-UP TEXT RHYTHM + SPACING POLISH === */
+  .wc .wc-step-panel {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gl-card-content-gap);
+  }
+
+  .wc .wc-step-panel__num {
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 14px;
+    opacity: 0.9;
+  }
+
+  .wc .wc-step-panel__title {
+    font-size: var(--gl-h3-size);
+    font-weight: var(--gl-h3-weight);
+    line-height: var(--gl-h3-line-height);
+    margin-bottom: var(--gl-h3-margin-bottom);
+    max-width: 22ch;
+  }
+
+  .wc .wc-step-panel__text {
+    font-size: var(--gl-body-size);
+    line-height: var(--gl-body-line-height);
+    font-weight: var(--gl-body-weight);
+    color: var(--gl-body-color);
+    max-width: 34ch;
+    opacity: 0.78;
+    margin: 0;
+  }
+
+
+  /* 6 metrics in one row on desktop - enforce */
+  .wc .wc__metrics {
+    margin-top: clamp(28px, 3.5vw, 44px);
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 24px;
+    align-items: start;
+    justify-items: center;
+    text-align: center;
+    margin-bottom: 18px;
+  }
+
+  .wc .wc__metric{
+    min-width: 0;
+    text-align: center;
+  }
+
+  .wc .wc__metricValue{
+    display: block;
+    font-size: clamp(44px, 3.2vw, 64px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+
+  .wc .wc__metricLabel{
+    display: block;
+    font-size: 15px;
+    line-height: 1.35;
+    opacity: 0.85;
+    max-width: 16ch;
+    margin: 0 auto;
+  }
+
+  .wc .wc__footnote, .wc .wc-footnote{
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    text-align: center;
+    font-size: 15px;
+    font-style: italic;
+    opacity: 0.65;
+  }
+
+
+  /* Responsive panels */
+  @media (max-width: 1024px){
+    .wc .wc-steps-panels { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .wc .wc-step-panel__text { max-width: none; }
+    .wc .wc__metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (max-width: 640px){
+    .wc .wc-steps-panels { grid-template-columns: 1fr; }
+    .wc .wc-step-panel { padding: 26px 22px; }
+    .wc .wc__metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  }
+
+  /* Panel colors - Step-Up feel with nth-child */
+  .wc .wc-step-panel:nth-child(1) { background: var(--wc-blue, #edf6ff); }
+  .wc .wc-step-panel:nth-child(2) { background: var(--wc-green, #eefaf2); }
+  .wc .wc-step-panel:nth-child(3) { background: var(--wc-cream, #f6f1e8); }
+  .wc .wc-step-panel:nth-child(4) { background: var(--wc-lilac, #ebe8f7); }
+
+</style>
+

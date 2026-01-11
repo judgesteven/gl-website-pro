@@ -1,43 +1,40 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-import Brands from '../components/Brands.astro';
 import Header from '../components/Header.astro';
-import Features from '../components/Features.astro';
+import StickySection from '../components/StickySection.astro';
 import Showcase from '../components/Showcase.astro';
-import Reviews from '../components/Reviews.astro';
+import WhyCompaniesFinal from '../components/WhyCompaniesFinal.astro';
 import Pricing from '../components/Pricing.astro';
-import CallToAction from '../components/CallToAction.astro';
 import Footer from '../components/Footer.astro';
-import { EXTERNAL_EMAILS, EXTERNAL_SOCIAL } from '../lib/external';
----
+import { EXTERNAL_EMAILS, EXTERNAL_SOCIAL, EXTERNAL_URLS } from '../lib/external';
+import CtaImage from '../images/web-image-cta-new.png';
+import { getImage } from 'astro:assets';
+import { buildSeo, defaultHomeSeo } from '../lib/seo';
 
-<Layout 
-	title="GameLayer - Gamification API Platform for User Engagement & Customer Loyalty"
-	description="Build powerful gamification experiences with GameLayer's comprehensive API. Increase user engagement, retention, and customer loyalty with our gamification platform. Easy integration, proven results."
-	keywords="gamification API, gamification platform, user engagement, user retention, customer loyalty, gamification mechanics, API integration, gamification software"
->
-	<main id="main-content">
-		<Header />
-		<Hero />
-		<Brands />
-		<Features />
-		<Showcase />
-		<Reviews />
-		<Pricing />
-		<CallToAction />
-		<Footer />
-	</main>
-	
-	<!-- Additional Structured Data for Homepage -->
-	<script type="application/ld+json" is:inline>
+// Optimize CTA image (below the fold, so lazy loading is fine)
+const ctaImages = {
+    webp: await getImage({ src: CtaImage, format: 'webp', width: 420, quality: 80 }),
+    original: CtaImage
+}
+
+// SEO configuration
+const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://gamelayer.io';
+const seo = buildSeo({
+	...defaultHomeSeo,
+	pathname: '/'
+});
+
+// Structured data schemas
+const schemas = [
+	// Organization
 	{
 		"@context": "https://schema.org",
 		"@type": "Organization",
 		"name": "GameLayer",
-		"url": "https://gamelayer.io",
-		"logo": "https://gamelayer.io/logo.png",
-		"description": "The leading gamification API platform for user engagement, retention, and customer loyalty",
+		"url": siteUrl,
+		"logo": `${siteUrl}/logo.png`,
+		"description": "The leading Gamification API platform for user engagement, retention, and customer loyalty",
 		"foundingDate": "2012",
 		"address": {
 			"@type": "PostalAddress",
@@ -46,74 +43,354 @@ import { EXTERNAL_EMAILS, EXTERNAL_SOCIAL } from '../lib/external';
 		},
 		"contactPoint": {
 			"@type": "ContactPoint",
-			"email": "contact@gamelayer.co",
+			"email": EXTERNAL_EMAILS.CONTACT,
 			"contactType": "customer service"
 		},
 		"sameAs": [
-			"https://www.linkedin.com/company/gamelayer/",
-			"https://x.com/gamelayerco",
-			"https://www.instagram.com/gamelayer.co/"
+			EXTERNAL_SOCIAL.LINKEDIN,
+			EXTERNAL_SOCIAL.TWITTER,
+			EXTERNAL_SOCIAL.INSTAGRAM
 		]
-	}
-	</script>
-	
-	<script type="application/ld+json" is:inline>
-	{
-		"@context": "https://schema.org",
-		"@type": "SoftwareApplication",
-		"name": "GameLayer",
-		"url": "https://gamelayer.io",
-		"logo": "https://gamelayer.io/logo.png",
-		"description": "The leading gamification API platform for user engagement, retention, and customer loyalty",
-		"applicationCategory": "BusinessApplication",
-		"operatingSystem": "Cloud",
-		"offers": [
-			{
-				"@type": "Offer",
-				"name": "Starter Plan",
-				"price": "100",
-				"priceCurrency": "EUR",
-				"description": "Up to 1,000 active users with all gamification features"
-			},
-			{
-				"@type": "Offer", 
-				"name": "Growth Plan",
-				"price": "1000",
-				"priceCurrency": "EUR",
-				"description": "Up to 25,000 active users with all gamification mechanics"
-			},
-			{
-				"@type": "Offer",
-				"name": "Scale Plan", 
-				"price": "2500",
-				"priceCurrency": "EUR",
-				"description": "Up to 100,000 active users with advanced support"
-			}
-		]
-	}
-	</script>
-	
-	<script type="application/ld+json" is:inline>
+	},
+	// WebSite
 	{
 		"@context": "https://schema.org",
 		"@type": "WebSite",
 		"name": "GameLayer",
-		"url": "https://gamelayer.io",
-		"description": "Gamification API platform for user engagement and customer loyalty",
-		"potentialAction": {
-			"@type": "SearchAction",
-			"target": "https://gamelayer.io/api-docs/?q={search_term_string}",
-			"query-input": "required name=search_term_string"
+		"url": siteUrl,
+		"description": "Gamification API for modern products",
+		"publisher": {
+			"@type": "Organization",
+			"name": "GameLayer"
 		}
+	},
+	// WebPage (home)
+	{
+		"@context": "https://schema.org",
+		"@type": "WebPage",
+		"@id": `${siteUrl}/#webpage`,
+		"url": siteUrl,
+		"name": seo.title,
+		"description": seo.description,
+		"isPartOf": {
+			"@type": "WebSite",
+			"name": "GameLayer",
+			"url": siteUrl
+		},
+		"about": {
+			"@type": "Thing",
+			"name": "Gamification API"
+		}
+	},
+	// SoftwareApplication
+	{
+		"@context": "https://schema.org",
+		"@type": "SoftwareApplication",
+		"name": "GameLayer",
+		"url": siteUrl,
+		"logo": `${siteUrl}/logo.png`,
+		"description": "Gamification API platform that helps modern products add missions, streaks, rewards, and leaderboards. Launch engagement mechanics in days via API + dashboard.",
+		"applicationCategory": "BusinessApplication",
+		"operatingSystem": "Cloud",
+		"offers": {
+			"@type": "AggregateOffer",
+			"priceCurrency": "EUR",
+			"availability": "https://schema.org/InStock"
+		}
+	},
+	// ItemList of on-page sections
+	{
+		"@context": "https://schema.org",
+		"@type": "ItemList",
+		"name": "GameLayer Homepage Sections",
+		"itemListElement": [
+			{
+				"@type": "ListItem",
+				"position": 1,
+				"name": "Gamification Mechanics",
+				"url": `${siteUrl}/#mechanics`
+			},
+			{
+				"@type": "ListItem",
+				"position": 2,
+				"name": "Powered by GameLayer",
+				"url": `${siteUrl}/#powered-by`
+			},
+			{
+				"@type": "ListItem",
+				"position": 3,
+				"name": "Why Companies Love GameLayer",
+				"url": `${siteUrl}/#why`
+			},
+			{
+				"@type": "ListItem",
+				"position": 4,
+				"name": "Pricing",
+				"url": `${siteUrl}/#pricing`
+			},
+			{
+				"@type": "ListItem",
+				"position": 5,
+				"name": "Get Started",
+				"url": `${siteUrl}/#get-started`
+			}
+		]
 	}
-	</script>
+];
+---
+
+<Layout 
+	title={seo.title}
+	description={seo.description}
+	keywords="gamification API, gamification platform, user engagement, user retention, customer loyalty, gamification mechanics, API integration, gamification software"
+	canonical={seo.canonical}
+	schema={schemas}
+>
+	<main id="main-content" class="page gl-typography">
+		<Header />
+		<div class="section hero">
+			<Hero />
+		</div>
+		<StickySection />
+		<Showcase />
+		<div class="section section--card">
+			<WhyCompaniesFinal />
+		</div>
+		<div id="pricing" class="section section--plain pricing-section">
+			<div class="container">
+				<div class="pricing-header">
+					<h2>Simple, transparent pricing</h2>
+					<p>
+						Choose a plan based on scale - not features. Every plan includes full and unlimited access to GameLayer's engagement mechanics.
+					</p>
+				</div>
+				<Pricing hideHeader />
+			</div>
+		</div>
+		<section id="get-started" class="section section--card final-cta">
+			<div class="container">
+				<div class="final-cta-card">
+					<div class="final-cta-grid">
+						<div class="final-cta-image">
+							<picture>
+								<source 
+									type="image/webp" 
+									srcset={ctaImages.webp.src}
+								/>
+								<img 
+									src={ctaImages.original.src} 
+									alt="GameLayer gamification platform - digital engagement and loyalty points system" 
+									loading="lazy"
+									decoding="async"
+									width="420"
+									height="420"
+								/>
+							</picture>
+						</div>
+						<div class="final-cta-content">
+							<h2>Start building engagement that lasts</h2>
+							<p>
+								Whether you're experimenting or scaling in production, GameLayer gives you the tools to design engagement mechanics that fit your product - quickly and safely.
+							</p>
+							<div class="final-cta-actions">
+								<!-- Get API Key: EXTERNAL_URLS.CMS_DASHBOARD -->
+								<a 
+									href={EXTERNAL_URLS.CMS_DASHBOARD} 
+									target="_blank" 
+									rel="noopener noreferrer external" 
+									class="button button-primary" 
+									aria-label="Get API key for GameLayer (external)"
+								>
+									Get API Key
+								</a>
+								<!-- View API Docs: /api-docs -->
+								<a 
+									href="/api-docs" 
+									class="button" 
+									aria-label="View GameLayer API documentation"
+								>
+									View API Docs
+								</a>
+							</div>
+							<p class="final-cta-footnote">No credit card required to get started</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<Footer />
+	</main>
 </Layout>
 
 <style>
-	
-
 	main{
-		background-color: #fff;
+		background-color: var(--page-bg);
+	}
+
+	.pricing-section {
+		background: #F6F8FC; /* soft tinted background like Step-Up */
+		/* Padding inherited from .section--plain: var(--gl-section-padding-standard) */
+		/* DIAGNOSTIC: Run in DevTools console to check computed spacing:
+		   (() => {
+		     const powered = document.querySelector('#powered-by');
+		     const pricing = document.querySelector('.pricing-section');
+		     const ph = document.querySelector('.pricing-header');
+		     const pbHeader = document.querySelector('.powered-by-header');
+		     const cs = (el) => el ? getComputedStyle(el) : null;
+		     console.table({
+		       powered_paddingTop: cs(powered)?.paddingTop,
+		       powered_paddingBottom: cs(powered)?.paddingBottom,
+		       powered_header_marginTop: cs(pbHeader)?.marginTop,
+		       powered_header_marginBottom: cs(pbHeader)?.marginBottom,
+		       pricing_paddingTop: cs(pricing)?.paddingTop,
+		       pricing_paddingBottom: cs(pricing)?.paddingBottom,
+		       pricing_header_marginTop: cs(ph)?.marginTop,
+		       pricing_header_marginBottom: cs(ph)?.marginBottom,
+		     });
+		   })(); */
+	}
+
+	.pricing-header {
+		text-align: center;
+		max-width: 720px;
+		margin: 0 auto 50px;
+		margin-top: 0;
+	}
+
+	.pricing-header h2 {
+		text-align: center;
+		margin-top: 0;
+	}
+
+	/* Reset first child margin to prevent extra top gap */
+	.pricing-section .container > :first-child {
+		margin-top: 0 !important;
+	}
+
+	.pricing-header p {
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 12px;
+	}
+
+	/* Make Pricing component's section background transparent */
+	.pricing-section section.pricing-section {
+		background-color: transparent;
+		padding: 0;
+	}
+
+	/* Final CTA Section */
+	.final-cta {
+		padding: var(--gl-section-padding-standard) 0;
+		background: var(--page-bg);
+	}
+
+	.final-cta-card {
+		background: white;
+		border-radius: 28px;
+		padding: clamp(24px, 4vw, 32px);
+		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+		max-width: 960px;
+		margin: 0 auto;
+	}
+
+	.final-cta-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		align-items: center;
+		gap: clamp(32px, 4vw, 48px);
+	}
+
+	.final-cta-image {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.final-cta-image img {
+		width: 80%;
+		height: auto;
+		transform: translateX(-10px);
+	}
+
+	.final-cta-content {
+		max-width: 520px;
+	}
+
+	.final-cta-content h2 {
+		font-size: var(--gl-h2-size);
+		font-weight: var(--gl-h2-weight);
+		line-height: var(--gl-h2-line-height);
+		letter-spacing: -0.02em;
+		margin: 0 0 var(--gl-h2-margin-bottom);
+		color: var(--as-black);
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+	}
+
+	.final-cta-content > p {
+		font-size: var(--gl-lede-size);
+		font-weight: var(--gl-lede-weight);
+		line-height: var(--gl-lede-line-height);
+		color: var(--gl-lede-color);
+		max-width: var(--gl-lede-max-width);
+		margin: var(--gl-heading-lede-gap-top) 0 var(--gl-lede-content-gap);
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+	}
+
+	.final-cta-actions {
+		display: flex;
+		gap: 14px;
+		flex-wrap: wrap;
+		margin-bottom: 12px;
+	}
+
+	.final-cta-content .final-cta-footnote {
+		font-size: 15px !important;
+		font-style: italic;
+		line-height: 1.5;
+		color: var(--as-black);
+		opacity: 0.65;
+		margin: 0;
+	}
+
+	@media (max-width: 768px) {
+		.final-cta-grid {
+			grid-template-columns: 1fr;
+			gap: 32px;
+		}
+
+		.final-cta-image {
+			order: -1;
+		}
+
+		.final-cta-image img {
+			width: 70%;
+			transform: translateX(-5px);
+		}
+
+		.final-cta-content {
+			text-align: center;
+			max-width: 100%;
+		}
+
+		.final-cta-actions {
+			flex-direction: column;
+			align-items: stretch;
+		}
+
+		.final-cta-actions .button {
+			width: 100%;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.final-cta-image img {
+			width: 60%;
+			transform: none;
+		}
 	}
 
 </style>

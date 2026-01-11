@@ -1,0 +1,208 @@
+---
+---
+
+<section class="why-v3-root">
+  <div class="container">
+    <div class="sticky-surface why-v3__surface">
+
+      <header class="why-v3__header">
+        <h2 class="why-v3__title">Why companies ❤ GameLayer</h2>
+        <p class="why-v3__intro">
+          GameLayer powers engagement mechanics for products used by millions of users.
+          These figures reflect aggregated usage across customer programmes and live environments.
+        </p>
+      </header>
+
+      <div class="why-v3__panels">
+        <div class="why-v3__panel why-v3__panel--blue">
+          <div class="why-v3__num">1</div>
+          <div class="why-v3__panelTitle">Sustainable engagement</div>
+          <div class="why-v3__panelText">
+            Design for repeat participation, not one-off campaigns. Use missions, streaks,
+            and rewards to keep users coming back over time — without relying on constant promotions.
+          </div>
+        </div>
+
+        <div class="why-v3__panel why-v3__panel--green">
+          <div class="why-v3__num">2</div>
+          <div class="why-v3__panelTitle">Progress users can feel</div>
+          <div class="why-v3__panelText">
+            Make improvement visible through XP, levels, and achievements. Give users clear goals,
+            momentum, and a sense of advancement that builds motivation naturally.
+          </div>
+        </div>
+
+        <div class="why-v3__panel why-v3__panel--yellow">
+          <div class="why-v3__num">3</div>
+          <div class="why-v3__panelTitle">Social motivation</div>
+          <div class="why-v3__panelText">
+            Encourage friendly competition and collaboration with teams and leaderboards.
+            Turn individual actions into shared experiences - at scale - users want to participate in together.
+          </div>
+        </div>
+
+        <div class="why-v3__panel why-v3__panel--pink">
+          <div class="why-v3__num">4</div>
+          <div class="why-v3__panelTitle">Built for real programmes</div>
+          <div class="why-v3__panelText">
+            Run production-ready engagement with rules, eligibility, budgets, and rewards.
+            Control how mechanics behave and scale programmes with confidence.
+          </div>
+        </div>
+      </div>
+
+      <div class="why-v3__metrics" aria-label="Aggregated proof points">
+        <div class="why-v3__metric">
+          <div class="why-v3__metricValue">75%</div>
+          <div class="why-v3__metricLabel">of users engaged weekly</div>
+        </div>
+        <div class="why-v3__metric">
+          <div class="why-v3__metricValue">60%</div>
+          <div class="why-v3__metricLabel">boost in brand sentiment</div>
+        </div>
+        <div class="why-v3__metric">
+          <div class="why-v3__metricValue">25%</div>
+          <div class="why-v3__metricLabel">increase in session time</div>
+        </div>
+        <div class="why-v3__metric">
+          <div class="why-v3__metricValue">200%</div>
+          <div class="why-v3__metricLabel">increase in task completion</div>
+        </div>
+        <div class="why-v3__metric">
+          <div class="why-v3__metricValue">50%</div>
+          <div class="why-v3__metricLabel">boost in product awareness</div>
+        </div>
+        <div class="why-v3__metric">
+          <div class="why-v3__metricValue">40%</div>
+          <div class="why-v3__metricLabel">increase in no. of sessions</div>
+        </div>
+      </div>
+
+      <div class="why-v3__footnote">
+        Metrics are indicative and vary by implementation and use case
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+/* HARD RESET inside this section to neutralize legacy styles */
+.why-v3-root, .why-v3-root * {
+  box-sizing: border-box;
+}
+.why-v3-root h2, .why-v3-root p, .why-v3-root div {
+  margin: 0;
+}
+.why-v3-root h2 {
+  line-height: 1.05;
+}
+.why-v3-root p {
+  line-height: 1.6;
+}
+
+/* Layout - match STICKY section styling */
+.why-v3-root {
+  width: 100%;
+  background: var(--section-warm);
+  padding: clamp(56px, 6vw, 96px) 0;
+}
+
+/* Surface card - match STICKY surface exactly */
+.why-v3__surface {
+  background: var(--surface);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 24px;
+  padding: clamp(36px, 4vw, 64px);
+}
+
+.why-v3__header {
+  margin-bottom: clamp(40px, 5vw, 64px);
+  text-align: center;
+}
+
+.why-v3__title {
+  margin: 0 auto 20px auto;
+  font-size: clamp(36px, 4vw, 56px);
+  letter-spacing: -0.02em;
+  color: var(--as-black);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.why-v3__intro {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--as-black);
+  margin: 0 auto;
+  max-width: 80ch;
+}
+
+.why-v3__panels {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-radius: 28px;
+  overflow: hidden;
+  margin: 0 auto 48px;
+  width: 100%;
+}
+
+.why-v3__panel { padding: 28px; }
+
+.why-v3__panel--blue { background: #EAF4FF; }
+.why-v3__panel--green { background: #ECF8F1; }
+.why-v3__panel--yellow { background: #FFF8D6; }
+.why-v3__panel--pink { background: #FCEEF4; }
+
+.why-v3__num {
+  font-size: 44px;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+.why-v3__panelTitle {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.why-v3__panelText {
+  font-size: 16px;
+  opacity: 0.85;
+}
+
+/* Metrics: FORCE one line on desktop */
+.why-v3__metrics {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 24px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.why-v3__metricValue {
+  font-size: 40px;
+  font-weight: 900;
+}
+
+.why-v3__metricLabel {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.why-v3__footnote {
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+@media (max-width: 1024px) {
+  .why-v3__panels { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .why-v3__metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .why-v3__panels { grid-template-columns: 1fr; }
+  .why-v3__metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+</style>

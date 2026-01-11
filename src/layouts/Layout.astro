@@ -1,5 +1,6 @@
 ---
-import SocialImage from '../images/gamelayer_social.png';
+import "../styles/stepup-shell.scss";
+import SpacingDebug from '../components/SpacingDebug.astro';
 
 interface Props {
 	title: string;
@@ -9,20 +10,29 @@ interface Props {
 	ogTitle?: string;
 	ogDescription?: string;
 	canonical?: string;
+	noindex?: boolean;
+	schema?: Array<Record<string, any>>;
 }
+
+// Social image from public folder - construct full URL for Open Graph
+const socialImagePath = '/gamelayer-gamification-api-digital-engagement.png';
+const socialImageUrl = new URL(socialImagePath, Astro.url.origin).href;
 
 const { 
 	title, 
 	description = "GameLayer - The leading gamification API platform for user engagement, retention, and customer loyalty. Build powerful gamification experiences with our comprehensive API.",
 	keywords = "gamification, gamification API, gamification platform, user engagement, user retention, customer loyalty, gamification mechanics, API integration",
-	ogImage = SocialImage.src,
+	ogImage = socialImageUrl,
 	ogTitle,
 	ogDescription,
-	canonical = Astro.url.href
+	canonical = Astro.url.href,
+	noindex = false,
+	schema = []
 } = Astro.props;
 
 const ogTitleFinal = ogTitle || title;
 const ogDescriptionFinal = ogDescription || description;
+const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large';
 ---
 
 <!doctype html>
@@ -38,7 +48,7 @@ const ogDescriptionFinal = ogDescription || description;
 		<meta name="description" content={description} />
 		<meta name="keywords" content={keywords} />
 		<meta name="author" content="GameLayer" />
-		<meta name="robots" content="index, follow, max-image-preview:large" />
+		<meta name="robots" content={robotsContent} />
 		<link rel="canonical" href={canonical} />
 		
 		<!-- Additional SEO Meta Tags -->
@@ -53,16 +63,29 @@ const ogDescriptionFinal = ogDescription || description;
 		<!-- Google Search Console Verification -->
 		<meta name="google-site-verification" content="B5sXnvlhRyPD-TK1buZmP9PHQ1EwqAsVvCM3OvV8EsE" />
 		
-		<!-- Google Analytics 4 -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-63MBQ0CMFJ" is:inline></script>
+		<!-- Google Analytics 4 - Load after page load to avoid blocking -->
 		<script is:inline>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'G-63MBQ0CMFJ', {
-			  anonymize_ip: true,
-			  send_page_view: true
-			});
+			// Defer analytics loading until after page load
+			if (typeof window !== 'undefined') {
+				window.addEventListener('load', function() {
+					// Load gtag script
+					const script = document.createElement('script');
+					script.async = true;
+					script.src = 'https://www.googletagmanager.com/gtag/js?id=G-63MBQ0CMFJ';
+					document.head.appendChild(script);
+					
+					// Initialize gtag after script loads
+					script.onload = function() {
+						window.dataLayer = window.dataLayer || [];
+						function gtag(){dataLayer.push(arguments);}
+						gtag('js', new Date());
+						gtag('config', 'G-63MBQ0CMFJ', {
+							anonymize_ip: true,
+							send_page_view: true
+						});
+					};
+				});
+			}
 		</script>
 		
 		<!-- Open Graph / Facebook -->
@@ -88,78 +111,199 @@ const ogDescriptionFinal = ogDescription || description;
 		<link rel="icon" type="image/png" href="/favicon.png" />
 		<link rel="apple-touch-icon" href="/favicon.png" />
 		
-		<!-- DNS Prefetch for external resources -->
-		<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+		<!-- DNS Prefetch and Preconnect for external resources -->
 		<link rel="dns-prefetch" href="//www.googletagmanager.com" />
 		<link rel="dns-prefetch" href="//www.google-analytics.com" />
+		<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+		<link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
 		
-		<!-- Preconnect for critical external resources -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<!-- Critical CSS - Inlined for above-the-fold content (Header, Hero, Buttons) -->
+		<style is:inline>
+			/* Critical: CSS Variables */
+			:root {
+				--as-black: #000;
+				--as-accent: #2563EB;
+				--as-plum: #DBEAFE;
+				--surface: #fafbfc;
+				--gl-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+				--gl-h1-size: clamp(40px, 4.5vw, 56px);
+				--gl-h1-weight: 800;
+				--gl-h1-line-height: 1.1;
+				--gl-h1-margin-bottom: 16px;
+				--gl-lede-size: 16px;
+				--gl-lede-weight: 400;
+				--gl-lede-line-height: 1.6;
+				--gl-lede-color: #4B5563;
+				--gl-lede-max-width: 64ch;
+				--gl-heading-lede-gap-top: 8px;
+				--gl-heading-lede-gap-bottom: 32px;
+			}
+			
+			/* Critical: Header */
+			.gl-header {
+				display: block !important;
+				height: auto !important;
+				background: var(--surface, #ffffff);
+				border-bottom: 1px solid rgba(0,0,0,0.08);
+			}
+			.gl-header .gl-container {
+				padding-block: 0 !important;
+			}
+			.header-inner {
+				min-height: 64px;
+				display: grid;
+				grid-template-columns: auto 1fr auto;
+				align-items: center;
+				column-gap: 24px;
+			}
+			.gl-header__logo {
+				height: 40px;
+				width: auto;
+				display: block;
+			}
+			.gl-header__nav {
+				display: flex;
+				align-items: center;
+				gap: 28px;
+				justify-content: center;
+			}
+			.gl-header__nav a {
+				font-size: 15px;
+				font-weight: 600;
+				text-decoration: none;
+				color: #111;
+			}
+			
+			/* Critical: Hero */
+			#hero {
+				position: relative;
+				overflow: visible;
+				background: var(--surface);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				min-height: clamp(560px, 72vh, 720px);
+			}
+			.hero-headline {
+				font-size: var(--gl-h1-size);
+				font-weight: var(--gl-h1-weight);
+				line-height: var(--gl-h1-line-height);
+				color: var(--as-black);
+				margin-bottom: var(--gl-h1-margin-bottom);
+			}
+			.hero-subheadline {
+				font-size: var(--gl-lede-size);
+				font-weight: var(--gl-lede-weight);
+				line-height: var(--gl-lede-line-height);
+				color: var(--gl-lede-color);
+				max-width: var(--gl-lede-max-width);
+				margin: var(--gl-heading-lede-gap-top) 0 var(--gl-heading-lede-gap-bottom);
+			}
+			.hero-image-wrapper {
+				width: 100%;
+				aspect-ratio: 3 / 2;
+				border-radius: 36px;
+				overflow: hidden;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.08), 0 16px 48px rgba(0, 0, 0, 0.04);
+				border: 1px solid rgba(0, 0, 0, 0.08);
+				background: #fff;
+			}
+			
+			/* Critical: Buttons */
+			.button {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				padding: 0 20px;
+				min-height: 44px;
+				font-weight: 600;
+				text-decoration: none;
+				border-radius: 999px;
+				transition: all 0.2s ease;
+			}
+			.button-primary {
+				background: var(--as-accent);
+				color: #fff;
+			}
+			.button:not(.button-primary) {
+				border: 1px solid rgba(0, 0, 0, 0.4);
+				background: transparent;
+				color: var(--as-black);
+			}
+			
+			/* Critical: Base typography */
+			body, html {
+				font-family: var(--gl-font-sans);
+				margin: 0;
+				overflow-x: hidden;
+			}
+			
+			@media (max-width: 768px) {
+				.gl-header__nav { display: none; }
+				.hero-grid { grid-template-columns: 1fr !important; }
+			}
+		</style>
 		
-		<!-- Load Google Fonts -->
-		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap"></noscript>
-		
-		<!-- Stylesheets -->
+		<!-- Stylesheets - Non-critical CSS loaded asynchronously -->
 		<link rel="preload" href="/skeleton.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 		<noscript><link rel="stylesheet" href="/skeleton.min.css"></noscript>
 		
 		<!-- Fallback CSS loading script -->
 		<script is:inline>
 			// Fallback for CSS loading
-			setTimeout(function() {
-				var links = document.querySelectorAll('link[rel="preload"][as="style"]');
-				links.forEach(function(link) {
-					if (link.onload) {
-						link.rel = 'stylesheet';
-						link.onload = null;
-					}
-				});
-			}, 100);
+			if (typeof window !== 'undefined') {
+				setTimeout(function() {
+					var links = document.querySelectorAll('link[rel="preload"][as="style"]');
+					links.forEach(function(link) {
+						if (link.onload) {
+							link.rel = 'stylesheet';
+							link.onload = null;
+						}
+					});
+				}, 100);
+			}
 		</script>
 		<!-- JSON-LD Structured Data for SEO and AI Visibility -->
-		<script type="application/ld+json" is:inline>
-		{
-			"@context": "https://schema.org",
-			"@type": "FAQPage",
-			"mainEntity": [
-				{
-					"@type": "Question",
-					"name": "What is GameLayer?",
-					"acceptedAnswer": {
-						"@type": "Answer",
-						"text": "GameLayer is a gamification-as-a-service API that lets developers add missions, achievements, and loyalty mechanics to their apps and websites."
-					}
-				},
-				{
-					"@type": "Question",
-					"name": "Who uses GameLayer?",
-					"acceptedAnswer": {
-						"@type": "Answer",
-						"text": "Product managers, developers, and marketers who want to boost engagement and retention through gamification."
-					}
-				},
-				{
-					"@type": "Question",
-					"name": "Does GameLayer integrate easily with existing apps?",
-					"acceptedAnswer": {
-						"@type": "Answer",
-						"text": "Yes. GameLayer offers a REST API that can be integrated in minutes using simple JSON endpoints."
-					}
-				}
-			]
-		}
-		</script>
+		{schema.length > 0 && schema.map((schemaObj) => (
+			<script type="application/ld+json" set:html={JSON.stringify(schemaObj)} />
+		))}
 
-		<!-- Vercel Web Analytics / Speed Insights -->
-		<script defer src="/_vercel/insights/script.js" data-auto="true" is:inline></script>
+		<!-- Vercel Web Analytics / Speed Insights - Load after page load -->
+		<script is:inline>
+			// Load Vercel analytics after page load to avoid blocking
+			if (typeof window !== 'undefined') {
+				window.addEventListener('load', function() {
+					const script = document.createElement('script');
+					script.defer = true;
+					script.src = '/_vercel/insights/script.js';
+					script.setAttribute('data-auto', 'true');
+					document.head.appendChild(script);
+				});
+			}
+		</script>
+		
+		<!-- SPACING DEBUG SCRIPT - In head to ensure early execution -->
+		<script is:inline>
+			window.__spacingDebugInit = function() {
+				console.log('=== SPACING DEBUG INIT ===');
+				var pre = document.getElementById('__spacing_debug_pre__');
+				if (!pre) {
+					console.error('Pre element not found');
+					return;
+				}
+				pre.textContent = 'Script loaded in head!\n';
+			};
+		</script>
 	</head>
 	<body>
 		<!-- Skip navigation link for accessibility -->
 		<a href="#main-content" class="skip-link">Skip to main content</a>
 		
-		<slot />
+		<div class="canvas">
+			<div class="shell">
+				<slot />
+			</div>
+		</div>
 		
 		<script>
 		// Optimized cleanup - lighter and faster
@@ -177,9 +321,6 @@ const ogDescriptionFinal = ogDescription || description;
 			removeUnwantedElements();
 		}
 		</script>
-		
-		
-		
 	</body>
 </html>
 <style lang="scss" is:global>
@@ -217,68 +358,392 @@ const ogDescriptionFinal = ogDescription || description;
     --as-accent: #2563EB;
     --as-peach: #EFF6FF;
     --as-plum: #DBEAFE;
+    --section-warm: #F7F6F2;
+    
+    /* Card rhythm tokens - REMOVED: now defined in stepup-shell.scss */
+    /* --page-bg: #FAFBFC; */
+    /* --surface: #fafbfc; */
+    /* --surface-border: rgba(0, 0, 0, 0.08); */
+    --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+    /* --radius-xl: 24px; */
+    --section-y: clamp(48px, 6vw, 96px);
+    --surface-pad: clamp(20px, 3vw, 48px);
+    
+    /* Shared rail alignment for header, hero, and STICKY section */
+    --gl-rail: clamp(24px, 4vw, 64px);
+    
+    /* Canvas and shell tokens - REMOVED: now defined in stepup-shell.scss */
+    /* --canvas-bg: #f0f4f8; */
+    /* --shell-bg: #fafbfc; */
+    /* --shell-border: rgba(0, 0, 0, 0.12); */
+    /* --shell-shadow: none; */
+    /* --shell-radius: 24px; */
+    /* --shell-max: 1400px; */
+    
+    /* ============================================
+       GLOBAL DESIGN TOKENS - TYPOGRAPHY & SPACING
+       ============================================ */
+    
+    /* Typography Tokens */
+    --gl-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    
+    /* H1 - Hero heading */
+    --gl-h1-size: clamp(40px, 4.5vw, 56px);
+    --gl-h1-weight: 800;
+    --gl-h1-line-height: 1.1;
+    --gl-h1-margin-bottom: 16px;
+    
+    /* H2 - Section headings */
+    --gl-h2-size: clamp(28px, 3.2vw, 36px);
+    --gl-h2-weight: 700;
+    --gl-h2-line-height: 1.15;
+    --gl-h2-margin-bottom: 12px;
+    
+    /* H3 - Card titles, plan names */
+    --gl-h3-size: 20px;
+    --gl-h3-weight: 600;
+    --gl-h3-line-height: 1.25;
+    --gl-h3-margin-bottom: 8px;
+    
+    /* Body - Standard body copy */
+    --gl-body-size: 16px;
+    --gl-body-weight: 400;
+    --gl-body-line-height: 1.6;
+    --gl-body-color: #4B5563;
+    --gl-body-max-width: 64ch;
+    
+    /* Small/Meta text - footnotes, captions */
+    --gl-small-size: 14px;
+    --gl-small-line-height: 1.5;
+    --gl-small-color: #6B7280;
+    
+    /* Lede - One-line explanations under headings */
+    --gl-lede-size: 16px;
+    --gl-lede-weight: 400;
+    --gl-lede-line-height: 1.6;
+    --gl-lede-color: #4B5563;
+    --gl-lede-max-width: 64ch;
+    
+    /* Spacing Tokens */
+    --gl-space-xs: 8px;
+    --gl-space-sm: 12px;
+    --gl-space-md: 16px;
+    --gl-space-lg: 32px;
+    --gl-space-xl: 28px;
+    
+    /* Section Rhythm - Tighter for premium feel */
+    --gl-section-padding-standard: clamp(16px, 2vw, 32px);
+    --gl-section-padding-dense: clamp(14px, 2vw, 28px);
+    
+    /* Typography Spacing */
+    --gl-heading-lede-gap-top: 8px;
+    --gl-heading-lede-gap-bottom: 32px;
+    --gl-lede-content-gap: 32px; /* Consistent spacing between lede text and next content element */
+    --gl-card-content-gap: 12px;
+    --gl-list-item-gap: 8px;
 }
 
 
 body, html{
-    font-family: "Onest", sans-serif;
+    font-family: var(--gl-font-sans);
     scroll-behavior: smooth;
     margin: 0px;
     overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    /* background: var(--canvas-bg); - REMOVED: now handled by stepup-shell.scss */
+    /* Note: font-size and line-height removed - scoped to .gl-typography only */
 }
+
+/* Canvas and shell - REMOVED: now defined in stepup-shell.scss */
+/* .canvas { ... } */
+/* .shell { ... } */
+
+/* .page { ... } - REMOVED: no longer needed */
+
+/* Header styles - REMOVED: now defined in stepup-shell.scss */
+/* header { ... } */
+
+/* Section padding system - REMOVED: no longer using global .section utility */
+/* .section { ... } */
+
+/* Surface/card rhythm helpers - REMOVED: no longer needed globally */
+/* .surface { ... } */
+/* .surface-pad { ... } */
+/* .surface-hero { ... } */
+
+/* Hero section specific styling - padding handled in component */
+
+/* Container system - REMOVED: now defined in stepup-shell.scss */
+/* .container { ... } */
+/* .container-narrow { ... } */
 
 /* Hide any unwanted injected elements */
 [class*="toolbar"], [class*="devtools"], [class*="debug"], 
 [class*="inspector"], [class*="audit"], [class*="settings"], 
 [id*="toolbar"], [id*="devtools"], [id*="debug"],
 [id*="inspector"], [id*="audit"], [id*="settings"],
-iframe[src*="devtools"], iframe[src*="debug"], iframe[src*="inspector"],
-/* Additional selectors for unwanted elements */
-[class*="widget"], [class*="panel"],
-[id*="widget"], [id*="panel"],
-[class*="bottom"], [id*="bottom"] {
+iframe[src*="devtools"], iframe[src*="debug"], iframe[src*="inspector"] {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
     pointer-events: none !important;
 }
 
+/* DEBUG ONLY: hide debug overlays/widgets without breaking real UI components */
+body[data-hide-debug="on"] .debug-widget,
+body[data-hide-debug="on"] .debug-panel,
+body[data-hide-debug="on"] [data-debug="widget"],
+body[data-hide-debug="on"] [data-debug="panel"],
+body[data-hide-debug="on"] #bottom-widget,
+body[data-hide-debug="on"] #bottom-panel {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
 
-p{
+
+/* ============================================
+   SCOPED TYPOGRAPHY - Main content only
+   ============================================ */
+
+/* Typography rules scoped to .gl-typography wrapper only */
+.gl-typography {
+    font-size: var(--gl-body-size);
+    line-height: var(--gl-body-line-height);
+    font-weight: var(--gl-body-weight);
+    color: var(--gl-body-color);
+}
+
+.gl-typography p {
+    font-size: var(--gl-body-size);
+    line-height: var(--gl-body-line-height);
+    font-weight: var(--gl-body-weight);
+    color: var(--gl-body-color);
+    text-rendering: optimizeLegibility;
+    margin: 0;
+    max-width: var(--gl-body-max-width);
+}
+
+.gl-typography h1 {
+    font-size: var(--gl-h1-size);
+    font-weight: var(--gl-h1-weight);
+    line-height: var(--gl-h1-line-height);
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--gl-h1-margin-bottom);
+}
+
+.gl-typography h2 {
+    font-size: var(--gl-h2-size);
+    font-weight: var(--gl-h2-weight);
+    line-height: var(--gl-h2-line-height);
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--gl-h2-margin-bottom);
+}
+
+.gl-typography h3 {
+    font-size: var(--gl-h3-size);
+    font-weight: var(--gl-h3-weight);
+    line-height: var(--gl-h3-line-height);
+    letter-spacing: -0.01em;
+    margin: 0 0 var(--gl-h3-margin-bottom);
+}
+
+/* Lede/subhead styling - scoped to .gl-typography */
+.gl-typography .lede,
+.gl-typography [class*="lede"],
+.gl-typography [class*="subhead"],
+.gl-typography [class*="intro"] {
+    font-size: var(--gl-lede-size);
+    font-weight: var(--gl-lede-weight);
+    line-height: var(--gl-lede-line-height);
+    color: var(--gl-lede-color);
+    max-width: var(--gl-lede-max-width);
+    margin: var(--gl-heading-lede-gap-top) 0 var(--gl-lede-content-gap);
+}
+
+/* ============================================
+   PREMIUM UTILITY CLASSES - Typography & Spacing
+   ============================================ */
+
+/* Typography Utilities */
+.gl-h1 {
+    font-size: var(--gl-h1-size);
+    font-weight: var(--gl-h1-weight);
+    line-height: var(--gl-h1-line-height);
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--gl-h1-margin-bottom);
+}
+
+.gl-h2 {
+    font-size: var(--gl-h2-size);
+    font-weight: var(--gl-h2-weight);
+    line-height: var(--gl-h2-line-height);
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--gl-h2-margin-bottom);
+}
+
+.gl-h3 {
+    font-size: var(--gl-h3-size);
+    font-weight: var(--gl-h3-weight);
+    line-height: var(--gl-h3-line-height);
+    letter-spacing: -0.01em;
+    margin: 0 0 var(--gl-h3-margin-bottom);
+}
+
+.gl-lede {
+    font-size: var(--gl-lede-size);
+    font-weight: var(--gl-lede-weight);
+    line-height: var(--gl-lede-line-height);
+    color: var(--gl-lede-color);
+    max-width: var(--gl-lede-max-width);
+    margin: var(--gl-heading-lede-gap-top) 0 var(--gl-lede-content-gap);
+}
+
+.gl-body {
+    font-size: var(--gl-body-size);
+    font-weight: var(--gl-body-weight);
+    line-height: var(--gl-body-line-height);
+    color: var(--gl-body-color);
+    margin: 0;
+    max-width: var(--gl-body-max-width);
+}
+
+.gl-small {
+    font-size: var(--gl-small-size);
+    line-height: var(--gl-small-line-height);
+    color: var(--gl-small-color);
+    margin: 0;
+}
+
+/* Spacing Utilities */
+.gl-section {
+    padding: var(--gl-section-padding-standard) 0;
+}
+
+.gl-section-dense {
+    padding: var(--gl-section-padding-dense) 0;
+}
+
+.gl-stack-sm {
+    margin-top: var(--gl-space-sm);
+}
+
+.gl-stack-md {
+    margin-top: var(--gl-space-md);
+}
+
+.gl-stack-lg {
+    margin-top: var(--gl-space-lg);
+}
+
+.gl-center {
+    text-align: center;
+}
+
+/* Exclude buttons, footer, and header from typography rules */
+.gl-typography .button,
+.gl-typography button,
+.gl-typography .btn,
+.gl-typography footer,
+.gl-typography .footer,
+.gl-typography header,
+.gl-typography .header,
+.gl-typography .gl-header {
+    font-size: revert;
+    line-height: revert;
+    font-weight: revert;
+    letter-spacing: revert;
+    margin: revert;
+}
+
+/* Ensure footer maintains its own styles */
+footer,
+.footer {
+    font-size: 1.5rem;
     line-height: 1.4;
-    font-weight: 300;
-}
- h1, h2, h3{
-	line-height: 1.2;
 }
 
-section{ 
-    padding: 130px 0;
-    
-    // Tablet landscape (1024px and below)
-    @media (max-width: 1024px) {
-        padding: 100px 0;
-    }
-    
-    // Tablet portrait (768px and below)
-    @media (max-width: 768px) {
-        padding: 80px 0;
-    }
-    
-    // Mobile landscape (640px and below)
-    @media (max-width: 640px) {
-        padding: 60px 0;
-    }
-    
-    // Mobile portrait (480px and below)
-    @media (max-width: 480px) {
-        padding: 50px 0;
-    }
-    
-    // Very small mobile (360px and below)
-    @media (max-width: 360px) {
-        padding: 40px 0;
-    }
+/* Ensure buttons maintain their baseline styles - defined after typography rules */
+.button,
+button.button,
+a.button {
+    font-size: 1.6rem;
+    line-height: normal;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Global section padding removed - use .section utility class instead */
+/* Note: Individual sections (e.g., .powered-band) now own their own padding */
+
+/* Ensure sections fill shell width */
+.shell section {
+    width: 100%;
+}
+
+/* Unified section spacing system */
+.section {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    border-top: none;
+    background: transparent;
+}
+
+/* Plain sections - default vertical rhythm */
+.section--plain {
+    padding-top: clamp(16px, 2vw, 32px) !important;
+    padding-bottom: clamp(16px, 2vw, 32px) !important;
+}
+
+/* Card sections - same rhythm, contains .container > .surface */
+.section--card {
+    padding-block: var(--gl-section-padding-standard);
+}
+
+/* Band sections - no padding, background handled by component */
+.section--band {
+    padding: 0;
+}
+
+/* Hero section - no additional padding (uses its own internal padding) */
+.section.hero {
+    padding-block: 0;
+}
+
+/* Section header spacing - headings sit higher in compact sections */
+.section.section--compact .container > h2:first-child {
+    margin-top: 0;
+}
+
+.section.section--compact .container > p:first-child {
+    margin-top: 10px;
+}
+
+/* Consistent spacing between lede text and next content element */
+.section:not(.hero) h2 + p {
+    margin-bottom: var(--gl-lede-content-gap);
+}
+
+.section:not(.hero) p + .container,
+.section:not(.hero) p + .surface,
+.section:not(.hero) p + .sticky-surface,
+.section:not(.hero) p + .grid,
+.section:not(.hero) p + .pricing-grid,
+.section:not(.hero) p + .reference-tiles-grid,
+.section:not(.hero) p + .wc-steps-panels {
+    margin-top: var(--gl-lede-content-gap);
+}
+
+/* Shared container for header, hero, and STICKY alignment */
+.gl-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-inline: var(--gl-rail);
+    padding-block: 0;
 }
 
 
@@ -377,7 +842,9 @@ section{
 
 .text-xlg{
     font-size: 5.6rem;
-    font-weight: 600;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
     
     // Tablet landscape (1024px and below)
     @media (max-width: 1024px) {
@@ -407,7 +874,9 @@ section{
 
 .text-lg{
     font-size: 4rem;
-    font-weight: 600;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
     
     // Tablet landscape (1024px and below)
     @media (max-width: 1024px) {
@@ -439,7 +908,7 @@ section{
 
 .text-bolder{ font-weight: 600;}
 .text-bold{ font-weight: 500;}
-.text-normal{ font-weight: 300;}
+.text-normal{ font-weight: 400;}
 
 
 .text-center{text-align: center; }
@@ -496,47 +965,46 @@ section{
 
 
 .button{
-    border-radius: 40px;
+    border-radius: 999px;
     text-transform: none;
-    font-weight: 500;
-    font-size: 1.6rem;
-	height: 55px;
-	line-height: 53px;
-    transition: box-shadow .15s ease-out;
+    font-weight: 600;
+    font-size: 1.5rem;
+	height: 48px;
+    padding: 0 24px;
+	line-height: normal;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow .15s ease-out, opacity .15s ease-out;
     
     // Tablet landscape (1024px and below)
     @media (max-width: 1024px) {
         font-size: 1.4rem;
-        height: 50px;
-        line-height: 48px;
+        height: 46px;
     }
     
     // Tablet portrait (768px and below)
     @media (max-width: 768px) {
         font-size: 1.3rem;
-        height: 48px;
-        line-height: 46px;
+        height: 44px;
     }
     
     // Mobile landscape (640px and below)
     @media (max-width: 640px) {
         font-size: 1.2rem;
-        height: 45px;
-        line-height: 43px;
+        height: 44px;
     }
     
     // Mobile portrait (480px and below)
     @media (max-width: 480px) {
         font-size: 1.1rem;
         height: 42px;
-        line-height: 40px;
     }
     
     // Very small mobile (360px and below)
     @media (max-width: 360px) {
         font-size: 1rem;
         height: 40px;
-        line-height: 38px;
     }
 }
 
@@ -611,19 +1079,19 @@ section{
     .gap-3{ gap: 20px; }
     .mt-4{ margin-top: 50px; }
 
-    /* Mobile-only container padding for better edge spacing */
-    .container{
-        padding-left: 20px;
-        padding-right: 20px;
-    }
 }
 
-/* Tighter phones */
-@media (max-width: 480px) {
-    .container{
-        padding-left: 24px;
-        padding-right: 24px;
-    }
+/* Global STICKY surface card styles - reusable across components */
+.sticky-surface {
+    background: var(--surface);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 24px;
+    padding: 30px clamp(15px, 2vw, 31px) clamp(15px, 2vw, 31px);
+}
+
+/* Ensure first child of sticky-surface has no top margin for consistent spacing */
+.sticky-surface > :first-child {
+    margin-top: 0 !important;
 }
 
 </style>

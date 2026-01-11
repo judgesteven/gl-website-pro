@@ -68,19 +68,19 @@ const props = {
    showcase: [
         {
             title: `Finnair | Airline`, 
-            desc: `GameLayer extends the Finnair frequent flyer programme rewarding members with bonus points for completing personalised, non-transactional tasks that bring value to the airline—like giving marketing permissions or updating traveler profiles. These bonus points unlock travel perks, taking members on an aspirational journey through the programme's tiers.`
+            desc: `Encouraging repeat engagement beyond transactions. Using missions, rewards, and progression mechanics to reward members for non-transactional actions like profile updates and marketing permissions. Outcome: Increased loyalty program participation and member retention.`
         },
         {
             title: `Veikkaus Points | National Lottery`,
-            desc: `GameLayer powers a loyalty experience that turns responsible gaming into fun challenges. Members earn 'points' by completing various challenges, which they can use to unlock small non-gambling rewards, enter bigger prize draws, or even score mystery wins. It's responsible gaming with a fun twist.`
+            desc: `Promoting responsible gaming through engaging experiences. Applying challenges, points, rewards, raffles, and mystery wins to create non-gambling activities. Outcome: Sustained engagement with responsible gaming principles.`
         },
         {
             title: `Reima | Kids Clothing`,
-            desc: `GameLayer brings the Reima app to life with a learning adventure powered by collaborative physical activity. The experience centres on a character on a journey around the world, where kids choose the next destination and learn fun facts about it. To reach the destination and unlock achievements, kids have to get active while wearing an activity tracker, helping the character travel on his journey.`
+            desc: `Motivating physical activity and learning through play. Combining missions, progression, and achievements with activity tracking to create collaborative adventures. Outcome: Increased physical activity and educational engagement.`
         },
         {
             title: `Step-Up | Wellbeing`,
-            desc: `GameLayer powers Step-Up, a movement-based engagement experience that encourages everyday physical activity across communities and public health programmes. Participants complete daily and weekly challenges, track progress, and receive recognition through achievements and rewards — supporting healthier habits through consistency rather than intensity.`
+            desc: `Encouraging consistent everyday movement across communities. Using challenges, progress tracking, achievements, and rewards to support regular participation. Outcome: Healthier habits built through consistency rather than intensity.`
         },
     ],
     reviews: [

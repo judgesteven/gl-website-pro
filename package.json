@@ -5,19 +5,32 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro build",
+    "build:check": "astro check && astro build",
     "build:clean": "rm -rf dist && npm run build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "preview": "astro preview --host",
+    "perf:preview": "astro build && astro preview --host",
+    "perf:serve": "sirv ./dist --single --gzip --brotli --port 4321",
+    "perf:run": "astro build && npm run perf:serve",
+    "perf:lighthouse": "node ./scripts/lighthouse.mjs",
+    "astro": "astro",
+    "kb:ingest:openapi": "node scripts/ingest-openapi.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
+    "@astrojs/sitemap": "^3.6.0",
     "@astrojs/vercel": "^8.2.8",
     "astro": "^5.5.2",
     "gsap": "^3.12.7",
     "is-docker": "^3.0.0",
     "sass": "^1.85.1",
     "sharp": "^0.34.4",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "yaml": "^2.4.0"
+  },
+  "devDependencies": {
+    "chrome-launcher": "^1.1.0",
+    "lighthouse": "^12.0.0",
+    "sirv-cli": "^2.0.2"
   }
 }

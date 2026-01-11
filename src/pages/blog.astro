@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { getAllPosts } from '../data/blogPosts';
 import { EXTERNAL_URLS } from '../lib/external';
+import { buildSeo } from '../lib/seo';
 
 const POSTS_PER_PAGE = 6;
 const allPosts = getAllPosts();
@@ -20,12 +21,55 @@ const formatDate = (dateString: string) => {
 	const year = date.getFullYear().toString().slice(-2);
 	return `${day}/${month}/${year}`;
 };
+
+const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://gamelayer.io';
+const seo = buildSeo({
+	title: "GameLayer Blog - Gamification Insights, Strategies & Best Practices",
+	description: "Explore the latest insights on gamification, user engagement strategies, and best practices for implementing gamification mechanics in your applications. Learn from industry experts and real-world case studies.",
+	pathname: '/blog'
+});
+
+const schemas = [
+	{
+		"@context": "https://schema.org",
+		"@type": "WebPage",
+		"@id": `${siteUrl}/blog/#webpage`,
+		"url": `${siteUrl}/blog`,
+		"name": seo.title,
+		"description": seo.description,
+		"isPartOf": {
+			"@type": "WebSite",
+			"name": "GameLayer",
+			"url": siteUrl
+		}
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "BreadcrumbList",
+		"itemListElement": [
+			{
+				"@type": "ListItem",
+				"position": 1,
+				"name": "Home",
+				"item": siteUrl
+			},
+			{
+				"@type": "ListItem",
+				"position": 2,
+				"name": "Blog",
+				"item": `${siteUrl}/blog`
+			}
+		]
+	}
+];
 ---
 
 <Layout 
-	title="GameLayer Blog - Gamification Insights, Strategies & Best Practices"
-	description="Explore the latest insights on gamification, user engagement strategies, and best practices for implementing gamification mechanics in your applications. Learn from industry experts and real-world case studies."
+	title={seo.title}
+	description={seo.description}
 	keywords="gamification blog, gamification strategies, user engagement, customer loyalty, gamification mechanics, gamification API, user retention"
+	canonical={seo.canonical}
+	schema={schemas}
 >
 	<main id="main-content">
 		<Header />

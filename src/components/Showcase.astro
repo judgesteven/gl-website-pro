@@ -1,128 +1,311 @@
 ---
-import One from '../../references_images/finnair_reference_image.png'
-import Two from '../../references_images/veikkaus_reference_image.png'
-import Three from '../../references_images/reima_reference_image.png'
-import Four from '../../references_images/step-up_reference.png'
+import baazLogo from '../images/brands/baaz_logo.png'
+import dubbzLogo from '../images/brands/dubbz_logo.png'
+import finnairLogo from '../images/brands/finnair_logo.png'
+import keskoLogo from '../images/brands/kesko_logo.png'
+import lahtiLogo from '../images/brands/lahti_logo.png'
+import reimaLogo from '../images/brands/reima_logo.png'
+import samsungLogo from '../images/brands/samsung_logo.png'
+import sdpLogo from '../images/brands/sdp_logo.png'
+import symbalooLogo from '../images/brands/symbaloo_logo.png'
+import veikkausLogo from '../images/brands/veikkaus_logo.png'
 
-import utils from '../utils'
-const images = [One, Two, Three, Four]
+import finnairRef from '../../references_images/finnair_reference.png'
+import veikkausRef from '../../references_images/veikkaus_reference.png'
+import reimaRef from '../../references_images/reima_reference.png'
+import stepUpRef from '../../references_images/step-up_reference.png'
 
-const items  = utils.showcase.map((item, index) => {
-    return {
-        ...item,
-        img: images[index]?.src
+// Reference tiles with screenshots
+const referenceTiles = [
+    {
+        screenshot: finnairRef.src,
+        name: "Finnair",
+        category: "Airline",
+        description: "Encouraging repeat engagement beyond transactions. GameLayer powers missions, rewards, and progression mechanics that recognise meaningful customer actions outside of purchases — helping airlines build loyalty, participation, and long-term engagement across the journey."
+    },
+    {
+        screenshot: reimaRef.src,
+        name: "Reima",
+        category: "Retail",
+        description: "Motivating physical activity and learning through play. By combining missions, progression, and achievements with activity tracking, GameLayer helps Reima create collaborative, family-friendly adventures that connect movement, education, and brand engagement."
+    },
+    {
+        screenshot: veikkausRef.src,
+        name: "Veikkaus Points",
+        category: "National Lottery",
+        description: "Promoting responsible gaming through engaging, non-gambling experiences. GameLayer enables challenges, points, rewards, raffles, and mystery wins to create alternative engagement paths that encourage participation while supporting responsible play principles."
+    },
+    {
+        screenshot: stepUpRef.src,
+        name: "Step-Up",
+        category: "Wellbeing",
+        description: "Encouraging consistent everyday movement across communities. GameLayer powers challenges, progress tracking, achievements, and rewards that support habit formation and long-term participation — reinforcing healthy behaviour without relying on short-term incentives.",
+        learnMoreUrl: "https://stepup.gamelayer.io/"
     }
-})
+]
 
+// Logo wall - all 10 logos in 2x5 grid
+const logoWallLogos = [
+    { src: finnairLogo.src, alt: "Finnair", name: "Finnair" },
+    { src: reimaLogo.src, alt: "Reima", name: "Reima" },
+    { src: veikkausLogo.src, alt: "Veikkaus", name: "Veikkaus" },
+    { src: samsungLogo.src, alt: "Samsung", name: "Samsung" },
+    { src: keskoLogo.src, alt: "Kesko", name: "Kesko" },
+    { src: baazLogo.src, alt: "Baaz", name: "Baaz" },
+    { src: dubbzLogo.src, alt: "Dubbz", name: "Dubbz" },
+    { src: symbalooLogo.src, alt: "Symbaloo", name: "Symbaloo" },
+    { src: lahtiLogo.src, alt: "Lahti", name: "Lahti" },
+    { src: sdpLogo.src, alt: "SDP", name: "SDP" }
+]
 ---
 
-
-<section id="solutions">
-    <div class="container">
-        <div class="max-w-lg m-auto text-center">
-            <h2 class="text-lg">Powered by GameLayer</h2>
-            <p class="text-sm">Over the last decade, we've worked across a wide range of industries and helped clients deliver successful gamification solutions that drive user engagement, retention, and customer loyalty.</p>
+<section id="powered-by" class="powered-band" aria-label="Powered by GameLayer">
+    <div class="gl-container">
+        <!-- Header -->
+        <div class="powered-by-header">
+            <h2 class="powered-by-title">Powered by GameLayer</h2>
+            <p class="powered-by-intro">
+                GameLayer powers engagement, loyalty, and progression across digital products in multiple industries. The examples below show how teams apply the same core mechanics to very different use cases.
+            </p>
         </div>
-        <div class="showcases">
-            {items.map((item, index) => (
-                <div class="showcase flex">
-                  <div class="case-text">
-                    <div class="text-content max-w-sm">
-                        <h2 class="text-md text-bolder">{item.title}</h2>
-                        <p class="text-sm">{item.desc}</p>
+
+        <!-- Reference Tiles Grid -->
+        <div class="reference-tiles-grid">
+            {referenceTiles.map((tile) => (
+                <div class="reference-tile">
+                    <div class="reference-tile-screenshot">
+                        <img 
+                            src={tile.screenshot} 
+                            alt={`${tile.name} - GameLayer implementation screenshot`}
+                            loading="lazy"
+                            decoding="async"
+                        />
                     </div>
-                  </div>
-                  <div class="case-media">
-                    <img 
-                        src={item.img} 
-                        alt={`${item.title} gamification case study showing user engagement and customer loyalty results`} 
-                        loading="lazy" 
-                        fetchpriority="auto"
-                        width="756"
-                        height="419"
-                        style="width: 108%; height: auto;"
-                    />
-                    {item.title.includes('Step-Up') && (
-                      <a 
-                        href="https://stepup.gamelayer.io" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        class="step-up-link"
-                      >
-                        Learn more about Step-Up
-                      </a>
-                    )}
-                  </div>
+                    <div class="reference-tile-content">
+                        <h3 class="reference-tile-name">{tile.name} | {tile.category}</h3>
+                        <p class="reference-tile-description">{tile.description}</p>
+                        {tile.learnMoreUrl && (
+                            <a 
+                                href={tile.learnMoreUrl} 
+                                target="_blank" 
+                                rel="noopener noreferrer external"
+                                class="reference-tile-link"
+                                aria-label={`Learn more about ${tile.name}`}
+                            >
+                                Learn more about {tile.name}
+                            </a>
+                        )}
+                    </div>
                 </div>
             ))}
+        </div>
+
+        <!-- Logo Wall (2x5 grid) -->
+        <div class="powered-by-logo-wall">
+            <div class="logo-wall-grid">
+                {logoWallLogos.map((logo) => (
+                    <div class="logo-wall-item">
+                        <img 
+                            src={logo.src} 
+                            alt={`${logo.name} - GameLayer customer`}
+                            loading="lazy"
+                            decoding="async"
+                            width="120"
+                            height="60"
+                        />
+                    </div>
+                ))}
+            </div>
         </div>
     </div>
 </section>
 
+<style lang="scss">
+section.powered-band {
+    width: 100%;
+    background: #F3F7FF;
+    padding-top: clamp(16px, 2vw, 32px) !important;
+    padding-bottom: clamp(16px, 2vw, 32px) !important;
+    padding-inline: 0;
+    margin: 0;
+    border: none;
+    border-top: none;
+    display: block;
+}
 
+.powered-by-header {
+    margin: 0 auto var(--gl-space-xl);
+    margin-top: 0;
+    text-align: center;
+    max-width: 720px;
+}
 
-<style lang="scss"> 
+/* Reset first child margin to prevent extra top gap */
+#powered-by .gl-container > :first-child {
+    margin-top: 0 !important;
+}
 
-section{
-    padding: 70px 0;
+.powered-by-title {
+    margin: 0 auto;
+    font-size: var(--gl-h2-size);
+    font-weight: var(--gl-h2-weight);
+    line-height: var(--gl-h2-line-height);
+    letter-spacing: -0.02em;
+    color: var(--as-black);
+    margin-bottom: var(--gl-h2-margin-bottom);
+}
+
+.powered-by-intro {
+    font-size: var(--gl-lede-size);
+    font-weight: var(--gl-lede-weight);
+    line-height: var(--gl-lede-line-height);
+    color: var(--gl-lede-color);
+    margin: var(--gl-heading-lede-gap-top) auto 0;
+    margin-bottom: var(--gl-space-xl);
+    max-width: var(--gl-lede-max-width);
+}
+
+/* Reference Tiles Grid */
+.reference-tiles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(24px, 3vw, 32px);
+    margin-top: 50px;
+    margin-bottom: var(--gl-space-xl);
+}
+
+.reference-tile {
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--surface);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     
-    // Tablet landscape (1024px and below)
-    @media (max-width: 1024px) {
-        padding: 60px 0;
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
     
-    // Tablet portrait (768px and below)
-    @media (max-width: 768px) {
-        padding: 50px 0;
+    .reference-tile-screenshot {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        background: #f5f5f5;
+        
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     }
     
-    // Mobile landscape (640px and below)
-    @media (max-width: 640px) {
-        padding: 40px 0;
-    }
-    
-    // Mobile portrait (480px and below)
-    @media (max-width: 480px) {
-        padding: 30px 0;
+    .reference-tile-content {
+        padding: 24px;
+        
+        .reference-tile-name {
+            margin: 0 0 var(--gl-h3-margin-bottom);
+            font-size: var(--gl-h3-size);
+            font-weight: var(--gl-h3-weight);
+            line-height: var(--gl-h3-line-height);
+            color: var(--as-black);
+        }
+        
+        .reference-tile-description {
+            font-size: var(--gl-body-size);
+            line-height: var(--gl-body-line-height);
+            font-weight: var(--gl-body-weight);
+            color: var(--gl-body-color);
+            margin: 0;
+        }
+        
+        .reference-tile-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 16px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--as-accent);
+            text-decoration: none;
+            transition: color 0.2s ease, transform 0.2s ease;
+            
+            &:hover {
+                color: var(--as-accent);
+                text-decoration: underline;
+                text-underline-offset: 3px;
+            }
+            
+            &:focus-visible {
+                outline: 2px solid var(--as-accent);
+                outline-offset: 2px;
+                border-radius: 4px;
+            }
+        }
     }
 }
 
-.showcases{
-    .showcase{
-        margin-top: 80px;
-        .case-media, .case-text{
-            flex-basis: 50%;
-        }
-        .case-media img{
-            width: 108%;
-        }
-        .case-media .step-up-link{
-            display: block;
-            margin-top: 10px;
-            font-size: 1.2rem;
-            color: var(--as-black);
-            text-decoration: none;
-            &:hover{
-                opacity: 0.7;
-            }
-        }
-        &:nth-child(even){
-            flex-direction: row-reverse;
-            transform: translateX(-40px);
-            .text-content{
-                margin-left: auto;
-            }
+/* Logo Wall - 2x5 grid */
+.powered-by-logo-wall {
+    margin-top: clamp(22px, 2.2vw, 32px);
+    padding-top: clamp(18px, 2vw, 26px);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    
+    .logo-wall-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        column-gap: clamp(24px, 3vw, 40px);
+        row-gap: clamp(8px, 1vw, 16px);
+        align-items: center;
+        justify-items: center;
+        
+        .logo-wall-item {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             
+            img {
+                width: 100%;
+                max-width: 140px;
+                height: auto;
+                object-fit: contain;
+                filter: grayscale(100%) brightness(0.3) contrast(1.1);
+                opacity: 0.6;
+                transition: opacity 0.2s ease;
+                
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
         }
     }
-    @media (max-width: 700px) {
-        .showcase{
-            flex-direction: column;
-            &:nth-child(even){
-                flex-direction: column;
-                transform: translateX(0px);
-            }
-        }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .logo-wall-grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .reference-tiles-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .logo-wall-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+}
+
+@media (max-width: 640px) {
+    .logo-wall-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 }
 </style>
