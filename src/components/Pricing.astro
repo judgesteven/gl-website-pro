@@ -1,12 +1,107 @@
 ---
 import { EXTERNAL_EMAILS } from '../lib/external';
-import { pricingPlans } from '../lib/pricingPlans';
 
 const { hideHeader = false } = Astro.props;
 
 // Payment logos
 const StripeLogo = '/Stripe_Logo.svg';
 const GoCardlessLogo = '/GoCardless_Logo.svg';
+
+// Growth view - first 4 tiers
+const growthPlans = [
+  {
+    name: "Starter",
+    price: "€100",
+    period: "month",
+    features: [
+      "Up to 1,000 active users",
+      "Support: Email",
+      "Conceptual support: Not included",
+      "Analytics: Dashboard"
+    ]
+  },
+  {
+    name: "Essentials",
+    price: "€500",
+    period: "month",
+    features: [
+      "Up to 10,000 active users",
+      "Support: Email",
+      "Conceptual support: Not included",
+      "Analytics: Dashboard"
+    ]
+  },
+  {
+    name: "Advanced",
+    price: "€1,000",
+    period: "month",
+    features: [
+      "Up to 25,000 active users",
+      "Support: Email",
+      "Conceptual support: Not included",
+      "Analytics: Dashboard"
+    ]
+  },
+  {
+    name: "Professional",
+    price: "€1,500",
+    period: "month",
+    features: [
+      "Up to 50,000 active users",
+      "Support: Slack",
+      "Conceptual support: Not included",
+      "Analytics: Weekly insights & monthly recommendations"
+    ]
+  }
+];
+
+// Scale view - next 4 tiers
+const scalePlans = [
+  {
+    name: "Scale",
+    price: "€2,000",
+    period: "month",
+    features: [
+      "Up to 100,000 active users",
+      "Support: Slack",
+      "Conceptual support: Available on request",
+      "Analytics: Weekly insights & monthly recommendations"
+    ]
+  },
+  {
+    name: "Scale Plus",
+    price: "€3,500",
+    period: "month",
+    features: [
+      "Up to 250,000 active users",
+      "Support: Slack",
+      "Conceptual support: Available on request",
+      "Analytics: Weekly insights & monthly recommendations"
+    ]
+  },
+  {
+    name: "Hyper Scale",
+    price: "€6,000",
+    period: "month",
+    features: [
+      "Up to 500,000 active users",
+      "Support: Bespoke",
+      "Conceptual support: Available on request",
+      "Analytics: Bespoke"
+    ]
+  },
+  {
+    name: "Mass Scale",
+    price: "€10,000",
+    period: "month",
+    features: [
+      "Up to 1,000,000 active users",
+      "Support: Bespoke",
+      "Conceptual support: Available on request",
+      "Analytics: Bespoke"
+    ]
+  }
+];
 ---
 
 <div class="pricing-content">
@@ -16,9 +111,38 @@ const GoCardlessLogo = '/GoCardless_Logo.svg';
             <p>Choose a plan based on scale - not features. Every plan includes full and unlimited access to GameLayer's engagement mechanics — pricing simply reflects usage as your product grows.</p>
         </div>
     )}
+
+    <div class="pricing-toggle-wrapper">
+        <div class="pricing-toggle" role="tablist" aria-label="Pricing view selector">
+            <button 
+                class="pricing-toggle-option active" 
+                data-view="growth" 
+                role="tab" 
+                aria-selected="true" 
+                aria-controls="pricing-grid-container pricing-grid-container-scale"
+                id="toggle-growth"
+            >
+                Build
+            </button>
+            <button 
+                class="pricing-toggle-option" 
+                data-view="scale" 
+                role="tab" 
+                aria-selected="false" 
+                aria-controls="pricing-grid-container pricing-grid-container-scale"
+                id="toggle-scale"
+            >
+                Scale
+            </button>
+        </div>
+    </div>
+
+    <div class="pricing-toggle-description">Build: up to 50k users | Scale: 100k - 1m users</div>
     
-    <div class="pricing-grid">
-        {pricingPlans.map((plan) => (
+    <div class="pricing-grid-wrapper">
+        <div id="pricing-grid-container" class="pricing-grid-container" data-view="growth">
+            <div class="pricing-grid">
+                {growthPlans.map((plan) => (
             <div class="pricing-card">
                 <div class="pricing-card-header">
                     <h3 class="pricing-title">{plan.name}</h3>
@@ -30,14 +154,38 @@ const GoCardlessLogo = '/GoCardless_Logo.svg';
                 
                 <div class="pricing-features">
                     <ul>
-                        {plan.features.map((feature) => (
-                            <li class="feature-item">
-                                <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16">
-                                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />
-                                </svg>
-                                {feature}
-                            </li>
-                        ))}
+                        {plan.features.map((feature) => {
+                            const isSupport = feature.startsWith('Support:');
+                            const isConceptualSupport = feature.startsWith('Conceptual support:');
+                            const isAnalytics = feature.startsWith('Analytics:');
+                            const isActiveUsers = feature.includes('active users');
+                            return (
+                                <li class={`feature-item ${isActiveUsers ? '' : 'feature-item-meta'}`}>
+                                    {!isActiveUsers && <span class="bullet-point">•</span>}
+                                    <span class="feature-text">
+                                        {isSupport ? (
+                                            <>
+                                                <strong>Support:</strong> {feature.replace('Support:', '').trim()}
+                                            </>
+                                        ) : isConceptualSupport ? (
+                                            <>
+                                                <strong>Conceptual support:</strong> {feature.replace('Conceptual support:', '').trim()}
+                                            </>
+                                        ) : isAnalytics ? (
+                                            <>
+                                                <strong>Analytics:</strong> {feature.replace('Analytics:', '').trim()}
+                                            </>
+                                        ) : isActiveUsers ? (
+                                            <>
+                                                Up to <strong>{feature.replace('Up to ', '').trim()}</strong>
+                                            </>
+                                        ) : (
+                                            feature
+                                        )}
+                                    </span>
+                                </li>
+                            );
+                        })}
                     </ul>
                 </div>
                 
@@ -51,7 +199,71 @@ const GoCardlessLogo = '/GoCardless_Logo.svg';
                     </a>
                 </div>
             </div>
-        ))}
+                ))}
+            </div>
+        </div>
+        <div id="pricing-grid-container-scale" class="pricing-grid-container" data-view="scale" aria-hidden="true">
+            <div class="pricing-grid">
+                {scalePlans.map((plan) => (
+            <div class="pricing-card">
+                <div class="pricing-card-header">
+                    <h3 class="pricing-title">{plan.name}</h3>
+                    <div class="pricing-price">
+                        <span class="price">{plan.price}</span>
+                        {plan.period && <span class="period">{plan.period}</span>}
+                    </div>
+                </div>
+                
+                <div class="pricing-features">
+                    <ul>
+                        {plan.features.map((feature) => {
+                            const isSupport = feature.startsWith('Support:');
+                            const isConceptualSupport = feature.startsWith('Conceptual support:');
+                            const isAnalytics = feature.startsWith('Analytics:');
+                            const isActiveUsers = feature.includes('active users');
+                            return (
+                                <li class={`feature-item ${isActiveUsers ? '' : 'feature-item-meta'}`}>
+                                    {!isActiveUsers && <span class="bullet-point">•</span>}
+                                    <span class="feature-text">
+                                        {isSupport ? (
+                                            <>
+                                                <strong>Support:</strong> {feature.replace('Support:', '').trim()}
+                                            </>
+                                        ) : isConceptualSupport ? (
+                                            <>
+                                                <strong>Conceptual support:</strong> {feature.replace('Conceptual support:', '').trim()}
+                                            </>
+                                        ) : isAnalytics ? (
+                                            <>
+                                                <strong>Analytics:</strong> {feature.replace('Analytics:', '').trim()}
+                                            </>
+                                        ) : isActiveUsers ? (
+                                            <>
+                                                Up to <strong>{feature.replace('Up to ', '').trim()}</strong>
+                                            </>
+                                        ) : (
+                                            feature
+                                        )}
+                                    </span>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
+                
+                <div class="pricing-cta">
+                    <a 
+                        href={`mailto:${EXTERNAL_EMAILS.SALES}?subject=GameLayer%3A%20${plan.name}%20Plan%20Enquiry`} 
+                        target="_self" 
+                        class="button button-primary"
+                    >
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+                ))}
+            </div>
+        </div>
     </div>
 
     <div class="pricing-footnote">Free plan available for testing and prototyping - up to 100 users</div>
@@ -98,6 +310,94 @@ const GoCardlessLogo = '/GoCardless_Logo.svg';
         text-align: center;
     }
 
+    /* Pricing Toggle */
+    .pricing-toggle-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 32px;
+    }
+
+    .pricing-toggle {
+        display: inline-flex;
+        background: rgba(15, 23, 42, 0.04);
+        border: 1px solid rgba(15, 23, 42, 0.10);
+        border-radius: 999px;
+        padding: 2px;
+        gap: 2px;
+    }
+
+    .pricing-toggle-option {
+        background: transparent;
+        border: none;
+        padding: 4px 12px;
+        font-size: 13px;
+        font-weight: 600;
+        color: rgba(15, 23, 42, 0.65);
+        border-radius: 999px;
+        cursor: pointer;
+        transition: all 160ms ease;
+        font-family: inherit;
+        position: relative;
+    }
+
+    .pricing-toggle-option:hover {
+        color: rgba(15, 23, 42, 0.85);
+    }
+
+    .pricing-toggle-option.active {
+        background: #fff;
+        color: var(--as-black);
+        box-shadow: 0 1px 4px rgba(15, 23, 42, 0.08);
+    }
+
+    .pricing-toggle-option:focus-visible {
+        outline: 2px solid var(--as-accent);
+        outline-offset: 2px;
+    }
+
+    /* Pricing Grid Wrapper */
+    .pricing-grid-wrapper {
+        position: relative;
+        width: 100%;
+        min-height: 400px;
+    }
+
+    .pricing-grid-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transform: translateY(6px);
+        pointer-events: none;
+        transition: opacity 250ms ease-out, transform 250ms ease-out;
+    }
+
+    .pricing-grid-container.active {
+        position: relative;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .pricing-grid-container:not(.active) {
+        position: absolute;
+        opacity: 0;
+        transform: translateY(6px);
+        pointer-events: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .pricing-grid-container {
+            transition: none;
+            transform: none;
+        }
+        
+        .pricing-grid-container[aria-hidden="true"] {
+            transform: none;
+        }
+    }
+
     .pricing-grid {
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -107,6 +407,15 @@ const GoCardlessLogo = '/GoCardless_Logo.svg';
         max-width: 1200px;
         margin: 0 auto;
         box-sizing: border-box;
+    }
+
+    .pricing-toggle-description {
+        margin-top: 12px;
+        margin-bottom: 24px;
+        text-align: center;
+        font-size: 15px;
+        font-style: italic;
+        opacity: 0.65;
     }
 
     .pricing-footnote {
@@ -169,11 +478,6 @@ const GoCardlessLogo = '/GoCardless_Logo.svg';
         line-height: 1;
     }
 
-    /* Reduce font size for "Ask Us" text in Enterprise card (last card) */
-    .pricing-card:last-child .price {
-        font-size: 36px;
-    }
-
     .period {
         font-size: 13px;
         opacity: 0.7;
@@ -216,15 +520,31 @@ const GoCardlessLogo = '/GoCardless_Logo.svg';
         gap: var(--gl-card-content-gap);
         line-height: var(--gl-body-line-height);
         color: var(--gl-body-color);
-        font-size: var(--gl-body-size);
+        font-size: 16px;
         font-weight: var(--gl-body-weight);
     }
 
-    .check-icon {
+    .feature-item-meta {
+        font-size: 15px;
+        font-style: italic;
+        color: #9ca3af;
+    }
+
+    .feature-text {
+        flex: 1;
+    }
+
+    .bullet-point {
         margin-top: 2px;
-        opacity: 0.7;
         flex-shrink: 0;
         color: rgba(15, 23, 42, 0.86);
+        font-size: 16px;
+        line-height: 1;
+    }
+
+    .feature-item-meta .bullet-point {
+        font-size: 15px;
+        color: #9ca3af;
     }
 
     .pricing-cta {
@@ -297,6 +617,7 @@ const GoCardlessLogo = '/GoCardless_Logo.svg';
         .price {
             font-size: 44px;
         }
+
     }
 
     @media (max-width: 480px) {
@@ -361,7 +682,66 @@ const GoCardlessLogo = '/GoCardless_Logo.svg';
             gap: 12px;
         }
     }
+
+    @media (max-width: 640px) {
+        .pricing-toggle-wrapper {
+            margin-bottom: 24px;
+        }
+
+        .pricing-toggle-option {
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+    }
 </style>
+
+<script>
+    // Pricing View Toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleButtons = document.querySelectorAll('.pricing-toggle-option');
+        const growthContainer = document.getElementById('pricing-grid-container');
+        const scaleContainer = document.getElementById('pricing-grid-container-scale');
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        if (!toggleButtons.length || !growthContainer || !scaleContainer) return;
+        
+        function switchView(view) {
+            const isGrowth = view === 'growth';
+            
+            // Update toggle buttons
+            toggleButtons.forEach(btn => {
+                const isActive = btn.dataset.view === view;
+                btn.classList.toggle('active', isActive);
+                btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            });
+            
+            // Update containers with active class and aria-hidden
+            if (isGrowth) {
+                growthContainer.classList.add('active');
+                growthContainer.removeAttribute('aria-hidden');
+                scaleContainer.classList.remove('active');
+                scaleContainer.setAttribute('aria-hidden', 'true');
+            } else {
+                growthContainer.classList.remove('active');
+                growthContainer.setAttribute('aria-hidden', 'true');
+                scaleContainer.classList.add('active');
+                scaleContainer.removeAttribute('aria-hidden');
+            }
+        }
+        
+        // Initialize - ensure growth is visible
+        growthContainer.classList.add('active');
+        switchView('growth');
+        
+        // Add click handlers
+        toggleButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const view = this.dataset.view;
+                switchView(view);
+            });
+        });
+    });
+</script>
 
 
 
