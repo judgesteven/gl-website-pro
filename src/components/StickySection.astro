@@ -278,6 +278,32 @@ import virtualCurrenciesIcon from '../images/icons/virtual_currencies.svg'
     max-width: 80%;
     margin: 0 auto;
     position: relative;
+    cursor: pointer;
+    transition: transform 180ms ease-out, box-shadow 180ms ease-out;
+}
+
+.sticky-image-wrapper:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.06),
+        0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.sticky-image-wrapper:focus-visible {
+    outline: 2px solid var(--as-accent, #2563eb);
+    outline-offset: 4px;
+    border-radius: 16px;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .sticky-image-wrapper {
+        transition: box-shadow 180ms ease-out;
+    }
+    
+    .sticky-image-wrapper:hover {
+        transform: none;
+    }
 }
 
 .sticky-image {
