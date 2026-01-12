@@ -21,6 +21,37 @@ import virtualCurrenciesIcon from '../images/icons/virtual_currencies.svg'
                 <p class="sticky-subtitle">Design engagement loops that keep users coming back — powered by a flexible suite of API-driven mechanics.</p>
             </header>
 
+            <div class="sticky-image-section">
+                <div class="sticky-image-wrapper">
+                    <img src="/gamification_mechanics_crop.png" alt="Gamification mechanics engagement loop" class="sticky-image" />
+                    <button class="sticky-image-link" id="openEngagementModal" aria-label="See full engagement system">
+                        See full engagement system →
+                    </button>
+                </div>
+                <p class="sticky-image-caption">A modular engagement loop - combine progression, competition and rewards</p>
+            </div>
+
+            <!-- Engagement System Modal -->
+            <div id="engagementModal" class="engagement-modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+                <div class="engagement-modal-overlay gl-modal-overlay"></div>
+                <div class="engagement-modal-container gl-modal-panel">
+                    <div class="engagement-modal-header gl-modal-header">
+                        <h2 id="modal-title" class="gl-modal-title">How GameLayer's engagement mechanics fit together</h2>
+                        <button class="engagement-modal-close gl-modal-close" aria-label="Close modal">×</button>
+                    </div>
+                    <div class="engagement-modal-body gl-modal-body">
+                        <p class="engagement-modal-description gl-modal-intro">
+                            This diagram illustrates how GameLayer's mechanics connect to create engagement loops — from player actions and events through challenges, progression, rewards, and social features. All mechanics are modular and configurable via API.
+                        </p>
+                        <div class="gl-modal-media">
+                            <div class="gl-modal-mediaInner">
+                                <img src="/gamification _mechanics_full.png" alt="Full GameLayer engagement mechanics diagram" class="engagement-modal-image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="sticky-body">
                 <div class="sticky-left">
                     <p class="sticky-lede">
@@ -221,9 +252,86 @@ import virtualCurrenciesIcon from '../images/icons/virtual_currencies.svg'
     line-height: var(--gl-lede-line-height);
     color: var(--gl-lede-color);
     margin: var(--gl-heading-lede-gap-top) auto 0;
-    margin-bottom: 50px;
+    margin-bottom: 0;
     max-width: var(--gl-lede-max-width);
     text-align: center;
+}
+
+.sticky-image-section {
+    margin-top: 50px;
+    margin-bottom: 0;
+    text-align: center;
+    position: relative;
+}
+
+/* Diagram polish - visual containment and legibility */
+.sticky-image-wrapper {
+    display: block;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 12px;
+    padding: 20px;
+    padding-bottom: 12px;
+    box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.04),
+        0 4px 16px rgba(0, 0, 0, 0.02);
+    width: 80%;
+    max-width: 80%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.sticky-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    /* Diagram polish - subtle contrast enhancement for legibility */
+    filter: contrast(1.06) brightness(1.02);
+    border-radius: 8px;
+}
+
+.sticky-image-caption {
+    margin-top: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 15px;
+    font-style: italic;
+    color: rgba(0,0,0,0.6);
+    display: block;
+    width: 100%;
+}
+
+.sticky-image-link {
+    display: block;
+    margin-top: 12px;
+    margin-left: auto;
+    margin-right: 0;
+    margin-bottom: 0;
+    background: none;
+    border: none;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s ease;
+    text-align: right;
+    width: auto;
+    max-width: 100%;
+}
+
+.sticky-image-link:hover {
+    color: var(--as-accent, #2563eb);
+    text-decoration: underline;
+}
+
+.sticky-image-link:focus-visible {
+    outline: 2px solid var(--as-accent, #2563eb);
+    outline-offset: 2px;
+    border-radius: 4px;
 }
 
 .sticky-body {
@@ -336,6 +444,190 @@ import virtualCurrenciesIcon from '../images/icons/virtual_currencies.svg'
     color: rgba(0,0,0,0.6);
 }
 
+/* Engagement System Modal - Premium Styling */
+.engagement-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.engagement-modal[aria-hidden="false"] {
+    display: flex;
+}
+
+/* Premium Overlay */
+.gl-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.38);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Subtle vignette for focus */
+.gl-modal-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(15, 23, 42, 0.15) 100%);
+    pointer-events: none;
+}
+
+/* Premium Panel */
+.gl-modal-panel {
+    position: relative;
+    background: rgba(255, 255, 255, 0.94);
+    border-radius: 22px;
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0 28px 90px rgba(15, 23, 42, 0.22);
+    z-index: 1001;
+}
+
+/* Scrollbar styling */
+.gl-modal-panel::-webkit-scrollbar {
+    width: 10px;
+}
+
+.gl-modal-panel::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.gl-modal-panel::-webkit-scrollbar-thumb {
+    background: rgba(15, 23, 42, 0.16);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+}
+
+/* Premium Header - No harsh divider */
+.gl-modal-header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: flex-start;
+    padding: 26px 56px 12px 56px;
+    position: relative;
+    border-bottom: none;
+}
+
+/* Premium Title */
+.gl-modal-title {
+    margin: 0 0 10px;
+    font-size: clamp(22px, 2.2vw, 32px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    color: var(--as-black, #0f172a);
+    text-align: center;
+    grid-column: 2;
+    max-width: 100%;
+}
+
+/* Premium Close Button */
+.gl-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(15, 23, 42, 0.06);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    font-size: 24px;
+    line-height: 1;
+    color: rgba(15, 23, 42, 0.65);
+    cursor: pointer;
+    padding: 0;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    transition: background 160ms ease, transform 160ms ease;
+    flex-shrink: 0;
+}
+
+.gl-modal-close:hover {
+    background: rgba(15, 23, 42, 0.10);
+    transform: translateY(-1px);
+}
+
+.gl-modal-close:active {
+    transform: translateY(0);
+}
+
+.gl-modal-close:focus-visible {
+    outline: 2px solid var(--as-accent, #2563eb);
+    outline-offset: 2px;
+}
+
+/* Premium Body */
+.gl-modal-body {
+    padding: 0 26px 26px;
+}
+
+/* Premium Intro Text */
+.gl-modal-intro {
+    margin: 10px auto 18px;
+    max-width: 68ch;
+    font-size: 15px;
+    line-height: 1.65;
+    color: rgba(15, 23, 42, 0.72);
+    text-align: center;
+}
+
+/* Premium Media Container */
+.gl-modal-media {
+    margin-top: 0;
+}
+
+.gl-modal-mediaInner {
+    position: relative;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    border-radius: 18px;
+    padding: 14px;
+}
+
+/* Subtle hero echo behind image */
+.gl-modal-mediaInner::before {
+    content: '';
+    position: absolute;
+    inset: -28px;
+    background: radial-gradient(closest-side, rgba(59, 130, 246, 0.18), rgba(59, 130, 246, 0));
+    filter: blur(18px);
+    opacity: 0.4;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.gl-modal-mediaInner > * {
+    position: relative;
+    z-index: 1;
+}
+
+.engagement-modal-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
 /* Responsive */
 @media (max-width: 900px) {
     .sticky-body {
@@ -344,5 +636,73 @@ import virtualCurrenciesIcon from '../images/icons/virtual_currencies.svg'
     .sticky-head {
         text-align: center;
     }
+    
+    .gl-modal-panel {
+        max-width: 100%;
+        max-height: 95vh;
+        border-radius: 16px;
+    }
+    
+    .gl-modal-header {
+        padding: 20px 20px 10px;
+    }
+    
+    .gl-modal-title {
+        font-size: clamp(20px, 4vw, 28px);
+    }
+    
+    .gl-modal-close {
+        top: 20px;
+        right: 20px;
+        width: 36px;
+        height: 36px;
+    }
+    
+    .gl-modal-body {
+        padding: 0 20px 20px;
+    }
+    
+    .gl-modal-intro {
+        font-size: 14px;
+    }
+    
+    .sticky-image-link {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+    }
 }
 </style>
+
+<script>
+    // Engagement System Modal
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('engagementModal');
+        const openBtn = document.getElementById('openEngagementModal');
+        const closeBtn = document.querySelector('.engagement-modal-close');
+        const overlay = document.querySelector('.engagement-modal-overlay');
+        
+        if (!modal || !openBtn) return;
+        
+        function openModal() {
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+        
+        openBtn.addEventListener('click', openModal);
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (overlay) overlay.addEventListener('click', closeModal);
+        
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') {
+                closeModal();
+            }
+        });
+    });
+</script>

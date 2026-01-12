@@ -436,7 +436,6 @@ section{
         
         /* Ensure children don't stay stuck at 50% */
         .hero-text,
-        .hero-media,
         .hero-media--mobile {
             width: 100% !important;
             max-width: none !important;
@@ -466,6 +465,7 @@ section{
             }
             .hero-media--mobile {
                 order: 3;
+                display: block !important;
             }
             .hero-ctas {
                 order: 4;
@@ -479,7 +479,7 @@ section{
         }
         
         .hero-media--desktop {
-            display: none;
+            display: none !important;
         }
         
         .hero-media,
