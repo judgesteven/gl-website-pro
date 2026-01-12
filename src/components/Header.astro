@@ -39,65 +39,78 @@ import { EXTERNAL_URLS } from '../lib/external'
     </div>
 </header>
 
-<script defer>
+<script>
     (function() {
-        const toggle = document.querySelector('.nav-toggle') as HTMLButtonElement | null;
-        const mobileNav = document.getElementById('mobile-nav') as HTMLElement | null;
-        const header = document.querySelector('.gl-header') as HTMLElement | null;
-        
-        if (!toggle || !mobileNav) return;
-        
-        function closeMenu() {
-            if (!mobileNav || !toggle) return;
-            mobileNav.hidden = true;
-            toggle.setAttribute('aria-expanded', 'false');
-            toggle.setAttribute('aria-label', 'Open menu');
-            if (header) {
-                header.classList.remove('menu-open');
-            }
-        }
-        
-        function openMenu() {
-            if (!mobileNav || !toggle) return;
-            mobileNav.hidden = false;
-            toggle.setAttribute('aria-expanded', 'true');
-            toggle.setAttribute('aria-label', 'Close menu');
-            if (header) {
-                header.classList.add('menu-open');
-            }
-        }
-        
-        toggle.addEventListener('click', function() {
-            if (mobileNav && mobileNav.hidden) {
-                openMenu();
-            } else {
-                closeMenu();
-            }
-        });
-        
-        // Close on Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && mobileNav && !mobileNav.hidden && toggle) {
-                closeMenu();
-                toggle.focus();
-            }
-        });
-        
-        // Close when clicking a link
-        const mobileLinks = mobileNav.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
-        
-        // Close when clicking outside (optional)
-        document.addEventListener('click', function(e) {
-            if (mobileNav && toggle && !mobileNav.hidden && e.target) {
-                const target = e.target as Node;
-                if (!mobileNav.contains(target) && !toggle.contains(target)) {
-                    closeMenu();
+        function initMobileMenu() {
+            const toggle = document.querySelector('.nav-toggle') as HTMLButtonElement | null;
+            const mobileNav = document.getElementById('mobile-nav') as HTMLElement | null;
+            const header = document.querySelector('.gl-header') as HTMLElement | null;
+            
+            if (!toggle || !mobileNav) return;
+            
+            function closeMenu() {
+                if (!mobileNav || !toggle) return;
+                mobileNav.hidden = true;
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.setAttribute('aria-label', 'Open menu');
+                if (header) {
+                    header.classList.remove('menu-open');
                 }
             }
-        });
+            
+            function openMenu() {
+                if (!mobileNav || !toggle) return;
+                mobileNav.hidden = false;
+                toggle.setAttribute('aria-expanded', 'true');
+                toggle.setAttribute('aria-label', 'Close menu');
+                if (header) {
+                    header.classList.add('menu-open');
+                }
+            }
+            
+            toggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (mobileNav && mobileNav.hidden) {
+                    openMenu();
+                } else {
+                    closeMenu();
+                }
+            });
+            
+            // Close on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && mobileNav && !mobileNav.hidden && toggle) {
+                    closeMenu();
+                    toggle.focus();
+                }
+            });
+            
+            // Close when clicking a link
+            const mobileLinks = mobileNav.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+            
+            // Close when clicking outside (use setTimeout to avoid immediate close)
+            document.addEventListener('click', function(e) {
+                if (mobileNav && toggle && !mobileNav.hidden && e.target) {
+                    const target = e.target as Node;
+                    if (!mobileNav.contains(target) && !toggle.contains(target)) {
+                        setTimeout(() => {
+                            if (mobileNav && !mobileNav.hidden) {
+                                closeMenu();
+                            }
+                        }, 0);
+                    }
+                }
+            });
+        }
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initMobileMenu);
+        } else {
+            initMobileMenu();
+        }
     })();
 </script>
 
