@@ -15,9 +15,9 @@ const growthPlans = [
     period: "month",
     features: [
       "Up to 1,000 active users",
-      "Support: Email",
-      "Conceptual support: Not included",
-      "Analytics: Dashboard"
+      "Technical & Implementation Support: Email",
+      "Concept & Programme Design Support: Not included",
+      "Analytics & Reporting: Dashboard"
     ]
   },
   {
@@ -26,9 +26,9 @@ const growthPlans = [
     period: "month",
     features: [
       "Up to 10,000 active users",
-      "Support: Email",
-      "Conceptual support: Not included",
-      "Analytics: Dashboard"
+      "Technical & Implementation Support: Email",
+      "Concept & Programme Design Support: Not included",
+      "Analytics & Reporting: Dashboard"
     ]
   },
   {
@@ -37,9 +37,9 @@ const growthPlans = [
     period: "month",
     features: [
       "Up to 25,000 active users",
-      "Support: Email",
-      "Conceptual support: Not included",
-      "Analytics: Dashboard"
+      "Technical & Implementation Support: Email",
+      "Concept & Programme Design Support: Not included",
+      "Analytics & Reporting: Dashboard"
     ]
   },
   {
@@ -48,9 +48,9 @@ const growthPlans = [
     period: "month",
     features: [
       "Up to 50,000 active users",
-      "Support: Slack",
-      "Conceptual support: Not included",
-      "Analytics: Weekly insights & monthly recommendations"
+      "Technical & Implementation Support: Slack",
+      "Concept & Programme Design Support: Not included",
+      "Analytics & Reporting: Weekly reports & monthly insights"
     ]
   }
 ];
@@ -63,9 +63,9 @@ const scalePlans = [
     period: "month",
     features: [
       "Up to 100,000 active users",
-      "Support: Slack",
-      "Conceptual support: Included (on request)",
-      "Analytics: Weekly insights & monthly recommendations"
+      "Technical & Implementation Support: Slack",
+      "Concept & Programme Design Support: Included (on request)",
+      "Analytics & Reporting: Weekly reports & monthly insights"
     ]
   },
   {
@@ -74,9 +74,9 @@ const scalePlans = [
     period: "month",
     features: [
       "Up to 250,000 active users",
-      "Support: Slack",
-      "Conceptual support: Included (on request)",
-      "Analytics: Weekly insights & monthly recommendations"
+      "Technical & Implementation Support: Slack",
+      "Concept & Programme Design Support: Included (on request)",
+      "Analytics & Reporting: Weekly reports & monthly insights"
     ]
   },
   {
@@ -85,9 +85,9 @@ const scalePlans = [
     period: "month",
     features: [
       "Up to 500,000 active users",
-      "Support: Bespoke",
-      "Conceptual support: Included (on request)",
-      "Analytics: Bespoke"
+      "Technical & Implementation Support: Customer specific",
+      "Concept & Programme Design Support: Included (on request)",
+      "Analytics & Reporting: Customer specific"
     ]
   },
   {
@@ -96,9 +96,9 @@ const scalePlans = [
     period: "month",
     features: [
       "Up to 1,000,000 active users",
-      "Support: Bespoke",
-      "Conceptual support: Included (on request)",
-      "Analytics: Bespoke"
+      "Technical & Implementation Support: Customer specific",
+      "Concept & Programme Design Support: Included (on request)",
+      "Analytics & Reporting: Customer specific"
     ]
   }
 ];
@@ -155,9 +155,9 @@ const scalePlans = [
                 <div class="pricing-features">
                     <ul>
                         {plan.features.map((feature) => {
-                            const isSupport = feature.startsWith('Support:');
-                            const isConceptualSupport = feature.startsWith('Conceptual support:');
-                            const isAnalytics = feature.startsWith('Analytics:');
+                            const isSupport = feature.startsWith('Technical & Implementation Support:');
+                            const isConceptualSupport = feature.startsWith('Concept & Programme Design Support:');
+                            const isAnalytics = feature.startsWith('Analytics & Reporting:');
                             const isActiveUsers = feature.includes('active users');
                             return (
                                 <li class={`feature-item ${isActiveUsers ? '' : 'feature-item-meta'}`}>
@@ -165,15 +165,15 @@ const scalePlans = [
                                     <span class="feature-text">
                                         {isSupport ? (
                                             <>
-                                                <strong>Support:</strong> {feature.replace('Support:', '').trim()}
+                                                <strong>Technical & Implementation Support:</strong> {feature.replace('Technical & Implementation Support:', '').trim()}
                                             </>
                                         ) : isConceptualSupport ? (
                                             <>
-                                                <strong>Conceptual support:</strong> {feature.replace('Conceptual support:', '').trim()}
+                                                <strong>Concept & Programme Design Support:</strong> {feature.replace('Concept & Programme Design Support:', '').trim()}
                                             </>
                                         ) : isAnalytics ? (
                                             <>
-                                                <strong>Analytics:</strong> {feature.replace('Analytics:', '').trim()}
+                                                <strong>Analytics & Reporting:</strong> {feature.replace('Analytics & Reporting:', '').trim()}
                                             </>
                                         ) : isActiveUsers ? (
                                             <>
@@ -217,9 +217,9 @@ const scalePlans = [
                 <div class="pricing-features">
                     <ul>
                         {plan.features.map((feature) => {
-                            const isSupport = feature.startsWith('Support:');
-                            const isConceptualSupport = feature.startsWith('Conceptual support:');
-                            const isAnalytics = feature.startsWith('Analytics:');
+                            const isSupport = feature.startsWith('Technical & Implementation Support:');
+                            const isConceptualSupport = feature.startsWith('Concept & Programme Design Support:');
+                            const isAnalytics = feature.startsWith('Analytics & Reporting:');
                             const isActiveUsers = feature.includes('active users');
                             return (
                                 <li class={`feature-item ${isActiveUsers ? '' : 'feature-item-meta'}`}>
@@ -227,15 +227,15 @@ const scalePlans = [
                                     <span class="feature-text">
                                         {isSupport ? (
                                             <>
-                                                <strong>Support:</strong> {feature.replace('Support:', '').trim()}
+                                                <strong>Technical & Implementation Support:</strong> {feature.replace('Technical & Implementation Support:', '').trim()}
                                             </>
                                         ) : isConceptualSupport ? (
                                             <>
-                                                <strong>Conceptual support:</strong> {feature.replace('Conceptual support:', '').trim()}
+                                                <strong>Concept & Programme Design Support:</strong> {feature.replace('Concept & Programme Design Support:', '').trim()}
                                             </>
                                         ) : isAnalytics ? (
                                             <>
-                                                <strong>Analytics:</strong> {feature.replace('Analytics:', '').trim()}
+                                                <strong>Analytics & Reporting:</strong> {feature.replace('Analytics & Reporting:', '').trim()}
                                             </>
                                         ) : isActiveUsers ? (
                                             <>
@@ -525,7 +525,7 @@ const scalePlans = [
     }
 
     .feature-item-meta {
-        font-size: 15px;
+        font-size: 13px;
         font-style: italic;
         color: #9ca3af;
     }
@@ -543,7 +543,7 @@ const scalePlans = [
     }
 
     .feature-item-meta .bullet-point {
-        font-size: 15px;
+        font-size: 13px;
         color: #9ca3af;
     }
 
