@@ -1,0 +1,234 @@
+---
+---
+
+<section id="business-outcomes" class="business-outcomes-band" aria-label="Business outcomes">
+    <div class="gl-container">
+        <div class="business-outcomes-header">
+            <h2 class="business-outcomes-title">What GameLayer actually delivers for a business</h2>
+            <p class="business-outcomes-intro">
+                GameLayer turns engagement mechanics into measurable business outcomes — from retention and loyalty to behaviour change and revenue-driving actions.
+            </p>
+        </div>
+
+        <div class="business-outcomes-grid">
+            <div class="business-outcome-item">
+                <div class="business-outcome-icon">
+                    <div class="icon-placeholder">
+                        <img src="/card_icons/behavior.svg" alt="" width="18" height="18" />
+                    </div>
+                </div>
+                <div class="business-outcome-content">
+                    <span class="business-outcome-label">Participation</span>
+                    <h3>Increase active participation</h3>
+                    <p>Turn passive users into participants through missions, challenges and visible progression that make interacting with your product feel purposeful.</p>
+                </div>
+            </div>
+
+            <div class="business-outcome-item">
+                <div class="business-outcome-icon">
+                    <div class="icon-placeholder">
+                        <img src="/card_icons/relationship.svg" alt="" width="18" height="18" />
+                    </div>
+                </div>
+                <div class="business-outcome-content">
+                    <span class="business-outcome-label">Frequency</span>
+                    <h3>Build repeat usage habits</h3>
+                    <p>Streaks, levels and ongoing goals create routines around your product, increasing visit frequency and long-term usage without relying on constant promotions.</p>
+                </div>
+            </div>
+
+            <div class="business-outcome-item">
+                <div class="business-outcome-icon">
+                    <div class="icon-placeholder">
+                        <img src="/card_icons/value.svg" alt="" width="18" height="18" />
+                    </div>
+                </div>
+                <div class="business-outcome-content">
+                    <span class="business-outcome-label">Value</span>
+                    <h3>Drive higher-value user actions</h3>
+                    <p>Use structured objectives and rewards to encourage purchases, learning, check-ins, referrals or feature adoption — not just generic engagement.</p>
+                </div>
+            </div>
+
+            <div class="business-outcome-item">
+                <div class="business-outcome-icon">
+                    <div class="icon-placeholder">
+                        <img src="/card_icons/insights.svg" alt="" width="18" height="18" />
+                    </div>
+                </div>
+                <div class="business-outcome-content">
+                    <span class="business-outcome-label">Measurement</span>
+                    <h3>Make engagement measurable</h3>
+                    <p>Track participation, progression and outcomes across your mechanics so teams can understand what drives behaviour — and improve it over time.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style lang="scss">
+.business-outcomes-band {
+    padding-top: var(--gl-section-padding-standard);
+    padding-bottom: clamp(64px, 8vw, 96px);
+    background: rgba(239, 246, 255, 0.3);
+}
+
+.business-outcomes-header {
+    margin: 0 auto var(--gl-space-xl);
+    margin-top: 0;
+    text-align: center;
+    max-width: 720px;
+}
+
+/* Reset first child margin to prevent extra top gap */
+#business-outcomes .gl-container > :first-child {
+    margin-top: 0 !important;
+}
+
+.business-outcomes-title {
+    margin: 0 auto;
+    font-size: var(--gl-h2-size);
+    font-weight: 700;
+    line-height: var(--gl-h2-line-height);
+    letter-spacing: -0.02em;
+    color: var(--as-black);
+    margin-bottom: var(--gl-h2-margin-bottom);
+}
+
+.business-outcomes-intro {
+    font-size: var(--gl-lede-size);
+    font-weight: var(--gl-lede-weight);
+    line-height: var(--gl-lede-line-height);
+    color: var(--gl-lede-color);
+    margin: var(--gl-heading-lede-gap-top) auto 0;
+    margin-bottom: var(--gl-space-xl);
+    max-width: var(--gl-lede-max-width);
+}
+
+.business-outcomes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(20px, 2.5vw, 28px);
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+.business-outcome-item {
+    display: flex;
+    gap: var(--gl-space-md);
+    align-items: flex-start;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    border-radius: 22px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    padding: clamp(24px, 3vw, 32px);
+    transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    box-sizing: border-box;
+    height: 100%;
+    position: relative;
+}
+
+.business-outcome-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 40px rgba(15, 23, 42, 0.08);
+    border-color: rgba(15, 23, 42, 0.12);
+}
+
+.business-outcome-item:nth-child(-n+2) {
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.07);
+}
+
+.business-outcome-item:nth-child(-n+2):hover {
+    box-shadow: 0 16px 44px rgba(15, 23, 42, 0.09);
+}
+
+.business-outcome-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 2px;
+}
+
+.icon-placeholder {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.02);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.icon-placeholder img {
+    width: 22px;
+    height: 22px;
+    opacity: 0.9;
+}
+
+.business-outcome-content {
+    flex: 1;
+    min-width: 0;
+
+    .business-outcome-label {
+        display: block;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(0, 0, 0, 0.45);
+        margin-bottom: 6px;
+    }
+
+    h3 {
+        font-size: var(--gl-h3-size);
+        font-weight: var(--gl-h3-weight);
+        line-height: var(--gl-h3-line-height);
+        letter-spacing: -0.01em;
+        margin: 0 0 12px;
+        color: var(--as-black);
+    }
+
+    p {
+        font-size: var(--gl-body-size);
+        font-weight: var(--gl-body-weight);
+        line-height: var(--gl-body-line-height);
+        color: var(--gl-body-color);
+        margin: 0;
+    }
+}
+
+// Mobile: stack single column
+@media (max-width: 768px) {
+    .business-outcomes-grid {
+        grid-template-columns: 1fr;
+        gap: clamp(18px, 2vw, 24px);
+    }
+
+    .business-outcome-item {
+        gap: var(--gl-space-md);
+        padding: clamp(20px, 2.5vw, 28px);
+    }
+
+    .business-outcome-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .icon-placeholder {
+        width: 28px;
+        height: 28px;
+    }
+
+    .business-outcome-content h3 {
+        margin-bottom: 10px;
+    }
+}
+</style>
+
