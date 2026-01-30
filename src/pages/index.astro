@@ -82,21 +82,84 @@ const schemas = [
 			"name": "Gamification API"
 		}
 	},
-	// SoftwareApplication
+	// SoftwareApplication (PRIMARY - Enhanced with featureList)
 	{
 		"@context": "https://schema.org",
 		"@type": "SoftwareApplication",
 		"name": "GameLayer",
 		"url": siteUrl,
 		"logo": `${siteUrl}/logo.png`,
-		"description": "Gamification API platform that helps modern products add missions, streaks, rewards, and leaderboards. Launch engagement mechanics in days via API + dashboard.",
+		"description": "GameLayer is a Gamification API for digital engagement, loyalty and retention. Launch missions, streaks, leaderboards, rewards and achievements in days—via a flexible REST API.",
 		"applicationCategory": "BusinessApplication",
-		"operatingSystem": "Cloud",
+		"operatingSystem": "Web",
+		"featureList": [
+			"Missions",
+			"Streaks",
+			"Achievements",
+			"Level-Ups",
+			"Leaderboards",
+			"Mystery Wins",
+			"Prizes",
+			"Raffles",
+			"Quizzes",
+			"Virtual Currencies",
+			"Rules Manager",
+			"Content dashboard",
+			"Open API"
+		],
 		"offers": {
-			"@type": "AggregateOffer",
+			"@type": "Offer",
+			"price": "0",
 			"priceCurrency": "EUR",
 			"availability": "https://schema.org/InStock"
 		}
+	},
+	// FAQPage (invisible, code-only for AI visibility)
+	{
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+		"mainEntity": [
+			{
+				"@type": "Question",
+				"name": "What is a gamification API?",
+				"acceptedAnswer": {
+					"@type": "Answer",
+					"text": "A gamification API is a REST API that provides gamification mechanics—such as missions, streaks, leaderboards, rewards, and achievements—as programmable services. GameLayer's API allows developers to integrate engagement, retention, and loyalty features into existing products without hard-coding game logic."
+				}
+			},
+			{
+				"@type": "Question",
+				"name": "What mechanics does GameLayer support?",
+				"acceptedAnswer": {
+					"@type": "Answer",
+					"text": "GameLayer supports 10+ gamification mechanics including Missions, Streaks, Achievements, Level-Ups, Leaderboards, Mystery Wins, Prizes, Raffles, Quizzes, and Virtual Currencies. All mechanics are accessible via REST API endpoints and can be combined to build custom engagement systems."
+				}
+			},
+			{
+				"@type": "Question",
+				"name": "Can we run loyalty programmes with GameLayer?",
+				"acceptedAnswer": {
+					"@type": "Answer",
+					"text": "Yes. GameLayer is designed for digital engagement, loyalty, and retention programs. The API provides mechanics like missions, rewards, level-ups, and virtual currencies that are commonly used in loyalty programs. Teams maintain full control over the user experience while GameLayer handles the underlying rules and state management."
+				}
+			},
+			{
+				"@type": "Question",
+				"name": "How do rules and budgets work?",
+				"acceptedAnswer": {
+					"@type": "Answer",
+					"text": "GameLayer includes a Rules Manager that allows teams to define conditions, budgets, and eligibility criteria for mechanics. Rules can target specific player outcomes and control reward distribution, progression thresholds, and mechanic interactions. All rules are managed via API and dashboard."
+				}
+			},
+			{
+				"@type": "Question",
+				"name": "How do developers integrate?",
+				"acceptedAnswer": {
+					"@type": "Answer",
+					"text": "Developers integrate GameLayer via REST API. The platform provides 50+ endpoints for missions, streaks, leaderboards, rewards, achievements, and other mechanics. Integration typically involves authenticating with an API key, sending events to trigger mechanics, and querying player state. Full API documentation is available at /api-docs."
+				}
+			}
+		]
 	},
 	// ItemList of on-page sections
 	{
