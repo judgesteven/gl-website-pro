@@ -4,21 +4,21 @@ import { getImage } from 'astro:assets'
 import { EXTERNAL_URLS } from '../lib/external'
 
 // Generate optimized hero images in multiple formats and sizes
-// Optimized for faster loading with balanced quality
+// High quality settings for premium hero image
 const heroImages = {
-    // AVIF format (best compression) - optimized quality for performance
+    // AVIF format (best compression) - high quality for hero
     avif: {
-        tiny: await getImage({ src: HeroImage, format: 'avif', width: 400, quality: 70 }),
-        small: await getImage({ src: HeroImage, format: 'avif', width: 600, quality: 75 }),
-        medium: await getImage({ src: HeroImage, format: 'avif', width: 900, quality: 80 }),
-        large: await getImage({ src: HeroImage, format: 'avif', width: 1200, quality: 82 })
+        tiny: await getImage({ src: HeroImage, format: 'avif', width: 400, quality: 80 }),
+        small: await getImage({ src: HeroImage, format: 'avif', width: 600, quality: 85 }),
+        medium: await getImage({ src: HeroImage, format: 'avif', width: 900, quality: 88 }),
+        large: await getImage({ src: HeroImage, format: 'avif', width: 1200, quality: 90 })
     },
-    // WebP format (fallback) - optimized quality for performance
+    // WebP format (fallback) - high quality for hero
     webp: {
-        tiny: await getImage({ src: HeroImage, format: 'webp', width: 400, quality: 70 }),
-        small: await getImage({ src: HeroImage, format: 'webp', width: 600, quality: 75 }),
-        medium: await getImage({ src: HeroImage, format: 'webp', width: 900, quality: 80 }),
-        large: await getImage({ src: HeroImage, format: 'webp', width: 1200, quality: 82 })
+        tiny: await getImage({ src: HeroImage, format: 'webp', width: 400, quality: 80 }),
+        small: await getImage({ src: HeroImage, format: 'webp', width: 600, quality: 85 }),
+        medium: await getImage({ src: HeroImage, format: 'webp', width: 900, quality: 88 }),
+        large: await getImage({ src: HeroImage, format: 'webp', width: 1200, quality: 90 })
     },
     // Original PNG as fallback
     original: HeroImage
