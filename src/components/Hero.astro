@@ -4,19 +4,21 @@ import { getImage } from 'astro:assets'
 import { EXTERNAL_URLS } from '../lib/external'
 
 // Generate optimized hero images in multiple formats and sizes
-// Higher quality settings for premium hero image
+// Optimized for faster loading with balanced quality
 const heroImages = {
-    // AVIF format (best compression) - increased quality for hero
+    // AVIF format (best compression) - optimized quality for performance
     avif: {
-        small: await getImage({ src: HeroImage, format: 'avif', width: 600, quality: 90 }),
-        medium: await getImage({ src: HeroImage, format: 'avif', width: 900, quality: 92 }),
-        large: await getImage({ src: HeroImage, format: 'avif', width: 1200, quality: 95 })
+        tiny: await getImage({ src: HeroImage, format: 'avif', width: 400, quality: 70 }),
+        small: await getImage({ src: HeroImage, format: 'avif', width: 600, quality: 75 }),
+        medium: await getImage({ src: HeroImage, format: 'avif', width: 900, quality: 80 }),
+        large: await getImage({ src: HeroImage, format: 'avif', width: 1200, quality: 82 })
     },
-    // WebP format (fallback) - increased quality for hero
+    // WebP format (fallback) - optimized quality for performance
     webp: {
-        small: await getImage({ src: HeroImage, format: 'webp', width: 600, quality: 90 }),
-        medium: await getImage({ src: HeroImage, format: 'webp', width: 900, quality: 92 }),
-        large: await getImage({ src: HeroImage, format: 'webp', width: 1200, quality: 95 })
+        tiny: await getImage({ src: HeroImage, format: 'webp', width: 400, quality: 70 }),
+        small: await getImage({ src: HeroImage, format: 'webp', width: 600, quality: 75 }),
+        medium: await getImage({ src: HeroImage, format: 'webp', width: 900, quality: 80 }),
+        large: await getImage({ src: HeroImage, format: 'webp', width: 1200, quality: 82 })
     },
     // Original PNG as fallback
     original: HeroImage
@@ -45,13 +47,13 @@ const heroImages = {
                                 <picture>
                                 <source 
                                     type="image/avif" 
-                                    srcset={`${heroImages.avif.small.src} 600w, ${heroImages.avif.medium.src} 900w, ${heroImages.avif.large.src} 1200w`}
-                                    sizes="(max-width: 768px) 100vw, 572px"
+                                    srcset={`${heroImages.avif.tiny.src} 400w, ${heroImages.avif.small.src} 600w, ${heroImages.avif.medium.src} 900w, ${heroImages.avif.large.src} 1200w`}
+                                    sizes="(max-width: 768px) 100vw, 500px"
                                 />
                                 <source 
                                     type="image/webp" 
-                                    srcset={`${heroImages.webp.small.src} 600w, ${heroImages.webp.medium.src} 900w, ${heroImages.webp.large.src} 1200w`}
-                                    sizes="(max-width: 768px) 100vw, 572px"
+                                    srcset={`${heroImages.webp.tiny.src} 400w, ${heroImages.webp.small.src} 600w, ${heroImages.webp.medium.src} 900w, ${heroImages.webp.large.src} 1200w`}
+                                    sizes="(max-width: 768px) 100vw, 500px"
                                 />
                                 <img 
                                     src={heroImages.original.src} 
@@ -89,13 +91,13 @@ const heroImages = {
                             <picture>
                             <source 
                                 type="image/avif" 
-                                srcset={`${heroImages.avif.small.src} 600w, ${heroImages.avif.medium.src} 900w, ${heroImages.avif.large.src} 1200w`}
-                                sizes="(max-width: 1024px) 90vw, 572px"
+                                srcset={`${heroImages.avif.tiny.src} 400w, ${heroImages.avif.small.src} 600w, ${heroImages.avif.medium.src} 900w, ${heroImages.avif.large.src} 1200w`}
+                                sizes="(max-width: 1024px) 90vw, 500px"
                             />
                             <source 
                                 type="image/webp" 
-                                srcset={`${heroImages.webp.small.src} 600w, ${heroImages.webp.medium.src} 900w, ${heroImages.webp.large.src} 1200w`}
-                                sizes="(max-width: 1024px) 90vw, 572px"
+                                srcset={`${heroImages.webp.tiny.src} 400w, ${heroImages.webp.small.src} 600w, ${heroImages.webp.medium.src} 900w, ${heroImages.webp.large.src} 1200w`}
+                                sizes="(max-width: 1024px) 90vw, 500px"
                             />
                             <img 
                                 src={heroImages.original.src} 
