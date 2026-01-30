@@ -1,0 +1,474 @@
+---
+import { listLeads } from '../../lib/supabaseAdmin';
+
+// Get query parameters
+const showParam = Astro.url.searchParams.get('show') || 'hot';
+const minScoreParam = Astro.url.searchParams.get('minScore');
+const minScore = minScoreParam ? parseInt(minScoreParam, 10) : 70;
+
+// Fetch leads
+let allLeads: Array<{
+  conversation_id: string;
+  intent_score: number;
+  handoff_requested: boolean;
+  last_summary: string | null;
+  updated_at: string;
+  created_at: string;
+  company_name: string | null;
+  website: string | null;
+  industry: string | null;
+  role: string | null;
+  use_case: string | null;
+  primary_goal: string | null;
+  scale: string | null;
+  timeline: string | null;
+  next_step: string | null;
+  suggested_reply: string | null;
+}> = [];
+
+try {
+  allLeads = await listLeads(100);
+} catch (error) {
+  console.error('Failed to load leads:', error);
+}
+
+// Filter leads
+let filteredLeads = allLeads;
+if (showParam === 'hot') {
+  filteredLeads = allLeads.filter(lead => 
+    lead.handoff_requested || lead.intent_score >= minScore
+  );
+}
+
+// Helper functions
+function formatRelativeTime(dateString: string): string {
+  const date = new Date(dateString);
+  const now = new Date();
+  const diffMs = now.getTime() - date.getTime();
+  const diffMins = Math.floor(diffMs / 60000);
+  const diffHours = Math.floor(diffMs / 3600000);
+  const diffDays = Math.floor(diffMs / 86400000);
+
+  if (diffMins < 1) return 'just now';
+  if (diffMins < 60) return `${diffMins}m ago`;
+  if (diffHours < 24) return `${diffHours}h ago`;
+  if (diffDays < 7) return `${diffDays}d ago`;
+  
+  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+function formatExactTime(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleString('en-US', { 
+    month: 'short', 
+    day: 'numeric', 
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+}
+
+function isHotLead(lead: typeof allLeads[0], minScore: number): boolean {
+  return lead.handoff_requested || lead.intent_score >= minScore;
+}
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameLayer — Leads Dashboard</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .header {
+      background: #1a1a1a;
+      color: white;
+      padding: 20px;
+    }
+
+    .header h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .header .warning {
+      font-size: 12px;
+      color: #ffd700;
+      margin-top: 8px;
+    }
+
+    .filters {
+      padding: 16px 20px;
+      background: #f9f9f9;
+      border-bottom: 1px solid #e0e0e0;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .filter-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #666;
+    }
+
+    .toggle-button {
+      padding: 6px 12px;
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .toggle-button.active {
+      background: #0070f3;
+      color: white;
+      border-color: #0070f3;
+    }
+
+    .toggle-button:hover:not(.active) {
+      background: #f0f0f0;
+    }
+
+    .score-input {
+      width: 60px;
+      padding: 6px 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+
+    .refresh-button {
+      padding: 6px 12px;
+      background: #0070f3;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .refresh-button:hover {
+      background: #0051cc;
+    }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead {
+      background: #f9f9f9;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    th {
+      padding: 12px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 600;
+      color: #666;
+      text-transform: uppercase;
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #e0e0e0;
+      font-size: 13px;
+    }
+
+    tbody tr:hover {
+      background: #f9f9f9;
+    }
+
+    tbody tr.hot-lead {
+      background: #fff3cd;
+    }
+
+    tbody tr.hot-lead:hover {
+      background: #ffe69c;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .badge-hot {
+      background: #ff4444;
+      color: white;
+    }
+
+    .badge-handoff {
+      background: #ff8800;
+      color: white;
+    }
+
+    .score {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .score.high {
+      color: #ff4444;
+    }
+
+    .score.medium {
+      color: #ff8800;
+    }
+
+    .score.low {
+      color: #666;
+    }
+
+    .summary {
+      max-width: 300px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .action-button {
+      padding: 4px 8px;
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 3px;
+      font-size: 11px;
+      cursor: pointer;
+      text-decoration: none;
+      color: #333;
+      transition: all 0.2s;
+    }
+
+    .action-button:hover {
+      background: #f0f0f0;
+      border-color: #0070f3;
+    }
+
+    .action-button.primary {
+      background: #0070f3;
+      color: white;
+      border-color: #0070f3;
+    }
+
+    .action-button.primary:hover {
+      background: #0051cc;
+    }
+
+    .empty-state {
+      padding: 40px;
+      text-align: center;
+      color: #999;
+      font-style: italic;
+    }
+
+    .relative-time {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .exact-time {
+      font-size: 11px;
+      color: #999;
+      margin-top: 2px;
+    }
+  </style>
+  <script>
+    // Handle copy ID buttons
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyButtons = document.querySelectorAll('.copy-id-button');
+      copyButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const conversationId = button.getAttribute('data-conversation-id');
+          if (conversationId) {
+            navigator.clipboard.writeText(conversationId).then(() => {
+              const originalText = button.textContent;
+              button.textContent = 'Copied!';
+              setTimeout(() => {
+                button.textContent = originalText;
+              }, 2000);
+            }).catch(err => {
+              console.error('Failed to copy:', err);
+            });
+          }
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>GameLayer — Leads Dashboard</h1>
+      <div class="warning">⚠️ Internal only. Do not link publicly.</div>
+    </div>
+
+    <div class="filters">
+      <div class="filter-group">
+        <span class="filter-label">Show:</span>
+        <a href={`?show=hot&minScore=${minScore}`} class={`toggle-button ${showParam === 'hot' ? 'active' : ''}`}>
+          Hot
+        </a>
+        <a href={`?show=all&minScore=${minScore}`} class={`toggle-button ${showParam === 'all' ? 'active' : ''}`}>
+          All
+        </a>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Min Score:</span>
+        <form method="get" style="display: inline;">
+          <input type="hidden" name="show" value={showParam} />
+          <input 
+            type="number" 
+            name="minScore" 
+            value={minScore} 
+            min="0" 
+            max="100" 
+            class="score-input"
+            onchange="this.form.submit()"
+          />
+        </form>
+      </div>
+      <a href={`${Astro.url.pathname}${Astro.url.search}`} class="refresh-button">
+        Refresh
+      </a>
+      <div style="margin-left: auto; font-size: 12px; color: #666;">
+        Showing {filteredLeads.length} of {allLeads.length} leads
+      </div>
+    </div>
+
+    <div class="table-container">
+      {filteredLeads.length === 0 ? (
+        <div class="empty-state">No leads found.</div>
+      ) : (
+        <table>
+          <thead>
+            <tr>
+              <th>Updated</th>
+              <th>Score</th>
+              <th>Handoff</th>
+              <th>Summary</th>
+              <th>Company</th>
+              <th>Next Step</th>
+              <th>Suggested Reply</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredLeads.map((lead) => {
+              const isHot = isHotLead(lead, minScore);
+              const scoreClass = lead.intent_score >= 90 ? 'high' : lead.intent_score >= 70 ? 'medium' : 'low';
+              const conversationId = lead.conversation_id;
+              return (
+                <tr class={isHot ? 'hot-lead' : ''}>
+                  <td>
+                    <div class="relative-time">{formatRelativeTime(lead.updated_at)}</div>
+                    <div class="exact-time">{formatExactTime(lead.updated_at)}</div>
+                  </td>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                      {isHot && (
+                        <span class="badge badge-hot">HOT</span>
+                      )}
+                      <span class={`score ${scoreClass}`}>
+                        {lead.intent_score >= 90 ? '🔥 ' : ''}
+                        {lead.intent_score}
+                      </span>
+                    </div>
+                  </td>
+                  <td>
+                    {lead.handoff_requested ? (
+                      <span class="badge badge-handoff">HANDOFF</span>
+                    ) : (
+                      <span style="color: #999;">false</span>
+                    )}
+                  </td>
+                  <td>
+                    <div class="summary" title={lead.last_summary || ''}>
+                      {lead.last_summary || <span style="color: #999;">—</span>}
+                    </div>
+                  </td>
+                  <td>
+                    {lead.company_name || <span style="color: #999;">—</span>}
+                  </td>
+                  <td>
+                    <div class="summary" title={lead.next_step || ''}>
+                      {lead.next_step || <span style="color: #999;">—</span>}
+                    </div>
+                  </td>
+                  <td>
+                    <div class="summary" title={lead.suggested_reply || ''}>
+                      {lead.suggested_reply || <span style="color: #999;">—</span>}
+                    </div>
+                  </td>
+                  <td>
+                    <div class="actions">
+                      <a 
+                        href={`/agent-test?conversationId=${conversationId}`}
+                        class="action-button primary"
+                      >
+                        Open
+                      </a>
+                      <button 
+                        class="action-button copy-id-button"
+                        data-conversation-id={conversationId}
+                      >
+                        Copy ID
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      )}
+    </div>
+  </div>
+</body>
+</html>
+

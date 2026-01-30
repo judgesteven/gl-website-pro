@@ -1,5 +1,5 @@
 ---
-import HeroImage from '../images/hero_image.png'
+import HeroImage from '../images/hero_image_3.png'
 import { getImage } from 'astro:assets'
 import { EXTERNAL_URLS } from '../lib/external'
 
@@ -185,8 +185,8 @@ section{
     
     .hero-grid {
         display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        align-items: center;
+        grid-template-columns: 1.17fr 0.83fr;
+        align-items: stretch;
         gap: 48px;
         width: 100%;
     }
@@ -196,7 +196,7 @@ section{
         display: flex;
         flex-direction: column;
         gap: 14px;
-        max-width: 560px;
+        max-width: none;
         align-items: flex-start;
         
         .hero-headline,
@@ -211,7 +211,7 @@ section{
             line-height: var(--gl-h1-line-height);
             letter-spacing: -0.02em;
             color: var(--as-black);
-            max-width: 26ch;
+            max-width: var(--gl-lede-max-width);
             margin-bottom: var(--gl-h1-margin-bottom);
             hyphens: none !important;
             overflow-wrap: normal !important;
@@ -277,16 +277,21 @@ section{
             margin: 0;
             margin-top: 6px;
             line-height: 1.5;
+            max-width: var(--gl-lede-max-width);
         }
     }
     
     .hero-media{
         display: flex;
-        align-items: center;
+        align-items: stretch;
         justify-content: flex-end;
         transform: translateY(6px);
         /* Allow overflow for glow effect */
         overflow: visible;
+        height: 100%;
+        /* Break out of container padding to extend to right edge */
+        margin-right: calc(-1 * var(--gl-rail));
+        position: relative;
     }
     
     /* ============================================
@@ -299,32 +304,33 @@ section{
     */
     .hero-visual-shell {
         width: 100%;
-        max-width: 572px;
-        margin: 0 auto;
+        max-width: none;
+        margin: 0;
         position: relative;
         /* Enable hardware acceleration for crisp rendering */
         transform: translateZ(0);
         /* Prevent overflow from glow effect */
         overflow: visible;
+        height: 100%;
+        display: flex;
+        align-items: stretch;
+        justify-content: flex-end;
+        /* Extend to right edge */
+        margin-right: 0;
     }
     
     /* Hero image link - makes the screenshot clickable */
     .hero-image-link {
-        display: block;
+        display: flex;
+        align-items: stretch;
+        justify-content: flex-end;
         text-decoration: none;
         color: inherit;
-        transition: transform 0.2s ease, opacity 0.2s ease;
-        
-        &:hover {
-            opacity: 0.95;
-            transform: translateY(-2px);
-        }
-        
-        &:focus-visible {
-            outline: 3px solid var(--as-accent);
-            outline-offset: 4px;
-            border-radius: 40px;
-        }
+        height: 100%;
+        width: 100%;
+        /* Ensure it extends to edge */
+        margin-right: 0;
+        position: relative;
     }
     
     /* Brand-tinted ambient glow - positioned behind image
@@ -354,41 +360,48 @@ section{
     /* Product surface container - the actual screenshot wrapper
        Creates a floating card effect with premium materials feel */
     .hero-image-wrapper {
-        width: 100%;
-        aspect-ratio: 3 / 2;
-        position: relative;
-        /* Larger radius for more premium, modern feel */
-        border-radius: 36px;
+        width: auto;
+        max-width: 500px;
+        height: 96.25%;
+        position: absolute;
+        right: calc(-1 * var(--gl-rail));
+        /* Rounded on inner (left) side only, sharp edge on right */
+        border-radius: 24px 0 0 24px;
         overflow: hidden;
         /* Multi-layer soft shadow system:
            - Close shadow: subtle definition
            - Mid shadow: depth and separation
            - Far shadow: ambient depth
            All very subtle to avoid modal/heavy appearance */
-        box-shadow: 
-            0 4px 12px rgba(0, 0, 0, 0.06),
-            0 12px 32px rgba(0, 0, 0, 0.08),
-            0 24px 64px rgba(0, 0, 0, 0.06);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
         /* Very low contrast border for subtle edge definition */
         border: 1px solid rgba(0, 0, 0, 0.08);
+        border-right: none;
         /* Clean white background ensures no bleed-through */
         background: #fff;
         /* Maintain aspect ratio and prevent layout shift */
-        display: block;
+        display: flex;
+        align-items: stretch;
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    
+    .hero-image-link:hover .hero-image-wrapper {
+        transform: translateY(-6px);
+        box-shadow: 0 35px 80px rgba(0, 0, 0, 0.18);
+    }
+    
+    .hero-image-link:focus-visible {
+        outline: 3px solid var(--as-accent);
+        outline-offset: 4px;
+        border-radius: 24px 0 0 24px;
     }
     
     .hero-image-wrapper img {
-        width: 100%;
-        height: auto;
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+        object-position: left center;
         display: block;
-    }
-    
-    // Desktop: use object-fit for aspect ratio
-    @media (min-width: 769px) {
-        .hero-image-wrapper img {
-            height: 100%;
-            object-fit: cover;
-        }
     }
     
     .hero-media--mobile {
@@ -509,17 +522,27 @@ section{
             }
             
             .hero-image-wrapper {
+                /* Reset absolute positioning for mobile */
+                position: relative !important;
+                right: auto !important;
                 /* Slightly smaller radius on mobile for better fit */
                 border-radius: 28px;
+                /* Reset height for mobile */
+                height: auto !important;
                 /* Lighter shadow stack on mobile */
                 box-shadow: 
                     0 2px 6px rgba(0, 0, 0, 0.03),
                     0 6px 16px rgba(0, 0, 0, 0.04);
+                /* Reset border for mobile */
+                border: 1px solid rgba(0, 0, 0, 0.08);
+                /* Reset max-width for mobile */
+                max-width: none !important;
             }
             
             .hero-image-wrapper,
             .hero-image-wrapper img {
                 width: 100% !important;
+                height: auto !important;
             }
         }
         
