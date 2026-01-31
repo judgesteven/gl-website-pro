@@ -93,6 +93,27 @@ const schemas = [
 		"description": "GameLayer is a Gamification API for digital engagement, loyalty and retention. Launch missions, streaks, leaderboards, rewards and achievements in days—via a flexible REST API.",
 		"applicationCategory": "BusinessApplication",
 		"operatingSystem": "Web",
+		"alternateName": [
+			"Gamification Platform",
+			"Engagement Platform",
+			"Loyalty Platform",
+			"منصة التلعيب",
+			"نظام نقاط ومكافآت",
+			"منصة ولاء العملاء"
+		],
+		"keywords": [
+			"gamification",
+			"gamification API",
+			"engagement platform",
+			"loyalty software",
+			"rewards platform",
+			"retention platform",
+			"منصة التلعيب",
+			"نظام ولاء",
+			"مكافآت رقمية",
+			"نظام نقاط",
+			"برامج ولاء العملاء"
+		],
 		"featureList": [
 			"Missions",
 			"Streaks",
@@ -159,6 +180,22 @@ const schemas = [
 					"@type": "Answer",
 					"text": "Developers integrate GameLayer via REST API. The platform provides 50+ endpoints for missions, streaks, leaderboards, rewards, achievements, and other mechanics. Integration typically involves authenticating with an API key, sending events to trigger mechanics, and querying player state. Full API documentation is available at /api-docs."
 				}
+			},
+			{
+				"@type": "Question",
+				"name": "ما هي منصة التلعيب؟",
+				"acceptedAnswer": {
+					"@type": "Answer",
+					"text": "منصة التلعيب هي نظام يستخدم المهام، المكافآت، ولوحات الصدارة لزيادة تفاعل المستخدمين وولائهم داخل المنتجات الرقمية."
+				}
+			},
+			{
+				"@type": "Question",
+				"name": "كيف تساعد أنظمة المكافآت على زيادة التفاعل؟",
+				"acceptedAnswer": {
+					"@type": "Answer",
+					"text": "أنظمة المكافآت تحفّز المستخدمين على تكرار السلوكيات المرغوبة من خلال النقاط، الجوائز، والتقدم داخل التجربة الرقمية."
+				}
 			}
 		]
 	},
@@ -206,6 +243,7 @@ const schemas = [
 <Layout 
 	title={seo.title}
 	description={seo.description}
+	arabicDescription={defaultHomeSeo.arabicDescription}
 	keywords="gamification API, gamification platform, user engagement, user retention, customer loyalty, gamification mechanics, API integration, gamification software"
 	canonical={seo.canonical}
 	schema={schemas}

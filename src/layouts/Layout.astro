@@ -5,6 +5,7 @@ import SpacingDebug from '../components/SpacingDebug.astro';
 interface Props {
 	title: string;
 	description?: string;
+	arabicDescription?: string;
 	keywords?: string;
 	ogImage?: string;
 	ogTitle?: string;
@@ -21,6 +22,7 @@ const socialImageUrl = new URL(socialImagePath, Astro.url.origin).href;
 const { 
 	title, 
 	description = "GameLayer - The leading gamification API platform for user engagement, retention, and customer loyalty. Build powerful gamification experiences with our comprehensive API.",
+	arabicDescription,
 	keywords = "gamification, gamification API, gamification platform, user engagement, user retention, customer loyalty, gamification mechanics, API integration",
 	ogImage = socialImageUrl,
 	ogTitle,
@@ -46,6 +48,7 @@ const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow, max-image-
 		<title>{title}</title>
 		<meta name="title" content={title} />
 		<meta name="description" content={description} />
+		{arabicDescription && <meta name="description" lang="ar" content={arabicDescription} />}
 		<meta name="keywords" content={keywords} />
 		<meta name="author" content="GameLayer" />
 		<meta name="robots" content={robotsContent} />

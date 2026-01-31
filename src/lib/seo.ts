@@ -47,6 +47,7 @@ export function buildSeo({
 export const defaultHomeSeo = {
 	title: "Gamification API for Digital Engagement, Loyalty & Retention | GameLayer",
 	description: "GameLayer is a Gamification API for digital engagement, loyalty and retention. Launch missions, streaks, leaderboards, rewards and achievements in days—via a flexible REST API.",
+	arabicDescription: "منصة GameLayer هي واجهة برمجة تطبيقات للتلعيب (Gamification API) لزيادة التفاعل، الولاء، والاحتفاظ بالمستخدمين عبر المنتجات الرقمية. أطلق المهام، المكافآت، ولوحات الصدارة بسرعة.",
 	pathname: "/"
 };
 
