@@ -1,28 +1,7 @@
 ---
 import HeroImage from '../images/hero_image_3.png'
-import { getImage } from 'astro:assets'
+import { Image } from 'astro:assets'
 import { EXTERNAL_URLS } from '../lib/external'
-
-// Generate optimized hero images in multiple formats and sizes
-// High quality settings for premium hero image
-const heroImages = {
-    // AVIF format (best compression) - high quality for hero
-    avif: {
-        tiny: await getImage({ src: HeroImage, format: 'avif', width: 400, quality: 80 }),
-        small: await getImage({ src: HeroImage, format: 'avif', width: 600, quality: 85 }),
-        medium: await getImage({ src: HeroImage, format: 'avif', width: 900, quality: 88 }),
-        large: await getImage({ src: HeroImage, format: 'avif', width: 1200, quality: 90 })
-    },
-    // WebP format (fallback) - high quality for hero
-    webp: {
-        tiny: await getImage({ src: HeroImage, format: 'webp', width: 400, quality: 80 }),
-        small: await getImage({ src: HeroImage, format: 'webp', width: 600, quality: 85 }),
-        medium: await getImage({ src: HeroImage, format: 'webp', width: 900, quality: 88 }),
-        large: await getImage({ src: HeroImage, format: 'webp', width: 1200, quality: 90 })
-    },
-    // Original PNG as fallback
-    original: HeroImage
-}
 ---
 
 <section id="hero" aria-label="GameLayer hero">
@@ -44,28 +23,17 @@ const heroImages = {
                             aria-label="Open GameLayer admin dashboard (external)"
                         >
                             <div class="hero-image-wrapper">
-                                <picture>
-                                <source 
-                                    type="image/avif" 
-                                    srcset={`${heroImages.avif.tiny.src} 400w, ${heroImages.avif.small.src} 600w, ${heroImages.avif.medium.src} 900w, ${heroImages.avif.large.src} 1200w`}
-                                    sizes="(max-width: 768px) 100vw, 500px"
-                                />
-                                <source 
-                                    type="image/webp" 
-                                    srcset={`${heroImages.webp.tiny.src} 400w, ${heroImages.webp.small.src} 600w, ${heroImages.webp.medium.src} 900w, ${heroImages.webp.large.src} 1200w`}
-                                    sizes="(max-width: 768px) 100vw, 500px"
-                                />
-                                <img 
-                                    src={heroImages.original.src} 
-                                    alt="GameLayer gamification API platform interface showing user engagement and customer loyalty features" 
+                                <Image
+                                    src={HeroImage}
+                                    alt="GameLayer gamification API platform interface showing user engagement and customer loyalty features"
+                                    widths={[800, 1200, 1600, 2000, 2400]}
+                                    quality={100}
+                                    formats={['webp']}
+                                    sizes="(min-width: 1200px) 50vw, 92vw"
                                     loading="eager"
                                     fetchpriority="high"
-                                    decoding="async"
-                                    width="1000"
-                                    height="670"
                                     id="hero-image-mobile"
-                                >
-                            </picture>
+                                />
                             </div>
                         </a>
                     </div>
@@ -88,28 +56,17 @@ const heroImages = {
                         aria-label="Open GameLayer admin dashboard (external)"
                     >
                         <div class="hero-image-wrapper">
-                            <picture>
-                            <source 
-                                type="image/avif" 
-                                srcset={`${heroImages.avif.tiny.src} 400w, ${heroImages.avif.small.src} 600w, ${heroImages.avif.medium.src} 900w, ${heroImages.avif.large.src} 1200w`}
-                                sizes="(max-width: 1024px) 90vw, 500px"
-                            />
-                            <source 
-                                type="image/webp" 
-                                srcset={`${heroImages.webp.tiny.src} 400w, ${heroImages.webp.small.src} 600w, ${heroImages.webp.medium.src} 900w, ${heroImages.webp.large.src} 1200w`}
-                                sizes="(max-width: 1024px) 90vw, 500px"
-                            />
-                            <img 
-                                src={heroImages.original.src} 
-                                alt="GameLayer gamification API platform interface showing user engagement and customer loyalty features" 
-                                loading="eager" 
+                            <Image
+                                src={HeroImage}
+                                alt="GameLayer gamification API platform interface showing user engagement and customer loyalty features"
+                                widths={[800, 1200, 1600, 2000, 2400]}
+                                quality={100}
+                                formats={['webp']}
+                                sizes="(min-width: 1200px) 50vw, 92vw"
+                                loading="eager"
                                 fetchpriority="high"
-                                decoding="async"
-                                width="1000"
-                                height="670"
                                 id="hero-image-desktop"
-                            >
-                        </picture>
+                            />
                         </div>
                     </a>
                 </div>
