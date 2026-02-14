@@ -5,7 +5,7 @@
 
 export const EXTERNAL_URLS = {
 	/** CMS Dashboard URL */
-	CMS_DASHBOARD: 'https://cms.gamelayer.co/',
+	CMS_DASHBOARD: 'https://app.gamelayer.co/',
 } as const;
 
 export const EXTERNAL_EMAILS = {
