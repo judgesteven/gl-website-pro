@@ -8,11 +8,11 @@ export const GET: APIRoute = () => {
   // Get all blog posts
   const blogPosts = getAllPosts();
   
-  // Generate blog post URLs
+  // Generate blog post URLs (no trailing slash — match canonical)
   const blogPostUrls = blogPosts.map(post => {
     const lastmod = new Date(post.date).toISOString();
     return `  <url>
-    <loc>${baseUrl}/blog/${post.slug}/</loc>
+    <loc>${baseUrl}/blog/${post.slug}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -25,7 +25,7 @@ export const GET: APIRoute = () => {
   const blogPaginationUrls = Array.from({ length: totalPages }, (_, i) => i + 1)
     .filter(page => page > 1) // Page 1 is /blog
     .map(page => `  <url>
-    <loc>${baseUrl}/blog/page/${page}/</loc>
+    <loc>${baseUrl}/blog/page/${page}</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -46,21 +46,27 @@ export const GET: APIRoute = () => {
     </image:image>
   </url>
   
-  <!-- Main Pages -->
+  <!-- Main Pages (no trailing slash — match canonical) -->
   <url>
-    <loc>${baseUrl}/blog/</loc>
+    <loc>${baseUrl}/blog</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>${baseUrl}/api-docs/</loc>
+    <loc>${baseUrl}/api-docs</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>${baseUrl}/about/</loc>
+    <loc>${baseUrl}/about</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>${baseUrl}/get-started</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -74,19 +80,19 @@ ${blogPostUrls}
   
   <!-- Legal Pages -->
   <url>
-    <loc>${baseUrl}/privacy-policy/</loc>
+    <loc>${baseUrl}/privacy-policy</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>${baseUrl}/terms-of-service/</loc>
+    <loc>${baseUrl}/terms-of-service</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>${baseUrl}/dpa/</loc>
+    <loc>${baseUrl}/dpa</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
