@@ -36,6 +36,8 @@ const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
 const endIndex = startIndex + POSTS_PER_PAGE;
 const blogPosts = allPosts.slice(startIndex, endIndex);
 
+const canonicalUrl = `https://gamelayer.io/blog/page/${currentPage}`;
+
 const formatDate = (dateString: string) => {
 	const date = new Date(dateString);
 	const day = date.getDate().toString().padStart(2, '0');
@@ -49,6 +51,7 @@ const formatDate = (dateString: string) => {
 	title={`GameLayer Blog - Page ${currentPage} | Gamification Insights, Strategies & Best Practices`}
 	description="Explore the latest insights on gamification, user engagement strategies, and best practices for implementing gamification mechanics in your applications. Learn from industry experts and real-world case studies."
 	keywords="gamification blog, gamification strategies, user engagement, customer loyalty, gamification mechanics, gamification API, user retention"
+	canonical={canonicalUrl}
 >
 	<main id="main-content">
 		<Header />
