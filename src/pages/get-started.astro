@@ -4,13 +4,20 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { pricingPlans } from '../lib/pricingPlans';
 import { EXTERNAL_EMAILS } from '../lib/external';
+import { buildSeo } from '../lib/seo';
 
 const selectedPlan = Astro.url.searchParams.get('plan')?.toLowerCase() || null;
+const seo = buildSeo({
+	title: 'Get Started - GameLayer Pricing',
+	description: 'Choose your GameLayer plan and get started. Pay by card or bank transfer. All plans include full access to our gamification API.',
+	pathname: '/get-started'
+});
 ---
 
 <Layout 
-	title="Get Started - GameLayer Pricing"
-	description="Choose your GameLayer plan and get started. Pay by card or bank transfer. All plans include full access to our gamification API."
+	title={seo.title}
+	description={seo.description}
+	canonical={seo.canonical}
 >
 	<main id="main-content" class="page">
 		<Header />

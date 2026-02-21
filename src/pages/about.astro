@@ -3,11 +3,19 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { EXTERNAL_EMAILS, EXTERNAL_SOCIAL } from '../lib/external';
+import { buildSeo } from '../lib/seo';
+
+const seo = buildSeo({
+	title: 'About GameLayer – Gamification API Platform',
+	description: 'GameLayer is a Gamification API Platform that helps developers, product managers, and marketers increase engagement, loyalty, and retention through missions, achievements, streaks, and leaderboards.',
+	pathname: '/about'
+});
 ---
 
 <Layout 
-	title="About GameLayer – Gamification API Platform"
-	description="GameLayer is a Gamification API Platform that helps developers, product managers, and marketers increase engagement, loyalty, and retention through missions, achievements, streaks, and leaderboards."
+	title={seo.title}
+	description={seo.description}
+	canonical={seo.canonical}
 >
 	<main id="main-content">
 		<Header />

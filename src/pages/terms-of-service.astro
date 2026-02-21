@@ -3,10 +3,20 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { EXTERNAL_EMAILS } from '../lib/external';
+import { buildSeo } from '../lib/seo';
+
+const seo = buildSeo({
+	title: 'Terms of Service - GameLayer',
+	description: 'GameLayer Terms of Service governing access to and use of the GameLayer platform, APIs, and related services.',
+	pathname: '/terms-of-service'
+});
 ---
 
-
-<Layout title="Terms of Service - GameLayer">
+<Layout 
+	title={seo.title}
+	description={seo.description}
+	canonical={seo.canonical}
+>
 	<main id="main-content">
 		<Header />
 		

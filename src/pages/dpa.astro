@@ -3,10 +3,20 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { EXTERNAL_EMAILS } from '../lib/external';
+import { buildSeo } from '../lib/seo';
+
+const seo = buildSeo({
+	title: 'Data Processing Addendum - GameLayer',
+	description: 'GameLayer Data Processing Addendum (DPA) for data processing terms between GameLayer and customers.',
+	pathname: '/dpa'
+});
 ---
 
-
-<Layout title="Data Processing Addendum - GameLayer">
+<Layout 
+	title={seo.title}
+	description={seo.description}
+	canonical={seo.canonical}
+>
 	<main id="main-content">
 		<Header />
 		
