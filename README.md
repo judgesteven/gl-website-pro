@@ -99,5 +99,15 @@ The project includes an AI chat endpoint for the GameLayer Sales Agent.
 
 For detailed documentation, see [`docs/ai-agent.md`](./docs/ai-agent.md).
 
+## SEO sanity checklist (production)
+
+After deployment, verify in production:
+
+- **Canonical:** Every indexable page has exactly one `<link rel="canonical">` pointing to `https://gamelayer.io/...` (no trailing slash, no www).
+- **Robots:** No unintended `noindex`; only pages meant to be excluded (e.g. `/pricing` if desired) use it.
+- **Sitemap:** `https://gamelayer.io/sitemap.xml` loads and lists the same URLs as canonicals (no trailing slash).
+- **Host/redirects:** `http://` and `https://www.gamelayer.io` 301 to `https://gamelayer.io` (configure in Vercel/DNS if not already).
+
+Full technical audit and **Google Search Console verification steps** after deployment: see [SEO_AUDIT_REPORT.md](./SEO_AUDIT_REPORT.md#google-search-console--verify-after-deployment).
 
 
