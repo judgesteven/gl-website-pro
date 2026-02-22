@@ -93,7 +93,55 @@ export const allPricingPlans: LegacyPricingPlan[] = [
     price: "€10,000",
     period: "month",
     features: [
-      "Up to 1,000,000 active users",
+      "Above 500,000 active users",
+      "Technical & Implementation Support: Customer specific",
+      "Concept & Programme Design Support: Included (on request)",
+      "Analytics & Reporting: Customer specific"
+    ]
+  }
+];
+
+/** Homepage: 4 tiers — Core (ex-Starter), Growth, Scale, Enterprise (Hyper Scale features). */
+export const homepagePricingPlans: LegacyPricingPlan[] = [
+  {
+    name: "Core",
+    price: "€100",
+    period: "month",
+    features: [
+      "Up to 1,000 active users",
+      "Technical & Implementation Support: Email",
+      "Concept & Programme Design Support: Ask for pricing",
+      "Analytics & Reporting: Dashboard"
+    ]
+  },
+  {
+    name: "Growth",
+    price: "€1,500",
+    period: "month",
+    features: [
+      "Up to 50,000 active users",
+      "Technical & Implementation Support: Slack",
+      "Concept & Programme Design Support: Ask for pricing",
+      "Analytics & Reporting: Weekly reports & monthly insights"
+    ]
+  },
+  {
+    name: "Scale",
+    price: "€3,500",
+    period: "month",
+    features: [
+      "Up to 250,000 active users",
+      "Technical & Implementation Support: Slack",
+      "Concept & Programme Design Support: Included (on request)",
+      "Analytics & Reporting: Weekly reports & monthly insights"
+    ]
+  },
+  {
+    name: "Enterprise",
+    price: "€TBA",
+    period: "month",
+    features: [
+      "Above 500,000 active users",
       "Technical & Implementation Support: Customer specific",
       "Concept & Programme Design Support: Included (on request)",
       "Analytics & Reporting: Customer specific"

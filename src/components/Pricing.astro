@@ -1,57 +1,21 @@
 ---
 import { EXTERNAL_EMAILS } from '../lib/external';
+import { homepagePricingPlans } from '../lib/allPricingPlans';
 
 const { hideHeader = false } = Astro.props;
-
-// Filtered to show only 3 tiers: 1,000 / 50,000 / 250,000 users
-const selectedPlans = [
-  {
-    name: "Starter",
-    price: "€100",
-    period: "month",
-    features: [
-      "Up to 1,000 active users",
-      "Technical & Implementation Support: Email",
-      "Concept & Programme Design Support: Ask for pricing",
-      "Analytics & Reporting: Dashboard"
-    ]
-  },
-  {
-    name: "Growth",
-    price: "€1,500",
-    period: "month",
-    features: [
-      "Up to 50,000 active users",
-      "Technical & Implementation Support: Slack",
-      "Concept & Programme Design Support: Ask for pricing",
-      "Analytics & Reporting: Weekly reports & monthly insights"
-    ]
-  },
-  {
-    name: "Scale",
-    price: "€3,500",
-    period: "month",
-    features: [
-      "Up to 250,000 active users",
-      "Technical & Implementation Support: Slack",
-      "Concept & Programme Design Support: Included (on request)",
-      "Analytics & Reporting: Weekly reports & monthly insights"
-    ]
-  }
-];
 ---
 
-<div class="pricing-content">
+<div class="pricing-content" id="pricing-home-root">
     {!hideHeader && (
         <div class="pricing-header">
             <h2>Simple, transparent pricing</h2>
             <p>Choose a plan based on programme size — not features. Every plan includes full access to GameLayer's engagement mechanics, replacing the need to build and maintain complex in-house engagement systems.</p>
         </div>
     )}
-    
+
     <div class="pricing-grid-wrapper">
         <div class="pricing-grid">
-            {selectedPlans.map((plan) => (
+            {homepagePricingPlans.map((plan) => (
                 <div class="pricing-card">
                     <div class="pricing-card-header">
                         <h3 class="pricing-title">{plan.name}</h3>
@@ -60,7 +24,6 @@ const selectedPlans = [
                             {plan.period && <span class="period">{plan.period}</span>}
                         </div>
                     </div>
-                    
                     <div class="pricing-features">
                         <ul>
                             {plan.features.map((feature) => {
@@ -86,7 +49,11 @@ const selectedPlans = [
                                                 </>
                                             ) : isActiveUsers ? (
                                                 <>
-                                                    Up to <strong>{feature.replace('Up to ', '').trim()}</strong>
+                                                    {feature.startsWith('Above ') ? (
+                                                        <>Above <strong>{feature.replace('Above ', '').trim()}</strong></>
+                                                    ) : (
+                                                        <>Up to <strong>{feature.replace('Up to ', '').trim()}</strong></>
+                                                    )}
                                                 </>
                                             ) : (
                                                 feature
@@ -102,9 +69,7 @@ const selectedPlans = [
         </div>
     </div>
 
-    <div class="pricing-note">
-        Example programme sizes. Pricing depends on usage and requirements - contact us to plan your rollout and activation.
-    </div>
+    <p class="pricing-plans-note">These plans represent common programme sizes. GameLayer pricing scales flexibly across additional usage tiers — Contact us for more details.</p>
 
     <div class="pricing-cta-wrapper">
         <a 
@@ -151,37 +116,37 @@ const selectedPlans = [
         text-align: center;
     }
 
-    /* Pricing Grid Wrapper */
+    /* Pricing grid */
     .pricing-grid-wrapper {
         width: 100%;
-        margin-bottom: 32px;
-    }
-
-    .pricing-note {
-        margin: 0 auto 24px;
-        text-align: center;
-        font-size: 15px;
-        color: rgba(15, 23, 42, 0.65);
-        max-width: 720px;
-    }
-
-    .pricing-footnote {
-        margin: 24px auto 0;
-        text-align: center;
-        font-size: 15px;
-        font-style: italic;
-        color: rgba(15, 23, 42, 0.65);
+        margin-bottom: 1.5rem;
     }
 
     .pricing-grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 18px;
         align-items: stretch;
-        width: 100%;
         max-width: 1200px;
         margin: 0 auto;
         box-sizing: border-box;
+    }
+
+    .pricing-plans-note {
+        margin: 2rem auto 24px;
+        max-width: 720px;
+        text-align: center;
+        font-size: 15px;
+        color: rgba(15, 23, 42, 0.75);
+        line-height: 1.5;
+    }
+
+    .pricing-footnote {
+        margin: 24px 0 0 auto;
+        text-align: right;
+        font-size: 15px;
+        font-style: italic;
+        color: rgba(15, 23, 42, 0.65);
     }
 
     .pricing-card {
@@ -192,11 +157,9 @@ const selectedPlans = [
         padding: 32px;
         display: flex;
         flex-direction: column;
-        height: 100%;
+        min-height: 320px;
         transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
         box-sizing: border-box;
-        width: 100%;
-        max-width: 100%;
     }
 
     .pricing-card:hover {
@@ -333,15 +296,14 @@ const selectedPlans = [
 
         .pricing-card {
             padding: 22px;
-            min-width: 0;
         }
 
         .pricing-title {
-            font-size: 26px;
+            font-size: 1.25rem;
         }
 
         .price {
-            font-size: 44px;
+            font-size: 1.75rem;
         }
     }
 
@@ -358,7 +320,3 @@ const selectedPlans = [
     }
 
 </style>
-
-
-
-
