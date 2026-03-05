@@ -1,16 +1,14 @@
 ---
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
 const DOWNLOAD_URL = 'https://images.gamelayer.co/developer-onboarding/onboarding.zip';
 const API_DOCS_URL = '/api-docs';
-// Code snippet as string so curly braces are not interpreted by Astro
-const QUICKSTART_SNIPPET = `Quickstart (JavaScript)
 
-const baseUrl = "https://api.prod.gamelayer.co/api/v0"
-const res = await fetch(\`\${baseUrl}/events/complete\`, {
-  method: "POST",
-  headers: { "content-type": "application/json", "api-key": GL_API_KEY },
-  body: JSON.stringify({ account: GL_ACCOUNT, playerId, eventId })
-})
-console.log(await res.json())`;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const QUICKSTART_CONTENT = readFileSync(join(__dirname, '../../developer/quickstart.md'), 'utf-8');
 ---
 
 <section id="developer-kit" class="developer-kit-section" aria-label="Developer Quickstart Kit">
@@ -80,8 +78,8 @@ examples/
 								</div>
 							</div>
 							<div id="devkit-panel-quickstart" class="developer-kit-tab-panel" role="tabpanel" aria-labelledby="devkit-label-quickstart">
-								<div class="developer-kit-preview-block developer-kit-code-block">
-									<pre class="developer-kit-tree"><code>{QUICKSTART_SNIPPET}</code></pre>
+								<div class="developer-kit-preview-block developer-kit-quickstart-doc">
+									<pre class="developer-kit-tree developer-kit-quickstart-pre"><code>{QUICKSTART_CONTENT}</code></pre>
 								</div>
 							</div>
 						</div>
@@ -421,6 +419,17 @@ examples/
 
 .developer-kit-code-block {
 	border-radius: 0;
+}
+
+.developer-kit-quickstart-doc {
+	max-height:  min(70vh, 520px);
+	overflow: auto;
+}
+
+.developer-kit-quickstart-pre {
+	white-space: pre-wrap;
+	word-break: break-word;
+	font-size: clamp(0.7rem, 1.2vw, 0.8rem);
 }
 
 .developer-kit-tab-panel .developer-kit-preview-block {
