@@ -31,7 +31,7 @@ const API_DOCS_URL = '/api-docs';
 							rel="noopener noreferrer external"
 							class="button button-primary"
 							aria-label="Download Developer Kit (opens zip in new tab)"
-							onclick="typeof window !== 'undefined' && window.gtag && window.gtag('event','download_developer_kit',{ location:'landing', section:'developer-kit' });"
+							onclick="if (typeof window !== 'undefined') { if (window.va) window.va('event', { name: 'download_developer_kit', location: 'landing', section: 'developer-kit' }); if (window.gtag) window.gtag('event','download_developer_kit',{ location:'landing', section:'developer-kit' }); }"
 						>
 							Download Developer Kit
 						</a>
