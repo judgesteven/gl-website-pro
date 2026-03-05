@@ -1,0 +1,469 @@
+---
+const DOWNLOAD_URL = 'https://images.gamelayer.co/developer-onboarding/onboarding.zip';
+const API_DOCS_URL = '/api-docs';
+// Code snippet as string so curly braces are not interpreted by Astro
+const QUICKSTART_SNIPPET = `Quickstart (JavaScript)
+
+const baseUrl = "https://api.prod.gamelayer.co/api/v0"
+const res = await fetch(\`\${baseUrl}/events/complete\`, {
+  method: "POST",
+  headers: { "content-type": "application/json", "api-key": GL_API_KEY },
+  body: JSON.stringify({ account: GL_ACCOUNT, playerId, eventId })
+})
+console.log(await res.json())`;
+---
+
+<section id="developer-kit" class="developer-kit-section" aria-label="Developer Quickstart Kit">
+	<div class="container">
+		<div class="developer-kit-card">
+			<div class="developer-kit-grid">
+				<div class="developer-kit-content">
+					<p class="developer-kit-eyebrow">FOR DEVELOPERS</p>
+					<h2 class="developer-kit-title">Developer Quickstart Kit</h2>
+					<p class="developer-kit-body">
+						Everything you need to integrate GameLayer in minutes — guides, API examples, Postman collections, and working client code.
+					</p>
+					<ul class="developer-kit-features" aria-label="What's included">
+						<li><span class="developer-kit-check" aria-hidden="true">✓</span><span class="developer-kit-feature-text">10-minute Quickstart Guide</span></li>
+						<li><span class="developer-kit-check" aria-hidden="true">✓</span><span class="developer-kit-feature-text">In-depth Integration Guide</span></li>
+						<li><span class="developer-kit-check" aria-hidden="true">✓</span><span class="developer-kit-feature-text">One-page API Cheat Sheet</span></li>
+						<li><span class="developer-kit-check" aria-hidden="true">✓</span><span class="developer-kit-feature-text">Postman Collection with auto-discovery</span></li>
+						<li><span class="developer-kit-check" aria-hidden="true">✓</span><span class="developer-kit-feature-text">Example clients (JavaScript, Python, C#)</span></li>
+						<li><span class="developer-kit-check" aria-hidden="true">✓</span><span class="developer-kit-feature-text">curl scripts for core API flows</span></li>
+					</ul>
+					<div class="developer-kit-cta-row">
+						<a
+							href={DOWNLOAD_URL}
+							target="_blank"
+							rel="noopener noreferrer external"
+							class="button button-primary"
+							aria-label="Download Developer Kit (opens zip in new tab)"
+							onclick="typeof window !== 'undefined' && window.gtag && window.gtag('event','download_developer_kit',{ location:'landing', section:'developer-kit' });"
+						>
+							Download Developer Kit
+						</a>
+						<a href={API_DOCS_URL} class="button" aria-label="View GameLayer API documentation">
+							View API Docs
+						</a>
+					</div>
+					<div class="developer-kit-trust" role="list" aria-label="Kit benefits">
+						<span class="developer-kit-trust-item"><span class="developer-kit-check" aria-hidden="true">✓</span><span class="developer-kit-trust-text">Direct download - no email required</span></span>
+						<span class="developer-kit-trust-item"><span class="developer-kit-check" aria-hidden="true">✓</span><span class="developer-kit-trust-text">Works with any backend</span></span>
+						<span class="developer-kit-trust-item"><span class="developer-kit-check" aria-hidden="true">✓</span><span class="developer-kit-trust-text">Try in Postman in 60 seconds</span></span>
+						<span class="developer-kit-trust-item"><span class="developer-kit-check" aria-hidden="true">✓</span><span class="developer-kit-trust-text">Production & Dev environments included</span></span>
+					</div>
+				</div>
+				<div class="developer-kit-preview">
+					<div class="developer-kit-preview-card">
+						<div class="developer-kit-tabs">
+							<input type="radio" name="devkit-tab" id="devkit-tab-contents" class="developer-kit-tab-input" checked />
+							<input type="radio" name="devkit-tab" id="devkit-tab-quickstart" class="developer-kit-tab-input" />
+							<div class="developer-kit-tab-labels" role="tablist" aria-label="Preview type">
+								<label for="devkit-tab-contents" id="devkit-label-contents" class="developer-kit-tab-label" role="tab" aria-selected="true" aria-controls="devkit-panel-contents">Contents</label>
+								<label for="devkit-tab-quickstart" id="devkit-label-quickstart" class="developer-kit-tab-label" role="tab" aria-selected="false" aria-controls="devkit-panel-quickstart">Quickstart</label>
+							</div>
+							<div id="devkit-panel-contents" class="developer-kit-tab-panel" role="tabpanel" aria-labelledby="devkit-label-contents">
+								<div class="developer-kit-preview-block" role="img" aria-label="Developer kit folder structure">
+									<pre class="developer-kit-tree"><code>GameLayer Developer Kit
+guides/
+  quickstart.md
+  integration-guide.md
+  cheat-sheet.md
+postman/
+  GameLayer API.postman_collection.json
+  GameLayer DEV.postman_environment.json
+examples/
+  javascript/
+  python/
+  csharp/
+  curl/</code></pre>
+								</div>
+							</div>
+							<div id="devkit-panel-quickstart" class="developer-kit-tab-panel" role="tabpanel" aria-labelledby="devkit-label-quickstart">
+								<div class="developer-kit-preview-block developer-kit-code-block">
+									<pre class="developer-kit-tree"><code>{QUICKSTART_SNIPPET}</code></pre>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style lang="scss">
+.developer-kit-section {
+	width: 100%;
+	background: #F0F4F8; /* cool blue-gray band to differentiate from Sticky section (--section-warm) */
+	padding: var(--gl-section-padding-standard) 0;
+	border-top: 1px solid rgba(0, 0, 0, 0.06);
+	overflow-x: hidden;
+}
+
+.developer-kit-section .container > :first-child {
+	margin-top: 0 !important;
+}
+
+.developer-kit-section .container {
+	overflow-x: hidden;
+}
+
+/* Premium inner card: subtle gradient + hairline + soft shadow */
+.developer-kit-card {
+	background: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
+	border: 1px solid rgba(0, 0, 0, 0.06);
+	border-radius: 24px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02);
+	padding: clamp(20px, 5vw, 40px);
+	min-width: 0;
+}
+
+@media (max-width: 767px) {
+	.developer-kit-card {
+		border-radius: 16px;
+		padding: 20px 16px;
+	}
+}
+
+.developer-kit-grid {
+	display: grid;
+	gap: clamp(20px, 4vw, 48px);
+	align-items: start;
+	min-width: 0;
+}
+
+@media (min-width: 768px) {
+	.developer-kit-grid {
+		grid-template-columns: 1fr 1fr;
+		align-items: stretch;
+	}
+}
+
+.developer-kit-content {
+	min-width: 0;
+}
+
+/* Eyebrow */
+.developer-kit-eyebrow {
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--gl-lede-color);
+	margin: 0 0 0.5em;
+}
+
+.developer-kit-title {
+	font-size: var(--gl-h2-size);
+	font-weight: var(--gl-h2-weight);
+	line-height: var(--gl-h2-line-height);
+	margin: 0 0 var(--gl-h2-margin-bottom);
+	color: var(--as-black);
+}
+
+.developer-kit-body {
+	font-size: var(--gl-lede-size);
+	font-weight: var(--gl-lede-weight);
+	line-height: var(--gl-lede-line-height);
+	color: var(--gl-lede-color);
+	margin: 0 0 1.25em;
+	max-width: var(--gl-lede-max-width);
+}
+
+/* 2-col feature grid - compact rows, consistent spacing */
+.developer-kit-features {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 0.4em 1.25em;
+	margin: 0 0 1.5em;
+	padding: 0;
+	list-style: none;
+}
+
+@media (min-width: 768px) {
+	.developer-kit-features {
+		grid-template-columns: 1fr 1fr;
+		gap: 0.45em 1.5em;
+	}
+}
+
+.developer-kit-features li {
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
+	min-height: 1.5em;
+	line-height: 1.4;
+}
+
+.developer-kit-check {
+	flex-shrink: 0;
+	color: var(--as-accent);
+	font-weight: 700;
+	width: 1.25em;
+}
+
+.developer-kit-feature-text {
+	font-size: 0.875em;
+	font-weight: 400;
+	color: var(--gl-lede-color);
+	max-width: 100%;
+	line-height: 1.35;
+}
+
+@media (min-width: 768px) {
+	.developer-kit-feature-text {
+		max-width: 14em;
+	}
+}
+
+/* CTA row */
+.developer-kit-cta-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.75em 1em;
+	margin-top: 1.25em;
+	margin-bottom: 0.5em;
+}
+
+.developer-kit-cta-row .button {
+	margin: 0;
+}
+
+@media (max-width: 767px) {
+	.developer-kit-cta-row {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0.75em;
+	}
+	.developer-kit-cta-row .button {
+		width: 100%;
+		justify-content: center;
+		min-height: 44px;
+	}
+}
+
+.developer-kit-note {
+	font-size: 0.8em;
+	color: var(--gl-lede-color);
+	margin: 0 0 0.35em;
+	line-height: 1.3;
+}
+
+/* Trust row - 2x2 grid (desktop), single column on small screens; row height and gap match features list */
+.developer-kit-trust {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.55em 1.25em;
+	margin: 0;
+	margin-top: 1.25em;
+	font-size: 0.875em;
+	color: var(--gl-lede-color);
+	line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+	.developer-kit-trust {
+		gap: 0.6em 1.5em;
+	}
+}
+
+.developer-kit-trust-item {
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
+	min-height: 1.5em;
+	white-space: nowrap;
+	min-width: 0;
+}
+
+.developer-kit-trust-item .developer-kit-check {
+	flex-shrink: 0;
+	color: var(--gl-lede-color);
+}
+
+.developer-kit-trust-text {
+	line-height: 1.35;
+}
+
+@media (max-width: 640px) {
+	.developer-kit-trust {
+		grid-template-columns: 1fr;
+	}
+	.developer-kit-trust-item {
+		white-space: normal;
+	}
+}
+
+/* Right column: preview card with tabs */
+.developer-kit-preview {
+	min-width: 0;
+	max-width: 100%;
+}
+
+@media (min-width: 768px) {
+	.developer-kit-preview {
+		display: flex;
+		align-items: stretch;
+	}
+}
+
+.developer-kit-preview-card {
+	background: var(--surface);
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+	width: 100%;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+@media (max-width: 767px) {
+	.developer-kit-preview-card {
+		border-radius: 10px;
+	}
+}
+
+/* Tab switcher - pure CSS with radio */
+.developer-kit-tabs {
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+	flex: 1;
+}
+
+.developer-kit-tab-input {
+	position: absolute;
+	opacity: 0;
+	width: 1px;
+	height: 1px;
+	clip: rect(0, 0, 0, 0);
+	margin: -1px;
+	overflow: hidden;
+}
+
+.developer-kit-tab-labels {
+	display: flex;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+	padding: 0 4px;
+	gap: 2px;
+}
+
+.developer-kit-tab-label {
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: var(--gl-lede-color);
+	padding: 10px 14px;
+	min-height: 44px;
+	min-width: 44px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	border-bottom: 2px solid transparent;
+	margin-bottom: -1px;
+	transition: color 0.15s ease, border-color 0.15s ease;
+	-webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 767px) {
+	.developer-kit-tab-label {
+		padding: 12px 16px;
+		min-height: 48px;
+		font-size: 0.85rem;
+	}
+}
+
+.developer-kit-tab-label:hover {
+	color: var(--as-black);
+}
+
+.developer-kit-tab-input#devkit-tab-contents:checked ~ .developer-kit-tab-labels .developer-kit-tab-label[for="devkit-tab-contents"],
+.developer-kit-tab-input#devkit-tab-quickstart:checked ~ .developer-kit-tab-labels .developer-kit-tab-label[for="devkit-tab-quickstart"] {
+	color: var(--as-accent);
+	border-bottom-color: var(--as-accent);
+}
+
+/* Panels: show/hide by radio (pure CSS) */
+.developer-kit-tab-panel {
+	display: none;
+	flex: 1;
+	flex-direction: column;
+	min-height: 0;
+}
+
+.developer-kit-tab-input#devkit-tab-contents:checked ~ #devkit-panel-contents,
+.developer-kit-tab-input#devkit-tab-quickstart:checked ~ #devkit-panel-quickstart {
+	display: flex;
+}
+
+.developer-kit-preview-block {
+	background: rgba(0, 0, 0, 0.03);
+	border-radius: 0 0 12px 12px;
+	padding: clamp(12px, 2vw, 18px);
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	flex: 1;
+	min-height: 0;
+	min-width: 0;
+	max-width: 100%;
+}
+
+@media (max-width: 767px) {
+	.developer-kit-preview-block {
+		padding: 12px;
+		border-radius: 0 0 10px 10px;
+	}
+}
+
+.developer-kit-code-block {
+	border-radius: 0;
+}
+
+.developer-kit-tab-panel .developer-kit-preview-block {
+	border-radius: 0 0 12px 12px;
+}
+
+@media (max-width: 767px) {
+	.developer-kit-tab-panel .developer-kit-preview-block {
+		border-radius: 0 0 10px 10px;
+	}
+}
+
+.developer-kit-tree {
+	margin: 0;
+	font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+	font-size: clamp(0.75rem, 1.4vw, 0.85rem);
+	line-height: 1.5;
+	color: #374151;
+	white-space: pre;
+	min-width: min-content;
+}
+
+@media (max-width: 767px) {
+	.developer-kit-tree {
+		font-size: 0.75rem;
+	}
+}
+
+.developer-kit-tree code {
+	font-family: inherit;
+	font-size: inherit;
+	background: none;
+	padding: 0;
+}
+
+/* Focus styles */
+.developer-kit-cta-row .button:focus-visible {
+	outline: 2px solid var(--as-accent);
+	outline-offset: 4px;
+}
+
+.developer-kit-tab-label:focus-visible {
+	outline: 2px solid var(--as-accent);
+	outline-offset: 2px;
+}
+</style>
