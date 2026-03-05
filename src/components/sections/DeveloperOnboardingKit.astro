@@ -35,7 +35,7 @@ const API_DOCS_URL = '/api-docs';
 						>
 							Download Developer Kit
 						</a>
-						<a href={API_DOCS_URL} class="button" aria-label="View GameLayer API documentation">
+						<a href={API_DOCS_URL} class="button" aria-label="View GameLayer API documentation" onclick="if (typeof window !== 'undefined' && window.va) window.va('event', { name: 'view_api_docs', location: 'landing', section: 'developer-kit' });">
 							View API Docs
 						</a>
 					</div>
@@ -53,7 +53,7 @@ const API_DOCS_URL = '/api-docs';
 							<input type="radio" name="devkit-tab" id="devkit-tab-quickstart" class="developer-kit-tab-input" />
 							<div class="developer-kit-tab-labels" role="tablist" aria-label="Preview type">
 								<label for="devkit-tab-contents" id="devkit-label-contents" class="developer-kit-tab-label" role="tab" aria-selected="true" aria-controls="devkit-panel-contents">Contents</label>
-								<label for="devkit-tab-quickstart" id="devkit-label-quickstart" class="developer-kit-tab-label" role="tab" aria-selected="false" aria-controls="devkit-panel-quickstart">Quickstart</label>
+								<label for="devkit-tab-quickstart" id="devkit-label-quickstart" class="developer-kit-tab-label" role="tab" aria-selected="false" aria-controls="devkit-panel-quickstart" onclick="if (typeof window !== 'undefined' && window.va) window.va('event', { name: 'quickstart_tab_click', location: 'landing', section: 'developer-kit' });">Quickstart</label>
 							</div>
 							<div id="devkit-panel-contents" class="developer-kit-tab-panel" role="tabpanel" aria-labelledby="devkit-label-contents">
 								<div class="developer-kit-preview-block" role="img" aria-label="Developer kit folder structure">
