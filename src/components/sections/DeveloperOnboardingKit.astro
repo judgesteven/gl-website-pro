@@ -1,14 +1,9 @@
 ---
-import { readFileSync } from 'fs';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
+// Bundled at build time so it works in production (no runtime fs read)
+import QUICKSTART_CONTENT from '../../developer/quickstart.md?raw';
 
 const DOWNLOAD_URL = 'https://images.gamelayer.co/developer-onboarding/onboarding.zip';
 const API_DOCS_URL = '/api-docs';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const QUICKSTART_CONTENT = readFileSync(join(__dirname, '../../developer/quickstart.md'), 'utf-8');
 ---
 
 <section id="developer-kit" class="developer-kit-section" aria-label="Developer Quickstart Kit">
