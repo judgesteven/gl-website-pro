@@ -1,0 +1,149 @@
+---
+import locationAwareImage from '../../images/location-aware.png';
+---
+<section id="location-aware" class="location-aware-section" aria-label="Location-aware missions and rewards">
+    <div class="container">
+        <div class="location-aware-card">
+            <div class="location-aware-grid">
+                <div class="location-aware-content">
+                    <h2 class="location-aware-title">Location-aware missions and rewards</h2>
+                    <p class="location-aware-tagline">Turn real-world places into engagement triggers.</p>
+                    <p class="location-aware-lede">
+                        With GameLayer, missions, challenges, and rewards can activate based on where users are — enabling powerful real-world engagement for retail, events, travel, and mobile experiences.
+                    </p>
+                    <p class="location-aware-examples-label">Examples include</p>
+                    <ul class="location-aware-features" aria-label="Location examples">
+                        <li>Check-in missions at stores, venues, or destinations</li>
+                        <li>Geo-fenced rewards unlocked in specific locations</li>
+                        <li>City-wide treasure hunts and exploration challenges</li>
+                        <li>Event-based missions and activations</li>
+                        <li>Location streaks for repeated visits</li>
+                    </ul>
+                </div>
+                <div class="location-aware-visual">
+                    <img
+                        src={locationAwareImage.src}
+                        alt="Location-aware missions and rewards in GameLayer"
+                        class="location-aware-image"
+                        loading="lazy"
+                        decoding="async"
+                        width={locationAwareImage.width}
+                        height={locationAwareImage.height}
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style lang="scss">
+.location-aware-section {
+    width: 100%;
+    background: #F0F4F8;
+    padding: var(--gl-section-padding-standard) 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.location-aware-section .container > :first-child {
+    margin-top: 0 !important;
+}
+
+.location-aware-card {
+    background: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02);
+    padding: clamp(24px, 4vw, 40px);
+    min-width: 0;
+}
+
+@media (max-width: 767px) {
+    .location-aware-card {
+        border-radius: 16px;
+        padding: 20px 16px;
+    }
+}
+
+.location-aware-grid {
+    display: grid;
+    gap: clamp(24px, 4vw, 48px);
+    align-items: start;
+    min-width: 0;
+}
+
+@media (min-width: 768px) {
+    .location-aware-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+}
+
+.location-aware-content {
+    min-width: 0;
+}
+
+.location-aware-title {
+    font-size: var(--gl-h2-size);
+    font-weight: var(--gl-h2-weight);
+    line-height: var(--gl-h2-line-height);
+    margin: 0 0 var(--gl-h2-margin-bottom);
+    color: var(--as-black);
+    letter-spacing: -0.02em;
+}
+
+.location-aware-tagline {
+    font-size: var(--gl-lede-size);
+    font-weight: 600;
+    line-height: var(--gl-lede-line-height);
+    color: var(--as-black);
+    margin: 0 0 0.5em;
+}
+
+.location-aware-lede {
+    font-size: var(--gl-lede-size);
+    font-weight: var(--gl-lede-weight);
+    line-height: var(--gl-lede-line-height);
+    color: var(--gl-lede-color);
+    margin: 0 0 1em;
+    max-width: var(--gl-lede-max-width);
+}
+
+.location-aware-examples-label {
+    font-size: var(--gl-small-size);
+    font-weight: 600;
+    line-height: var(--gl-small-line-height);
+    color: var(--gl-body-color);
+    margin: 0 0 0.5em;
+}
+
+.location-aware-features {
+    margin: 0;
+    padding: 0 0 0 1.25em;
+    list-style: disc;
+    font-size: var(--gl-body-size);
+    line-height: var(--gl-body-line-height);
+    color: var(--gl-body-color);
+}
+
+.location-aware-features li {
+    margin-bottom: 0.35em;
+}
+
+.location-aware-features li:last-child {
+    margin-bottom: 0;
+}
+
+/* Right-side image */
+.location-aware-visual {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.location-aware-image {
+    width: 75%;
+    max-width: 420px;
+    height: auto;
+    display: block;
+}
+</style>
