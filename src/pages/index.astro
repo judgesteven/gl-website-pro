@@ -220,8 +220,10 @@ const schemas = [
 <Layout 
 	title={seo.title}
 	description={seo.description}
-	keywords="gamification API, gamification platform, user engagement, user retention, customer loyalty, gamification mechanics, API integration, gamification software"
+	keywords="gamification platform, gamification PaaS, gamification API, engagement platform, loyalty gamification software, gamification SDK, developer gamification platform"
 	canonical={seo.canonical}
+	ogTitle="Gamification Platform (PaaS) for Digital Products"
+	ogDescription={seo.description}
 	schema={schemas}
 >
 	<main id="main-content" class="page gl-typography">
@@ -298,11 +300,31 @@ const schemas = [
 				</div>
 			</div>
 		</section>
+		<section class="sr-only" aria-label="Gamification platform summary for search engines">
+			<h2>Gamification Platform</h2>
+			<p>
+				GameLayer is a gamification platform-as-a-service designed to help companies integrate engagement mechanics into digital products.
+				Using a simple API, developers can add missions, achievements, rewards, leaderboards, and virtual currencies to apps, websites, and communities.
+			</p>
+		</section>
 		<Footer />
 	</main>
 </Layout>
 
 <style>
+	/* Accessible visually-hidden utility for SEO-only content (readable by search engines and assistive tech) */
+	:global(.sr-only) {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border-width: 0;
+	}
+
 	main{
 		background-color: var(--page-bg);
 	}

@@ -45,8 +45,8 @@ export function buildSeo({
  * Optimized for full-funnel: Exec/Marketing (engagement/retention/loyalty) + Product (mechanics) + Technical (API)
  */
 export const defaultHomeSeo = {
-	title: "GameLayer — Gamification Platform (PaaS) for Apps and Digital Products",
-	description: "GameLayer is a developer-first gamification platform-as-a-service (PaaS) that helps companies add missions, rewards, leaderboards, XP, streaks, and loyalty mechanics to apps and digital products using a simple API.",
+	title: "GameLayer — Gamification Platform (PaaS) for Apps, Communities and Digital Products",
+	description: "GameLayer is a developer-first gamification platform-as-a-service (PaaS) that helps companies add missions, rewards, leaderboards, XP, streaks and loyalty mechanics to apps and digital products using a simple API.",
 	pathname: "/"
 };
 
